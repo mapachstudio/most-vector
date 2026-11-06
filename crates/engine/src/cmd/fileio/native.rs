@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The native format's options: compression, the version to write (older apps read older
 //! versions), an embedded preview, and the save options native and `.ai` files share: each
 //! artboard to a separate file, Include Linked Files, Embed ICC Profiles and Create
@@ -27,7 +28,7 @@ pub const OPTIONS: &[FormatOption] = &[
         name: "version",
         ty: "integer",
         default: "4",
-        description: "the format version to write: 4 (current), or 3, 2 or 1 for older VectorCraft versions (1 and 2 are never compressed; newer features they don't know are lost there)",
+        description: "the format version to write: 4 (current), or 3, 2 or 1 for older Most Vector versions (1 and 2 are never compressed; newer features they don't know are lost there)",
     },
     FormatOption {
         name: "preview",
@@ -115,7 +116,7 @@ pub const AI_OPTIONS: &[FormatOption] = &[
         name: "aiVersion",
         ty: "string",
         default: "\"pdf\"",
-        description: "pdf (a PDF-compatible .ai carrying the VectorCraft document) or 7 (the legacy, PostScript-form .ai of version 7, which keeps layers, groups, compound paths and clipping groups in apps that read it; one file per artboard, transparent objects opaque; the other .ai options don't apply; an error for a .ait template)",
+        description: "pdf (a PDF-compatible .ai carrying the Most Vector document) or 7 (the legacy, PostScript-form .ai of version 7, which keeps layers, groups, compound paths and clipping groups in apps that read it; one file per artboard, transparent objects opaque; the other .ai options don't apply; an error for a .ait template)",
     },
     FormatOption {
         name: "transparentImages",
@@ -188,7 +189,7 @@ fn precision(cmd: &str, v: &Value) -> Result<u8> {
     Err(bad(cmd, format!("`{key}` must be a whole number between {min} and {max} (got {x})")))
 }
 
-/// The `.vectorcraft` file of `doc` with the options in `p`.
+/// The `.mostvector` file of `doc` with the options in `p`.
 pub(super) fn encode(cmd: &str, f: &Format, doc: &Document, p: &Value) -> Result<Vec<u8>> {
     let mut out = Vec::new();
     encode_to(cmd, f, doc, p, &mut out)?;
@@ -246,7 +247,7 @@ fn rounded(doc: &Document, version: u32, decimals: u8) -> Document {
 }
 
 /// The ICC files of the profiles `doc` is tagged with that were loaded from files (the built-in
-/// ones are there wherever VectorCraft runs).
+/// ones are there wherever Most Vector runs).
 fn embedded_profiles(doc: &Document) -> BTreeMap<String, Vec<u8>> {
     [&doc.color_profiles.rgb, &doc.color_profiles.cmyk]
         .into_iter()

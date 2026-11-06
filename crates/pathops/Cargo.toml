@@ -1,9 +1,10 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft-pathops"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "VectorCraft path operations: booleans (Pathfinder), shape builder regions, offset, outline stroke, simplify"
+description = "Most Vector path operations: booleans (Pathfinder), shape builder regions, offset, outline stroke, simplify"
 
 [lints]
 workspace = true

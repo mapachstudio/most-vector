@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::*;
 use crate::theme;
 
@@ -63,7 +64,7 @@ fn the_bar_starts_at_file() {
     for t in titles {
         assert!(shown.iter().any(|s| s == t), "{t} missing from {shown:?}");
     }
-    assert!(!shown.iter().any(|s| s == "VectorCraft"), "{shown:?}");
+    assert!(!shown.iter().any(|s| s == "Most Vector"), "{shown:?}");
 }
 
 #[test]
@@ -678,12 +679,12 @@ fn recent_files_track_opens_and_saves() {
         },
     );
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
-    let (a, b) = (dir.join("a.vectorcraft"), dir.join("b.vectorcraft"));
+    let (a, b) = (dir.join("a.mostvector"), dir.join("b.mostvector"));
     for p in [&a, &b, &a] {
         app.run("file.saveAs", json!({"path": p.to_string_lossy()})).unwrap();
     }
     assert_eq!(app.ui.recent_files, [a.to_string_lossy(), b.to_string_lossy()]);
-    assert_eq!(dynamic_label(&app, "file.openRecent2", ""), "b.vectorcraft");
+    assert_eq!(dynamic_label(&app, "file.openRecent2", ""), "b.mostvector");
     assert!(enabled(&app, "file.openRecent2") && !enabled(&app, "file.openRecent3"));
     app.run("file.openRecent2", json!({})).unwrap();
     assert_eq!(app.session.documents().len(), 2);

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Parametric Shape Tool (Path Precision Tools): shapes that stay editable as numbers. A drag from
 //! the centre draws one (`addon.pathtools.shape.create`): the drag's length is its size and its
 //! direction its rotation (Shift: 45° steps); ↑/↓ change the kind's count or first value while
@@ -22,7 +23,7 @@ use crate::{Action, Cursor, Mods, Overlay, PointerEvent, PointerKind, Tool, Tool
 /// The tool's id.
 pub const ID: &str = "parametricShape";
 /// The object data entry that holds a parametric shape's numbers (JSON). The `vc-` prefix marks it
-/// as VectorCraft's own, which SVG export leaves out of the `data-*` attributes it writes.
+/// as Most Vector's own, which SVG export leaves out of the `data-*` attributes it writes.
 pub const KEY: &str = "vc-pathtools-shape";
 /// The longest entry read back (a damaged file's longer one is no shape).
 const MAX_STORED: usize = 4096;

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! History panel: the document's states; click one to go back (or forward) to it.
 
 use egui::{Sense, Ui, vec2};
@@ -26,7 +27,7 @@ pub fn step_name(lang: crate::i18n::Lang, label: &str) -> Option<String> {
 
 /// A step's name in `lang`. A name made from a template (`Apply {name}`,
 /// [`vectorcraft_engine::HistoryEntry::named`]) takes the template's plain row with the name in its
-/// placeholder. A name VectorCraft gives is shown in `lang`, and any other name is shown as the
+/// placeholder. A name Most Vector gives is shown in `lang`, and any other name is shown as the
 /// document holds it. It returns `None` when the catalog has no row for the template. Any other step
 /// takes [`step_name`] of its label.
 pub fn entry_name(lang: crate::i18n::Lang, h: &vectorcraft_engine::HistoryEntry) -> Option<String> {

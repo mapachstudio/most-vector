@@ -1,4 +1,5 @@
-//! `.vectorcraft` format: round trips, robustness against garbage, versioning, unknown fields.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! `.mostvector` format: round trips, robustness against garbage, versioning, unknown fields.
 // Integration tests: unwrapping and panicking on failure is fine here, unlike in shipped code (AGENTS.md › Robustness).
 #![allow(clippy::unwrap_used, clippy::expect_used, clippy::panic)]
 

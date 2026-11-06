@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The document walk: each visible object becomes DXF entities on its layer's DXF layer, in paint
 //! order. Fills are their outlines then solid hatches (the outlines alone in R12), strokes
 //! polylines (with bulges for circular arcs) and cubic splines with a lineweight and dashes, or
@@ -59,7 +60,7 @@ struct Sub {
     closed: bool,
 }
 
-/// A subpath close enough to a circle to preserve as a native DXF CIRCLE/ARC. VectorCraft's
+/// A subpath close enough to a circle to preserve as a native DXF CIRCLE/ARC. Most Vector's
 /// ellipse helper uses the standard four-cubic circle approximation, so recognition needs a small
 /// relative tolerance rather than exact control-point tests.
 struct CircularSub {

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::export::file_url;
 use super::open::{note_recent, open_options};
 use super::{
@@ -182,7 +183,7 @@ pub fn remember_view(app: &mut VectorcraftApp) {
 /// A path typed in a save panel: kept when its extension names one of the panel's file types (a
 /// save format, or a template format for Save as Template, `mode`). An extension that names
 /// another format (`card.png`, or `card.ait` in Save As) is replaced with `f`'s, and `f`'s is
-/// added to any other path (`notes.v2` becomes `notes.v2.vectorcraft`).
+/// added to any other path (`notes.v2` becomes `notes.v2.mostvector`).
 fn with_save_extension(path: &str, f: &Format, mode: SaveMode) -> String {
     let formats = if mode == SaveMode::Template { TEMPLATE_FORMATS } else { SAVE_FORMATS };
     if fileio::format_for_name(path).is_some_and(|g| !formats.contains(&g.id)) {
@@ -294,14 +295,14 @@ fn acknowledged(p: &Value) -> Value {
 }
 
 /// Writing `path` over the file the active document was read from, when reading it left things
-/// out (hidden text, art or layers VectorCraft can't read yet): asks first, and OK runs `command`
+/// out (hidden text, art or layers Most Vector can't read yet): asks first, and OK runs `command`
 /// with `params` and `acknowledgeLoss` → `{pending}` while it asks, `None` when nothing is lost.
 pub(super) fn ask_before_losing(app: &mut VectorcraftApp, path: &str, command: &str, params: &Value) -> Option<Value> {
     let what = fileio::losses_summary(fileio::overwrite_losses(app.session.active()?, path, params)?);
     let name = fileio::file_name(path);
     let message = crate::i18n::fmt(tl!("Replace “{name}”, the file this document was opened from?"), &[("name", &name)]);
     let detail = crate::i18n::fmt(
-        tl!("Opening it left out what VectorCraft can't read yet ({what}), so replacing it loses that for good. Save under another name to keep it."),
+        tl!("Opening it left out what Most Vector can't read yet ({what}), so replacing it loses that for good. Save under another name to keep it."),
         &[("what", &what)],
     );
     let mut params = acknowledged(params);

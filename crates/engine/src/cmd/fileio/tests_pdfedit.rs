@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! PDF and .ai files that reopen as they were: Preserve Editing embeds the native document, which
 //! `document.open` restores unless the pages changed elsewhere; `.ai` saves always carry it and
 //! `.ait` templates open from it untitled.
@@ -72,7 +73,7 @@ fn pages_changed_elsewhere_open_as_artwork_with_a_warning() {
 /// `pdf` with its editing file's description rewritten by another app in UTF-16BE with a byte
 /// order mark: "hash " and the hash it held, padded with spaces to its length.
 fn utf16_described(pdf: &[u8]) -> Vec<u8> {
-    let from = b"(VectorCraft editing data; page hash ";
+    let from = b"(Most Vector editing data; page hash ";
     let at = pdf.windows(from.len()).position(|w| w == from).unwrap_or_else(|| panic!("no description"));
     let (hash, len) = (&pdf[at + from.len()..at + from.len() + 16], from.len() + 17);
     let mut desc = b"(\xFE\xFF".to_vec();
@@ -236,7 +237,7 @@ fn save_as_template_names_its_file_after_the_template_format() {
     let mut s = rich();
     for (name, format, saved) in [
         ("card.png", None, "card.vctemplate"),
-        ("card.vectorcraft", None, "card.vctemplate"),
+        ("card.mostvector", None, "card.vctemplate"),
         ("card.ait", Some("template"), "card.vctemplate"),
         ("card.pdf", Some("ait"), "card.ait"),
         ("card v1.2", None, "card v1.2.vctemplate"),
@@ -323,7 +324,7 @@ fn standards_and_screens_leave_the_editing_data_out() {
 fn save_dialogs_offer_every_format_save_writes() {
     let labels = |name: &str| save_filters(name).into_iter().map(|(l, _)| l).collect::<Vec<_>>();
     assert_eq!(labels("a.ai")[0], "PDF-compatible .ai");
-    assert_eq!(labels("a.vectorcraft").len(), SAVE_FORMATS.len());
+    assert_eq!(labels("a.mostvector").len(), SAVE_FORMATS.len());
     assert_eq!(labels("a.svg")[0], "SVG");
     assert!(labels("a.png").is_empty() && labels("noext").is_empty(), "exports pick their own name");
     assert_eq!(save_format(Some("ai"), None).unwrap().id, "ai");
@@ -417,7 +418,7 @@ fn a_preserve_editing_pdf_opens_with_its_halftone_radius_in_pixels() {
         let r = super::tests_svgedit::rect(&mut s, 10.0, 10.0);
         s.execute("effect.apply", &json!({"effect": "pixelate.colorHalftone", "params": {"maxRadius": 8}, "ids": [r]})).unwrap();
         if old {
-            // As VectorCraft 0.18 wrote it: the document model's version 1, the radius in points.
+            // As Most Vector 0.18 wrote it: the document model's version 1, the radius in points.
             std::sync::Arc::make_mut(&mut s.doc_mut().unwrap().doc).version = 1;
         }
         let pdf = b64(&s.execute("document.exportPdf", &json!({})).unwrap());
@@ -454,7 +455,7 @@ fn outline(doc: &vectorcraft_doc::Document) -> Vec<String> {
 }
 
 /// A `.ai` also carries the editing copy of its art that other apps read: opened without the
-/// VectorCraft document it carries, it gives back the same layers, groups and paths, its page
+/// Most Vector document it carries, it gives back the same layers, groups and paths, its page
 /// matching them. `editingData: false` leaves the copy out.
 #[test]
 fn ai_files_carry_an_editing_copy_for_other_apps() {
@@ -481,8 +482,8 @@ fn ai_files_carry_an_editing_copy_for_other_apps() {
     assert!(s.execute("document.export", &json!({"format": "ai", "editingData": "no"})).is_err());
 }
 
-/// A `.ai` whose editing copy for other apps differs from the VectorCraft document it carries (the
-/// copy leaves the live effect out) opens in VectorCraft from the VectorCraft document.
+/// A `.ai` whose editing copy for other apps differs from the Most Vector document it carries (the
+/// copy leaves the live effect out) opens in Most Vector from the Most Vector document.
 #[test]
 fn an_ai_file_opens_from_its_vectorcraft_document_when_the_editing_copy_differs() {
     let mut s = Session::new();

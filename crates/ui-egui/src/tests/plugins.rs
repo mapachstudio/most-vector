@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! WebAssembly plug-ins in the UI (#121): Object › Plug-ins and Effect › Plug-ins, the generated
 //! filter dialog with its live preview, plug-in effects in the effect dialog, and installing
 //! `.wasm` files through File › Open.
@@ -10,7 +11,7 @@ use crate::state::Dialog;
 use crate::{VectorcraftApp, dialogs, io, menus, theme};
 
 const DESATURATE: &[u8] = include_bytes!("../../../plugins/tests/fixtures/desaturate.wasm");
-const DESATURATE_ID: &str = "org.vectorcraft.example.desaturate";
+const DESATURATE_ID: &str = "org.mostvector.example.desaturate";
 
 fn app() -> VectorcraftApp {
     let mut app = VectorcraftApp::new(Session::new(), Default::default());

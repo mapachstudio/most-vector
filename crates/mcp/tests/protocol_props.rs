@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! MCP server properties (in-process, headless backend): tool schemas are valid, every tool
 //! survives junk arguments, JSON-RPC framing always answers correctly, and random editing through
 //! MCP keeps the document valid.
@@ -99,7 +100,7 @@ fn tool_definitions_are_valid() {
 #[test]
 fn every_tool_survives_empty_and_junk_arguments() {
     let dir = vectorcraft_testkit::temp_dir("mcp-junk");
-    let safe = dir.join("junk.vectorcraft").to_string_lossy().to_string();
+    let safe = dir.join("junk.mostvector").to_string_lossy().to_string();
     let mut failures = vec![];
     for t in tool_definitions() {
         let name = t["name"].as_str().unwrap().to_string();
@@ -141,7 +142,7 @@ fn every_tool_survives_empty_and_junk_arguments() {
 /// device name, a drive, either separator.
 fn junk_tail() -> impl Strategy<Value = String> {
     let seg =
-        prop::sample::select(vec!["..", ".", "a", "b.svg", "x.png", "d.vectorcraft", "CON", "nul.txt", "", "c:", "~", "%2e%2e", "ü", "a b", "x."]);
+        prop::sample::select(vec!["..", ".", "a", "b.svg", "x.png", "d.mostvector", "CON", "nul.txt", "", "c:", "~", "%2e%2e", "ü", "a b", "x."]);
     (prop::collection::vec(seg, 1..=4), prop::sample::select(vec!["/", "\\"])).prop_map(|(segs, sep)| segs.join(sep))
 }
 

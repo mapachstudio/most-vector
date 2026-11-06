@@ -1,13 +1,14 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::{VectorcraftApp, fileio, prefs_dir};
 
-/// Where UI preferences live: ~/Library/Application Support/VectorCraft (macOS),
-/// %APPDATA%\VectorCraft (Windows), $XDG_CONFIG_HOME or ~/.config/vectorcraft (Linux).
+/// Where UI preferences live: ~/Library/Application Support/Most Vector (macOS),
+/// %APPDATA%\Most Vector (Windows), $XDG_CONFIG_HOME or ~/.config/vectorcraft (Linux).
 pub(crate) fn prefs_path() -> Option<std::path::PathBuf> {
-    prefs_dir::prefs_path_for("VectorCraft", "vectorcraft")
+    prefs_dir::prefs_path_for("Most Vector", "vectorcraft")
 }
 
 /// The same place under the project's former name (DrawCraft): read once if there are no
-/// VectorCraft preferences yet, so settings survive the rename.
+/// Most Vector preferences yet, so settings survive the rename.
 fn legacy_prefs_path() -> Option<std::path::PathBuf> {
     prefs_dir::prefs_path_for("DrawCraft", "drawcraft")
 }
@@ -17,9 +18,9 @@ pub(crate) fn log_dir() -> Option<std::path::PathBuf> {
     Some(prefs_path()?.parent()?.join("logs"))
 }
 
-/// Runs without preferences (`VECTORCRAFT_NO_PREFS`, agents' test runs) neither read nor write them.
+/// Runs without preferences (`MOST_VECTOR_NO_PREFS`, agents' test runs) neither read nor write them.
 pub(crate) fn prefs_enabled() -> bool {
-    std::env::var_os("VECTORCRAFT_NO_PREFS").is_none()
+    std::env::var_os("MOST_VECTOR_NO_PREFS").is_none()
 }
 
 /// The saved UI preferences, read before the window opens (they hold its size and position).
@@ -56,7 +57,7 @@ pub(crate) fn decode_saved_prefs(bytes: &[u8]) -> Option<vectorcraft_ui_egui::Ui
 pub(crate) static KEEP_UI_PREFS: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
 
 /// Copy `ui.json` beside it as `<stem>.json` or the first free `<stem>-N.json`, before the next
-/// save replaces it: `ui.unreadable` when it could not be read in full (a newer VectorCraft may
+/// save replaces it: `ui.unreadable` when it could not be read in full (a newer Most Vector may
 /// have written it), `ui.before-layout-migration` when its layouts were converted.
 pub(crate) fn keep_prefs_copy(path: &std::path::Path, bytes: &[u8], stem: &str) {
     use std::io::Write as _;
@@ -94,7 +95,7 @@ pub(crate) fn load_prefs(app: &mut VectorcraftApp, saved: Option<vectorcraft_ui_
 }
 
 /// Save what this window changed since it last read or saved the preferences, merged into the
-/// file as it is now ([`merge_changes`]): another VectorCraft window open at the same time, which
+/// file as it is now ([`merge_changes`]): another Most Vector window open at the same time, which
 /// read the file before this one saved, then keeps this window's changes when it saves or quits
 /// (#4625). Nothing is written when nothing changed.
 pub(crate) fn save_prefs(app: &VectorcraftApp) {

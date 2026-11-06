@@ -1,6 +1,7 @@
-//! Sandboxed WebAssembly plug-ins for VectorCraft.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Sandboxed WebAssembly plug-ins for Most Vector.
 //!
-//! A plug-in is a WebAssembly module that implements the VectorCraft plug-in ABI (v1, documented
+//! A plug-in is a WebAssembly module that implements the Most Vector plug-in ABI (v1, documented
 //! in `docs/plugins.md`). It runs in [`wasmi`], a pure-Rust interpreter, with:
 //!
 //! - **no host imports**: no WASI, file system, network, clock or randomness. A module that

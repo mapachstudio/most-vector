@@ -1,3 +1,4 @@
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 <p align="center">
   <a href="https://getartcraft.com/">
     <picture>
@@ -9,10 +10,10 @@
 
 
 <p align="center">
-  <img src="assets/app-icon/hicolor/256x256/apps/ai.storyteller.vectorcraft.png" width="128" height="128" alt="VectorCraft icon: an engraved dragon on a red tile">
+  <img src="assets/app-icon/hicolor/256x256/apps/com.grupomostmexico.mostvector.png" width="128" height="128" alt="Most Vector icon: an engraved dragon on a red tile">
 </p>
 
-<h1 align="center">VectorCraft</h1>
+<h1 align="center">Most Vector</h1>
 
 <p align="center">
   <b>Vector illustration; an open-source, modern vector art application, built in pure Rust.</b>
@@ -39,7 +40,7 @@
 </p>
 
 <p align="center">
-  <a href="https://getartcraft.com/apps/vectorcraft"><b>VectorCraft on getartcraft.com</b></a> ·
+  <a href="https://getartcraft.com/apps/vectorcraft"><b>Most Vector on getartcraft.com</b></a> ·
   <a href="https://getartcraft.com/">ArtCraft</a> ·
   <a href="https://getartcraft.com/apps">All Crafting Apps</a>
 </p>
@@ -47,8 +48,8 @@
 <br>
 
 <p align="center">
-  <img src="docs/images/shot-1-neon.png" alt="VectorCraft editing the Neon Drive poster: the title is selected, the Appearance panel shows the settings of its live Outer Glow, and the Properties panel shows its character settings" width="100%">
-  <br><sub><b>Neon Drive</b>: a Pathfinder-cut sun, live Outer Glow on the type and grid, and clipping masks · <code>examples/neon-drive.vectorcraft</code></sub>
+  <img src="docs/images/shot-1-neon.png" alt="Most Vector editing the Neon Drive poster: the title is selected, the Appearance panel shows the settings of its live Outer Glow, and the Properties panel shows its character settings" width="100%">
+  <br><sub><b>Neon Drive</b>: a Pathfinder-cut sun, live Outer Glow on the type and grid, and clipping masks · <code>examples/neon-drive.mostvector</code></sub>
 </p>
 
 > [!NOTE]
@@ -57,8 +58,8 @@
 
 <p align="center">
   <a href="#a-look-around">A look around</a> ·
-  <a href="#made-in-vectorcraft">Made in VectorCraft</a> ·
-  <a href="#why-vectorcraft">Why VectorCraft</a> ·
+  <a href="#made-in-vectorcraft">Made in Most Vector</a> ·
+  <a href="#why-vectorcraft">Why Most Vector</a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="#status">Status</a> ·
   <a href="#downloads">Downloads</a> ·
@@ -82,29 +83,29 @@
 <tr>
 <td width="50%" valign="top">
   <img src="docs/images/shot-6-revolve.png" alt="A still life of a vase, a bowl, a sphere and a bottle made with 3D Revolve; the vase is selected and the Revolve dialog shows its rotation, cap and view settings beside the rotation gizmo" width="100%">
-  <p align="center"><sub><b>3D Revolve</b>: smooth vector shading, caps and a rotation gizmo · <code>examples/still-life.vectorcraft</code></sub></p>
+  <p align="center"><sub><b>3D Revolve</b>: smooth vector shading, caps and a rotation gizmo · <code>examples/still-life.mostvector</code></sub></p>
 </td>
 <td width="50%" valign="top">
   <img src="docs/images/shot-7-dimensions.png" alt="A bracket drawing in the light theme with linear, angular, diameter and radius dimensions; the Dimension tool is active and the Properties panel shows the selected dimension's units, precision and style" width="100%">
-  <p align="center"><sub><b>Dimension tool</b>: lengths, angles and radii that follow the art they measure · <code>examples/bracket-drawing.vectorcraft</code></sub></p>
+  <p align="center"><sub><b>Dimension tool</b>: lengths, angles and radii that follow the art they measure · <code>examples/bracket-drawing.mostvector</code></sub></p>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
   <img src="docs/images/shot-5-perspective.png" alt="Two lit building facades drawn on the left and right planes of a two-point perspective grid at sunset, with the Perspective Selection tool and the Plane Switching Widget" width="100%">
-  <p align="center"><sub><b>Perspective Grid</b>: art attached to its planes stays editable in perspective · <code>examples/perspective-city.vectorcraft</code></sub></p>
+  <p align="center"><sub><b>Perspective Grid</b>: art attached to its planes stays editable in perspective · <code>examples/perspective-city.mostvector</code></sub></p>
 </td>
 <td width="50%" valign="top">
   <img src="docs/images/shot-3-sheet.png" alt="Four artboards in the light UI theme: Pathfinder, Gradient Mesh, radial Repeat and Envelope Distort" width="100%">
-  <p align="center"><sub><b>Multiple artboards, light theme</b>: Pathfinder · Gradient Mesh · live radial Repeat · Envelope Distort · <code>examples/feature-sheet.vectorcraft</code></sub></p>
+  <p align="center"><sub><b>Multiple artboards, light theme</b>: Pathfinder · Gradient Mesh · live radial Repeat · Envelope Distort · <code>examples/feature-sheet.mostvector</code></sub></p>
 </td>
 </tr>
 </table>
 
-## Made in VectorCraft
+## Made in Most Vector
 
-Every piece below was built entirely through VectorCraft's command API, the same one the MCP server
-exposes to agents, and exported by VectorCraft's own renderer. The source files are in
+Every piece below was built entirely through Most Vector's command API, the same one the MCP server
+exposes to agents, and exported by Most Vector's own renderer. The source files are in
 [`examples/`](examples).
 
 <table>
@@ -152,7 +153,7 @@ exposes to agents, and exported by VectorCraft's own renderer. The source files 
 </tr>
 </table>
 
-## Why VectorCraft
+## Why Most Vector
 
 - **Familiar.** A familiar layout, tools, menus, panels and shortcuts: the Pen, Direct Selection,
   Pathfinder, Smart Guides, Appearance, Swatches, Layers and more. You already know how to use it.
@@ -160,7 +161,7 @@ exposes to agents, and exported by VectorCraft's own renderer. The source files 
   full retina resolution while the interface stays at 120 fps.
 - **Robust.** Exact curve booleans (no "cannot perform operation"), unlimited undo via structural
   sharing, and property-tested file round trips.
-- **Open.** A documented native format (`.vectorcraft`, JSON), first-class SVG, PDF (and
+- **Open.** A documented native format (`.mostvector`, JSON), first-class SVG, PDF (and
   PDF-compatible `.ai`) import and export, PNG/JPEG/WebP export, Export for Screens, and SVGZ,
   templates, GIF, TIFF and BMP on open.
 - **Agent-native.** Every menu item, tool gesture, panel and dialog can be driven over a JSON
@@ -177,12 +178,12 @@ git clone https://github.com/storytold/vectorcraft
 cd vectorcraft
 
 cargo run --release -p vectorcraft                          # desktop app
-cargo run --release -p vectorcraft -- examples/dusk-poster.vectorcraft
+cargo run --release -p vectorcraft -- examples/dusk-poster.mostvector
 cargo run --release -p vectorcraft -- --control 7979        # + JSON control channel
 cargo run --release -p vectorcraft-cli -- mcp               # MCP server (stdio)
-cargo run --release -p vectorcraft-cli -- run --in examples/ribbons.vectorcraft --export out.pdf   # headless batch
-cargo run --release -p vectorcraft-cli -- bench examples/neon-drive.vectorcraft                   # render timing
-cargo xtask bundle                                        # dist/VectorCraft.app (macOS)
+cargo run --release -p vectorcraft-cli -- run --in examples/ribbons.mostvector --export out.pdf   # headless batch
+cargo run --release -p vectorcraft-cli -- bench examples/neon-drive.mostvector                   # render timing
+cargo xtask bundle                                        # dist/Most Vector.app (macOS)
 cd apps/vectorcraft-web && trunk build --release            # web build → dist/web
 cargo xtask ci                                            # fmt, clippy, tests, layering, wasm, vendor names
 ```
@@ -193,9 +194,9 @@ Japanese fonts come from [storytold/craft-fonts](https://github.com/storytold/cr
 build input (releases always use it): `CRAFT_FONTS_DIR="$PWD/../craft-fonts" cargo run --release -p vectorcraft` (an absolute path).
 Without it, Japanese text uses the installed system fonts. See [`docs/development.md`](docs/development.md#fonts-craft-fonts-optional-build-input).
 
-On machines with two graphics processors, VectorCraft renders on the power-saving (integrated) one by default on
+On machines with two graphics processors, Most Vector renders on the power-saving (integrated) one by default on
 Windows and macOS, and on the one the desktop runs on under Linux. To choose, use **Preferences › Performance ›
-Graphics Processor** and restart. If a graphics processor can't show the window, VectorCraft starts again on the
+Graphics Processor** and restart. If a graphics processor can't show the window, Most Vector starts again on the
 next one. To pick one when starting the app, set `WGPU_POWER_PREF=high` (or `low`), or `WGPU_ADAPTER_NAME` to part of
 its name, such as `WGPU_ADAPTER_NAME=nvidia` (see [`docs/development.md`](docs/development.md#desktop-graphics-processor)).
 
@@ -205,9 +206,9 @@ drag-and-drop, set **Preferences › Performance › Linux Display Server** to *
 the app with `WAYLAND_DISPLAY= vectorcraft`: the window then opens through XWayland, where drops work
 (see [`docs/development.md`](docs/development.md#linux-wayland-and-x11)).
 
-On Linux with Wayland, under KDE Plasma 6.3 or later and under GNOME, VectorCraft can't get a drawing tablet's pen
-input on native Wayland yet (#491, #2028). When a pen is attached as VectorCraft starts, the window opens through
-XWayland, where the pen works as a mouse and the app reads its pressure (#4967; `VECTORCRAFT_NATIVE_WAYLAND=1` keeps
+On Linux with Wayland, under KDE Plasma 6.3 or later and under GNOME, Most Vector can't get a drawing tablet's pen
+input on native Wayland yet (#491, #2028). When a pen is attached as Most Vector starts, the window opens through
+XWayland, where the pen works as a mouse and the app reads its pressure (#4967; `MOST_VECTOR_NATIVE_WAYLAND=1` keeps
 Wayland). For a pen attached later, set the same preference to **X11 (XWayland)** and restart, or start the app with
 `WAYLAND_DISPLAY= vectorcraft` (see [`docs/development.md`](docs/development.md#linux-wayland-and-x11)).
 
@@ -229,7 +230,7 @@ The details are in [`docs/mcp.md`](docs/mcp.md) and [`docs/control-protocol.md`]
 
 ## Status
 
-VectorCraft is under active development. [**ROADMAP.md**](ROADMAP.md) has the stage, the numbers by dimension
+Most Vector is under active development. [**ROADMAP.md**](ROADMAP.md) has the stage, the numbers by dimension
 and what's next; [`docs/target-app-parity.md`](docs/target-app-parity.md) the full parity assessment and
 [`docs/gaps.md`](docs/gaps.md) the ranked list of what's missing.
 
@@ -242,7 +243,7 @@ Affinity documents (`.af` from Affinity 3, `.afdesign`, `.afpub` and, by their c
 and place natively: layers, groups, artboards and pages, curves and shapes, fills, gradients and strokes, clipping
 and masks, text with each paragraph's indents, spacing and leading, tables (as text frames and lines), master
 pages, shadows, glows, outlines and overlays, embedded Affinity documents and images, with what didn't come in
-(adjustments, blurs, bevels, brushes…) listed in the import warning; a file whose native data can't be read opens as its embedded preview, saying why. VectorCraft
+(adjustments, blurs, bevels, brushes…) listed in the import warning; a file whose native data can't be read opens as its embedded preview, saying why. Most Vector
 doesn't write Affinity files. Current `.af` validation includes 33 pinned files, native save/reload
 and every-board SVG/PDF/PSD export, with fixes for Affinity 3 artboards, source-backed JPEGs and text runs.
 [Scope and limits](crates/affinity/README.md); [source audit and remaining gaps](docs/affinity-validation.md).
@@ -271,12 +272,12 @@ the UI can be swapped without touching the engine.
 
 Agent and contributor rules (clean-room, the asset policy, no panics in shipped code, quality gates) are in
 [`AGENTS.md`](AGENTS.md); [`docs/development.md`](docs/development.md#robustness-vectorcraft-never-crashes)
-explains how VectorCraft avoids crashing, and [`docs/releasing.md`](docs/releasing.md) how releases are built,
+explains how Most Vector avoids crashing, and [`docs/releasing.md`](docs/releasing.md) how releases are built,
 signed and published. Every bundled asset is listed with its licence in [`ASSETS.md`](ASSETS.md).
 
 ## Downloads
 
-**New to VectorCraft?** Download it from the [VectorCraft page on getartcraft.com](https://getartcraft.com/apps/vectorcraft). That's the easiest way to install it.
+**New to Most Vector?** Download it from the [Most Vector page on getartcraft.com](https://getartcraft.com/apps/vectorcraft). That's the easiest way to install it.
 
 **Want a specific build or format?** On GitHub, the [latest release](https://github.com/storytold/vectorcraft/releases/latest) has every build listed below, and [all releases](https://github.com/storytold/vectorcraft/releases) has earlier versions and their notes. `<ver>` in the file names is the version number, and `SHA256SUMS.txt` lists a checksum for every file.
 
@@ -321,14 +322,14 @@ Installers and executables are code-signed.
 
 ## The Crafting Apps
 
-VectorCraft is one of the **Crafting Apps**: free, open-source creative tools from the
+Most Vector is one of the **Crafting Apps**: free, open-source creative tools from the
 [ArtCraft](https://getartcraft.com/) team, each written from scratch in Rust and each able to
 stand on its own.
 
 | | App | What it's for | Code | Learn more |
 |:-:|---|---|---|---|
 | <img src="https://raw.githubusercontent.com/storytold/photocraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.photocraft.png" alt="" width="32" height="32"> | **PhotoCraft** | Image editing: layers, masks, type and real PSD files | [GitHub](https://github.com/storytold/photocraft) | [Website](https://getartcraft.com/apps/photocraft) |
-| <img src="https://raw.githubusercontent.com/storytold/vectorcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.vectorcraft.png" alt="" width="32" height="32"> | **VectorCraft** | Vector illustration | [GitHub](https://github.com/storytold/vectorcraft) | [Website](https://getartcraft.com/apps/vectorcraft) |
+| <img src="https://raw.githubusercontent.com/storytold/vectorcraft/main/assets/app-icon/hicolor/64x64/apps/com.grupomostmexico.mostvector.png" alt="" width="32" height="32"> | **Most Vector** | Vector illustration | [GitHub](https://github.com/storytold/vectorcraft) | [Website](https://getartcraft.com/apps/vectorcraft) |
 | <img src="https://raw.githubusercontent.com/storytold/filmcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png" alt="" width="32" height="32"> | **FilmCraft** | Video editing, color and sound | [GitHub](https://github.com/storytold/filmcraft) | [Website](https://getartcraft.com/apps/filmcraft) |
 | <img src="https://raw.githubusercontent.com/storytold/lightcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.lightcraft.png" alt="" width="32" height="32"> | **LightCraft** | Photo library and raw development | [GitHub](https://github.com/storytold/lightcraft) | [Website](https://getartcraft.com/apps/lightcraft) |
 | <img src="https://raw.githubusercontent.com/storytold/pdfcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.pdfcraft.png" alt="" width="32" height="32"> | **PdfCraft** | Reading, organizing and protecting PDFs | [GitHub](https://github.com/storytold/pdfcraft) | [Website](https://getartcraft.com/apps/pdfcraft) |
@@ -365,7 +366,7 @@ And [**ArtCraft**](https://getartcraft.com/) itself, our AI image and video stud
   <a href="https://discord.gg/artcraft"><b>discord.gg/artcraft</b></a> ·
   <a href="https://getartcraft.com/">getartcraft.com</a> ·
   <a href="https://getartcraft.com/apps">The Crafting Apps</a> ·
-  <a href="https://getartcraft.com/apps/vectorcraft">VectorCraft</a>
+  <a href="https://getartcraft.com/apps/vectorcraft">Most Vector</a>
 </p>
 
 ## Star history
@@ -374,20 +375,20 @@ And [**ArtCraft**](https://getartcraft.com/) itself, our AI image and video stud
 
 ## License and credits
 
-VectorCraft is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
-Copyright (c) 2026 ArtCraft Team and the VectorCraft contributors. Required notices are in [NOTICE](NOTICE).
+Most Vector is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+Copyright (c) 2026 ArtCraft Team and the VectorCraft contributors; modificaciones Copyright (c) 2026 Grupo MOST. Required notices are in [NOTICE](NOTICE).
 
 Bundled fonts, icons, images and other assets keep their own open licenses; each one is listed
 with its author, source and license in [ASSETS.md](ASSETS.md). Release builds also embed the
 fonts of [craft-fonts](https://github.com/storytold/craft-fonts/blob/main/ATTRIBUTION.md) (Japanese,
 Simplified Chinese and Arabic faces; SIL Open Font License 1.1).
 
-The app icon (an engraved dragon on VectorCraft red, `#e8573f`) is the owner's original artwork; its
+The app icon (an engraved dragon on Most Vector red, `#e8573f`) is the owner's original artwork; its
 palette and files are in [`assets/app-icon/`](assets/app-icon/README.md).
 
 The ArtCraft name, wordmark and logos in [`docs/brand/`](docs/brand/) are trademarks of the
-ArtCraft Team and are not covered by this license. They may be used only unmodified, and only as
-part of this repository and VectorCraft, under [`docs/brand/LICENSE-brand.txt`](docs/brand/LICENSE-brand.txt).
+Grupo MOST and are not covered by this license. They may be used only unmodified, and only as
+part of this repository and Most Vector, under [`docs/brand/LICENSE-brand.txt`](docs/brand/LICENSE-brand.txt).
 Forks and modified versions must remove them.
 
 <p align="center">

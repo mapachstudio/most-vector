@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File → Place in the app: picking the files, the Place dialog's options, files dropped on the
 //! window, the loaded place cursor and the Control bar's image details. The engine places
 //! (`file.place`, `file.place.queue`); this gathers the files and options.
@@ -208,7 +209,7 @@ fn open_dialog(app: &mut VectorcraftApp, files: Vec<Value>) {
     ));
 }
 
-/// Is dialog file entry `file` a VectorCraft document on disk (what Link places as one locked
+/// Is dialog file entry `file` a Most Vector document on disk (what Link places as one locked
 /// object), or a PDF or `.ai` file on disk? A `.ai` saved without PDF compatibility is PostScript,
 /// which `file.place` embeds whether Link is on or not.
 fn is_vectorcraft_file(app: &VectorcraftApp, file: &Value) -> bool {

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `vectorcraft-cli perf`: the performance budgets (plan §4) measured on a synthetic document.
 //!
 //! Each row is the median of several runs. Timings are wall-clock: on a busy machine (a load
@@ -412,7 +413,7 @@ pub fn run(args: &[String]) -> Result<(), String> {
     let (load, label) = (load_average(), "load average");
     #[cfg(windows)]
     let (load, label) = (busy_cores(cores), "cores busy");
-    outln!("VectorCraft performance budgets — {n} paths, {cores} cores, {label} {}", load.map_or("?".into(), |l| format!("{l:.1}")));
+    outln!("Most Vector performance budgets — {n} paths, {cores} cores, {label} {}", load.map_or("?".into(), |l| format!("{l:.1}")));
     let noisy = load.is_some_and(|l| l > cores as f64 * 0.75);
     if noisy {
         outln!("WARNING: the machine is busy; wall-clock timings below are not trustworthy.");
@@ -453,14 +454,14 @@ pub fn run(args: &[String]) -> Result<(), String> {
     rows.push(("hit test (per click)", hits, 2.0));
 
     let mut bytes = vec![];
-    rows.push(("save .vectorcraft", median_ms(3, || bytes = vectorcraft_format::save_file(&doc)), 300.0));
+    rows.push(("save .mostvector", median_ms(3, || bytes = vectorcraft_format::save_file(&doc)), 300.0));
     let mut failed = None;
     let open = median_ms(3, || {
         if let Err(e) = vectorcraft_format::load(&bytes) {
-            failed = Some(format!("open .vectorcraft: {e}"));
+            failed = Some(format!("open .mostvector: {e}"));
         }
     });
-    rows.push(("open .vectorcraft", open, 300.0));
+    rows.push(("open .mostvector", open, 300.0));
     let svg_opts = vectorcraft_svg::ExportOptions::default();
     rows.push(("export SVG", median_ms(3, || drop(vectorcraft_svg::export(&doc, &svg_opts))), 500.0));
 

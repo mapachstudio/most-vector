@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! PDF colours in their own models: DeviceCMYK and CMYK ICC colours stay CMYK, DeviceGray is
 //! Gray, and Separation and DeviceN inks become spot swatches at a tint (for solid paints and
 //! shading stops alike). Everything else is RGB, as the interpreter converts it.
@@ -567,7 +568,7 @@ fn lab_profile(profile: &Stream<'_>) -> bool {
     head.get(16..20) == Some(b"Lab ")
 }
 
-/// An alternate-space colour (the tint transform's output) as a VectorCraft colour.
+/// An alternate-space colour (the tint transform's output) as a Most Vector colour.
 fn alt_color(alt: Alt, v: &[f32]) -> Option<Color> {
     let c = |i: usize| v.get(i).copied().filter(|x| x.is_finite());
     let u = |i: usize| c(i).map(|x| round3(x.clamp(0.0, 1.0)));

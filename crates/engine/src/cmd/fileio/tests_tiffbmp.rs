@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! TIFF, BMP and Targa export through `document.export`: the options reach the files, impossible
 //! ones are refused, and the files open again; Targa files, and BMP and PNG files by their other
 //! extensions, open and place.
@@ -164,7 +165,7 @@ fn targa_files_open_and_place() {
     use crate::cmd::clipboard::{PASTE_ORDER, file_flavour};
     let mut s = session();
     let b64 = vectorcraft_format::base64_encode;
-    // VectorCraft's own exports: the transparent corner stays transparent at 16 and 32 bits (24
+    // Most Vector's own exports: the transparent corner stays transparent at 16 and 32 bits (24
     // bits are flattened on white) and the black rectangle stays black.
     for depth in [16, 24, 32] {
         let tga = export(&mut s, json!({"format": "tga", "depth": depth}));

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Linked files: where a placed file lives and what it was when last read ([`LinkInfo`]), the
 //! low-resolution preview a linked image keeps for when its file can't be read
 //! ([`ImageBlob::proxy`]), and every image object of a document ([`Document::visit_images`]).
@@ -383,7 +384,7 @@ impl Align {
 }
 
 impl Document {
-    /// Rewrite linked file locations in both raster images and placed VectorCraft documents,
+    /// Rewrite linked file locations in both raster images and placed Most Vector documents,
     /// including those inside symbols, patterns and opacity masks. Used to make packages portable.
     pub fn update_links(&mut self, mut f: impl FnMut(&mut LinkInfo)) {
         fn walk(n: &mut Arc<Node>, f: &mut dyn FnMut(&mut LinkInfo)) {

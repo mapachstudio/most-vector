@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File → Export → Export for Screens, laid out as Illustrator's: on the left the Artboards and
 //! Assets tabs (thumbnails with checkboxes, in a grid or a list), Clear Selection and the prefix;
 //! on the right Select (All, a range or Full Document, Include Bleed, Include Artboard Fill), the destination (folder
@@ -65,10 +66,10 @@ const FORMATS: [(&str, &str, Option<u8>, bool); 14] = [
     ("PDF Print", "pdf", None, true),
     ("EPS", "eps", None, false),
     ("AI", "ai", None, false),
-    ("VectorCraft", "vectorcraft", None, false),
+    ("Most Vector", "vectorcraft", None, false),
 ];
 const FORMAT_LABELS: [&str; 14] =
-    ["PNG", "PNG 8", "JPG 100", "JPG 80", "JPG 50", "WebP", "GIF", "TIFF", "SVG", "PDF", "PDF Print", "EPS", "AI", "VectorCraft"];
+    ["PNG", "PNG 8", "JPG 100", "JPG 80", "JPG 50", "WebP", "GIF", "TIFF", "SVG", "PDF", "PDF Print", "EPS", "AI", "Most Vector"];
 
 /// The printer's marks a PDF Print row writes: trim marks, registration targets, colour bars and
 /// page information.

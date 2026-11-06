@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File → Place (`file.place`, `file.place.info`, `image.info`) and the place cursor
 //! (`file.place.queue` and the `place` tool).
 
@@ -249,7 +250,7 @@ fn a_file_read_apart_from_the_session_places_as_file_place_does() {
         std::fs::write(&p, bytes).unwrap();
         p.to_string_lossy().into_owned()
     };
-    let (pdf_path, native_path) = (saved("page.pdf", &pdf), saved("art.vectorcraft", &native));
+    let (pdf_path, native_path) = (saved("page.pdf", &pdf), saved("art.mostvector", &native));
     let words = crate::tests_textimport::docx(r#"<w:p><w:r><w:t>Placed words</w:t></w:r></w:p>"#, crate::tests_textimport::STYLES);
     let cases = [
         with(file("red.png", &png(30, 20, [255, 0, 0, 255], Some(144.0))), json!({"at": [150, 100]})),
@@ -489,7 +490,7 @@ fn pdf_pages_and_native_artboards_place_as_clipped_groups() {
     let pdf = serialize(&mut src, "pdf");
     let native = serialize(&mut src, "vectorcraft");
     let mut s = session();
-    for (name, bytes) in [("two.pdf", &pdf), ("two.vectorcraft", &native)] {
+    for (name, bytes) in [("two.pdf", &pdf), ("two.mostvector", &native)] {
         let r = place(&mut s, name, bytes, json!({"page": 2}));
         assert!(close(r["width"].as_f64().unwrap(), 40.0) && close(r["height"].as_f64().unwrap(), 50.0), "{name}: {r}");
         let g = node(&s, &r["ids"][0]);
@@ -513,7 +514,7 @@ fn bounding_box_placement_measures_only_the_art_that_shows() {
     let sample = vectorcraft_testkit::ai::eps(&vectorcraft_testkit::ai::sample_data(), vectorcraft_testkit::ai::page_ps());
     let cases: [(&str, &[u8], (f64, f64)); 4] = [
         ("pair.eps", &eps, (shown.width(), shown.height())),
-        ("pair.vectorcraft", &native, (shown.width(), shown.height())),
+        ("pair.mostvector", &native, (shown.width(), shown.height())),
         ("pair.svg", svg, (40.0, 40.0)),
         ("art.eps", &sample, (170.0, 40.0)),
     ];
@@ -541,7 +542,7 @@ fn bounding_box_placement_counts_a_drop_shadow() {
     assert!(export.width() > square.width() + 7.0, "{export:?}");
     let eps = eps_of(&mut src);
     let native = serialize(&mut src, "vectorcraft");
-    let cases: [(&str, &[u8]); 2] = [("shadow.eps", &eps), ("shadow.vectorcraft", &native)];
+    let cases: [(&str, &[u8]); 2] = [("shadow.eps", &eps), ("shadow.mostvector", &native)];
     for (name, bytes) in cases {
         let mut s = session();
         let (w, h) = info_size(&mut s, name, bytes, json!({"crop": "bounding"}));
@@ -578,7 +579,7 @@ fn crop_placement_keeps_the_artboard_with_a_hidden_member() {
     let eps = eps_of(&mut src);
     let native = serialize(&mut src, "vectorcraft");
     let svg = br#"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><g><rect x="20" y="20" width="40" height="40"/><rect x="100" y="100" width="170" height="42" style="display:none"/></g></svg>"#;
-    let cases: [(&str, &[u8]); 3] = [("pair.eps", &eps), ("pair.vectorcraft", &native), ("pair.svg", svg)];
+    let cases: [(&str, &[u8]); 3] = [("pair.eps", &eps), ("pair.mostvector", &native), ("pair.svg", svg)];
     for (name, bytes) in cases {
         let mut s = session();
         assert_eq!(info_size(&mut s, name, bytes, json!({"crop": "crop"})), (400.0, 300.0), "{name}");
@@ -602,7 +603,7 @@ fn a_group_whose_only_part_on_the_artboard_is_hidden_is_left_out() {
     src.execute("object.hide", &json!({"ids": [ghost]})).unwrap();
     let eps = eps_of(&mut src);
     let native = serialize(&mut src, "vectorcraft");
-    let cases: [(&str, &[u8]); 2] = [("parts.eps", &eps), ("parts.vectorcraft", &native)];
+    let cases: [(&str, &[u8]); 2] = [("parts.eps", &eps), ("parts.mostvector", &native)];
     for (name, bytes) in cases {
         let mut s = session();
         let (w, h) = info_size(&mut s, name, bytes, json!({"crop": "bounding"}));
@@ -630,7 +631,7 @@ fn placed_art_brings_its_symbols_and_swatches_renaming_on_conflict() {
     s.execute("swatch.new", &json!({"name": "Brand", "color": "#00ff00", "global": true})).unwrap();
     s.execute("shape.rectangle", &json!({"x": 0, "y": 0, "width": 5, "height": 5})).unwrap();
     s.execute("symbol.new", &json!({"name": "Star"})).unwrap();
-    let r = place(&mut s, "logo.vectorcraft", &bytes, json!({"crop": "bounding"}));
+    let r = place(&mut s, "logo.mostvector", &bytes, json!({"crop": "bounding"}));
     let g = node(&s, &r["ids"][0]);
     let (mut fill, mut symbol) = (None, None);
     g.walk(&mut |n| match &n.kind {
@@ -648,7 +649,7 @@ fn placed_art_brings_its_symbols_and_swatches_renaming_on_conflict() {
     assert_eq!(doc.swatch("Brand").and_then(|w| w.paint.color()).map(|c| c.to_hex()).as_deref(), Some("#00ff00"));
     // A document without them gets them as they are.
     let mut fresh = session();
-    let r = place(&mut fresh, "logo.vectorcraft", &bytes, json!({}));
+    let r = place(&mut fresh, "logo.mostvector", &bytes, json!({}));
     let doc = &fresh.doc().unwrap().doc;
     assert!(doc.symbols.iter().any(|x| x.name == "Star") && doc.swatch("Brand").is_some());
     let mut linked = false;

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File › Scripts › Check Script…: the report `script.check` gives on a script written for the
 //! reference app, read without running it: what kind of file it is and what it needs, what it does
 //! outside the document, the menu commands it runs, the document-model members it uses, its
@@ -194,7 +195,7 @@ fn list<'r>(r: &'r Value, key: &str) -> &'r [Value] {
 }
 
 fn report(ui: &mut egui::Ui, r: &Value, t: &Tokens) {
-    widgets::dim_label(ui, tl!("VectorCraft read this script without running it."));
+    widgets::dim_label(ui, tl!("Most Vector read this script without running it."));
     let needs: Vec<&str> = list(r, "needs").iter().filter_map(Value::as_str).filter_map(need_label).collect();
     if needs.is_empty() {
         row(ui, t, tl!("Needs nothing beyond plain JavaScript"), false, "");

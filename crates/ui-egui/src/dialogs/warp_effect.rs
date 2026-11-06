@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Effect > Warp controls. The style remains an effect ID; Envelope Warp has a different schema.
 use egui::{Pos2, Rect, Stroke, vec2};
 use serde_json::{Map, Value, json};
@@ -34,7 +35,7 @@ fn shown(label: &str) -> String {
     tl!(label).trim_end_matches('…').to_string()
 }
 
-/// An original three-by-three grid, bent by VectorCraft's own warp map. No reference icon artwork.
+/// An original three-by-three grid, bent by Most Vector's own warp map. No reference icon artwork.
 fn style_preview(ui: &mut egui::Ui, suffix: &str) {
     let (rect, _) = ui.allocate_exact_size(vec2(30.0, 22.0), egui::Sense::hover());
     let Some(style) = WarpStyle::from_id(suffix) else { return };

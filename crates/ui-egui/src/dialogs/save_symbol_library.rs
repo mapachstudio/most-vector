@@ -1,5 +1,6 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Save Symbol Library: a name and where it goes: the user library folder (listed under Window →
-//! Symbol Libraries → User Defined) or a `.vectorcraft` file picked in a save dialog (a download
+//! Symbol Libraries → User Defined) or a `.mostvector` file picked in a save dialog (a download
 //! on the web). OK runs `symbol.saveLibrary`.
 //!
 //! Fields: `name`, `user` (save to the user library folder), `selectedOnly` and `names` (the

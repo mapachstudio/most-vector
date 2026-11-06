@@ -1,4 +1,5 @@
-//! `cargo xtask bundle`: build the release app and wrap it as `dist/VectorCraft.app` (macOS), with the
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! `cargo xtask bundle`: build the release app and wrap it as `dist/Most Vector.app` (macOS), with the
 //! committed app icon `assets/app-icon/vectorcraft.icns` (regenerate it with `packaging/icons.sh`).
 
 use std::path::Path;
@@ -14,16 +15,16 @@ pub fn run(root: &Path) -> Result<(), String> {
         return Err("release build failed".into());
     }
     let target = std::env::var("CARGO_TARGET_DIR").map(std::path::PathBuf::from).unwrap_or_else(|_| root.join("target"));
-    let app = root.join("dist/VectorCraft.app/Contents");
-    let _ = std::fs::remove_dir_all(root.join("dist/VectorCraft.app"));
+    let app = root.join("dist/Most Vector.app/Contents");
+    let _ = std::fs::remove_dir_all(root.join("dist/Most Vector.app"));
     std::fs::create_dir_all(app.join("MacOS")).map_err(|e| e.to_string())?;
     std::fs::create_dir_all(app.join("Resources")).map_err(|e| e.to_string())?;
-    std::fs::copy(target.join("release/vectorcraft"), app.join("MacOS/VectorCraft")).map_err(|e| format!("copy app: {e}"))?;
+    std::fs::copy(target.join("release/vectorcraft"), app.join("MacOS/Most Vector")).map_err(|e| format!("copy app: {e}"))?;
     std::fs::copy(target.join("release/vectorcraft-cli"), app.join("MacOS/vectorcraft-cli")).map_err(|e| format!("copy cli: {e}"))?;
-    std::fs::copy(root.join("assets/app-icon/vectorcraft.icns"), app.join("Resources/VectorCraft.icns")).map_err(|e| format!("copy icon: {e}"))?;
-    let sha = std::env::var("VECTORCRAFT_BUILD_SHA").unwrap_or_else(|_| "unknown".into());
+    std::fs::copy(root.join("assets/app-icon/vectorcraft.icns"), app.join("Resources/Most Vector.icns")).map_err(|e| format!("copy icon: {e}"))?;
+    let sha = std::env::var("MOST_VECTOR_BUILD_SHA").unwrap_or_else(|_| "unknown".into());
     std::fs::write(app.join("Info.plist"), info_plist(env!("CARGO_PKG_VERSION"), &sha)).map_err(|e| e.to_string())?;
-    println!("built {}", root.join("dist/VectorCraft.app").display());
+    println!("built {}", root.join("dist/Most Vector.app").display());
     Ok(())
 }
 
@@ -68,8 +69,8 @@ mod tests {
         let read = |p: &str| std::fs::read_to_string(crate::root().join(p)).unwrap();
         let plist = read("packaging/macos/Info.plist.in");
         assert!(plist.contains("<array><string>vectorcraft</string><string>drawcraft</string></array>"), "native format extensions");
-        assert!(read("packaging/linux/ai.storyteller.vectorcraft.desktop").contains("Categories=Graphics;2DGraphics;VectorGraphics;"));
-        assert!(read("packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in").contains("<category>VectorGraphics</category>"));
+        assert!(read("packaging/linux/com.grupomostmexico.mostvector.desktop").contains("Categories=Graphics;2DGraphics;VectorGraphics;"));
+        assert!(read("packaging/linux/com.grupomostmexico.mostvector.metainfo.xml.in").contains("<category>VectorGraphics</category>"));
     }
 
     #[test]

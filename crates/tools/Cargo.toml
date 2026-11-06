@@ -1,9 +1,10 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft-tools"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "VectorCraft tool state machines: pointer events in, commands and overlays out"
+description = "Most Vector tool state machines: pointer events in, commands and overlays out"
 
 [lints]
 workspace = true

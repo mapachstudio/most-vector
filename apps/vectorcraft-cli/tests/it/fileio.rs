@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The CLI opens every readable format (PDF, .ai, images) through the engine's `document.open`.
 
 use std::process::Command;
@@ -54,15 +55,15 @@ fn convert_pdf_omits_editing_data_unless_preserve_editing() {
     let plain = tmp("plain.pdf");
     ok(&["convert", &pdf, &plain]);
     let bytes = std::fs::read(&plain).unwrap();
-    assert!(!bytes.windows(b"vectorcraft-editing.vectorcraft".len()).any(|w| w == b"vectorcraft-editing.vectorcraft"));
+    assert!(!bytes.windows(b"vectorcraft-editing.mostvector".len()).any(|w| w == b"vectorcraft-editing.mostvector"));
     let kept = tmp("kept.pdf");
     let r: Value = serde_json::from_str(&ok(&["convert", &pdf, &kept, "--preserve-editing"])).unwrap();
     let bytes = std::fs::read(&kept).unwrap();
-    assert!(bytes.windows(b"vectorcraft-editing.vectorcraft".len()).any(|w| w == b"vectorcraft-editing.vectorcraft"), "{r}");
+    assert!(bytes.windows(b"vectorcraft-editing.mostvector".len()).any(|w| w == b"vectorcraft-editing.mostvector"), "{r}");
     assert!(r["warnings"].as_array().is_some_and(|w| w.iter().any(|w| w.as_str().is_some_and(|s| s.contains("preserveEditing")))), "{r}");
     // A --range without every artboard leaves the attachment out: no "embeds" note, even when the
     // output's own name contains the attachment's name.
-    let part = tmp("vectorcraft-editing.vectorcraft.pdf");
+    let part = tmp("vectorcraft-editing.mostvector.pdf");
     let r: Value = serde_json::from_str(&ok(&["convert", &pdf, &part, "--preserve-editing", "--range", "2"])).unwrap();
     let warnings = r["warnings"].as_array().cloned().unwrap_or_default();
     assert!(warnings.iter().any(|w| w.as_str().is_some_and(|s| s.contains("every artboard"))), "{r}");
@@ -107,7 +108,7 @@ fn images_open_at_their_pixel_size() {
 
 #[test]
 fn raster_exports_use_document_resolution_unless_overridden() {
-    let source = tmp("resolution.vectorcraft");
+    let source = tmp("resolution.mostvector");
     ok(&["run", "--cmd", "file.new", "--params", r#"{"width":72,"height":36,"rasterEffectsPpi":300}"#, "--export", &source]);
     for (flags, width, height) in [(vec![], 300u32, 150u32), (vec!["--scale", "1"], 72, 36), (vec!["--ppi", "150", "--scale", "2"], 150, 75)] {
         for mode in ["run", "convert"] {
@@ -140,7 +141,7 @@ fn raster_export_rejects_invalid_ppi() {
 #[test]
 fn help_lists_readable_formats() {
     let out = ok(&["--help"]);
-    assert!(out.contains("Readable formats: .vectorcraft") && out.contains(".ait") && out.contains(".webp"), "{out}");
+    assert!(out.contains("Readable formats: .mostvector") && out.contains(".ait") && out.contains(".webp"), "{out}");
 }
 
 #[test]
@@ -182,7 +183,7 @@ fn convert_reports_import_warnings() {
 #[test]
 fn convert_writes_legacy_ai_with_its_options() {
     // Two artboards, a shown rectangle and a hidden one.
-    let src = tmp("legacy.vectorcraft");
+    let src = tmp("legacy.mostvector");
     ok(&[
         "run",
         "--cmd",

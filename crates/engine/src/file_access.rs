@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The folders automation may read and write (#832).
 //!
 //! `vectorcraft-cli mcp --automation-read-root <dir> --automation-write-root <dir>`, and
@@ -17,7 +18,7 @@
 //! Roots are in force on a thread inside [`confine`], and in the whole process after
 //! [`confine_process`] (`vectorcraft-cli mcp`, the desktop app with a control port), except inside
 //! [`unconfined`]: what the person at the keyboard does, and the app's own folders (preferences,
-//! Data Recovery, the library folders, VectorCraft's Fonts folder), which no agent names. Without
+//! Data Recovery, the library folders, Most Vector's Fonts folder), which no agent names. Without
 //! roots nothing is checked.
 //!
 //! A path is checked, then opened: a process that can change the folders in between (swapping in

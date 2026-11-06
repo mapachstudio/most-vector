@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Links panel: every image in the document, linked files with their status (missing, modified)
 //! and embedded images, as rows with a thumbnail, name, page and status. Clicking a row selects
 //! its image, Ctrl/Cmd-click adds or removes it, and Shift-click selects the images of the rows
@@ -235,7 +236,7 @@ pub(crate) fn open_file(app: &mut VectorcraftApp, p: &Value, reveal: bool) -> Re
 
 /// Whether Edit Original may hand `path` to the system's default app: a regular file (after
 /// following links) whose name, and the name it links to, have the extension of a format
-/// VectorCraft reads. Anything else (a folder or app bundle, a script, a shortcut) is refused.
+/// Most Vector reads. Anything else (a folder or app bundle, a script, a shortcut) is refused.
 pub(crate) fn openable_original(path: &str) -> Result<(), String> {
     let readable = |p: &std::path::Path| {
         let ext = p.extension().map(|e| e.to_string_lossy().to_ascii_lowercase()).unwrap_or_default();

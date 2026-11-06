@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Save As › `.ai` with `aiVersion: "7"`: legacy `.ai` files of version 7 (the PostScript-form `.ai`
 //! that `vectorcraft_eps::export_legacy_ai` writes), which keep the layers, groups, compound
 //! paths and clipping groups that a PDF-compatible `.ai` loses in apps reading only its PDF part
@@ -99,8 +100,8 @@ fn see_through(cmd: &str, p: &Value) -> Result<SeeThrough> {
     }
 }
 
-/// What the format loses against a VectorCraft document, reported with every save.
-const FIDELITY: &str = "a legacy .ai (version 7) keeps layers, groups, compound paths, clipping groups, type, colours, gradients and images, not the rest: save as VectorCraft to keep everything editable";
+/// What the format loses against a Most Vector document, reported with every save.
+const FIDELITY: &str = "a legacy .ai (version 7) keeps layers, groups, compound paths, clipping groups, type, colours, gradients and images, not the rest: save as Most Vector to keep everything editable";
 const FLATTENED: &str =
     "transparent images (see-through pixels, opacity or a blending mode) are flattened with the art under them into opaque images";
 const OMITTED: &str = "transparent images (see-through pixels, opacity or a blending mode) are left out";

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Build and package VectorCraft for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+# Build and package Most Vector for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
 #
 #   $DIST/vectorcraft-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
 #   $DIST/vectorcraft-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
@@ -21,7 +22,7 @@ set -euo pipefail
 # shellcheck source=../env.sh
 . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
 HERE="$ROOT/packaging/linux"
-APP_ID=ai.storyteller.vectorcraft
+APP_ID=com.grupomostmexico.mostvector
 
 SKIP_BUILD=0
 FORMATS="appimage deb rpm tar"
@@ -41,10 +42,10 @@ case "$ARCH" in
   aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
 esac
-export VECTORCRAFT_MAINTAINER="${VECTORCRAFT_MAINTAINER:-VectorCraft maintainers <vectorcraft@storyteller.ai>}"
+export MOST_VECTOR_MAINTAINER="${MOST_VECTOR_MAINTAINER:-Most Vector maintainers <vectorcraft@storyteller.ai>}"
 BASENAME="vectorcraft-$VERSION-linux-$ARCH"
 
-echo "==> VectorCraft $VERSION for Linux $ARCH ($FORMATS)"
+echo "==> Most Vector $VERSION for Linux $ARCH ($FORMATS)"
 
 if [[ "$SKIP_BUILD" = 0 ]]; then
   if [[ -n "${CROSS_TARGET:-}" ]]; then
@@ -65,7 +66,7 @@ install -Dm755 "$BIN/vectorcraft-cli" "$STAGE/usr/bin/vectorcraft-cli"
 install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
 install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
 mkdir -p "$STAGE/usr/share/metainfo"
-sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$VECTORCRAFT_BUILD_DATE/g" \
+sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$MOST_VECTOR_BUILD_DATE/g" \
   "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
 mkdir -p "$STAGE/usr/share/icons"
 cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
@@ -121,7 +122,7 @@ if has appimage; then
     echo "no pinned AppImage runtime for $ARCH; build the AppImage on x86_64 or aarch64" >&2
     exit 2
   fi
-  APPDIR="$WORK/VectorCraft.AppDir"
+  APPDIR="$WORK/Most Vector.AppDir"
   cp -R "$STAGE" "$APPDIR"
   ln -s usr/bin/vectorcraft "$APPDIR/AppRun"
   cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"

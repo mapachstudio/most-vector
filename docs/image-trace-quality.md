@@ -1,3 +1,4 @@
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Image Trace quality
 
 > **Last reviewed:** 2026-10-14 · **Last updated:** 2026-10-17 · **Change:** minor (Image Trace: Auto Color keeps rare but distinct colours; earlier: Gradients: grown over noise and soft rims)
@@ -35,7 +36,7 @@ are:
 At most six are kept, largest region first. They are fixed while the other colours are refitted around
 them, mixed-colour merging leaves them alone, and Noise removal keeps their regions of 4 pixels or more
 (smaller specks of them still go). This follows the idea of salient-colour preservation in palette
-reduction (Fukuda et al. 2019, doi:10.1117/12.2521607); the rule and its numbers are VectorCraft's own.
+reduction (Fukuda et al. 2019, doi:10.1117/12.2521607); the rule and its numbers are Most Vector's own.
 Full Tone, Limited and the continuous-tone route of Automatic are unchanged.
 
 Tests (code-drawn): `automatic_keeps_a_rare_distinct_stem_or_patch` (2, 3, 5 and 8 flat colours and a

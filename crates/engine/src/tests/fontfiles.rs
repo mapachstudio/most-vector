@@ -1,6 +1,7 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Missing fonts: listed (`text.missingFonts`), their files found in a folder on threads of their
 //! own (`text.findFontFiles`), and copied into a folder without replacing a file there. These tests
-//! never set VectorCraft's Fonts folder and never add a font to the process's font database:
+//! never set Most Vector's Fonts folder and never add a font to the process's font database:
 //! `tests/font_folder.rs` does both, in a process of its own.
 
 use std::path::{Path, PathBuf};
@@ -128,7 +129,7 @@ fn the_fonts_folder_next_to_a_document_in_another_apps_folder_isnt_offered() {
         std::fs::create_dir_all(home.join(dir).join("Fonts")).unwrap();
         let mut doc = vectorcraft_doc::Document::new(100.0, 100.0);
         doc.title = "doc".into();
-        s.add_document(doc, Some(home.join(dir).join("doc.vectorcraft").to_string_lossy().into_owned()));
+        s.add_document(doc, Some(home.join(dir).join("doc.mostvector").to_string_lossy().into_owned()));
         text(&mut s, 20.0, "No Such Font Family", "Regular");
         let r = s.execute("text.missingFonts", &json!({})).unwrap();
         assert_eq!(r.get("fontsNextToDocument").is_some(), offered, "{dir}: {r}");
@@ -144,7 +145,7 @@ fn the_fonts_folder_next_to_a_document_is_an_absolute_path() {
     std::fs::create_dir_all(root.join("pkg/Fonts")).unwrap();
     let cwd = std::env::current_dir().unwrap();
     let up = "../".repeat(cwd.components().count().saturating_sub(1));
-    let relative = format!("{up}{}", root.join("pkg/doc.vectorcraft").strip_prefix("/").unwrap().display());
+    let relative = format!("{up}{}", root.join("pkg/doc.mostvector").strip_prefix("/").unwrap().display());
     assert!(Path::new(&relative).is_relative());
     let mut s = session_for(&root);
     let mut doc = vectorcraft_doc::Document::new(100.0, 100.0);

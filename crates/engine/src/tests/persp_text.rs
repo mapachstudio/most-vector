@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Type and symbols in perspective (projected, still type and symbol instances, Edit Text),
 //! attachment bookkeeping (copy, paste, duplicate, Selection-tool moves, release) and drawing in
 //! perspective (flare, spiral, polar grid, click-to-size dialogs).
@@ -279,7 +280,7 @@ fn ending_edit_text_during_a_save_leaves_the_document_saved() {
     s.execute("select.set", &json!({"ids": [id.0]})).unwrap();
     s.execute("perspective.editText", &json!({})).unwrap();
     let uid = s.doc().unwrap().uid;
-    let plan = save_plan(&s, SaveMode::SaveAs, &json!({"path": "/x/type.vectorcraft", "modified": 777})).unwrap();
+    let plan = save_plan(&s, SaveMode::SaveAs, &json!({"path": "/x/type.mostvector", "modified": 777})).unwrap();
     let job = save_job(&mut s, plan).unwrap();
     s.execute("object.exitIsolation", &json!({})).unwrap();
     job.write(|_, _| Ok(())).unwrap();

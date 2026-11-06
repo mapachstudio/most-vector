@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Preferences: `prefs.get` / `prefs.set` / `prefs.reset` / `prefs.list`.
 
 use serde_json::{Value, json};
@@ -119,7 +120,7 @@ fn grid_prefs_apply_to_opened_files_without_a_grid() {
     };
     assert_eq!(open("drawing.svg", GRIDLESS_SVG.as_bytes()), (36.0, 4, false));
     assert_eq!(open("plain.pdf", &plain), (36.0, 4, false));
-    assert_eq!(open("saved.vectorcraft", &native), (18.0, 3, false));
+    assert_eq!(open("saved.mostvector", &native), (18.0, 3, false));
     assert_eq!(open("editable.pdf", &editable), (18.0, 3, true));
 }
 
@@ -130,7 +131,7 @@ fn grid_prefs_apply_to_reverted_files_without_a_grid() {
     let dir = std::env::temp_dir().join(format!("vc-grid-revert-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
     let path = |name: &str| dir.join(name).to_string_lossy().to_string();
-    let (svg, native) = (path("drawing.svg"), path("saved.vectorcraft"));
+    let (svg, native) = (path("drawing.svg"), path("saved.mostvector"));
     std::fs::write(&svg, GRIDLESS_SVG).unwrap();
     let mut s = Session::new();
     s.execute("file.new", &json!({"width": 400, "height": 400})).unwrap();
@@ -1884,7 +1885,7 @@ fn low_res_proxy_eps_preference_does_not_swap_full_resolution_pixels() {
     s.execute("file.new", &json!({"width": 400, "height": 300})).unwrap();
     assert!(!s.prefs.low_res_proxy_eps);
     let id = place(&mut s, &pic);
-    let doc_path = dir.file("doc.vectorcraft");
+    let doc_path = dir.file("doc.mostvector");
     save(&mut s, &doc_path);
     s.execute("links.update", &json!({})).unwrap();
     let key = {

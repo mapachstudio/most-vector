@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Art styles (`%AI9_BeginArtStyles`; not publicly documented): the appearance an object's
 //! `1 (style) XW` names, a tree of filters. A compound filter (`/CompoundFilter :`) holds the
 //! filters after it until the `;` that closes it; a basic one (`/BasicFilter :`) ends at its
@@ -959,7 +960,7 @@ fn shape_effect(f: &Filter) -> Option<Effect> {
     let id = match shape {
         0.0 => "convertToShape.rectangle",
         1.0 => "convertToShape.roundedRectangle",
-        // A relative Ellipse in the file is drawn round the enlarged box, and VectorCraft's inside
+        // A relative Ellipse in the file is drawn round the enlarged box, and Most Vector's inside
         // it: it keeps its drawn look.
         2.0 if absolute => "convertToShape.ellipse",
         _ => return None,

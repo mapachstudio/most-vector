@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::compare::{
     MAX_DIFFERENCE, MAX_PAGES_COMPARED, MAX_PIXELS_COMPARED, MAX_SOLID_DIFFERENCE, PageView, compare, comparison_samples, difference, pixels_compared,
 };
@@ -792,10 +793,10 @@ fn unread_error(unread: &[(NodeId, Vec<String>)]) -> String {
     let (ops, other): (Vec<&str>, Vec<&str>) = kinds.into_iter().partition(|k| k.starts_with('`'));
     let mut list: BTreeSet<String> = other.into_iter().map(String::from).collect();
     if !ops.is_empty() {
-        list.insert(format!("operators VectorCraft doesn't know ({})", ops.join(", ")));
+        list.insert(format!("operators Most Vector doesn't know ({})", ops.join(", ")));
     }
     let list: Vec<&str> = list.iter().map(String::as_str).collect();
-    format!("it has {}, which VectorCraft doesn't read from it yet", ai::join_and(&list))
+    format!("it has {}, which Most Vector doesn't read from it yet", ai::join_and(&list))
 }
 
 /// The page's text objects in `shown` that the page objects replacing `doc`'s unread objects hold

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Closing documents with unsaved changes. File → Close / Close All, a tab's ×, Quit and the
 //! window's close button first ask Save / Don't Save / Cancel for each modified document (one
 //! dialog per document); Cancel stops the whole operation and a cancelled Save As keeps the
@@ -122,12 +123,12 @@ mod tests {
     use std::sync::{Arc, Mutex};
     use vectorcraft_engine::Session;
 
-    /// An app whose Save As picks `out.vectorcraft` and records written paths.
+    /// An app whose Save As picks `out.mostvector` and records written paths.
     fn app() -> (VectorcraftApp, Arc<Mutex<Vec<String>>>) {
         let written = Arc::new(Mutex::new(vec![]));
         let w = written.clone();
         let services = crate::Services {
-            pick_save: Some(Box::new(|_: &crate::FilePick| Some("out.vectorcraft".to_string()))),
+            pick_save: Some(Box::new(|_: &crate::FilePick| Some("out.mostvector".to_string()))),
             write: Some(Box::new(move |p: &str, _: &[u8]| {
                 w.lock().unwrap().push(p.to_string());
                 Ok(())
@@ -183,7 +184,7 @@ mod tests {
         // Save writes the file (Save As for an untitled document), then closes it.
         app.run("file.close", json!({ "index": 0 })).unwrap();
         confirm(&mut app).unwrap();
-        assert_eq!(*written.lock().unwrap(), vec!["out.vectorcraft".to_string()]);
+        assert_eq!(*written.lock().unwrap(), vec!["out.mostvector".to_string()]);
         assert_eq!((docs(&app), app.views.len()), (1, 1));
     }
 
@@ -240,7 +241,7 @@ mod tests {
         assert_eq!(quit(&mut app), json!({"ok": true, "result": {"pending": KIND}}));
         assert_eq!((pending(&app), app.ui.status.as_str()), (Some(0), ""));
         app.ui.dialog = None;
-        app.run("file.save", json!({"path": "/docs/saved.vectorcraft"})).unwrap();
+        app.run("file.save", json!({"path": "/docs/saved.mostvector"})).unwrap();
         assert_eq!(quit(&mut app), json!({"ok": true, "result": null}));
         assert_eq!(app.ui.status, "quit");
     }

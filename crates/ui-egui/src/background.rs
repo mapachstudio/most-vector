@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Background Save and Background Export (Preferences → File Handling): a save or an export encodes
 //! and writes a snapshot of the document on a worker thread while editing goes on. The status bar
 //! shows what is in progress; the result is applied on the UI thread when it arrives (a save marks
@@ -47,7 +48,7 @@ struct Task {
 /// A job in progress.
 pub struct Job {
     id: u64,
-    /// What the status bar and `ui.inspect` show ("Saving Poster.vectorcraft"); empty for work they
+    /// What the status bar and `ui.inspect` show ("Saving Poster.mostvector"); empty for work they
     /// don't show.
     pub label: String,
     /// The document the job reads (`DocState::uid`), if any.

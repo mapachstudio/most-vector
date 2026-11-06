@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Data Recovery: copies of modified documents kept in a recovery store, so a crash loses at most
 //! the last few minutes of work.
 //!
@@ -25,7 +26,7 @@
 //! a heartbeat newer than the one another app wrote when taking the area over marks it running
 //! again.
 //!
-//! Each copy is two entries: `<area>/<file>.vectorcraft` (the native document, written as a save
+//! Each copy is two entries: `<area>/<file>.mostvector` (the native document, written as a save
 //! writes it, without its images) and `<area>/<file>.json` (its title, original path and format,
 //! when it was written, and its images). The images are entries of their own, `<area>/img-…blob`,
 //! named by their content and shared by the area's copies: a copy written again writes only the
@@ -51,7 +52,7 @@ use crate::DocState;
 pub const COMPLEX_OBJECTS: usize = 20_000;
 
 /// The extension of a copy's document entry.
-const DOC_EXT: &str = ".vectorcraft";
+const DOC_EXT: &str = ".mostvector";
 /// The extension of a copy's details entry.
 const META_EXT: &str = ".json";
 /// The extension of an image entry (see [`blob_name`]).
@@ -991,7 +992,7 @@ fn targets(s: &mut Session, store: &dyn RecoveryStore, cmd: &str, p: &Value) -> 
                 out.push((area.to_string(), files, hold));
             }
             (Owner::Mine, Some(f)) => return Err(bad(cmd, format!("`{f}` is the copy of a document open now"))),
-            (Owner::Running, Some(f)) => return Err(bad(cmd, format!("`{f}` belongs to a VectorCraft that is running"))),
+            (Owner::Running, Some(f)) => return Err(bad(cmd, format!("`{f}` belongs to a Most Vector that is running"))),
             _ => {}
         }
     }
@@ -1117,7 +1118,7 @@ pub fn specs() -> Vec<CommandSpec> {
             "Recovery Data",
             [],
             None,
-            "{} the recovery copies in the store → {copies: [{file (\"<area>/<name>\"), title, path (the document's file, if it had one), format, saved (Unix seconds or null), open (the copy of a document open here), running (kept by another VectorCraft that is running)}], location}; copies neither open nor running were left behind by a crash",
+            "{} the recovery copies in the store → {copies: [{file (\"<area>/<name>\"), title, path (the document's file, if it had one), format, saved (Unix seconds or null), open (the copy of a document open here), running (kept by another Most Vector that is running)}], location}; copies neither open nor running were left behind by a crash",
             has_store,
             list
         ),
@@ -1126,7 +1127,7 @@ pub fn specs() -> Vec<CommandSpec> {
             "Restore Recovered Documents",
             [],
             None,
-            "{file?} open a copy left behind by a crash (default: every one; a running VectorCraft's copies are never taken) as a new document titled \"<name> [Recovered]\": modified, and Save asks where to save it (suggesting its original file) → {restored: [{index, title, file, path, warnings, missingLinks, modifiedLinks, updatedLinks}], failed: [{file, error}] (damaged copies, when restoring every one; a named one fails the command)}. The copy moves to this app's area and stays until the document is saved or closed",
+            "{file?} open a copy left behind by a crash (default: every one; a running Most Vector's copies are never taken) as a new document titled \"<name> [Recovered]\": modified, and Save asks where to save it (suggesting its original file) → {restored: [{index, title, file, path, warnings, missingLinks, modifiedLinks, updatedLinks}], failed: [{file, error}] (damaged copies, when restoring every one; a named one fails the command)}. The copy moves to this app's area and stays until the document is saved or closed",
             has_store,
             restore
         ),
@@ -1135,7 +1136,7 @@ pub fn specs() -> Vec<CommandSpec> {
             "Discard Recovered Documents",
             [],
             None,
-            "{file?} delete a copy left behind by a crash (default: every one; copies of open documents and of running VectorCraft apps stay) → {discarded: [file…]}",
+            "{file?} delete a copy left behind by a crash (default: every one; copies of open documents and of running Most Vector apps stay) → {discarded: [file…]}",
             has_store,
             discard
         ),

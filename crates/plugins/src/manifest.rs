@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The plug-in manifest (`vc_manifest`) and parameter schema: what each parameter holds
 //! ([`ParamSpec`]) and how dialogs show it ([`ParamUi`], in [`crate::dialog`]).
 
@@ -647,7 +648,7 @@ mod tests {
     /// color that shows as that hex, read when used, while the manifest keeps the default as written.
     #[test]
     fn hex_colors_follow_the_working_rgb_space() {
-        const CHILD: &str = "VECTORCRAFT_TEST_PLUGIN_COLOR_PROFILE";
+        const CHILD: &str = "MOST_VECTOR_TEST_PLUGIN_COLOR_PROFILE";
         if std::env::var_os(CHILD).is_none() {
             // Color settings are process-wide: exercise this profile in a separate test process.
             let output = std::process::Command::new(std::env::current_exe().unwrap())

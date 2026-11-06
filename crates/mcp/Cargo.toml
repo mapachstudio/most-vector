@@ -1,9 +1,10 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft-mcp"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "VectorCraft MCP server: JSON-RPC 2.0 over stdio, driving a running app or a headless session"
+description = "Most Vector MCP server: JSON-RPC 2.0 over stdio, driving a running app or a headless session"
 
 [lints]
 workspace = true

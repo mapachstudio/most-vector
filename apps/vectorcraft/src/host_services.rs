@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 #[cfg(any(target_os = "linux", target_os = "freebsd", target_os = "dragonfly", target_os = "netbsd", target_os = "openbsd"))]
 use super::portal_save;
 #[cfg(target_os = "linux")]
@@ -705,7 +706,7 @@ mod open_with_tests {
     #[cfg(windows)]
     #[test]
     fn a_registered_path_outside_ascii_is_read_as_stored() {
-        let key = format!(r"Software\VectorCraftTest-app-paths-{}", std::process::id());
+        let key = format!(r"Software\Most VectorTest-app-paths-{}", std::process::id());
         let path = r"C:\Prögram Fïles\Тест\写真\photocraft.exe";
         let reg = std::env::var_os("SystemRoot").map(std::path::PathBuf::from).unwrap_or_else(|| r"C:\Windows".into()).join(r"System32\reg.exe");
         let full = format!(r"HKCU\{key}");

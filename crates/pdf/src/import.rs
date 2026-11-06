@@ -1,4 +1,5 @@
-//! PDF → Document (hayro-interpret device that builds a VectorCraft node tree).
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! PDF → Document (hayro-interpret device that builds a Most Vector node tree).
 
 use std::collections::{HashMap, HashSet};
 use std::sync::atomic::{AtomicBool, Ordering};

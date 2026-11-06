@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Photoshop-style raster effects (Effect › Artistic › Colored Pencil, Cutout, Dry Brush, Film Grain, Fresco, Neon Glow, Paint Daubs, Plastic Wrap and
 //! Poster Edges, Rough Pastels, Smudge Stick, Sponge and Watercolor, Blur › Radial Blur and Smart Blur, Brush Strokes › Accented Edges, Angled Strokes,
 //! Crosshatch, Dark Strokes, Ink Outlines, Spatter, Sprayed Strokes and Sumi-e, Distort › Diffuse
@@ -249,7 +250,7 @@ pub enum PixelFx {
     TornEdges { image_balance: f64, smoothness: f64, contrast: f64 },
     /// Sketch › Water Paper: colours flow on damp fibrous paper; `fiber_length` (3..50) sets the
     /// fibers and daubs, `brightness` and `contrast` (0..100) adjust the wash. Ranges and defaults
-    /// are unverified VectorCraft choices (helpx documents the controls only).
+    /// are unverified Most Vector choices (helpx documents the controls only).
     WaterPaper { fiber_length: f64, brightness: f64, contrast: f64 },
     /// Stylize › Glowing Edges: bright coloured Sobel outlines on black.
     GlowingEdges { width: f64, brightness: f64, smoothness: f64 },

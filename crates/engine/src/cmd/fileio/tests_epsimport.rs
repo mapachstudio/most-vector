@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! EPS and PostScript files opened and placed: our own EPS files restore the document they carry,
 //! others are read by the PostScript interpreter or come in as their preview.
 
@@ -27,7 +28,7 @@ fn patched(bytes: &[u8], from: &[u8], to: &[u8]) -> Vec<u8> {
 
 /// An EPS file of ours as another app would write it: without the document it carries.
 fn foreign(eps: &[u8]) -> Vec<u8> {
-    patched(eps, b"%VectorCraft_BeginData: native", b"%VectorCraft_BeginData: nativx")
+    patched(eps, b"%Most Vector_BeginData: native", b"%Most Vector_BeginData: nativx")
 }
 
 fn objects(s: &Session) -> usize {

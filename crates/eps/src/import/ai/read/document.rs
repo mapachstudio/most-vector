@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::super::brush;
 use super::art::{element_name, join_and, sane};
 use super::containers::drop_commented_copies;
@@ -871,11 +872,11 @@ impl<'a> Reader<'a> {
         }
         if !self.unknown.is_empty() {
             let ops: Vec<String> = self.unknown.iter().map(|o| format!("`{o}`")).collect();
-            self.unsupported.insert(format!("operators VectorCraft doesn't know ({})", ops.join(", ")));
+            self.unsupported.insert(format!("operators Most Vector doesn't know ({})", ops.join(", ")));
         }
         if !self.unsupported.is_empty() {
             let list: Vec<&str> = self.unsupported.iter().map(String::as_str).collect();
-            return Err(format!("it has {}, which VectorCraft doesn't read from it yet", join_and(&list)));
+            return Err(format!("it has {}, which Most Vector doesn't read from it yet", join_and(&list)));
         }
         if self.doc.layers.is_empty() {
             return Err("it has no layers".into());
@@ -1548,7 +1549,7 @@ fn read_variable_sets(sets: &Obj) -> VariableRead {
     match walk.children(sets) {
         Some(children) => {
             let (sets, other): (Vec<&Obj>, Vec<&Obj>) = children.into_iter().filter(|c| !is_node(c, 3.0)).partition(|c| is_element(c, "variableSet"));
-            // A node that isn't a variable set, and a second set (VectorCraft keeps one set of
+            // A node that isn't a variable set, and a second set (Most Vector keeps one set of
             // variables), are left out.
             walk.skipped += other.len() + sets.len().saturating_sub(1);
             if let Some(first) = sets.first() {

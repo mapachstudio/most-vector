@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Effect › Sketch › Bas Relief, Charcoal, Photocopy and Stamp. Original filters built from public
 //! behaviour documentation: <https://helpx.adobe.com/illustrator/using/summary-effects.html> and
 //! <https://helpx.adobe.com/photoshop-elements/using/sketch-filters.html> (the Sketch effects
@@ -6,7 +7,7 @@
 //! diagonal strokes, Photocopy copies only the edges of large dark areas and takes the midtones to
 //! black or white, Stamp simplifies the image to solid black and white as a rubber stamp would).
 //! Visual approximations, not reproductions of a proprietary algorithm; the ranges and defaults
-//! are chosen for VectorCraft.
+//! are chosen for Most Vector.
 //!
 //! All four keep the object's coverage, so they paint nothing outside it. Their sizes are in
 //! document points, whatever the raster's resolution.

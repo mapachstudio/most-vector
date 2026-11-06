@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Shortcut sets another app saves as text (`.kys` files that start `/Menus {`), read into their
 //! entries without changing anything (`shortcutSet.read`). Names and codes the user matched on an
 //! earlier import ([`super::importmatches`]) come back with what they stand for.
@@ -35,7 +36,7 @@ const MAX_UNREAD: usize = 1000;
 const UNREAD_SHOWN: usize = 80;
 
 /// What `shortcutSet.read` says about a file that isn't a text shortcut set.
-pub const NOT_READABLE: &str = "This shortcut file is in a form VectorCraft can't read.";
+pub const NOT_READABLE: &str = "This shortcut file is in a form Most Vector can't read.";
 
 /// The extensions of shortcut sets other apps save (File › Open lists them).
 pub const EXTS: &[&str] = &["kys"];

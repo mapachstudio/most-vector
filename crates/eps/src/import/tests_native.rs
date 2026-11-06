@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The layers of an Illustrator EPS and `.ai`: read from the editing copy of the art the file
 //! carries (see `native`). The files here are small ones written by hand for the tests, with the
 //! operators seen in files their users own.
@@ -1125,11 +1126,11 @@ fn unknown_operator_between_objects_falls_back() {
 fn unread_object_without_page_art_names_what_is_unread() {
     let art = native(&layer("Mixed", true, &os1_group(&format!("{}\nZZ", square(50, 10)))));
     let e = crate::ai_alone(&private(&art)).unwrap_err();
-    assert_eq!(e, "it has operators VectorCraft doesn't know (`ZZ`), which VectorCraft doesn't read from it yet");
+    assert_eq!(e, "it has operators Most Vector doesn't know (`ZZ`), which Most Vector doesn't read from it yet");
     let pattern = os1_group(&format!("(Absent) 0 0 1 1 0 0 0 0 0 [1 0 0 1 0 0] p\n{}", square_path(70, 10)));
     let art = native(&layer("Mixed", true, &format!("{}\n{pattern}", os1_group(&format!("{}\nZZ", square(50, 10))))));
     let e = crate::ai_alone(&private(&art)).unwrap_err();
-    assert_eq!(e, "it has operators VectorCraft doesn't know (`ZZ`) and pattern fills, which VectorCraft doesn't read from it yet");
+    assert_eq!(e, "it has operators Most Vector doesn't know (`ZZ`) and pattern fills, which Most Vector doesn't read from it yet");
 }
 
 #[test]

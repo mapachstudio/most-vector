@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The plug-in ABI end to end: the example Desaturate plug-in, and hostile modules (infinite
 //! loops, memory bombs, out-of-bounds access, bad manifests and outputs…), which must all fail
 //! with an error, quickly.
@@ -39,7 +40,7 @@ fn run_err(bytes: &[u8], limits: Limits) -> (Error, Duration) {
 fn example_desaturate_loads_and_reports_its_manifest() {
     let p = Plugin::load(DESATURATE, Limits::default()).unwrap();
     let m = p.manifest();
-    assert_eq!(m.id, "org.vectorcraft.example.desaturate");
+    assert_eq!(m.id, "org.mostvector.example.desaturate");
     assert_eq!(m.name, "Desaturate");
     assert_eq!(m.kind, Kind::Filter);
     assert_eq!(m.params_doc(), "{amount: 0..100 (100)}");
@@ -300,7 +301,7 @@ fn folder_loading_skips_bad_files() {
     std::fs::write(dir.join("b-broken.wasm"), b"\0asm junk").unwrap();
     std::fs::write(dir.join("notes.txt"), b"ignored").unwrap();
     let r = registry::load_folder(&dir).unwrap();
-    assert_eq!(r.loaded, ["org.vectorcraft.example.desaturate"]);
+    assert_eq!(r.loaded, ["org.mostvector.example.desaturate"]);
     assert_eq!(r.failed.len(), 1);
     assert!(r.failed[0].0.ends_with("b-broken.wasm"));
     assert!(registry::load_folder(&dir.join("missing")).is_err());

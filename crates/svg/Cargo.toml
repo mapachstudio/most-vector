@@ -1,9 +1,10 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft-svg"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "VectorCraft SVG import and export"
+description = "Most Vector SVG import and export"
 
 [lints]
 workspace = true

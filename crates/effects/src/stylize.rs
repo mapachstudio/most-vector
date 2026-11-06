@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Convert to Shape, Round Corners and Scribble.
 
 use serde_json::{Value, json};
@@ -145,7 +146,7 @@ fn crosses_outline(p: Point, q: Point, polys: &[Vec<Point>]) -> bool {
 }
 
 /// One named Settings entry in Effect › Stylize › Scribble (public feature names; parameter sets
-/// are chosen for VectorCraft).
+/// are chosen for Most Vector).
 pub struct ScribbleSetting {
     pub id: &'static str,
     pub label: &'static str,

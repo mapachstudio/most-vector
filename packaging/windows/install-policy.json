@@ -1,6 +1,6 @@
 {
   "id": "vectorcraft",
-  "name": "VectorCraft",
+  "name": "Most Vector",
   "upgradeCode": "601C6437-08AE-4645-ADCC-27F036C2EA2F",
   "sources": [
     "vectorcraft.wxs"
@@ -26,13 +26,13 @@
     ],
     [
       "-1",
-      "Software\\VectorCraft",
+      "Software\\Most Vector",
       "InstallDir",
       "[INSTALLFOLDER]"
     ],
     [
       "-1",
-      "Software\\VectorCraft",
+      "Software\\Most Vector",
       "DesktopShortcut",
       "#1"
     ]

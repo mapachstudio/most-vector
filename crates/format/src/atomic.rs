@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Safe saving: a file is written to a temporary file beside it, then renamed over it, so a failed
 //! or interrupted write never leaves a damaged file behind (the old one stays as it was).
 //! [`write_new_with`] creates a file the same way without ever replacing one.
@@ -325,7 +326,7 @@ mod tests {
     #[test]
     fn a_replacement_takes_no_inherited_acl_the_old_file_lacked() {
         let d = dir("acl");
-        let f = d.join("doc.vectorcraft");
+        let f = d.join("doc.mostvector");
         std::fs::write(&f, b"old").unwrap();
         let set = std::process::Command::new("setfacl").args(["-d", "-m", "u:nobody:rw"]).arg(&d).status();
         if !set.is_ok_and(|s| s.success()) {
@@ -349,7 +350,7 @@ mod tests {
     fn staging_of_a_private_file_is_owner_only() {
         use std::os::unix::fs::PermissionsExt as _;
         let d = dir("private-staging");
-        let path = d.join("doc.vectorcraft");
+        let path = d.join("doc.mostvector");
         std::fs::write(&path, b"secret").unwrap();
         std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o600)).unwrap();
         let mut staging_mode = 0;
@@ -367,7 +368,7 @@ mod tests {
     #[test]
     fn the_original_file_survives_a_failed_write() {
         let d = dir("fail");
-        let path = d.join("doc.vectorcraft");
+        let path = d.join("doc.mostvector");
         std::fs::write(&path, b"original").unwrap();
         let r = write_atomic_with(&path, |f| {
             f.write_all(b"half a fi")?;
@@ -375,12 +376,12 @@ mod tests {
         });
         assert!(r.is_err());
         assert_eq!(std::fs::read(&path).unwrap(), b"original");
-        assert!(leftovers(&d, "doc.vectorcraft").is_empty(), "the temporary file is removed");
+        assert!(leftovers(&d, "doc.mostvector").is_empty(), "the temporary file is removed");
         write_atomic(&path, b"new").unwrap();
         assert_eq!(std::fs::read(&path).unwrap(), b"new");
-        assert!(leftovers(&d, "doc.vectorcraft").is_empty());
+        assert!(leftovers(&d, "doc.mostvector").is_empty());
         // A folder that doesn't exist: an error, nothing written.
-        assert!(write_atomic(&d.join("missing").join("x.vectorcraft"), b"x").is_err());
+        assert!(write_atomic(&d.join("missing").join("x.mostvector"), b"x").is_err());
         let _ = std::fs::remove_dir_all(&d);
     }
 
@@ -391,7 +392,7 @@ mod tests {
     #[test]
     fn a_volume_that_refuses_the_full_flush_still_saves() {
         let d = dir("no-full-sync");
-        let path = d.join("doc.vectorcraft");
+        let path = d.join("doc.mostvector");
         std::fs::write(&path, b"original").unwrap();
         let apple = cfg!(target_vendor = "apple");
         REFUSE_FULL_SYNC.with(|c| c.set(true));
@@ -408,7 +409,7 @@ mod tests {
         assert_eq!(fsyncs, if apple { 2 } else { 0 }, "each refused full flush falls back to fsync");
         assert!(failed.is_err(), "a failed fsync still fails the save");
         assert_eq!(std::fs::read(&path).unwrap(), if apple { &b"new"[..] } else { b"original" });
-        let mut left = leftovers(&d, "doc.vectorcraft");
+        let mut left = leftovers(&d, "doc.mostvector");
         left.retain(|n| n != "new.otf");
         assert!(left.is_empty(), "no temporary file is left: {left:?}");
         let _ = std::fs::remove_dir_all(&d);
@@ -423,13 +424,13 @@ mod tests {
     #[test]
     fn a_refused_rename_copies_the_content_into_the_file() {
         let d = dir("no-rename");
-        let path = d.join("doc.vectorcraft");
+        let path = d.join("doc.mostvector");
         std::fs::write(&path, b"original, and longer").unwrap();
         write_atomic_stepping(&path, |f| f.write_all(b"new"), create_new, |_, _| denied()).unwrap();
         assert_eq!(std::fs::read(&path).unwrap(), b"new");
-        write_atomic_stepping(&d.join("other.vectorcraft"), |f| f.write_all(b"other"), create_new, |_, _| denied()).unwrap();
-        assert_eq!(std::fs::read(d.join("other.vectorcraft")).unwrap(), b"other");
-        assert_eq!(leftovers(&d, "doc.vectorcraft"), ["other.vectorcraft"], "the temporary files are removed");
+        write_atomic_stepping(&d.join("other.mostvector"), |f| f.write_all(b"other"), create_new, |_, _| denied()).unwrap();
+        assert_eq!(std::fs::read(d.join("other.mostvector")).unwrap(), b"other");
+        assert_eq!(leftovers(&d, "doc.mostvector"), ["other.mostvector"], "the temporary files are removed");
         // A failed write never gets as far as the file.
         let r = write_atomic_stepping(&path, |f| f.write_all(b"half").and(Err(io::Error::other("disk full"))), create_new, |_, _| denied());
         assert_eq!(r.unwrap_err().to_string(), "disk full");
@@ -442,11 +443,11 @@ mod tests {
     #[test]
     fn a_refused_rename_over_a_file_that_cannot_be_written_changes_nothing() {
         let d = dir("no-rename-no-write");
-        let path = d.join("doc.vectorcraft");
+        let path = d.join("doc.mostvector");
         std::fs::create_dir(&path).unwrap();
         let r = write_atomic_stepping(&path, |f| f.write_all(b"new"), create_new, |_, _| denied());
         assert_eq!(r.unwrap_err().to_string(), "refused by the share");
-        assert!(path.is_dir() && leftovers(&d, "doc.vectorcraft").is_empty());
+        assert!(path.is_dir() && leftovers(&d, "doc.mostvector").is_empty());
         let _ = std::fs::remove_dir_all(&d);
     }
 
@@ -456,7 +457,7 @@ mod tests {
     #[test]
     fn a_failed_copy_into_the_file_keeps_the_old_content_and_the_new() {
         let d = dir("no-rename-copy-fails-late");
-        let path = d.join("doc.vectorcraft");
+        let path = d.join("doc.mostvector");
         std::fs::write(&path, b"original").unwrap();
         let r = write_atomic_stepping(
             &path,
@@ -470,7 +471,7 @@ mod tests {
         );
         FLUSHES_LEFT.with(|c| c.set(None));
         let message = r.unwrap_err().to_string();
-        let mut left = leftovers(&d, "doc.vectorcraft");
+        let mut left = leftovers(&d, "doc.mostvector");
         left.sort();
         let [old, tmp] = left.as_slice() else { panic!("the old content and the new: {left:?}") };
         assert!(old.ends_with(".old") && tmp.ends_with(".tmp"), "{left:?}");
@@ -479,11 +480,11 @@ mod tests {
         // A new file has nothing to keep, and a save that works leaves neither copy.
         std::fs::remove_file(d.join(old)).unwrap();
         std::fs::remove_file(d.join(tmp)).unwrap();
-        let fresh = d.join("fresh.vectorcraft");
+        let fresh = d.join("fresh.mostvector");
         write_atomic_stepping(&fresh, |f| f.write_all(b"new"), create_new, |_, _| denied()).unwrap();
         write_atomic_stepping(&fresh, |f| f.write_all(b"newer"), create_new, |_, _| denied()).unwrap();
         assert_eq!(std::fs::read(&fresh).unwrap(), b"newer");
-        assert_eq!(leftovers(&d, "doc.vectorcraft"), ["fresh.vectorcraft"]);
+        assert_eq!(leftovers(&d, "doc.mostvector"), ["fresh.mostvector"]);
         let _ = std::fs::remove_dir_all(&d);
     }
 
@@ -493,7 +494,7 @@ mod tests {
     #[test]
     fn a_failed_copy_into_the_file_keeps_the_temporary_file() {
         let d = dir("no-rename-copy-fails");
-        let path = d.join("doc.vectorcraft");
+        let path = d.join("doc.mostvector");
         std::fs::write(&path, b"original").unwrap();
         let r = write_atomic_stepping(
             &path,
@@ -509,7 +510,7 @@ mod tests {
         REFUSE_FULL_SYNC.with(|c| c.set(false));
         PLAIN_FSYNC_FAILS.with(|c| c.set(None));
         let message = r.unwrap_err().to_string();
-        let left = leftovers(&d, "doc.vectorcraft");
+        let left = leftovers(&d, "doc.mostvector");
         let [tmp] = left.as_slice() else { panic!("one temporary file: {left:?}") };
         assert!(message.contains(tmp.as_str()), "{message}");
         assert_eq!(std::fs::read(d.join(tmp)).unwrap(), b"new");
@@ -523,7 +524,7 @@ mod tests {
     #[test]
     fn a_folder_that_refuses_the_temporary_file_still_saves() {
         let d = dir("no-temp");
-        let path = d.join("doc.vectorcraft");
+        let path = d.join("doc.mostvector");
         std::fs::write(&path, b"original, and longer").unwrap();
         let renamed = std::cell::Cell::new(false);
         let rename = |_: &Path, _: &Path| {
@@ -532,7 +533,7 @@ mod tests {
         };
         write_atomic_stepping(&path, |f| f.write_all(b"new"), |_| denied(), rename).unwrap();
         assert_eq!(std::fs::read(&path).unwrap(), b"new");
-        assert!(!renamed.get() && leftovers(&d, "doc.vectorcraft").is_empty());
+        assert!(!renamed.get() && leftovers(&d, "doc.mostvector").is_empty());
         // The file can't be written either (a folder of that name): the folder's error.
         let folder = d.join("folder");
         std::fs::create_dir(&folder).unwrap();

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::*;
 
 const TEXT: &str = "The quick brown fox jumps over the lazy dog and keeps running far beyond the first frame of this story. ";
@@ -746,7 +747,7 @@ fn a_paragraph_continued_into_the_next_frame_starts_it_without_its_first_line_in
     s.execute("text.editRange", &json!({"id": a, "start": 0, "end": 0, "insert": "NEW "})).unwrap();
     assert_eq!(first_line(&s, b), (true, 0.0, 0));
     // Saved and opened: a native file re-flows its threads, a restored document keeps its text.
-    for name in ["thread.vectorcraft", "thread.eps"] {
+    for name in ["thread.mostvector", "thread.eps"] {
         let bytes = if name.ends_with(".eps") {
             let r = s.execute("document.exportEps", &json!({})).unwrap();
             vectorcraft_format::base64_decode(r["dataBase64"].as_str().unwrap()).unwrap()
@@ -1031,7 +1032,7 @@ fn a_thread_takes_its_first_frames_optical_margin_alignment() {
 #[test]
 fn a_thread_saved_with_differing_frames_opens_with_the_first_frames_setting() {
     let (mut s, a, b) = quoted_thread();
-    for (first, name) in [(true, "old.vectorcraft"), (false, "old.vectorcraft"), (true, "old.eps"), (false, "old.eps")] {
+    for (first, name) in [(true, "old.mostvector"), (false, "old.mostvector"), (true, "old.eps"), (false, "old.eps")] {
         for (id, on) in [(a, first), (b, !first)] {
             let doc = std::sync::Arc::make_mut(&mut s.doc_mut().unwrap().doc);
             let Some(NodeKind::Text(t)) = doc.node_mut(NodeId(id)).map(|n| &mut n.kind) else { panic!("not text") };

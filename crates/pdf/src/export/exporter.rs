@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::entry::RgbInCmyk;
 use super::{
     Affine, Arc, BezPath, BlendMode, Color, Compatibility, Document, Exporter, Fill, FillRule, HashMap, HashSet, Node, NormalizedF32, Path,
@@ -176,7 +177,7 @@ pub(super) fn color(c: &Color) -> krilla::color::Color {
         Color::Rgb { r, g, b } => rgb::Color::new(q(r), q(g), q(b)).into(),
         // Inks and grey keep their values: C75 is written as 0.75, not 191/255.
         Color::Cmyk { c, m, y, k } => cmyk::Color::new_f32(c, m, y, k).into(),
-        // VectorCraft grey is ink coverage (0 = white); PDF DeviceGray is lightness.
+        // Most Vector grey is ink coverage (0 = white); PDF DeviceGray is lightness.
         Color::Gray { k } => luma::Color::new_f32(1.0 - k).into(),
         Color::Lab { .. } => {
             let [r, g, b] = c.to_rgb();

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Build and package VectorCraft for FreeBSD:
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+# Build and package Most Vector for FreeBSD:
 #
 #   $DIST/vectorcraft-<version>-freebsd-<arch>.tar.gz   a /usr/local-style tree:
 #       vectorcraft-<version>-freebsd-<arch>/{bin, share/applications, share/icons, share/mime,
@@ -16,7 +17,7 @@ set -euo pipefail
 # shellcheck source=../env.sh
 . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
 LINUX="$ROOT/packaging/linux"
-APP_ID=ai.storyteller.vectorcraft
+APP_ID=com.grupomostmexico.mostvector
 
 SKIP_BUILD=0
 while [[ $# -gt 0 ]]; do
@@ -45,7 +46,7 @@ if [[ -n "${CARGO_BUILD_TARGET:-}" ]]; then
 fi
 BASENAME="vectorcraft-$VERSION-freebsd-$ARCH"
 
-echo "==> VectorCraft $VERSION for FreeBSD $ARCH"
+echo "==> Most Vector $VERSION for FreeBSD $ARCH"
 
 if [[ "$SKIP_BUILD" = 0 ]]; then
   (cd "$ROOT" && cargo build --release --locked -p vectorcraft -p vectorcraft-cli ${CARGO_BUILD_TARGET:+--target "$CARGO_BUILD_TARGET"})
@@ -62,7 +63,7 @@ strip "$STAGE/bin/vectorcraft" "$STAGE/bin/vectorcraft-cli" 2>/dev/null || true
 # The desktop entry, MIME type and metainfo are the freedesktop files the Linux packages use.
 install -m 644 "$LINUX/$APP_ID.desktop" "$STAGE/share/applications/$APP_ID.desktop"
 install -m 644 "$LINUX/$APP_ID.mime.xml" "$STAGE/share/mime/packages/$APP_ID.xml"
-sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$VECTORCRAFT_BUILD_DATE/g" \
+sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$MOST_VECTOR_BUILD_DATE/g" \
   "$LINUX/$APP_ID.metainfo.xml.in" >"$STAGE/share/metainfo/$APP_ID.metainfo.xml"
 cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/share/icons/"
 copy_docs "$STAGE/share/doc/vectorcraft"

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `print.preview`'s pages say where the art lands (what the Print dialog's preview draws): the
 //! transform from the document onto the page, the region each page prints and its trim box.
 
@@ -277,7 +278,7 @@ fn a_placed_document_prints_its_type() {
     let mut src = Session::new();
     src.execute("file.new", &json!({"width": 100, "height": 50})).unwrap();
     type_in(&mut src, 10.0, 30.0, "Nonexistent Sans Probe");
-    let path = std::env::temp_dir().join(format!("vc-printfonts-{}.vectorcraft", std::process::id()));
+    let path = std::env::temp_dir().join(format!("vc-printfonts-{}.mostvector", std::process::id()));
     std::fs::write(&path, vectorcraft_format::save_file(&src.doc().unwrap().doc)).unwrap();
     let mut s = Session::new();
     s.execute("file.new", &json!({"width": 300, "height": 200})).unwrap();

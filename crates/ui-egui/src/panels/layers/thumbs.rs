@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use std::collections::HashSet;
 use vectorcraft_doc::{NodeKind, TextKind};
 use vectorcraft_geom::PathData;
@@ -658,7 +659,7 @@ mod tests {
     /// A placed document `id` showing file `key`, read already when `art` is given.
     fn placed(id: u64, key: &str, art: Option<Node>) -> Node {
         let p = vectorcraft_doc::PlacedDocument {
-            link: vectorcraft_doc::LinkInfo::new("/art/placed.vectorcraft"),
+            link: vectorcraft_doc::LinkInfo::new("/art/placed.mostvector"),
             key: key.into(),
             bounding: false,
             page_box: Default::default(),

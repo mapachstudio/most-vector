@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The internal clipboard and system clipboard interchange.
 //!
 //! Copy keeps the objects together with the document resources they use ([`Clipboard`]), so
@@ -5,7 +6,7 @@
 //!
 //! System clipboard: the copied objects as SVG markup (what other apps paste), and SVG markup from
 //! other apps turned into clipboard objects (pasted with the Paste commands). The UI owns the
-//! platform clipboard; these commands only convert. Within VectorCraft the internal clipboard stays
+//! platform clipboard; these commands only convert. Within Most Vector the internal clipboard stays
 //! lossless (live effects, masks, symbols); SVG is the outside format, with PNG, PDF and plain
 //! text besides it (see `flavours`).
 
@@ -211,7 +212,7 @@ impl Clipboard {
         self.nodes.is_empty() && self.artboards.is_empty() && self.guides.is_empty()
     }
 
-    /// Does it hold art (objects or artboards) for other apps? Ruler guides stay in VectorCraft:
+    /// Does it hold art (objects or artboards) for other apps? Ruler guides stay in Most Vector:
     /// a Copy of guides alone empties the system clipboard (#3226).
     pub fn has_art(&self) -> bool {
         !self.nodes.is_empty() || !self.artboards.is_empty()
@@ -446,7 +447,7 @@ mod tests {
         s.execute("edit.copy", &json!({})).unwrap();
         let svg = s.execute("clipboard.exportSvg", &json!({})).unwrap()["svg"].as_str().unwrap().to_string();
         assert!(looks_like_svg(&svg) && svg.contains("#12ab34"), "{svg}");
-        // As if pasted into another VectorCraft window.
+        // As if pasted into another Most Vector window.
         let mut t = session();
         assert_eq!(t.execute("clipboard.importSvg", &json!({"svg": svg, "center": [200, 150]})).unwrap()["count"], 1);
         t.execute("edit.pasteInPlace", &json!({})).unwrap();

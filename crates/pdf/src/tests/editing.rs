@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Preserve Editing: the native document as an embedded file, found again (also under its legacy
 //! name) and checked against the pages it was written with.
 
@@ -76,7 +77,7 @@ fn changed_pages_are_noticed() {
 /// held, in the text string encoding `bom` starts (UTF-16BE or UTF-8), padded with spaces to its
 /// length.
 fn described(pdf: &[u8], bom: &[u8]) -> Vec<u8> {
-    let from = b"(VectorCraft editing data; page hash ";
+    let from = b"(Most Vector editing data; page hash ";
     let at = pdf.windows(from.len()).position(|w| w == from).unwrap_or_else(|| panic!("no description"));
     let (hash, len) = (&pdf[at + from.len()..at + from.len() + 16], from.len() + 17);
     let mut desc = [b"(", bom].concat();

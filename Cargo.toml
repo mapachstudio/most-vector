@@ -1,3 +1,4 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [workspace]
 resolver = "3"
 members = ["crates/*", "apps/*", "xtask"]
@@ -19,7 +20,7 @@ craft-keymap = { git = "https://github.com/storytold/craft-libs", rev = "9be9a63
 # Decides who draws the window frame (desktop vs. app) so the suite shares one native titlebar per
 # desktop. The `egui` feature adds `craft_window::decorate`. (craft-libs#217.)
 craft-window = { git = "https://github.com/storytold/craft-libs", rev = "9be9a63782298ab59cd9b7a42ee9cba4f42a5ccb", features = ["egui"] }
-# The `.vectorcraft` envelope: its members, version, embedded images and the data after the JSON.
+# The `.mostvector` envelope: its members, version, embedded images and the data after the JSON.
 craft-vectorcraft-format = { git = "https://github.com/storytold/craft-libs", rev = "9be9a63782298ab59cd9b7a42ee9cba4f42a5ccb" }
 # craft-update: app-specific pretend versions apply to startup and manual checks.
 craft-update = { git = "https://github.com/storytold/craft-libs", version = "=0.1.0", rev = "c5a1cbfb5f9049f9270955caffb5bee5997aebf7", features = ["egui"] }
@@ -123,7 +124,7 @@ cognitive_complexity = "deny"
 too_many_arguments = "deny"
 wildcard_imports = "deny"
 dbg_macro = "warn"
-# VectorCraft never crashes: shipped code returns `Result`/`Option` instead of panicking (see
+# Most Vector never crashes: shipped code returns `Result`/`Option` instead of panicking (see
 # AGENTS.md › Robustness). Tests may unwrap (clippy.toml).
 unwrap_used = "deny"
 expect_used = "deny"

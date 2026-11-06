@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The Home icon shows the Home screen over open documents; Cmd+N opens the New Document dialog.
 
 use serde_json::json;
@@ -274,7 +275,7 @@ fn home_scrolls_in_a_short_window() {
     let size = (800.0, 300.0);
     let has = |texts: &[(String, egui::Rect)], s: &str| texts.iter().any(|(t, _)| t == s);
     let texts = visible_home_texts(&mut app, &ctx, size, 0.0, vec![]);
-    assert!(has(&texts, "Welcome to VectorCraft"), "{texts:?}");
+    assert!(has(&texts, "Welcome to Most Vector"), "{texts:?}");
     assert!(!has(&texts, "Community"), "below the fold at first");
     let at = egui::pos2(400.0, 150.0);
     let wheel = egui::Event::MouseWheel {
@@ -290,7 +291,7 @@ fn home_scrolls_in_a_short_window() {
         texts = visible_home_texts(&mut app, &ctx, size, f64::from(i) * 0.1, vec![]);
     }
     assert!(has(&texts, "Community"), "the wheel reaches the bottom: {texts:?}");
-    assert!(!has(&texts, "Welcome to VectorCraft"), "the top scrolled away");
+    assert!(!has(&texts, "Welcome to Most Vector"), "the top scrolled away");
     // The last preset card, scrolled into view, still takes a click.
     let card = texts.iter().find(|(t, _)| t.starts_with("Social Square Post")).map(|(_, r)| r.center()).unwrap();
     let press = |pressed| egui::Event::PointerButton { pos: card, button: egui::PointerButton::Primary, pressed, modifiers: Default::default() };
@@ -313,7 +314,7 @@ fn reopening_an_open_file_focuses_its_tab() {
     let d = std::env::temp_dir().join(format!("vc-home-reopen-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&d);
     std::fs::create_dir_all(&d).unwrap();
-    let path = d.join("doc.vectorcraft").to_string_lossy().to_string();
+    let path = d.join("doc.mostvector").to_string_lossy().to_string();
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
     app.run("shape.rectangle", json!({"x": 1, "y": 2, "width": 10, "height": 10})).unwrap();
     app.run("file.saveAs", json!({"path": path})).unwrap();
@@ -338,19 +339,19 @@ fn reopening_an_open_file_focuses_its_tab() {
     app.run("file.close", json!({})).unwrap();
     back(&mut app);
     // File › Open with a path (an open dialog's answer, `app.open`), and a path spelled differently.
-    let other = d.join(".").join("doc.vectorcraft").to_string_lossy().to_string();
+    let other = d.join(".").join("doc.mostvector").to_string_lossy().to_string();
     assert_eq!(app.run("file.open", json!({"path": other})).unwrap()["activated"], true);
     assert_eq!(focused(&app, "file.open"), uid);
     app.run("document.activate", json!({"index": 1})).unwrap();
     app.run("file.close", json!({})).unwrap();
     back(&mut app);
     // A drop.
-    crate::place::drop_files(&mut app, vec![(crate::place::DropTarget::Open, ("doc.vectorcraft".into(), Some(path.clone()), vec![]))]);
+    crate::place::drop_files(&mut app, vec![(crate::place::DropTarget::Open, ("doc.mostvector".into(), Some(path.clone()), vec![]))]);
     assert_eq!(focused(&app, "drop"), uid);
     let _ = std::fs::remove_dir_all(d);
 }
 
-/// An app with `doc.vectorcraft` saved in a fresh folder `name`, open in the first tab, and an
+/// An app with `doc.mostvector` saved in a fresh folder `name`, open in the first tab, and an
 /// untitled document active in the second → (app, folder, document path).
 fn saved_and_another(name: &str) -> (VectorcraftApp, std::path::PathBuf, String) {
     let services = crate::Services {
@@ -362,7 +363,7 @@ fn saved_and_another(name: &str) -> (VectorcraftApp, std::path::PathBuf, String)
     let d = std::env::temp_dir().join(format!("vc-reopen-{name}-{}", std::process::id()));
     let _ = std::fs::remove_dir_all(&d);
     std::fs::create_dir_all(&d).unwrap();
-    let path = d.join("doc.vectorcraft").to_string_lossy().to_string();
+    let path = d.join("doc.mostvector").to_string_lossy().to_string();
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
     app.run("file.saveAs", json!({"path": path})).unwrap();
     app.run("file.new", json!({})).unwrap();
@@ -421,7 +422,7 @@ fn a_queued_reopen_keeps_the_roots_it_was_asked_in() {
     let (inside, outside) = (d.join("inside"), d.join("outside"));
     std::fs::create_dir_all(&inside).unwrap();
     std::fs::create_dir_all(&outside).unwrap();
-    let path = inside.join("doc.vectorcraft").to_string_lossy().to_string();
+    let path = inside.join("doc.mostvector").to_string_lossy().to_string();
     app.run("document.activate", json!({"index": 0})).unwrap();
     app.run("file.saveAs", json!({"path": path})).unwrap();
     app.run("document.activate", json!({"index": 1})).unwrap();
@@ -430,7 +431,7 @@ fn a_queued_reopen_keeps_the_roots_it_was_asked_in() {
     assert_eq!(file_access::confine(roots.as_ref(), || crate::io::open_reporting(&mut app, &path)).unwrap(), serde_json::Value::Null);
     // Closed, and its file swapped for a link to one outside the roots.
     app.session.execute("file.close", &json!({"index": 0})).unwrap();
-    let away = outside.join("doc.vectorcraft");
+    let away = outside.join("doc.mostvector");
     std::fs::rename(&path, &away).unwrap();
     std::os::unix::fs::symlink(&away, &path).unwrap();
     app.ui.dialog = None;

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! EPS as other apps write it: for each common generator, a short hand-written program with the
 //! constructs its files typically use (its prolog's kind of procedures, how it sets colour, fills
 //! with gradients and patterns, places images and sets type), each read as vectors without a
@@ -750,7 +751,7 @@ fn errors_name_the_operator_and_the_procedures() {
     let r = read("{ 1 (a) add } stopped pop 0 0 10 10 rectfill /inner { 1 (a) add } def /outer { inner } def outer");
     assert!(r.warnings[0].contains("(typecheck in `add`; a value has the wrong type for the operator), in `inner` in `outer`"), "{:?}", r.warnings);
     let r = read("0 0 10 10 rectfill /p { frobnicate } def p");
-    assert!(r.warnings[0].contains("it uses `frobnicate`, which VectorCraft's PostScript reader doesn't know, in `p`"), "{:?}", r.warnings);
+    assert!(r.warnings[0].contains("it uses `frobnicate`, which Most Vector's PostScript reader doesn't know, in `p`"), "{:?}", r.warnings);
     let r = read("0 0 10 10 rectfill 0 0 moveto (x) cvn moveto");
     assert!(r.warnings[0].contains("typecheck in `moveto`: a number"), "{:?}", r.warnings);
 }

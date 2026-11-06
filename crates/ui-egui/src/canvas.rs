@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The document canvas: rendering, rulers, navigation, pointer routing to tools and on-canvas
 //! selection visuals (bounding box, anchors, handles, smart-guide style labels).
 
@@ -447,8 +448,8 @@ fn canvas_cursor(app: &mut VectorcraftApp, ui: &Ui, view_info: vectorcraft_engin
             crate::place::paint_cursor(app, ui.ctx(), &painter, hp);
         }
         // The glyph cursors are drawn here; General › Use Precise Cursors (the session turns the drawing tools' pointers
-        // into crosshairs, `Cursor::precise`) needs no handling. VECTORCRAFT_SYSTEM_CURSORS opts out of the glyphs.
-        let custom = std::env::var_os("VECTORCRAFT_SYSTEM_CURSORS").is_none();
+        // into crosshairs, `Cursor::precise`) needs no handling. MOST_VECTOR_SYSTEM_CURSORS opts out of the glyphs.
+        let custom = std::env::var_os("MOST_VECTOR_SYSTEM_CURSORS").is_none();
         // User Interface › Scale Cursor Proportional to UI: the glyphs grow with UI Scaling;
         // off, they keep their size.
         let ui_scale = if app.session.prefs.scale_cursor_with_ui { 1.0 } else { ui.ctx().zoom_factor() };
@@ -545,7 +546,7 @@ fn cache_key(
 fn poll_worker(app: &mut VectorcraftApp, ui: &Ui, key_doc: usize) {
     if !app.canvas.worker_started {
         app.canvas.worker_started = true;
-        if std::env::var_os("VECTORCRAFT_SYNC_RENDER").is_none() {
+        if std::env::var_os("MOST_VECTOR_SYNC_RENDER").is_none() {
             app.canvas.worker = crate::render_worker::Worker::spawn(ui.ctx().clone());
             app.canvas.fill_worker = crate::render_worker::Worker::spawn(ui.ctx().clone());
         }

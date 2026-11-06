@@ -1,15 +1,16 @@
-//! VectorCraft's egui frontend: an Illustrator-style UI over `vectorcraft-engine`.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector's egui frontend: an Illustrator-style UI over `vectorcraft-engine`.
 //!
 //! The UI is thin: every action goes through [`VectorcraftApp::run`], which dispatches UI commands
 //! (view/window) here and everything else to the engine. The same entry point serves menus,
 //! shortcuts, the ⌘K palette and the control channel ([`control`]).
 #![forbid(unsafe_code)]
 
-/// VectorCraft as craft-update knows it, with its 128 px icon and accent colour: the update
+/// Most Vector as craft-update knows it, with its 128 px icon and accent colour: the update
 /// prompt shows both, and an AppImage's menu entry gets the icon.
 #[cfg(not(target_arch = "wasm32"))]
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
-    icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/ai.storyteller.vectorcraft.png")),
+    icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/com.grupomostmexico.mostvector.png")),
     accent: Some([0xe8, 0x57, 0x3f]),
     ..craft_update::suite::VECTORCRAFT
 };

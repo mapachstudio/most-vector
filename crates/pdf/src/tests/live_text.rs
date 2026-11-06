@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! PDF text in installed fonts imports as live type (one point type object per line).
 
 use craft_pdf::write::backend as krilla;
@@ -59,7 +60,7 @@ fn lines_of_text_in_installed_fonts_come_in_as_point_type() {
     assert!((st.size - 24.0).abs() < 0.01);
     let origin = first.xf * kurbo::Point::ZERO;
     assert!((origin.x - 20.0).abs() < 0.01 && (origin.y - 50.0).abs() < 0.01, "on the PDF's baseline: {origin:?}");
-    assert!(st.tracking.abs() <= 1.0, "set as VectorCraft sets it: {}", st.tracking);
+    assert!(st.tracking.abs() <= 1.0, "set as Most Vector sets it: {}", st.tracking);
     assert!(t.iter().any(|t| t.plain_text() == "Hall A" && (t.first_style().size - 12.0).abs() < 0.01));
     assert!(!r.warnings.iter().any(|w| w.contains("outlines")), "{:?}", r.warnings);
 }
@@ -445,7 +446,7 @@ fn ink_width_of(_font: &Font, size: f32, text: &str) -> f32 {
     ink_width(&TextObject::point(vectorcraft_geom::Point::ZERO, text, style)) as f32
 }
 
-/// Hebrew drawn by a PDF (in visual order, as VectorCraft's own export draws it) comes back as type
+/// Hebrew drawn by a PDF (in visual order, as Most Vector's own export draws it) comes back as type
 /// in logical order that shows as drawn. Needs an installed font with Hebrew (skipped without one).
 #[test]
 fn hebrew_comes_back_in_logical_order() {

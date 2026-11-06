@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! #3575: a native file holding an object, artboard, guide or ruler origin beyond the canvas
 //! (`MAX_COORD`) opened, but every move then failed with "result would exceed the canvas": edits
 //! check those. Opening it now removes them (or resets the ruler origin) and says so.
@@ -22,7 +23,7 @@ fn document(far_object: bool) -> Value {
 
 /// Open `v` from a file, select everything and move it: → the open reply's warnings.
 fn open_and_move(v: &Value, tag: &str) -> (Session, Value) {
-    let path = std::env::temp_dir().join(format!("vectorcraft-beyond-canvas-{tag}-{}.vectorcraft", std::process::id()));
+    let path = std::env::temp_dir().join(format!("vectorcraft-beyond-canvas-{tag}-{}.mostvector", std::process::id()));
     std::fs::write(&path, serde_json::to_vec(v).unwrap()).unwrap();
     let mut s = Session::new();
     let opened = s.execute("document.open", &json!({"path": path}));
@@ -60,7 +61,7 @@ fn an_artboard_a_guide_or_a_ruler_origin_beyond_the_canvas_no_longer_blocks_edit
 fn a_file_whose_artboards_all_lie_beyond_the_canvas_is_refused() {
     let mut v = document(false);
     v["document"]["artboards"][0]["rect"] = json!({"x0": 0.0, "y0": 1e17, "x1": 100.0, "y1": 1e17 + 100.0});
-    let path = std::env::temp_dir().join(format!("vectorcraft-beyond-canvas-pages-{}.vectorcraft", std::process::id()));
+    let path = std::env::temp_dir().join(format!("vectorcraft-beyond-canvas-pages-{}.mostvector", std::process::id()));
     std::fs::write(&path, serde_json::to_vec(&v).unwrap()).unwrap();
     let r = Session::new().execute("document.open", &json!({"path": path}));
     let _ = std::fs::remove_file(&path);

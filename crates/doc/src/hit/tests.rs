@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::*;
 use crate::{Appearance, Node};
 use std::sync::Arc;
@@ -544,7 +545,7 @@ fn evaluated_art_is_not_kept_while_a_placed_document_may_show_in_it() {
     let spec = crate::live::BlendSpec { spacing: crate::live::BlendSpacing::Steps(200), ..Default::default() };
     d.insert(Some(l), 0, Node::new(blend, NodeKind::Blend { children: keys, spec: Box::new(spec) })).unwrap();
     let placed = crate::PlacedDocument {
-        link: crate::LinkInfo::new("/art/logo.vectorcraft"),
+        link: crate::LinkInfo::new("/art/logo.mostvector"),
         key: "logo".into(),
         bounding: false,
         page_box: crate::PageBox::Crop,

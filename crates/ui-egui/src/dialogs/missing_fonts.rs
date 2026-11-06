@@ -1,9 +1,10 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The fonts a document opened without (`text.missingFonts`), listed once the missing linked file
 //! questions (dialog `missingLinks`) are answered, one document at a time ([`super::settle`]), with
 //! Find Fonts (Type › Find Font on the first of them, to replace it) and Close. Neither brings the
 //! dialog back for that open. Search Fonts Folder (the `Fonts` folder next to the document, as
 //! File › Package writes it) and Find in Folder… look for their files (`text.findFontFiles`, on
-//! separate threads), and Add Fonts copies the files the user chooses into VectorCraft's own Fonts
+//! separate threads), and Add Fonts copies the files the user chooses into Most Vector's own Fonts
 //! folder (`text.addFontFiles`). Type › Find Font's Find in Folder… opens it too
 //! (`ui.findFontsInFolder`), and so does `ui.missingFontsDialog`.
 //!
@@ -305,7 +306,7 @@ fn body(app: &mut VectorcraftApp, ui: &mut egui::Ui, d: &mut Dialog) -> bool {
         ui.add_space(8.0);
         widgets::dim_label(ui, tl!("Copy only fonts you own or are licensed to install."));
         if let Some(dir) = vectorcraft_text::app_font_dir() {
-            widgets::dim_name(ui, &crate::i18n::fmt(tl!("VectorCraft copies the fonts to {folder}."), &[("folder", &dir.to_string_lossy())]));
+            widgets::dim_name(ui, &crate::i18n::fmt(tl!("Most Vector copies the fonts to {folder}."), &[("folder", &dir.to_string_lossy())]));
         }
         ui.add_space(6.0);
         if ui.add_enabled(!searching && !chosen.is_empty(), egui::Button::new(tl!("Add Fonts"))).clicked() {
@@ -392,7 +393,7 @@ fn confirm(app: &mut VectorcraftApp, d: &Dialog) -> Result<Value, String> {
     add_fonts(app, d)
 }
 
-/// Add Fonts: copy the chosen files into VectorCraft's Fonts folder and close.
+/// Add Fonts: copy the chosen files into Most Vector's Fonts folder and close.
 fn add_fonts(app: &mut VectorcraftApp, d: &Dialog) -> Result<Value, String> {
     let chosen = d.fields.get("chosen").and_then(Value::as_array).cloned().unwrap_or_default();
     if chosen.is_empty() {

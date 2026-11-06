@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! WebAssembly plug-ins (#121): object filters through `plugin.run` (one undo step,
 //! transactional), live-effect plug-ins in appearance stacks, and the `plugin.*` management
 //! commands.
@@ -11,7 +12,7 @@ use crate::*;
 
 /// The example Desaturate plug-in (built from `crates/plugins/example`).
 const DESATURATE: &[u8] = include_bytes!("../../../plugins/tests/fixtures/desaturate.wasm");
-const DESATURATE_ID: &str = "org.vectorcraft.example.desaturate";
+const DESATURATE_ID: &str = "org.mostvector.example.desaturate";
 
 fn run(s: &mut Session, cmd: &str, p: Value) -> Value {
     s.execute(cmd, &p).unwrap_or_else(|e| panic!("{cmd}: {e}"))

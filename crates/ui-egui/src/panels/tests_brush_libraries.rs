@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Headless frames of brush libraries in library panels: clicking a brush adds it to the
 //! document's Brushes (and applies it to the selected paths), dragging one carries it out, the
 //! Window menu and the Brushes panel open libraries, Save Brushes writes User Defined libraries
@@ -175,8 +176,8 @@ fn save_brushes_writes_a_user_library_that_reopens_and_adds_to_another_document(
     // Reopened in a library panel, its brush goes into another document.
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
     app.run("window.userBrushLibrary1", json!({})).unwrap();
-    assert_eq!(last_open(&app.ui).map(|p| p.id.as_str()), Some("user/Pens.vectorcraft"));
-    let (name, lib) = BrushLibraries::get(&app, "user/Pens.vectorcraft").unwrap();
+    assert_eq!(last_open(&app.ui).map(|p| p.id.as_str()), Some("user/Pens.mostvector"));
+    let (name, lib) = BrushLibraries::get(&app, "user/Pens.mostvector").unwrap();
     assert_eq!((name.as_str(), lib.len()), ("Pens", 1), "only the selected brush");
     let undo = undo_len(&app);
     click(&mut app, &ctx, "Quill", Modifiers::NONE, 1.0);
@@ -193,7 +194,7 @@ fn other_library_opens_a_documents_brushes_and_reports_unreadable_files() {
     let mut app = app();
     app.run("brush.new", json!({"type": "bristle", "name": "Mop"})).unwrap();
     let brushes = count(&app);
-    let doc = dir.join("Studio.vectorcraft");
+    let doc = dir.join("Studio.mostvector");
     let b64 = app.run("document.serialize", json!({})).unwrap()["dataBase64"].as_str().unwrap().to_string();
     std::fs::write(&doc, vectorcraft_format::base64_decode(&b64).unwrap()).unwrap();
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
@@ -204,7 +205,7 @@ fn other_library_opens_a_documents_brushes_and_reports_unreadable_files() {
     let other = BrushLibraries::list(&app).into_iter().find(|l| l.id == open.id).unwrap();
     assert_eq!(other.submenu, Some("Other Libraries"));
     // A file that isn't a document is an error, and opens no panel.
-    let bad = dir.join("Broken.vectorcraft");
+    let bad = dir.join("Broken.mostvector");
     std::fs::write(&bad, b"not a document").unwrap();
     app.run("window.brushLibrary", json!({"library": null})).unwrap();
     assert!(app.run("window.brushLibrary.other", json!({"path": bad.to_string_lossy()})).is_err());
@@ -239,7 +240,7 @@ fn library_panels_serialise_and_hash_their_brushes_once() {
             Ok(())
         })
         .unwrap();
-    let path = dir.join("Many.vectorcraft");
+    let path = dir.join("Many.mostvector");
     let b64 = app.run("document.serialize", json!({})).unwrap()["dataBase64"].as_str().unwrap().to_string();
     std::fs::write(&path, vectorcraft_format::base64_decode(&b64).unwrap()).unwrap();
     let r = app.run("window.brushLibrary.other", json!({"path": path.to_string_lossy()})).unwrap();

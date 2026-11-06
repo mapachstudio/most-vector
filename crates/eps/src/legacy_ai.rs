@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Legacy `.ai`, version 7: the PostScript-form Illustrator format, written so that apps that read
 //! it get the document's layers, groups, compound paths and clipping groups as editable objects (a
 //! PDF-compatible `.ai` without Illustrator's undocumented editing data opens in them as one
@@ -187,7 +188,7 @@ pub fn export_legacy_ai(doc: &Document, o: &LegacyAiOptions) -> Result<LegacyAiO
     let mut s = String::new();
     s.push_str(PS_HEADER);
     s.push('\n');
-    let _ = writeln!(s, "%%Creator: VectorCraft {}", env!("CARGO_PKG_VERSION"));
+    let _ = writeln!(s, "%%Creator: Most Vector {}", env!("CARGO_PKG_VERSION"));
     let _ = writeln!(s, "%%Title: {}", latin_string(&title));
     if let Some(t) = o.created {
         let [y, mo, d, h, mi, _] = vectorcraft_doc::metadata::civil(t);

@@ -1,4 +1,5 @@
-//! VectorCraft geometry kernel.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector geometry kernel.
 //!
 //! The editable path model is anchor based (like every Illustrator tool thinks about paths):
 //! a [`PathData`] is a list of [`SubPath`]s, each a list of [`Anchor`]s with absolute in/out

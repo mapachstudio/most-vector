@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Native files: `document.save {compress, version, preview}`, the Use Compression preference,
 //! atomic writes, unused images left out, keys from newer versions and colour profiles kept.
 
@@ -54,7 +55,7 @@ fn compressed_saves_open_by_their_content() {
     let plain = saved(&mut s, json!({}));
     assert!(!is_compressed(&plain) && packed.len() < plain.len());
     // Recognised by its content, whatever the name says.
-    for name in ["a.vectorcraft", "a.drawcraft", "a.svgz", "a.bin"] {
+    for name in ["a.mostvector", "a.drawcraft", "a.svgz", "a.bin"] {
         let r = open(&mut s, name, &packed);
         assert_eq!(r["format"], "vectorcraft", "{name}");
         assert_eq!(s.doc().unwrap().doc.node_count(), 2);
@@ -112,7 +113,7 @@ fn an_older_version_is_pretty_only_when_its_own_json_fits() {
     let per_anchor = serde_json::to_vec_pretty(&path_doc(1000)).unwrap().len() / 1000;
     let d = path_doc(vectorcraft_format::PRETTY_MAX_BYTES / 2 / per_anchor);
     let mut s = Session::new();
-    open(&mut s, "traced.vectorcraft", &vectorcraft_format::save_file(&d));
+    open(&mut s, "traced.mostvector", &vectorcraft_format::save_file(&d));
     let is_pretty = |bytes: &[u8]| bytes.windows(3).any(|w| w == b"\n  ");
     assert!(is_pretty(&saved(&mut s, json!({"compress": false}))));
     let old = saved(&mut s, json!({"version": 1}));
@@ -134,17 +135,17 @@ fn preview_is_at_most_256_pixels() {
 #[test]
 fn saving_writes_through_a_temporary_file() {
     let d = tmp_dir("atomic");
-    let path = d.join("doc.vectorcraft");
+    let path = d.join("doc.mostvector");
     std::fs::write(&path, b"an older version of the file").unwrap();
     let mut s = session();
     s.execute("document.save", &json!({"path": path.to_string_lossy()})).unwrap();
     assert!(sniff(&std::fs::read(&path).unwrap()));
     let names: Vec<String> = std::fs::read_dir(&d).unwrap().map(|e| e.unwrap().file_name().to_string_lossy().to_string()).collect();
-    assert_eq!(names, ["doc.vectorcraft"], "no temporary file left behind");
+    assert_eq!(names, ["doc.mostvector"], "no temporary file left behind");
     assert!(!s.doc().unwrap().is_dirty());
     // A save that can't be written fails, and the document stays modified.
     s.execute("shape.rectangle", &json!({"x": 0, "y": 0, "width": 5, "height": 5})).unwrap();
-    let missing = d.join("missing").join("doc.vectorcraft");
+    let missing = d.join("missing").join("doc.mostvector");
     assert!(s.execute("document.save", &json!({"path": missing.to_string_lossy()})).is_err());
     assert!(s.doc().unwrap().is_dirty());
     let _ = std::fs::remove_dir_all(&d);
@@ -163,7 +164,7 @@ fn unused_images_are_left_out_of_saves() {
     assert!(json_of(&saved(&mut s, json!({})))["images"].as_object().unwrap().is_empty());
     s.execute("edit.undo", &json!({})).unwrap();
     let bytes = saved(&mut s, json!({}));
-    open(&mut s, "back.vectorcraft", &bytes);
+    open(&mut s, "back.mostvector", &bytes);
     assert_eq!(s.doc().unwrap().doc.images.len(), 1);
 }
 
@@ -173,7 +174,7 @@ fn newer_keys_and_legacy_profiles_survive_open_and_save() {
     let mut j = json_of(&saved(&mut s, json!({"version": 2})));
     j["document"]["fromTheFuture"] = json!({"x": 1});
     j["document"]["unknown"] = json!({"colorProfiles": {"rgb": "sRGB IEC61966-2.1", "cmyk": null}});
-    open(&mut s, "old.vectorcraft", &serde_json::to_vec(&j).unwrap());
+    open(&mut s, "old.mostvector", &serde_json::to_vec(&j).unwrap());
     let d = &s.doc().unwrap().doc;
     assert_eq!(d.color_profiles.rgb.as_deref(), Some("sRGB IEC61966-2.1"), "profiles migrate");
     assert!(d.unknown.is_empty());
@@ -186,7 +187,7 @@ fn newer_keys_and_legacy_profiles_survive_open_and_save() {
     assert_eq!(v2["document"]["unknown"]["colorProfiles"]["rgb"], "sRGB IEC61966-2.1");
 }
 
-/// A version 1 document saved before VectorCraft 0.21.0 turned its Twist effects counterclockwise
+/// A version 1 document saved before Most Vector 0.21.0 turned its Twist effects counterclockwise
 /// for a positive angle. It opens with the angles negated, so its art turns as it did; saved
 /// again it is a document of the current version, and saved for an older file version it is version 1 again.
 #[test]
@@ -202,9 +203,9 @@ fn a_version_1_documents_twist_turns_as_it_was_saved() {
     d.insert(Some(l), 0, Node::path(id, right.clone(), a)).unwrap();
     let mut j = json_of(&vectorcraft_format::save(&d, false));
     j["document"]["version"] = json!(1);
-    j["generator"] = json!("VectorCraft 0.20.0");
+    j["generator"] = json!("Most Vector 0.20.0");
     let mut s = Session::new();
-    open(&mut s, "old.vectorcraft", &serde_json::to_vec(&j).unwrap());
+    open(&mut s, "old.mostvector", &serde_json::to_vec(&j).unwrap());
     let doc = &s.doc().unwrap().doc;
     let n = doc.layers[0].children().and_then(|c| c.first()).cloned().unwrap();
     let turned = vectorcraft_render::effects::apply_geometry(&n.appearance.effects, &right, Rect::new(0.0, 0.0, 100.0, 100.0));

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File → File Info (`file.info`): editing as one undo step, the native round trip, and the PDF,
 //! PNG and SVG metadata it writes.
 
@@ -101,7 +102,7 @@ fn file_info_round_trips_and_old_files_load() {
 fn saving_to_a_file_stamps_the_modified_date() {
     let mut s = session();
     let created = s.doc().unwrap().doc.metadata.created;
-    let path = std::env::temp_dir().join(format!("vc-fileinfo-{}.vectorcraft", std::process::id()));
+    let path = std::env::temp_dir().join(format!("vc-fileinfo-{}.mostvector", std::process::id()));
     s.execute("document.save", &json!({"path": path.to_string_lossy()})).unwrap();
     let st = s.doc().unwrap();
     assert!(st.doc.metadata.modified.is_some() && st.doc.metadata.created == created);
@@ -116,7 +117,7 @@ fn saving_to_a_file_stamps_the_modified_date() {
 fn inspect_and_open_report_the_file_info_title_beside_the_file_name() {
     let dir = std::env::temp_dir().join(format!("vc-fileinfotitle-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
-    let path = dir.join("poster.vectorcraft");
+    let path = dir.join("poster.mostvector");
     let mut s = session();
     // Untitled, the two are the same.
     let r = s.execute("document.inspect", &json!({"depth": 0})).unwrap();
@@ -124,13 +125,13 @@ fn inspect_and_open_report_the_file_info_title_beside_the_file_name() {
     s.execute("file.info", &json!({"title": "Poster: final"})).unwrap();
     s.execute("document.save", &json!({"path": path.to_str().unwrap()})).unwrap();
     let r = s.execute("document.inspect", &json!({"depth": 0})).unwrap();
-    assert_eq!((r["title"].as_str(), r["fileInfoTitle"].as_str()), (Some("poster.vectorcraft"), Some("Poster: final")));
+    assert_eq!((r["title"].as_str(), r["fileInfoTitle"].as_str()), (Some("poster.mostvector"), Some("Poster: final")));
     // Opened from the file, in another session.
     let mut s = Session::new();
     let opened = s.execute("document.open", &json!({"path": path.to_str().unwrap()})).unwrap();
-    assert_eq!((opened["title"].as_str(), opened["fileInfoTitle"].as_str()), (Some("poster.vectorcraft"), Some("Poster: final")));
+    assert_eq!((opened["title"].as_str(), opened["fileInfoTitle"].as_str()), (Some("poster.mostvector"), Some("Poster: final")));
     let r = s.execute("document.inspect", &json!({"depth": 0})).unwrap();
-    assert_eq!((r["title"].as_str(), r["fileInfoTitle"].as_str()), (Some("poster.vectorcraft"), Some("Poster: final")));
+    assert_eq!((r["title"].as_str(), r["fileInfoTitle"].as_str()), (Some("poster.mostvector"), Some("Poster: final")));
     assert_eq!(r["fileInfoTitle"], s.execute("file.info", &json!({})).unwrap()["title"]);
     let _ = std::fs::remove_dir_all(dir);
 }
@@ -332,7 +333,7 @@ fn xmp_title(pdf: &str) -> &str {
 fn an_untitled_document_saved_to_a_file_exports_titled_after_it() {
     let dir = std::env::temp_dir().join(format!("vc-pdftitle-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
-    let path = dir.join("Document C.vectorcraft");
+    let path = dir.join("Document C.mostvector");
     // Unsaved and untitled: viewers keep showing the file name, not "Untitled-1".
     let mut untitled = Session::new();
     untitled.execute("file.new", &json!({"width": 100, "height": 80})).unwrap();
@@ -365,7 +366,7 @@ fn an_untitled_document_saved_to_a_file_exports_titled_after_it() {
     assert_eq!(s.doc().unwrap().doc.title, "Untitled-1");
     // A title of its own (File Info, New Document's Name) stays.
     let mut s = session();
-    s.execute("document.save", &json!({"path": dir.join("Document D.vectorcraft").to_str().unwrap()})).unwrap();
+    s.execute("document.save", &json!({"path": dir.join("Document D.mostvector").to_str().unwrap()})).unwrap();
     for pdf in pdf_texts(&mut s) {
         assert!(pdf.contains("/Title(Poster)") && xmp_title(&pdf).contains("Poster"));
         assert!(pdf.contains("/ViewerPreferences<</DisplayDocTitle true>>"), "{pdf}");

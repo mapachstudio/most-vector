@@ -1,9 +1,10 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft-eps"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "VectorCraft Encapsulated PostScript: a hand-written EPS writer (PostScript Level 2 and 3) with TIFF previews"
+description = "Most Vector Encapsulated PostScript: a hand-written EPS writer (PostScript Level 2 and 3) with TIFF previews"
 
 [lints]
 workspace = true

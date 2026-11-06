@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The system clipboard's formats through a headless fake service (M4.57): what Copy publishes,
 //! what Paste takes from other apps (bitmaps, PDF, text), the Paste menu and keyboard paste.
 
@@ -366,7 +367,7 @@ fn a_later_copy_replaces_formats_not_written_yet() {
 /// formats at once: they don't wait for that work.
 #[test]
 fn a_copy_while_the_worker_saves_writes_the_formats_at_once() {
-    let (mut app, board, hold) = app_with_busy_worker("Saving a.vectorcraft");
+    let (mut app, board, hold) = app_with_busy_worker("Saving a.mostvector");
     copy_elsewhere(&board, vec![(TEXT, b"Words another app copied".to_vec())]);
     copy_rect(&mut app);
     assert_eq!(written(&board), [TEXT, SVG, PNG]);
@@ -431,7 +432,7 @@ fn the_menus_paste_into_a_field_waits_for_the_formats() {
     run(&mut app, "select.set", json!({"ids": [t]}));
     copy_elsewhere(&board, vec![(TEXT, b"Words another app copied".to_vec())]);
     run(&mut app, "edit.copy", json!({}));
-    let hold = hold_worker(&mut app, "Saving a.vectorcraft");
+    let hold = hold_worker(&mut app, "Saving a.mostvector");
     // A text field with the keyboard; in the second frame Paste is chosen from the menu.
     let (ctx, id, mut field) = (egui::Context::default(), egui::Id::unique("field"), String::new());
     for paste in [false, true] {

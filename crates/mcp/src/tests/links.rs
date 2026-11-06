@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Linked images over MCP, headless: a document opened without its linked file reports it, and
 //! `links.relink` / `links.check` reach it through `run_command`.
 
@@ -22,9 +23,9 @@ fn headless_links_report_missing_files_and_relink() {
     std::fs::write(file("a.png"), vectorcraft_format::base64_decode(png["dataBase64"].as_str().unwrap()).unwrap()).unwrap();
     std::fs::write(file("b.png"), vectorcraft_format::base64_decode(png["dataBase64"].as_str().unwrap()).unwrap()).unwrap();
     let id = run(&mut h, "file.place", json!({"path": file("a.png")}))["ids"][0].clone();
-    run(&mut h, "document.save", json!({"path": file("doc.vectorcraft")}));
+    run(&mut h, "document.save", json!({"path": file("doc.mostvector")}));
     std::fs::remove_file(file("a.png")).unwrap();
-    let r = run(&mut h, "document.open", json!({"path": file("doc.vectorcraft")}));
+    let r = run(&mut h, "document.open", json!({"path": file("doc.mostvector")}));
     assert_eq!(r["missingLinks"][0]["ids"], json!([id]), "{r}");
     assert_eq!(run(&mut h, "links.check", json!({}))["missing"], 1);
     let r = run(&mut h, "links.relink", json!({"ids": [id], "path": file("b.png")}));

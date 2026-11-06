@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Losing the graphics device, and the textures uploaded to it (#369).
 //!
 //! A window can lose its graphics device: a driver reset or a GPU hang on the desktop, the browser
@@ -235,7 +236,7 @@ mod tests {
         app.run("shape.rectangle", json!({"x": 10, "y": 10, "width": 50, "height": 20})).unwrap();
         app.session.prefs.autosave_recovery = false;
         assert!(app.graphics_lost("test"), "copied even with Data Recovery off");
-        assert_eq!(store.list().unwrap().iter().filter(|n| n.ends_with(".vectorcraft")).count(), 1);
+        assert_eq!(store.list().unwrap().iter().filter(|n| n.ends_with(".mostvector")).count(), 1);
         // Without a store the work isn't safe.
         assert!(!self::app().graphics_lost("test"));
     }

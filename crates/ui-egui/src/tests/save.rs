@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The File menu around saving, in the app: Revert's confirmation, recent files, Show in Folder,
 //! the single Document Color Mode entry and documents reopening at their saved view.
 
@@ -48,7 +49,7 @@ fn press_ok(app: &mut VectorcraftApp) {
 #[test]
 fn revert_asks_then_reloads_in_the_same_tab_keeping_every_zoom() {
     let d = dir("revert");
-    let path = d.join("a.vectorcraft").to_string_lossy().to_string();
+    let path = d.join("a.mostvector").to_string_lossy().to_string();
     let mut app = app();
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
     rect(&mut app);
@@ -84,7 +85,7 @@ fn revert_asks_then_reloads_in_the_same_tab_keeping_every_zoom() {
 #[test]
 fn revert_with_the_artboard_tool_keeps_the_active_artboard() {
     let d = dir("revert-artboard");
-    let path = d.join("a.vectorcraft").to_string_lossy().to_string();
+    let path = d.join("a.mostvector").to_string_lossy().to_string();
     let mut app = app();
     app.run("file.new", json!({"width": 100, "height": 100, "artboards": 3})).unwrap();
     app.run("file.saveAs", json!({"path": path})).unwrap();
@@ -102,7 +103,7 @@ fn revert_with_the_artboard_tool_keeps_the_active_artboard() {
 #[test]
 fn a_batch_that_reverts_with_the_artboard_tool_keeps_the_active_artboard() {
     let d = dir("revert-batch");
-    let path = d.join("a.vectorcraft").to_string_lossy().to_string();
+    let path = d.join("a.mostvector").to_string_lossy().to_string();
     let mut app = app();
     app.run("file.new", json!({"width": 100, "height": 100, "artboards": 3})).unwrap();
     app.run("file.saveAs", json!({"path": path})).unwrap();
@@ -132,8 +133,8 @@ fn batch_with_the_artboard_tool_keeps_the_active_artboard() {
     std::fs::create_dir_all(&src).unwrap();
     let mut other = app();
     other.run("file.new", json!({"width": 50, "height": 50})).unwrap();
-    other.run("file.saveAs", json!({"path": src.join("b.vectorcraft").to_string_lossy()})).unwrap();
-    let path = d.join("a.vectorcraft").to_string_lossy().to_string();
+    other.run("file.saveAs", json!({"path": src.join("b.mostvector").to_string_lossy()})).unwrap();
+    let path = d.join("a.mostvector").to_string_lossy().to_string();
     let mut app = app();
     app.run("file.new", json!({"width": 100, "height": 100, "artboards": 3})).unwrap();
     app.run("dataset.new", json!({"name": "a"})).unwrap();
@@ -194,15 +195,15 @@ fn show_in_folder_needs_a_saved_document_and_a_file_manager() {
     let mut app = app();
     app.run("file.new", json!({})).unwrap();
     assert!(!menus::enabled(&app, "file.reveal"));
-    app.session.doc_mut().unwrap().path = Some("/art/a.vectorcraft".into());
+    app.session.doc_mut().unwrap().path = Some("/art/a.mostvector".into());
     assert!(!menus::enabled(&app, "file.reveal"), "no file manager (web)");
     app.services.reveal = Some(Box::new(move |p: &str| {
         s.borrow_mut().push(p.to_string());
         Ok(())
     }));
     assert!(menus::enabled(&app, "file.reveal"));
-    assert_eq!(app.run("file.reveal", json!({})).unwrap()["path"], "/art/a.vectorcraft");
-    assert_eq!(*shown.borrow(), ["/art/a.vectorcraft"]);
+    assert_eq!(app.run("file.reveal", json!({})).unwrap()["path"], "/art/a.mostvector");
+    assert_eq!(*shown.borrow(), ["/art/a.mostvector"]);
 }
 
 #[test]
@@ -221,7 +222,7 @@ fn the_palette_lists_document_color_mode_once() {
 #[test]
 fn a_document_reopens_at_its_saved_view() {
     let d = dir("view");
-    let path = d.join("v.vectorcraft").to_string_lossy().to_string();
+    let path = d.join("v.mostvector").to_string_lossy().to_string();
     let mut app = app();
     app.run("file.new", json!({"width": 300, "height": 200})).unwrap();
     {
@@ -246,7 +247,7 @@ fn a_document_reopens_at_its_saved_view() {
 #[test]
 fn replacing_a_file_that_opening_left_things_out_of_asks_first() {
     let d = dir("lossy");
-    let path = d.join("a.vectorcraft").to_string_lossy().to_string();
+    let path = d.join("a.mostvector").to_string_lossy().to_string();
     let mut app = app();
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
     rect(&mut app);
@@ -295,7 +296,7 @@ fn native_saves_stream_into_the_file() {
     }));
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
     rect(&mut app);
-    let native = d.join("a.vectorcraft").to_string_lossy().to_string();
+    let native = d.join("a.mostvector").to_string_lossy().to_string();
     let r = app.run("file.saveAs", json!({"path": native, "compress": true})).unwrap();
     let bytes = std::fs::read(&native).unwrap();
     assert_eq!(r["bytes"], bytes.len(), "{r}");

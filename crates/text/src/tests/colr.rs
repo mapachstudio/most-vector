@@ -1,5 +1,6 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! COLR colour glyphs (v0 layers, v1 paints): read as trees of document nodes in font units, or
-//! as an image for paints VectorCraft lacks, and laid out with the type.
+//! as an image for paints Most Vector lacks, and laid out with the type.
 
 use skrifa::MetadataProvider;
 use skrifa::color::ColorGlyphFormat;

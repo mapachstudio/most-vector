@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Windows: the font files in DirectWrite's system font collection and those of the fonts GDI has
 //! loaded, scanned with the font folders (`vectorcraft_text::set_platform_font_files`). The desktop
 //! app and `vectorcraft-cli` (exports, MCP) both install it; the CLI shares this file.
@@ -6,7 +7,7 @@
 //! own folders, without installing them: the font folders and the registry don't list them. Since
 //! Windows 10 (version 1607) DirectWrite's system font collection is meant to hold them too
 //! (<https://learn.microsoft.com/windows/win32/directwrite/what-s-new-in-directwrite-for-windows-8-consumer-preview>,
-//! "Support for Adobe Typekit and other font-service clients"), so VectorCraft lists them as other
+//! "Support for Adobe Typekit and other font-service clients"), so Most Vector lists them as other
 //! apps do, reading the files in place (#579). It doesn't always: on some machines the fonts
 //! Creative Cloud loads are in GDI's font list (Word and the font dialogs show them) but not in
 //! the collection (#1258). So the families GDI lists that the collection doesn't name are asked

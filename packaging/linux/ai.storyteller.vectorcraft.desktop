@@ -1,14 +1,15 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [Desktop Entry]
 Type=Application
-Name=VectorCraft
+Name=Most Vector
 GenericName=Vector Graphics Editor
 Comment=Draw and edit vector illustrations, SVG and PDF
 Exec=vectorcraft %F
 TryExec=vectorcraft
-Icon=ai.storyteller.vectorcraft
+Icon=com.grupomostmexico.mostvector
 Terminal=false
 StartupNotify=true
-StartupWMClass=ai.storyteller.vectorcraft
+StartupWMClass=com.grupomostmexico.mostvector
 Categories=Graphics;2DGraphics;VectorGraphics;
 Keywords=vector;illustration;svg;pdf;drawing;bezier;
 # MimeType lists the formats File › Open reads that Info.plist.in declares for macOS. The type of .ai

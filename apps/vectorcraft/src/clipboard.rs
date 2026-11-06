@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The system clipboard with every format Copy offers and Paste reads
 //! (`Services::system_clipboard`).
 //!
@@ -528,7 +529,7 @@ mod portable {
                         if self.logged.swap(true, Ordering::Relaxed) {
                             log::debug!("the system clipboard is still unavailable ({why}); next try in {wait:?}");
                         } else {
-                            log::warn!("the system clipboard is unavailable ({why}): Copy and Paste stay inside VectorCraft");
+                            log::warn!("the system clipboard is unavailable ({why}): Copy and Paste stay inside Most Vector");
                         }
                         self.failed = Some(Failed { at: now, wait });
                     }

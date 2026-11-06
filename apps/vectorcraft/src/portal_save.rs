@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Linux and the BSDs: the save dialog of a save with two or more file types (Save, Save As, Save a
 //! Copy, Save as Template; #2679), asked of the XDG desktop portal here
 //! (<https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.FileChooser.html>).
@@ -338,10 +339,10 @@ mod tests {
 
     fn request() -> SaveRequest {
         let pick = FilePick {
-            name: "Untitled-1.vectorcraft".into(),
+            name: "Untitled-1.mostvector".into(),
             folder: Some("/home/me/Art".into()),
             filters: vec![
-                FilePick::filter("VectorCraft", &["vectorcraft"]),
+                FilePick::filter("Most Vector", &["vectorcraft"]),
                 FilePick::filter("SVG", &["svg"]),
                 FilePick::filter("PDF-compatible .ai", &["ai"]),
             ],
@@ -355,14 +356,14 @@ mod tests {
     fn the_request_names_the_file_type_the_dialog_starts_on() {
         let request = request();
         let o = options(&request, "t1");
-        assert_eq!(o.get("current_filter"), Some(&Value::from(("VectorCraft".to_string(), vec![(0u32, "*.vectorcraft".to_string())]))));
+        assert_eq!(o.get("current_filter"), Some(&Value::from(("Most Vector".to_string(), vec![(0u32, "*.mostvector".to_string())]))));
         let filters = vec![
-            ("VectorCraft".to_string(), vec![(0u32, "*.vectorcraft".to_string())]),
+            ("Most Vector".to_string(), vec![(0u32, "*.mostvector".to_string())]),
             ("SVG".to_string(), vec![(0u32, "*.svg".to_string())]),
             ("PDF-compatible .ai".to_string(), vec![(0u32, "*.ai".to_string())]),
         ];
         assert_eq!(o.get("filters"), Some(&Value::from(filters)));
-        assert_eq!(o.get("current_name"), Some(&Value::from("Untitled-1.vectorcraft")));
+        assert_eq!(o.get("current_name"), Some(&Value::from("Untitled-1.mostvector")));
         assert_eq!(o.get("current_folder"), Some(&Value::from(b"/home/me/Art\0".to_vec())));
         assert_eq!(o.get("handle_token"), Some(&Value::from("t1")));
         let bare = SaveRequest { name: String::new(), folder: None, filters: Vec::new(), ..request };
@@ -412,7 +413,7 @@ mod tests {
     #[test]
     fn file_uris_become_local_paths() {
         let file_uri_path = |uri: &str| super::file_uri_path(uri).map(|b| String::from_utf8(b).unwrap());
-        assert_eq!(file_uri_path("file:///home/me/Untitled-1.vectorcraft").as_deref(), Some("/home/me/Untitled-1.vectorcraft"));
+        assert_eq!(file_uri_path("file:///home/me/Untitled-1.mostvector").as_deref(), Some("/home/me/Untitled-1.mostvector"));
         assert_eq!(file_uri_path("file:///home/me/A%20b%C3%A9.svg").as_deref(), Some("/home/me/A bé.svg"));
         assert_eq!(file_uri_path("file://localhost/tmp/x.pdf").as_deref(), Some("/tmp/x.pdf"));
         // A `%` without two hex digits after it stays as it is.
@@ -555,7 +556,7 @@ mod tests {
         assert_eq!(pick_answer(saved, &request), ["/home/me/Art/poster", "ai"]);
         assert_eq!(save_within(&conn, &request), Ok(None));
         let seen = seen.lock().map(|s| s.clone()).unwrap_or_default();
-        assert_eq!(seen.first(), Some(&(Some("Untitled-1.vectorcraft".to_string()), Some(request.filters[0].0.clone()))));
+        assert_eq!(seen.first(), Some(&(Some("Untitled-1.mostvector".to_string()), Some(request.filters[0].0.clone()))));
         let _ = daemon.kill();
     }
 
@@ -596,7 +597,7 @@ mod tests {
         let labels: Vec<&str> = request.filters.iter().map(|(l, _)| l.as_str()).collect();
         let lang = vectorcraft_ui_egui::i18n::current();
         let expected: Vec<&str> =
-            ["VectorCraft", "SVG", "PDF-compatible .ai"].iter().map(|l| vectorcraft_ui_egui::i18n::tr_ctx(lang, "file-filter", l)).collect();
+            ["Most Vector", "SVG", "PDF-compatible .ai"].iter().map(|l| vectorcraft_ui_egui::i18n::tr_ctx(lang, "file-filter", l)).collect();
         assert_eq!(labels, expected);
         assert_eq!(request.parent, "x11:3a0000f");
     }

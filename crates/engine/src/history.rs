@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::{Arc, Document, Selection};
 
 /// One undo step.
@@ -33,7 +34,7 @@ pub struct NamedStep {
     pub template: &'static str,
     /// The name in the placeholder, as the document holds it (a style's name).
     pub name: String,
-    /// The name is one VectorCraft gives (`[Normal Character Style]`), not one the user typed.
+    /// The name is one Most Vector gives (`[Normal Character Style]`), not one the user typed.
     pub built_in: bool,
 }
 

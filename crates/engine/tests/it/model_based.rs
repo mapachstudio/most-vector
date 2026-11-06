@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Model-based / stateful property tests: random command sequences drawn from the registry, with
 //! structural invariants checked after every step and history/serialization invariants at the end.
 
@@ -134,7 +135,7 @@ fn a_failed_batch_restores_the_file_the_history_and_a_drag_in_progress() {
         (doc_json(&st.doc), st.history.undo.len(), st.history.redo.len())
     };
     // Save As, then a failing step: the document keeps no file and stays modified.
-    let path = vectorcraft_testkit::temp_dir("batch-rollback").join("named.vectorcraft").to_string_lossy().to_string();
+    let path = vectorcraft_testkit::temp_dir("batch-rollback").join("named.mostvector").to_string_lossy().to_string();
     let save = json!({"command": "file.saveAs", "params": {"path": path}});
     assert!(s.execute("command.batch", &json!({"commands": [rect(0), save, fail]})).is_err());
     assert_eq!(state(&s), before);
@@ -171,7 +172,7 @@ fn empty_batch_is_harmless() {
 fn save_open_via_commands_roundtrips() {
     let mut s = fixtures::rich_session();
     let dir = vectorcraft_testkit::temp_dir("engine-save");
-    let path = dir.join("rich.vectorcraft");
+    let path = dir.join("rich.mostvector");
     exec(&mut s, "document.save", json!({"path": path.to_str().unwrap()}));
     let want = doc_json(&s.doc().unwrap().doc);
     exec(&mut s, "document.open", json!({"path": path.to_str().unwrap()}));

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Data Recovery in the app: the timer (driven by a fake clock), copies written in the background,
 //! the Recover Documents dialog at launch, and quitting leaving no copies behind.
 
@@ -18,7 +19,7 @@ fn app_with(store: &Arc<MemoryStore>, services: Services) -> VectorcraftApp {
 }
 
 fn copies(store: &MemoryStore) -> usize {
-    store.list().unwrap().iter().filter(|n| n.ends_with(".vectorcraft")).count()
+    store.list().unwrap().iter().filter(|n| n.ends_with(".mostvector")).count()
 }
 
 /// One headless frame of the dialog layer.
@@ -77,7 +78,7 @@ fn copies_are_written_in_the_background_and_go_on_save() {
     assert_eq!(copies(&store), 1);
     assert!(app.session.doc().unwrap().recovery.is_some());
     // Saving (in the background too) removes it.
-    app.run("file.save", json!({"path": "/docs/a.vectorcraft"})).unwrap();
+    app.run("file.save", json!({"path": "/docs/a.mostvector"})).unwrap();
     background::wait_all(&mut app);
     assert_eq!(copies(&store), 0);
 }

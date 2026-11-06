@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The dock area as the user sees it: whole-window frames driven by pointer and key events.
 
 use craft_ui::docking::Hit;
@@ -737,7 +738,7 @@ fn other_function_keys_and_keyboard_guards_keep_their_routes() {
     assert!(!showing(&h.app.ui, "layers"), "F7 toggles when the field releases focus");
 
     let dir = vectorcraft_testkit::temp_dir("panel-shortcut-revert");
-    let path = dir.join(format!("panel-shortcut-revert-{}.vectorcraft", std::process::id()));
+    let path = dir.join(format!("panel-shortcut-revert-{}.mostvector", std::process::id()));
     let services = crate::Services {
         read: Some(Box::new(|p| std::fs::read(p).map_err(|e| e.to_string()))),
         write: Some(Box::new(|p, data| std::fs::write(p, data).map_err(|e| e.to_string()))),

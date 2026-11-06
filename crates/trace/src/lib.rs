@@ -1,4 +1,5 @@
-//! VectorCraft Image Trace: raster → vector.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector Image Trace: raster → vector.
 //!
 //! A clean-room tracer built from the published ideas behind bitmap tracers (the potrace paper
 //! and classic colour quantisation), not from any existing implementation:

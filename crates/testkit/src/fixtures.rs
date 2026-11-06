@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Sessions and documents in known states.
 
 use std::sync::Arc;
@@ -144,7 +145,7 @@ pub fn rich_session() -> Session {
     exec(&mut s, "effect.apply", json!({"effect": "distort.roughen", "params": {"size": 3, "detail": 5, "seed": 7}}));
     let l = id_of(&exec(&mut s, "shape.line", json!({"x1": 20, "y1": 300, "x2": 200, "y2": 350})));
     exec(&mut s, "stroke.set", json!({"weight": 3, "endArrow": "Arrow"}));
-    let tx = id_of(&exec(&mut s, "text.create", json!({"x": 250, "y": 300, "text": "VectorCraft", "size": 30})));
+    let tx = id_of(&exec(&mut s, "text.create", json!({"x": 250, "y": 300, "text": "Most Vector", "size": 30})));
     // A non-default paragraph composer, so format round trips cover it.
     exec(&mut s, "text.setFormat", json!({"ids": [tx.0], "composer": "singleLine"}));
     // Area type with non-default Area Type Options (vertical alignment, inset).

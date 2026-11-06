@@ -1,8 +1,9 @@
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Architecture
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-13 · **Change:** minor (shared PDF reader and writer; app output policy and editable-import adapter retained; verified PngSuite downloads, #1729; synthetic control-input budgets, #1709; desktop printing uses craft-print) · **Target:** Adobe Illustrator 2026 (30.x)
 
-How VectorCraft is built today. The design rationale lives in the local, gitignored `plan/architecture.md`;
+How Most Vector is built today. The design rationale lives in the local, gitignored `plan/architecture.md`;
 this file describes what is committed. Day-to-day rules (clean-room, never crash, quality gates) are in
 [`AGENTS.md`](../AGENTS.md) and [development.md](development.md).
 
@@ -47,7 +48,7 @@ effects are rendered offscreen per object and cached while panning. See
 
 ## Files
 
-The native `.vectorcraft` format is versioned, compressed JSON with embedded images, saved atomically, readable
+The native `.mostvector` format is versioned, compressed JSON with embedded images, saved atomically, readable
 down to v1 and from the old `.drawcraft` name. The `FORMATS` table in `crates/engine/src/cmd/fileio/formats.rs`
 lists every format read or written; importers are fuzzed (`crates/engine/tests/import_fuzz.rs`). See
 [file-format-parity.md](file-format-parity.md).

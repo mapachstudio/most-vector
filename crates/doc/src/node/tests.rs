@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::*;
 
 /// A node writes its rarely set parts among the others, in the file's field order, and reads
@@ -540,7 +541,7 @@ fn intertwine_tiers_are_read_within_the_node_budget() {
 
 /// #3587: fields read before an object's `type` are buffered value by value within
 /// [`with_buffered_value_budget`], each counted once: a group read back from the buffer buffers
-/// its own fields again without counting them twice. VectorCraft writes `type` first, which
+/// its own fields again without counting them twice. Most Vector writes `type` first, which
 /// buffers nothing.
 #[test]
 fn fields_before_the_type_are_buffered_within_the_value_budget() {

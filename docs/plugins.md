@@ -1,6 +1,7 @@
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Plug-ins: the WebAssembly plug-in API (ABI v1)
 
-VectorCraft does not host native plug-ins built for other illustration apps: that needs unsafe FFI into
+Most Vector does not host native plug-ins built for other illustration apps: that needs unsafe FFI into
 arbitrary machine code and cannot work in the browser build. Instead, plug-ins are **WebAssembly modules**
 run in a sandbox. One `.wasm` file works on macOS, Windows, Linux and the web. The design follows PhotoCraft's
 plug-in API (same sandbox, same manifest and parameter schema), extended for vector documents.
@@ -204,7 +205,7 @@ object: its geometry (`type`, `path`, `fillRule`, `bounds`) and its `fills` and 
 from before these give geometry only). The paints are read only: an effect may draw as wide as a stroke or use a
 fill's colour to decide its shape, but it changes only the geometry.
 
-An **exporter** gets something else: the document as a native `.vectorcraft` file's JSON, as `document.save` writes it
+An **exporter** gets something else: the document as a native `.mostvector` file's JSON, as `document.save` writes it
 but without indentation (the format is documented in [`crates/format/src/lib.rs`](../crates/format/src/lib.rs)). That is every layer, object,
 appearance and effect record, artboard, swatch and symbol, so an exporter reads whatever the document holds; it checks
 `version`, since a later host may write a newer one. Images of 8 KiB or more are listed in `images` with their MIME
@@ -231,7 +232,7 @@ type and `blob` but without their data, which follows the JSON in a saved file; 
 ```
 
 - `type`: `"path"` or `"compound"` (a compound path: `path` holds its members' subpaths, painted as one).
-- `path`: VectorCraft's own path form. Each subpath is a run of anchors; `p` is the anchor, `in` / `out` its handles
+- `path`: Most Vector's own path form. Each subpath is a run of anchors; `p` is the anchor, `in` / `out` its handles
   (absent: no handle), `kind` `"Smooth"` when the handles stay collinear. Coordinates are points, y down.
 - `fills`, `strokes`: the object's fills and strokes in paint order (bottom first); `null` is no paint. A stroke has its
   `paint`, `width` in points, `join` (`"miter"`, `"round"` or `"bevel"`), `cap` (`"butt"`, `"round"` or `"square"`)

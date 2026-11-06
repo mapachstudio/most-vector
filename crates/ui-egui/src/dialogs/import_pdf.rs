@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The Import PDF dialog: opening or placing a multi-page or password-protected PDF (or `.ai`)
 //! asks which pages (a preview with page navigation), the box to crop to and the password.
 //!
@@ -114,12 +115,12 @@ pub(super) fn show_preview(ui: &mut egui::Ui, tex: Option<&egui::TextureHandle>,
 
 /// Open `bytes` (or place them with the `file.place` params `place`) through the dialog when the
 /// file is a PDF (or `.ai`/`.ait`) with several pages or a password; false when there's nothing to
-/// ask (the caller goes on), including a file that carries its VectorCraft document when opening.
+/// ask (the caller goes on), including a file that carries its Most Vector document when opening.
 pub fn offer(app: &mut VectorcraftApp, name: &str, bytes: &[u8], path: Option<String>, place: Option<&Value>) -> bool {
     if !fileio::detect(name, bytes).is_some_and(|f| matches!(f.id, "pdf" | "ai" | "ait")) {
         return false;
     }
-    // A file carrying its VectorCraft document (a saved .ai, or a PDF saved with Preserve Editing)
+    // A file carrying its Most Vector document (a saved .ai, or a PDF saved with Preserve Editing)
     // opens as that document, every artboard and layer: there are no pages to pick. Placing still
     // asks, since a place takes one page.
     // The file is read once for both checks.

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::*;
 use crate::panels::library_panel;
 use egui::{Event, PointerButton, Pos2, Rect, vec2};
@@ -93,7 +94,7 @@ fn sketch_quick_trace_reveals_all_adjustments_and_keeps_the_source() {
     assert!(crate::panel_docking::showing(&app.ui, "imageTrace"));
     assert_eq!(app.session.active().unwrap().history.undo.len(), steps);
     // Optional local visual QA; no reference images or generated captures are committed.
-    if let Some(path) = std::env::var_os("VECTORCRAFT_TRACE_CAPTURE") {
+    if let Some(path) = std::env::var_os("MOST_VECTOR_TRACE_CAPTURE") {
         let mut ready = false;
         let mut harness = egui_kittest::Harness::builder().with_size(vec2(340.0, 820.0)).wgpu().build_ui_state(
             move |ui, app: &mut VectorcraftApp| {

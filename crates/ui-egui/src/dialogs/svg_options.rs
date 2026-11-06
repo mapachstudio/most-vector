@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! SVG Options (Export As SVG, Save As / Save a Copy to .svg): profile, styling, fonts, images,
 //! object ids, decimals, encoding, minify, responsive, embedded fonts, artboards (export) or
 //! editing data (save), and a read-only view of the code. OK remembers the choices for next time and runs the export or save command with
@@ -413,7 +414,7 @@ mod tests {
         assert!(!text(&written, 2).trim_end().contains('\n') && !text(&written, 2).contains("<?xml"), "minified");
         assert_eq!(app.session.active().unwrap().path.as_deref(), Some("/tmp/doc.svg"));
         // A native Save As needs no options.
-        app.run("file.saveAs", json!({"path": "/tmp/doc.vectorcraft"})).unwrap();
+        app.run("file.saveAs", json!({"path": "/tmp/doc.mostvector"})).unwrap();
         assert!(vectorcraft_format::sniff(&written.borrow()[3].1));
     }
 

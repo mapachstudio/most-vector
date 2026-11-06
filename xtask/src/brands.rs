@@ -1,6 +1,7 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `cargo xtask brands`: no other vendor's product or company names in what users and agents read.
 //!
-//! VectorCraft names its own features; where a comparison is needed, text says "the reference
+//! Most Vector names its own features; where a comparison is needed, text says "the reference
 //! app". Scanned:
 //! * string literals in Rust sources (command labels and params docs, `UI_COMMANDS`, menus, panels,
 //!   MCP tool definitions…). Comments and test code (`tests*.rs`, `*_tests.rs`, `tests/` and
@@ -45,7 +46,7 @@ const CURSOR_MANIFEST: &str = "crates/tools/src/cursors.toml";
 
 /// Packaging files whose comments take whole lines (a desktop entry has no end-of-line comments):
 /// in these, a `#` line marked `brand-ok` also covers the line just below it.
-const MARK_ABOVE: &[&str] = &["packaging/linux/ai.storyteller.vectorcraft.desktop"];
+const MARK_ABOVE: &[&str] = &["packaging/linux/com.grupomostmexico.mostvector.desktop"];
 
 /// A denied name found in a file.
 #[derive(Debug, PartialEq)]

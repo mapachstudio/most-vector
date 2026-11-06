@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::{Affine, BlendMode, Dash, FillRule, HAIRLINE, Knockout, LayerColor, LineCap, LineJoin, Node, Obj, Paint, Rect, V};
 
 /// Deepest nesting of layers, groups and dictionaries.
@@ -360,7 +361,7 @@ pub const VERSIONED_UNENDED: &str = "versioned content that doesn't end was read
 
 /// The note for a `/ForeignObject` (non-native art, the content of a placed PDF, which the editor
 /// shows but doesn't edit) whose PDF can't be read.
-pub const NON_NATIVE_ART_UNREAD: &str = "non-native art (a placed PDF's content) that VectorCraft can't read is left out";
+pub const NON_NATIVE_ART_UNREAD: &str = "non-native art (a placed PDF's content) that Most Vector can't read is left out";
 
 /// The name of the group a `/ForeignObject`'s art comes in as.
 pub const NON_NATIVE_ART: &str = "Non-native art";

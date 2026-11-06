@@ -1,4 +1,5 @@
-//! `vectorcraft-cli`: VectorCraft from the command line.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! `vectorcraft-cli`: Most Vector from the command line.
 //!
 //! ```text
 //! vectorcraft-cli mcp [--connect 127.0.0.1:7979 | --headless] [--automation-read-root DIR]... [--automation-write-root DIR]...
@@ -69,7 +70,7 @@ fn stdout_failed(e: std::io::Error) -> ! {
 }
 
 const USAGE: &str = "\
-vectorcraft-cli — VectorCraft automation
+vectorcraft-cli — Most Vector automation
 
 USAGE:
   vectorcraft-cli mcp [--connect ADDR | --headless] [--automation-read-root DIR]... [--automation-write-root DIR]...
@@ -205,7 +206,7 @@ fn main() -> ExitCode {
 
 /// A headless session that remembers what the user keeps between runs: the PDF presets saved, the
 /// ICC profiles loaded and the plug-ins installed (#2168, #2174, #2541), in the folders next to the preferences that the desktop
-/// app uses too. `VECTORCRAFT_NO_PREFS` and `VECTORCRAFT_CONFIG_DIR` apply as they do there.
+/// app uses too. `MOST_VECTOR_NO_PREFS` and `MOST_VECTOR_CONFIG_DIR` apply as they do there.
 fn with_stores(mut h: Headless) -> Headless {
     prefs_dir::attach_profile_store(&mut h.session);
     prefs_dir::attach_plugin_store(&mut h.session);
@@ -364,7 +365,7 @@ fn convert(args: &[String]) -> Result<(), String> {
         let skipped = vectorcraft_engine::cmd::fileio::pdf::EDITING_NEEDS_EVERY_ARTBOARD;
         let embedded = !obj.get("warnings").and_then(Value::as_array).is_some_and(|w| w.iter().any(|w| w.as_str() == Some(skipped)));
         if embedded {
-            let note = "The PDF embeds the native VectorCraft document as an attachment (preserveEditing).";
+            let note = "The PDF embeds the native Most Vector document as an attachment (preserveEditing).";
             if let Some(Value::Array(w)) = obj.get_mut("warnings") {
                 if !w.iter().any(|w| w.as_str() == Some(note)) {
                     w.push(json!(note));

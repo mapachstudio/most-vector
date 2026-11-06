@@ -1,9 +1,10 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft-brush"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "VectorCraft brushes: calligraphic, scatter, art, pattern and bristle brush definitions and stroke geometry"
+description = "Most Vector brushes: calligraphic, scatter, art, pattern and bristle brush definitions and stroke geometry"
 
 [lints]
 workspace = true

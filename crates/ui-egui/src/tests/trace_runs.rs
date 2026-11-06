@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Image Trace in the app ([`crate::trace_runs`], #3098): a trace the user asks for runs off the UI
 //! thread and is applied as one undo step once it is done, unless its image changed meanwhile. A
 //! newer trace of the same object replaces it; Cancel stops it; its progress window shows it.
@@ -97,7 +98,7 @@ fn starting_a_trace_asks_for_a_frame() {
     wait(&mut app);
 }
 
-/// Without threads (the web, `VECTORCRAFT_SYNC_OPEN`, unit tests that don't ask), Make traces at once.
+/// Without threads (the web, `MOST_VECTOR_SYNC_OPEN`, unit tests that don't ask), Make traces at once.
 #[test]
 fn without_threads_make_traces_at_once() {
     let mut app = app();

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! DXF export for every DXF path (`document.export {format: dxf}`, `document.exportDxf`, Export As
 //! → DXF Options): the options parsed from the params, one drawing per artboard with Use
 //! Artboards, and the formats that can't be written (DWG, PICT) with what to use instead.
@@ -80,7 +81,7 @@ pub struct Unsupported {
     pub hint: &'static str,
 }
 
-/// Formats people ask for that VectorCraft doesn't read or write. Append-only.
+/// Formats people ask for that Most Vector doesn't read or write. Append-only.
 pub const UNSUPPORTED: &[Unsupported] = &[
     Unsupported {
         id: "dwg",

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use serde_json::json;
 
 use crate::*;
@@ -54,7 +55,7 @@ fn serialize_and_reopen() {
     let b64 = s.execute("document.serialize", &json!({"format": "vectorcraft"})).unwrap()["dataBase64"].as_str().unwrap().to_string();
     let svg = s.execute("document.serialize", &json!({"format": "svg"})).unwrap()["text"].as_str().unwrap().to_string();
     assert!(svg.contains("<svg"));
-    s.execute("document.open", &json!({"name": "copy.vectorcraft", "dataBase64": b64})).unwrap();
+    s.execute("document.open", &json!({"name": "copy.mostvector", "dataBase64": b64})).unwrap();
     assert_eq!(s.documents().len(), 2);
     assert_eq!(s.doc().unwrap().doc.node_count(), 2);
     let png = s.execute("document.serialize", &json!({"format": "png", "scale": 0.5})).unwrap()["dataBase64"].as_str().unwrap().to_string();
@@ -67,7 +68,7 @@ fn save_and_open_path() {
     s.execute("shape.rectangle", &json!({"x": 10, "y": 10, "width": 80, "height": 40})).unwrap();
     let dir = std::env::temp_dir().join(format!("dc-test-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
-    let path = dir.join("t.vectorcraft");
+    let path = dir.join("t.mostvector");
     s.execute("document.save", &json!({"path": path.to_string_lossy()})).unwrap();
     assert!(!s.doc().unwrap().is_dirty());
     s.execute("document.open", &json!({"path": path.to_string_lossy()})).unwrap();
@@ -543,7 +544,7 @@ fn template_opens_as_untitled() {
     s.execute("shape.rectangle", &json!({"x": 0, "y": 0, "width": 50, "height": 50})).unwrap();
     let dir = std::env::temp_dir().join(format!("vc-tpl-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
-    let path = dir.join("letterhead.vectorcraft");
+    let path = dir.join("letterhead.mostvector");
     let r = s.execute("file.saveAsTemplate", &json!({"path": path.to_str().unwrap()})).unwrap();
     assert_eq!(r["path"], dir.join("letterhead.vctemplate").to_str().unwrap(), "saved with the template's extension");
     s.execute("document.open", &json!({"path": r["path"]})).unwrap();
@@ -586,10 +587,10 @@ fn japanese_file_names_save_open_and_export() {
     s.execute("text.create", &json!({"x": 10, "y": 80, "text": "日本語のテキスト"})).unwrap();
     let dir = std::env::temp_dir().join(format!("vc-日本語フォルダ-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
-    let path = dir.join("運動会カード（最終版）・2024.vectorcraft");
+    let path = dir.join("運動会カード（最終版）・2024.mostvector");
     s.execute("document.save", &json!({"path": path.to_string_lossy()})).unwrap();
     assert!(path.exists());
-    assert_eq!(s.doc().unwrap().title(), "運動会カード（最終版）・2024.vectorcraft", "the tab names the file as typed");
+    assert_eq!(s.doc().unwrap().title(), "運動会カード（最終版）・2024.mostvector", "the tab names the file as typed");
     s.execute("document.open", &json!({"path": path.to_string_lossy()})).unwrap();
     let d = s.doc().unwrap();
     assert_eq!(d.path.as_deref(), Some(path.to_string_lossy().as_ref()));

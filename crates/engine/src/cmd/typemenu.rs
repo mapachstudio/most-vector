@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Type menu long tail (Change Case, Smart Punctuation, Convert To Area/Point Type, Type on a Path
 //! Options, Fill with Placeholder Text, Insert Special/Whitespace/Break characters) and the text
 //! commands of the Edit menu (Find and Replace, Find Next, Paste without Formatting).
@@ -492,7 +493,7 @@ fn path_options(s: &mut Session, p: &Value) -> Result<Value> {
 
 // ---------- placeholder / insert ----------
 
-/// VectorCraft's own placeholder copy (not the classical Latin text).
+/// Most Vector's own placeholder copy (not the classical Latin text).
 pub(crate) const PLACEHOLDER: &str = "Sample copy flows here while the layout takes shape. Swap these words for real text once the \
 design is settled. Every line is only a stand-in that shows size, rhythm and colour. Headlines, captions and body text all \
 start as rough drafts like this one. Keep going until the frame is full and the page feels balanced.";

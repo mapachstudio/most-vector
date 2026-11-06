@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Object › Intertwine (#1763), as a tutorial does it: two thick rings that overlap twice are
 //! made into an Intertwine group, then one overlap is clicked so the rings pass over and under
 //! each other. Driven through `Session::execute`; the art is checked on screen, in the saved file
@@ -223,7 +224,7 @@ fn a_move_that_changes_nothing_records_nothing_and_orders_survive_undo_and_save(
     assert_eq!(order(&s), [c, b, a]);
     let data = s.execute("document.export", &json!({"format": "vectorcraft"})).unwrap()["dataBase64"].clone();
     let mut o = Session::new();
-    o.execute("document.open", &json!({"name": "rings.vectorcraft", "dataBase64": data})).unwrap();
+    o.execute("document.open", &json!({"name": "rings.mostvector", "dataBase64": data})).unwrap();
     assert_eq!(order_at(&o.doc().unwrap().doc, g, 50.0, 30.0), [c, b, a]);
     assert!(red(&render(&o), 50, 30) && blue(&render(&o), 50, 70));
     // Expand draws the same.

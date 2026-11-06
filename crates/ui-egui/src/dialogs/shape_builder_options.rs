@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Shape Builder Tool Options (double-click the Shape Builder tool): the options the tool keeps,
 //! which last across tool switches and are saved with the preferences. OK sets them with
 //! `tool.setOption {tool: "shapeBuilder", values}`.
@@ -179,7 +180,7 @@ mod tests {
         ] {
             assert!(text.contains(label), "{label} in {text}");
         }
-        // The defaults: VectorCraft's Shape Builder as it works without the dialog.
+        // The defaults: Most Vector's Shape Builder as it works without the dialog.
         let d = app.ui.dialog.as_mut().unwrap();
         assert_eq!(
             (d.bool("openFilledAsClosed"), d.str("pickColorFrom"), d.bool("cursorSwatchPreview"), d.str("selection"), d.bool("highlightFill")),

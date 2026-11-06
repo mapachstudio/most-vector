@@ -1,4 +1,5 @@
-//! Linked images in `.vectorcraft` files: their link details round-trip, and an image only linked
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Linked images in `.mostvector` files: their link details round-trip, and an image only linked
 //! images show is saved as its preview.
 
 use std::sync::Arc;

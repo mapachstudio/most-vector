@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! macOS: the Format menu on save sheets (#866). A save panel with two or more file types (Save As,
 //! Save a Copy, Save as Template and the first Save of a new document) is an `NSSavePanel` made here
 //! instead of by rfd, whose Cocoa backend lists the extensions of every filter but not their names.
@@ -184,7 +185,7 @@ mod tests {
     use super::*;
 
     fn filters() -> Vec<Filter> {
-        FilePick::filters([("VectorCraft", &["vectorcraft"][..]), ("SVG", &["svg"]), ("PDF", &["pdf"])])
+        FilePick::filters([("Most Vector", &["vectorcraft"][..]), ("SVG", &["svg"]), ("PDF", &["pdf"])])
     }
 
     /// Save, Save As and Save a Copy list every save format with the default first; a panel with one
@@ -211,7 +212,7 @@ mod tests {
     #[test]
     fn choosing_a_format_changes_the_extension_and_keeps_the_name() {
         for (name, expected) in [
-            ("図面 1.vectorcraft", "図面 1.svg"),
+            ("図面 1.mostvector", "図面 1.svg"),
             ("a.PDF", "a.svg"),
             ("art", "art.svg"),
             ("art.v2", "art.v2.svg"),
@@ -239,7 +240,7 @@ mod tests {
     fn each_menu_entry_names_a_file_the_save_command_writes_in_that_format() {
         let filters = menu_formats(&FilePick::filters(fileio::save_filters("vectorcraft")));
         for (label, extensions) in &filters {
-            let name = filename("Untitled-1.vectorcraft", &extensions[0], &filters);
+            let name = filename("Untitled-1.mostvector", &extensions[0], &filters);
             assert_eq!(fileio::format_for_name(&name).map(|f| f.label), Some(label.as_str()), "{name}");
         }
     }

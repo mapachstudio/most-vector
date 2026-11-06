@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! WMF records (MS-WMF) played on a [`Player`]. A placeable header gives the picture's box in
 //! logical units and the units an inch; without one, the first window origin and extent are the
 //! box, at 1440 units an inch.
@@ -12,7 +13,7 @@ use crate::{Imported, Kind};
 
 /// Units an inch when the file doesn't say (twips).
 const DEFAULT_INCH: f64 = 1440.0;
-/// Records that change nothing VectorCraft keeps (background, raster and mapping details, palettes,
+/// Records that change nothing Most Vector keeps (background, raster and mapping details, palettes,
 /// escapes).
 const IGNORED: &[u16] = &[
     0x0102, 0x0103, 0x0104, 0x0105, 0x0107, 0x0108, 0x0201, 0x020A, 0x020B, 0x020C, 0x020D, 0x020E, 0x020F, 0x0211, 0x0410, 0x0412, 0x0231, 0x0234,

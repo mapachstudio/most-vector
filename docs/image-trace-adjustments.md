@@ -1,3 +1,4 @@
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Adjusting an Image Trace
 
 Select a placed raster image, then choose **Image Trace** or a preset from its arrow
@@ -29,7 +30,7 @@ after expanding, the tracing settings are no longer available. **Release** resto
 **Auto Color** (the Automatic palette) counts flat art's colours by area, and also keeps colours too
 rare for that count when they are distinct and drawn as regions of their own (a stem, a highlight, a
 white beside a cream), at most six; scattered specks of a colour add none. Adobe does not document how
-its own palettes are chosen; this is VectorCraft's own method (see
+its own palettes are chosen; this is Most Vector's own method (see
 [image-trace-quality.md](image-trace-quality.md#auto-color-keeps-rare-colours)).
 
 **Document Library color groups.** With Palette › Document Library and Library › Document Swatches,
@@ -90,7 +91,7 @@ one undo step, as before. A new trace of the same object replaces one still runn
 image or settings changed meanwhile changes nothing, and the status bar says to trace it again.
 `imageTrace.make` and `imageTrace.makeAndExpand` from MCP, scripts and the control channel trace at
 once and return their result, as every trace on the web does.
-These controls use VectorCraft's existing tracing algorithm. Parameter effects follow its
+These controls use Most Vector's existing tracing algorithm. Parameter effects follow its
 implementation; they do not claim pixel-identical results with another application.
 The terminology and general control behavior are described in the
 [public Image Trace panel documentation](https://helpx.adobe.com/illustrator/desktop/manage-objects/traces-mockups-symbols/image-trace-panel-options.html).

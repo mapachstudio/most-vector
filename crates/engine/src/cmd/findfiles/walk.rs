@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The walker threads of a folder search and what they share.
 
 use std::path::{Path, PathBuf};
@@ -406,8 +407,8 @@ impl Shared {
             Ok(folder) if !folder.is_dir() => Err(format!("{path} is not a folder")),
             Ok(folder) => match rules.refusal(&folder) {
                 None => Ok(folder),
-                Some(Refusal::Shared) => Err(format!("VectorCraft doesn't search the Shared or Public folder in Users: {path}")),
-                Some(Refusal::Apps) => Err(format!("VectorCraft doesn't search other apps' or the system's folders: {path}")),
+                Some(Refusal::Shared) => Err(format!("Most Vector doesn't search the Shared or Public folder in Users: {path}")),
+                Some(Refusal::Apps) => Err(format!("Most Vector doesn't search other apps' or the system's folders: {path}")),
             },
         };
         let mut w = self.lock();

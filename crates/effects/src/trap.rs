@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Pathfinder › Trap, shared by the Pathfinder panel's Trap command (`object.pathfinder.trap`) and
 //! the live effect Effect › Pathfinder › Trap ([`TRAP`]).
 //!
@@ -29,7 +30,7 @@
 //! Behaviour from the public descriptions only:
 //! <https://helpx.adobe.com/illustrator/using/trapping.html> and
 //! <https://helpx.adobe.com/illustrator/using/pathfinder-panel-overview.html> (feature names and
-//! option ranges; the defaults of 0.25 pt, 100% and 40% are VectorCraft's own choices, the pages
+//! option ranges; the defaults of 0.25 pt, 100% and 40% are Most Vector's own choices, the pages
 //! give none).
 
 use serde_json::{Value, json};

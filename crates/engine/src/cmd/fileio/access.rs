@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 #[cfg(not(target_arch = "wasm32"))]
 use super::write_atomic;
 use super::{EngineError, Result, Session, Value, bad, json};
@@ -333,8 +334,8 @@ pub(crate) fn drive_share_of(path: &str, final_path: impl FnOnce(&str) -> Option
     })
 }
 
-/// The path of `document` (on a drive, `Z:\jobs\doc.vectorcraft`) on the network share the drive is
-/// mapped to (`\\server\share\jobs\doc.vectorcraft`), when its folder is on one and automation may
+/// The path of `document` (on a drive, `Z:\jobs\doc.mostvector`) on the network share the drive is
+/// mapped to (`\\server\share\jobs\doc.mostvector`), when its folder is on one and automation may
 /// read the folder. The folder's final path ([`std::fs::canonicalize`]) names the share as
 /// `\\?\UNC\server\share\…`.
 #[cfg(windows)]

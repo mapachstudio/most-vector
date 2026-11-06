@@ -1,9 +1,10 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Linux: Preferences › Performance › Linux Display Server › X11 opens the window through XWayland
 //! on a Wayland session, where dropped files arrive (winit 0.30 has no Wayland drag and drop,
 //! #1151). Automatic and X11 (XWayland) When a Pen Is Attached do so only when a pen is attached
 //! as the app starts, as PhotoCraft does: winit 0.30 doesn't bind the Wayland tablet protocol, so
 //! on native Wayland the pen moves only the compositor's cursor, and XWayland hands the pen to X11
-//! windows as a pointer (#2028, #4967). `VECTORCRAFT_NATIVE_WAYLAND=1` keeps a pen's window on
+//! windows as a pointer (#2028, #4967). `MOST_VECTOR_NATIVE_WAYLAND=1` keeps a pen's window on
 //! Wayland. Only when XWayland can run the window: an X display is set and
 //! the X11 libraries winit loads at runtime are installed. Otherwise the window opens on Wayland,
 //! so a missing library never keeps the app from starting.
@@ -24,13 +25,13 @@ const X11_LIBS: &[&str] =
 
 /// Whether the saved `linuxDisplayServer` and the environment ask for XWayland: `x11` chosen, or
 /// any other choice (`automatic`, `x11WithPen`, none saved) with `pen` finding a pen and
-/// `VECTORCRAFT_NATIVE_WAYLAND` unset (or `0`); a Wayland session (winit picks Wayland whenever
+/// `MOST_VECTOR_NATIVE_WAYLAND` unset (or `0`); a Wayland session (winit picks Wayland whenever
 /// `WAYLAND_DISPLAY` or `WAYLAND_SOCKET` is set); and an X display to open. `pen` runs only after
 /// the other checks.
 pub fn wanted(pref: Option<&str>, var: impl Fn(&str) -> Option<OsString>, pen: impl FnOnce() -> bool) -> bool {
     let set = |name: &str| var(name).is_some_and(|v| !v.is_empty());
     let session = (set("WAYLAND_DISPLAY") || set("WAYLAND_SOCKET")) && set("DISPLAY");
-    let native_wayland = var("VECTORCRAFT_NATIVE_WAYLAND").is_some_and(|v| !v.is_empty() && v != "0");
+    let native_wayland = var("MOST_VECTOR_NATIVE_WAYLAND").is_some_and(|v| !v.is_empty() && v != "0");
     match pref {
         Some("x11") => session,
         _ => session && !native_wayland && pen(),
@@ -163,12 +164,12 @@ mod tests {
     /// Automatic and X11 (XWayland) When a Pen Is Attached (#2028, #4967): XWayland on a Wayland
     /// session with an X display when a pen is found, where the pen reaches the window, the
     /// session's own display server otherwise. The pen check runs only on such a session, and
-    /// `VECTORCRAFT_NATIVE_WAYLAND` keeps Wayland.
+    /// `MOST_VECTOR_NATIVE_WAYLAND` keeps Wayland.
     #[test]
     fn a_pen_opens_xwayland_unless_native_wayland_is_asked_for() {
         let wayland = env(&[("WAYLAND_DISPLAY", "wayland-0"), ("DISPLAY", ":0")]);
-        let native = env(&[("WAYLAND_DISPLAY", "wayland-0"), ("DISPLAY", ":0"), ("VECTORCRAFT_NATIVE_WAYLAND", "1")]);
-        let not_native = env(&[("WAYLAND_DISPLAY", "wayland-0"), ("DISPLAY", ":0"), ("VECTORCRAFT_NATIVE_WAYLAND", "0")]);
+        let native = env(&[("WAYLAND_DISPLAY", "wayland-0"), ("DISPLAY", ":0"), ("MOST_VECTOR_NATIVE_WAYLAND", "1")]);
+        let not_native = env(&[("WAYLAND_DISPLAY", "wayland-0"), ("DISPLAY", ":0"), ("MOST_VECTOR_NATIVE_WAYLAND", "0")]);
         for pref in [Some("automatic"), None, Some("x11WithPen")] {
             assert!(wanted(pref, &wayland, || true), "{pref:?}");
             assert!(wanted(pref, env(&[("WAYLAND_SOCKET", "3"), ("DISPLAY", ":0")]), || true), "{pref:?}");

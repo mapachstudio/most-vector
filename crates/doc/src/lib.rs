@@ -1,4 +1,5 @@
-//! VectorCraft document model: artboards, layers and objects, appearance, swatches (pure data + serde).
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector document model: artboards, layers and objects, appearance, swatches (pure data + serde).
 //!
 //! Documents are persistent trees: children are `Arc<Node>`, and edits go through
 //! [`Document::node_mut`], which clones only the nodes on the path from the root to the edited node.

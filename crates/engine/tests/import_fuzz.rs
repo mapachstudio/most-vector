@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Untrusted files never crash the app: garbage, truncated, mutated and hostile SVG, PDF and DXF input,
 //! mutated raster images (Photoshop documents among them) placed with File → Place, and swatch (`.vcswatches`, `.gpl`, `.ase`), graphic style (`.vcstyles`), flattener preset
 //! (`.vcflattener`) and export preset (`.vcexportpresets`) libraries, shortcut sets other apps save as text (`.kys`), and native files (compressed, damaged, saved for older versions),
@@ -1602,7 +1603,7 @@ fn raster_samples() -> Vec<(&'static str, Vec<u8>)> {
     let gray =
         vectorcraft_testkit::tiff::Tiff { width: 5, height: 3, photometric: 1, bits: 16, extra: &[2], planar: true, ppi: None, channels: &gray };
     out.push(("planar-gray.tif", vectorcraft_testkit::tiff::tiff(&gray)));
-    // A layered PSD with transparency (as VectorCraft exports it), and a PackBits PSB by hand.
+    // A layered PSD with transparency (as Most Vector exports it), and a PackBits PSB by hand.
     let mut s = rich_session();
     let r = s.execute("document.export", &json!({"format": "psd", "ppi": 2})).unwrap();
     out.push(("a.psd", vectorcraft_format::base64_decode(r["dataBase64"].as_str().unwrap()).unwrap()));
@@ -1968,7 +1969,7 @@ proptest! {
 
     #[test]
     fn mutated_pdf_presets_never_panic(cut in 0usize..20_000, edits in prop::collection::vec(arb_edit(), 0..10)) {
-        let text = saved("pdf.preset.export", json!({"names": ["VectorCraft Default", "Smallest File Size", "PDF/X-4:2010"]}));
+        let text = saved("pdf.preset.export", json!({"names": ["Most Vector Default", "Smallest File Size", "PDF/X-4:2010"]}));
         pdf_presets("mutated pdf presets", &mutate_text(&text, cut, &edits))?;
     }
 }
@@ -2080,7 +2081,7 @@ proptest! {
         }
         let _ = vectorcraft_format::sniff(&bytes);
         let _ = vectorcraft_format::preview(&bytes);
-        survive("mutated native file", || vectorcraft_engine::cmd::fileio::load("x.vectorcraft", &bytes).ok().map(|l| l.doc))?;
+        survive("mutated native file", || vectorcraft_engine::cmd::fileio::load("x.mostvector", &bytes).ok().map(|l| l.doc))?;
     }
 }
 
@@ -2098,7 +2099,7 @@ fn native_area_type_with_2_to_the_60_rows_or_columns_opens_renders_and_exports()
         t.area.rows = rows;
         t.area.columns = columns;
         let file = vectorcraft_format::base64_encode(&vectorcraft_format::save(&d, false));
-        s.execute("document.open", &json!({"name": "x.vectorcraft", "dataBase64": file})).unwrap();
+        s.execute("document.open", &json!({"name": "x.mostvector", "dataBase64": file})).unwrap();
         let opened = (*s.doc().unwrap().doc).clone();
         let Some(vectorcraft_doc::NodeKind::Text(t)) = opened.node(id).map(|n| &n.kind) else { panic!("area type") };
         assert_eq!((t.area.rows, t.area.columns), (rows.min(100), columns.min(100)));
@@ -2298,7 +2299,7 @@ fn the_cmyk_images_fixture_reads_its_inks_and_mask() {
 /// PostScript is read.
 fn foreign_eps_sample() -> Vec<u8> {
     let mut bytes = eps_sample();
-    let marker = b"%VectorCraft_BeginData: native";
+    let marker = b"%Most Vector_BeginData: native";
     let at = bytes.windows(marker.len()).position(|w| w == marker).unwrap();
     bytes[at + marker.len() - 1] = b'x';
     bytes
@@ -2582,7 +2583,7 @@ fn arb_body() -> impl Strategy<Value = Vec<u8>> {
     ]
 }
 
-/// WMF record functions VectorCraft reads, and one it doesn't.
+/// WMF record functions Most Vector reads, and one it doesn't.
 const WMF_FUNCTIONS: [u16; 33] = [
     0x0324, 0x0325, 0x0538, 0x041B, 0x0418, 0x061C, 0x0817, 0x081A, 0x0830, 0x0416, 0x0415, 0x02FA, 0x02FC, 0x02FB, 0x012D, 0x01F0, 0x0521, 0x0A32,
     0x0F43, 0x0B41, 0x0940, 0x061D, 0x0213, 0x0214, 0x001E, 0x0127, 0x0106, 0x0209, 0x012E, 0x00F7, 0x01F9, 0x0142, 0x0999,
@@ -5843,7 +5844,7 @@ fn brushed_document(kind: usize, art: usize) -> Document {
 
 /// `doc` saved, opened again, drawn, exported and edited: nothing overflows.
 fn art_by_name_survives(what: &str, doc: Document) {
-    let (back, _) = open_deep("named.vectorcraft", &vectorcraft_format::save_file(&doc)).expect("opens");
+    let (back, _) = open_deep("named.mostvector", &vectorcraft_format::save_file(&doc)).expect("opens");
     let mut s = vectorcraft_engine::Session::new();
     s.add_document(back, None);
     for (cmd, p) in [
@@ -5952,7 +5953,7 @@ fn a_native_file_nested_too_deep_is_merged_or_refused() {
     on_a_small_stack(|| {
         // Saved before the cap by a version that could still open it: opened, the deepest merged.
         let old = vectorcraft_format::save_file(&nested_document(MAX_DEPTH + 2));
-        let (doc, warnings) = open_deep("old.vectorcraft", &old).expect("opens");
+        let (doc, warnings) = open_deep("old.mostvector", &old).expect("opens");
         assert!(merged(&warnings), "{warnings:?}");
         assert_eq!(paths_in(&doc), MAX_DEPTH + 3, "no art is lost");
         // Deeper than any version could open, and a hostile file: an error that says why. Written
@@ -5962,7 +5963,7 @@ fn a_native_file_nested_too_deep_is_merged_or_refused() {
         let at = text.find("\"children\":[").expect("the layer's children") + "\"children\":[".len();
         for levels in [100, 50_000] {
             let deep = format!("{}{}{},{}", &text[..at], open.repeat(levels), close.repeat(levels), &text[at..]);
-            let e = vectorcraft_engine::cmd::fileio::load("deep.vectorcraft", deep.as_bytes()).err().expect("refused").to_string();
+            let e = vectorcraft_engine::cmd::fileio::load("deep.mostvector", deep.as_bytes()).err().expect("refused").to_string();
             assert!(e.contains("nested too deep"), "{levels}: {e}");
         }
     });
@@ -6022,7 +6023,7 @@ fn symbols_document(count: usize, levels: usize, last: &str) -> Document {
 /// `doc` saved (as an older version, or a hostile file, could have) and opened again: within the
 /// caps (`kept`: as it was), drawn, exported and edited.
 fn symbols_survive(what: &str, doc: Document, kept: bool) {
-    let (back, warnings) = open_deep("symbols.vectorcraft", &vectorcraft_format::save_file(&doc)).expect("opens");
+    let (back, warnings) = open_deep("symbols.mostvector", &vectorcraft_format::save_file(&doc)).expect("opens");
     assert_eq!(!warnings.iter().any(|w| w.contains("symbol instances")), kept, "{what}: {warnings:?}");
     let mut s = vectorcraft_engine::Session::new();
     s.add_document(back, None);

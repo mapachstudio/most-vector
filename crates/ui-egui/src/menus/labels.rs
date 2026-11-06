@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::slots::{perspective_grid, recent_slot, saved_selection_name, saved_selection_slot, saved_view, saved_view_slot};
 use super::state::{hidden_when_disabled, shortcut_of};
 use super::tree::menu_tree;
@@ -311,7 +312,7 @@ pub fn menu_strings() -> std::collections::BTreeSet<String> {
                         .strip_suffix('°')
                         .map(|n| n.strip_prefix('-').unwrap_or(n))
                         .is_some_and(|n| !n.is_empty() && n.chars().all(|c| c.is_ascii_digit()));
-                    // VectorCraft › Language lists each language by its own name.
+                    // Most Vector › Language lists each language by its own name.
                     let language_name = *id == "app.language" && crate::i18n::Lang::all().any(|lang| lang.name() == *l);
                     if !user_data(id, params) && !size && !angle && !language_name && *l != "—" {
                         out.insert(l.to_string());

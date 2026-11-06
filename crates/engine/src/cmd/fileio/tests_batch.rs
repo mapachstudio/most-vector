@@ -1,6 +1,7 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Batch exports through Export for Screens (#1935): a file name pattern (the document's and the
 //! item's names, a counter, the date), folders by format, by item or both, layers and the selection
-//! as what is exported, and document formats (VectorCraft, Illustrator, EPS) as rows.
+//! as what is exported, and document formats (Most Vector, Illustrator, EPS) as rows.
 
 use serde_json::{Value, json};
 
@@ -143,7 +144,7 @@ fn document_formats_write_one_artboard_each() {
     s.execute("shape.ellipse", &json!({"x": second.x0 + 5.0, "y": 5, "width": 10, "height": 10})).unwrap();
     let r = export(&mut s, json!({"formats": [{"format": "vectorcraft"}, {"format": "ai"}, {"format": "eps"}]}));
     let n = names(&r);
-    assert_eq!(n, ["Artboard-1.vectorcraft", "Artboard-1.ai", "Artboard-1.eps", "Artboard-2.vectorcraft", "Artboard-2.ai", "Artboard-2.eps"]);
+    assert_eq!(n, ["Artboard-1.mostvector", "Artboard-1.ai", "Artboard-1.eps", "Artboard-2.mostvector", "Artboard-2.ai", "Artboard-2.eps"]);
     let all = files(&r);
     for (name, bytes) in &all {
         let mut t = Session::new();

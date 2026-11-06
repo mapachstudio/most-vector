@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::{Pos2, Rect, Response, Sense, Stroke, Tokens, Ui, icons, pos2, scrub, theme, vec2};
 
 /// The width `text` takes on one line, as a label or link in `ui` draws it: its galley, which has
@@ -45,7 +46,7 @@ pub fn divider(ui: &mut Ui) {
 }
 
 /// The `Id` under which [`dim_label`]/[`field_label`] leave the label a following field should be
-/// named by. egui 0.37's kittest fails an input with no accessible name, and VectorCraft paints
+/// named by. egui 0.37's kittest fails an input with no accessible name, and Most Vector paints
 /// most labels beside, not inside, their fields.
 fn next_label_id() -> egui::Id {
     egui::Id::unique("vectorcraft-next-input-label")

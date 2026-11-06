@@ -1,7 +1,8 @@
-//! VectorCraft's MCP server.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector's MCP server.
 //!
 //! [Model Context Protocol](https://modelcontextprotocol.io) over stdio: newline-delimited
-//! JSON-RPC 2.0, hand-written (no async runtime). The server exposes VectorCraft as a set of MCP
+//! JSON-RPC 2.0, hand-written (no async runtime). The server exposes Most Vector as a set of MCP
 //! tools and resources and forwards everything to a [`Backend`]:
 //!
 //! - [`Remote`] talks to a running desktop app through its loopback JSON-lines control channel

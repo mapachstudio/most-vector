@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Blends from the editing data (`(Adobe Path Blends) 1 0 n XP`), read as live blends.
 //!
 //! What a blend is and does is Illustrator's public documentation: key objects, the spine the
@@ -46,7 +47,7 @@ const PLACE_TOLERANCE: f64 = 0.5;
 /// How far a step's colour (each channel, 0 to 1) may be from the drawn one.
 const COLOR_TOLERANCE: f32 = 0.02;
 /// The note for a blend that keeps its drawn steps.
-pub(super) const DRAWN: &str = "a blend VectorCraft couldn't read as a live blend comes in as its drawn steps";
+pub(super) const DRAWN: &str = "a blend Most Vector couldn't read as a live blend comes in as its drawn steps";
 
 /// A blend part an object's dictionary names: its type (`K`, `S`) and its id.
 pub(super) type Roles = HashMap<NodeId, (String, Option<String>)>;

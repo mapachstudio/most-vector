@@ -1,4 +1,5 @@
-//! VectorCraft live effects (Illustrator's Effect menu).
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector live effects (Illustrator's Effect menu).
 //!
 //! Effects live in appearance stacks as [`Effect`] `{id, params, visible}` records. This crate
 //! interprets them:

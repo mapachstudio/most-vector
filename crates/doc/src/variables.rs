@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Variables (data merge): named values bound to objects, with datasets that apply
 //! them all at once. One template document produces many variants (badges, price
 //! lists, localized copies) by selecting a dataset instead of editing each object.
@@ -21,7 +22,7 @@ pub enum VariableKind {
     Image,
     /// A graph object's data (CSV of categories and series, as Graph Data uses).
     Graph,
-    /// A variable a file declares without a kind (or with one VectorCraft doesn't know): it drives
+    /// A variable a file declares without a kind (or with one Most Vector doesn't know): it drives
     /// nothing, no value fits it, and nothing can be bound to it.
     Unknown,
 }

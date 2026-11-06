@@ -1,3 +1,4 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft"
 version.workspace = true
@@ -19,7 +20,7 @@ vectorcraft-engine = { workspace = true, features = ["bundled-fonts"] }
 vectorcraft-ui-egui = { workspace = true }
 vectorcraft-text = { workspace = true }
 # Shared across the Craft suite: decides who draws the window frame per desktop (compositor vs app)
-# so VectorCraft matches the rest on Linux. `egui` adds `craft_window::decorate`. See #217.
+# so Most Vector matches the rest on Linux. `egui` adds `craft_window::decorate`. See #217.
 craft-window = { workspace = true }
 eframe = { workspace = true, features = ["clipboard", "default_fonts", "wayland", "x11"] }
 egui = { workspace = true }

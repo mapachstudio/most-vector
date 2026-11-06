@@ -1,5 +1,6 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Placing an RTF file: its text set as area type with the character and paragraph formatting
-//! VectorCraft has, read as the Rich Text Format (RTF) Specification 1.9.1 describes the format
+//! Most Vector has, read as the Rich Text Format (RTF) Specification 1.9.1 describes the format
 //! (<https://www.microsoft.com/en-us/download/details.aspx?id=10725>).
 //!
 //! - Text: `\par`, `\line` and `\sect` start a new paragraph, and so does `\row` (the end of a
@@ -433,7 +434,7 @@ impl Reader {
             self.group.dest = parent.dest;
             return;
         }
-        // An ignorable destination (`\*`): VectorCraft reads none of them.
+        // An ignorable destination (`\*`): Most Vector reads none of them.
         if starred {
             self.group.dest = Dest::Skip;
             return;

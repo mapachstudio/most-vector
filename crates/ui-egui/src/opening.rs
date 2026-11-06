@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Opening documents off the UI thread (desktop): a file the user asks to open (File › Open, Open
 //! Recent, the Home screen, files handed to the app) is decoded on a thread of its own, which also
 //! reads its linked files and lays out its type, while the status bar shows it, and opens in a new tab
@@ -17,7 +18,7 @@ use crate::VectorcraftApp;
 pub struct Pending {
     /// Where it is.
     pub path: String,
-    /// What the status bar shows ("Opening Poster.vectorcraft").
+    /// What the status bar shows ("Opening Poster.mostvector").
     pub label: String,
     done: Receiver<Result<ReadFile, String>>,
     /// The automation roots in force where the open started: the document is installed under
@@ -46,9 +47,9 @@ pub fn long_operation_busy(app: &VectorcraftApp) -> bool {
 }
 
 /// Does opening happen off the UI thread here? Not on wasm (no threads), in unit tests (they look
-/// at the document right after asking for it), or with `VECTORCRAFT_SYNC_OPEN` set.
+/// at the document right after asking for it), or with `MOST_VECTOR_SYNC_OPEN` set.
 pub fn available() -> bool {
-    !(cfg!(target_arch = "wasm32") || cfg!(test) || std::env::var_os("VECTORCRAFT_SYNC_OPEN").is_some())
+    !(cfg!(target_arch = "wasm32") || cfg!(test) || std::env::var_os("MOST_VECTOR_SYNC_OPEN").is_some())
 }
 
 /// Decode `bytes`, the file at `path`, read its linked files and lay out its type on a thread of its

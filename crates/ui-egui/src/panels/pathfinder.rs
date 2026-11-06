@@ -1,4 +1,5 @@
-//! Pathfinder panel: Shape Modes (+ Expand) and Pathfinders, with icons drawn for VectorCraft.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Pathfinder panel: Shape Modes (+ Expand) and Pathfinders, with icons drawn for Most Vector.
 //! Alt-clicking a Shape Mode makes a compound shape; with members of one selected, a Shape Mode
 //! sets theirs.
 

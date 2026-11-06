@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The fonts available (`text.fontList`), the installed ones listed without asking for them (#36),
 //! and Refresh Font List (`text.rescanFonts`).
 
@@ -54,7 +55,7 @@ fn refreshing_the_font_list_during_a_save_leaves_the_document_saved() {
     s.execute("file.new", &json!({"width": 200, "height": 200})).unwrap();
     s.execute("text.create", &json!({"x": 10, "y": 40, "text": "Type", "font": "No Such Font"})).unwrap();
     let uid = s.doc().unwrap().uid;
-    let plan = save_plan(&s, SaveMode::SaveAs, &json!({"path": "/x/type.vectorcraft", "modified": 777})).unwrap();
+    let plan = save_plan(&s, SaveMode::SaveAs, &json!({"path": "/x/type.mostvector", "modified": 777})).unwrap();
     let job = save_job(&mut s, plan).unwrap();
     s.execute("text.rescanFonts", &json!({})).unwrap();
     job.write(|_, _| Ok(())).unwrap();

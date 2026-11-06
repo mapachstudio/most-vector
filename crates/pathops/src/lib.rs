@@ -1,4 +1,5 @@
-//! VectorCraft path operations: booleans (Pathfinder), shape builder regions, offset, outline stroke,
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector path operations: booleans (Pathfinder), shape builder regions, offset, outline stroke,
 //! simplify and the other Object → Path commands.
 //!
 //! Booleans are curve-preserving: `linesweeper`'s robust sweep-line works directly on cubic

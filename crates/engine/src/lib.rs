@@ -1,4 +1,5 @@
-//! The VectorCraft engine façade.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! The Most Vector engine façade.
 //!
 //! Every user-visible action is a command with a stable id (`object.group`, `select.same.fillColor`,
 //! `shape.rectangle`…) and JSON parameters. The egui UI, the CLI, the control channel and the MCP

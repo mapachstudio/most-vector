@@ -1,4 +1,5 @@
-//! VectorCraft brushes: definitions (calligraphic, scatter, art, pattern, bristle), the default
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector brushes: definitions (calligraphic, scatter, art, pattern, bristle), the default
 //! library, and the geometry that turns a brushed stroke into filled art.
 //!
 //! Brush definitions live in the document under `Document::unknown["brushes"]` (a JSON array of

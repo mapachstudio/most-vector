@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Workspace tooling: `cargo xtask <command>`.
 //!
 //! Pure Rust (std + serde_json). External tools (`cargo`, `curl`, `tar`) are
@@ -37,7 +38,7 @@ commands:
   corpus [--download] [--affinity]
                   show where test corpora live; --download fetches PngSuite into corpus/pngsuite,
                   --affinity the pinned public Affinity documents into corpus/affinity
-  bundle          build dist/VectorCraft.app (macOS) with assets/app-icon/vectorcraft.icns
+  bundle          build dist/Most Vector.app (macOS) with assets/app-icon/vectorcraft.icns
   ico <out.ico> <png>...
                   pack PNGs into a Windows .ico (used by packaging/icons.sh)
   stats [--exact] count tests and lines per crate (--exact: ask the test harness via `-- --list`)

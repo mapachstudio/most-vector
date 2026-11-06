@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Recover Documents (shown at launch when the last session left recovery copies behind):
 //! Restore / Discard / Cancel (ask again next launch). The flow lives in [`crate::recovery`]; this
 //! is its face in the shared dialog frame.
@@ -11,7 +12,7 @@ pub(super) const SPEC: DialogSpec = DialogSpec {
     heading: |_| tl!("Recover Documents").into(),
     body: |_, ui, d| {
         let t = Tokens::get(ui.ctx());
-        ui.label(egui::RichText::new(tl!("VectorCraft didn't quit normally last time. These documents had unsaved changes:")).color(t.text_dim));
+        ui.label(egui::RichText::new(tl!("Most Vector didn't quit normally last time. These documents had unsaved changes:")).color(t.text_dim));
         ui.add_space(8.0);
         let copies = d.fields.get("copies").and_then(Value::as_array);
         egui::ScrollArea::vertical().max_height(220.0).show(ui, |ui| {

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Export for Screens: sizes (factor, width, height, resolution), presets and sub-folders, Full
 //! Document, Include Bleed, per-format settings, ZIP downloads and the settings the document keeps.
 
@@ -214,7 +215,7 @@ fn a_saved_document_exports_under_its_file_name() {
     s.execute("file.info", &json!({"title": "Logo: final version"})).unwrap();
     let dir = std::env::temp_dir().join(format!("vc-screens-filename-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
-    s.execute("document.save", &json!({"path": dir.join("my-logo.vectorcraft").to_string_lossy()})).unwrap();
+    s.execute("document.save", &json!({"path": dir.join("my-logo.mostvector").to_string_lossy()})).unwrap();
     for (p, name) in [
         (json!({"name": "<filename>__<name>", "formats": [{"format": "png"}]}), "my-logo__Artboard 1.png"),
         (json!({"fullDocument": true, "formats": [{"format": "png"}]}), "my-logo.png"),

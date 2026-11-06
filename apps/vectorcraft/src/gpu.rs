@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Which graphics adapter the window renders with (#306, #502), and what happens when it can't
 //! show the window.
 //!
@@ -62,7 +63,7 @@ use eframe::wgpu::{self, Backend, Backends, DeviceType, PowerPreference};
 /// The adapters a restart leaves out, those the window failed on, as comma-separated [`key`]s
 /// (`Vulkan:1002:164e`, `Metal:Intel Iris Pro Graphics`). Set by the app itself when it starts
 /// again.
-pub const SKIP_ENV: &str = "VECTORCRAFT_GPU_SKIP";
+pub const SKIP_ENV: &str = "MOST_VECTOR_GPU_SKIP";
 
 /// The file in the log folder that records each start of the window until its first frame
 /// reaches the screen, and the adapters earlier starts crashed on ([`Startup::track`]).
@@ -675,7 +676,7 @@ impl Startup {
         let (file, previous) = match StartFile::open(dir) {
             Ok(Some(opened)) => opened,
             Ok(None) => {
-                log::info!("{START_FILE}: another VectorCraft is starting, so this start isn't recorded");
+                log::info!("{START_FILE}: another Most Vector is starting, so this start isn't recorded");
                 return LeftOut::default();
             }
             Err(e) => {

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Swatch library files: the native `.vcswatches` JSON (colour models, global, spot, gradients
 //! and colour groups exactly), `.gpl` palettes (8-bit RGB; colour groups as `# Group:` comment
 //! headers), swatch exchange `.ase` files (binary: solid colors in their own model, global, spot
@@ -38,7 +39,7 @@ impl PaletteFormat {
     }
     pub fn label(self) -> &'static str {
         match self {
-            PaletteFormat::Native => "VectorCraft Swatches (.vcswatches)",
+            PaletteFormat::Native => "Most Vector Swatches (.vcswatches)",
             PaletteFormat::Gpl => "GPL Palette (.gpl)",
             PaletteFormat::Ase => "Swatch Exchange (.ase)",
             PaletteFormat::Css => "CSS Custom Properties (.css)",
@@ -241,7 +242,7 @@ fn write_ase(lib: &SwatchLibrary) -> Result<Vec<u8>, String> {
     let entries = solid(&lib.swatches) + lib.groups.iter().map(|g| 1 + solid(&g.swatches)).sum::<usize>();
     if entries > ASE_MAX_ENTRIES {
         return Err(format!(
-            "VectorCraft reads at most {ASE_MAX_ENTRIES} colors and groups from a swatch exchange file, and this library has {entries}"
+            "Most Vector reads at most {ASE_MAX_ENTRIES} colors and groups from a swatch exchange file, and this library has {entries}"
         ));
     }
     let mut body = vec![];

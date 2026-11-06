@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! End-to-end MCP over stdio against the built `vectorcraft-cli mcp --headless` binary.
 
 use std::io::{BufRead, BufReader, Write};
@@ -208,7 +209,7 @@ fn export_formats_and_reopen() {
     let original = m.document();
     let n = m.art_count();
 
-    let dc = tmp("e2e.vectorcraft");
+    let dc = tmp("e2e.mostvector");
     let svg = tmp("e2e.svg");
     let pdf = tmp("e2e.pdf");
     let png = tmp("e2e.png");
@@ -220,7 +221,7 @@ fn export_formats_and_reopen() {
     assert!(std::fs::read_to_string(&svg).unwrap().contains("<svg"));
     Image::from_png(&std::fs::read(&png).unwrap()).expect("exported PNG decodes");
 
-    // Re-open each: .vectorcraft reproduces the document; SVG and PDF bring the art back.
+    // Re-open each: .mostvector reproduces the document; SVG and PDF bring the art back.
     m.tool("open_file", json!({"path": dc}));
     assert!(vectorcraft_testkit::invariants::json_approx_eq(&m.document(), &original, 1e-12));
     m.tool("open_file", json!({"path": svg}));
@@ -231,7 +232,7 @@ fn export_formats_and_reopen() {
     assert!(docs.is_object());
 
     // save_file writes the native format to a new path and it loads.
-    let saved = tmp("saved.vectorcraft");
+    let saved = tmp("saved.mostvector");
     m.tool("save_file", json!({"path": saved}));
     let d = vectorcraft_testkit::format::load(&std::fs::read(&saved).unwrap()).unwrap();
     vectorcraft_testkit::invariants::check_document(&d).unwrap();

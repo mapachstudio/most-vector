@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `vectorcraft --help` prints the usage and exits before the app starts (#2110): run from a
 //! terminal, SSH or an agent's shell it used to open the window (or hang without a display).
 
@@ -16,8 +17,8 @@ fn run(args: &[&str], env: &[(&str, &str)]) -> Output {
         .env_remove("DISPLAY")
         .env_remove("WAYLAND_DISPLAY")
         .env_remove("WAYLAND_SOCKET")
-        .env("VECTORCRAFT_CONTROL_PORT", "not-a-port")
-        .env("VECTORCRAFT_NO_PREFS", "1")
+        .env("MOST_VECTOR_CONTROL_PORT", "not-a-port")
+        .env("MOST_VECTOR_NO_PREFS", "1")
         .envs(env.iter().copied())
         .stdin(Stdio::null())
         .stdout(Stdio::piped())
@@ -72,5 +73,5 @@ fn help_prints_usage_and_exits_before_startup() {
 
 #[test]
 fn help_wins_over_a_bad_control_port_variable() {
-    prints_usage(&["--help"], &[("VECTORCRAFT_CONTROL_PORT", "abc")]);
+    prints_usage(&["--help"], &[("MOST_VECTOR_CONTROL_PORT", "abc")]);
 }

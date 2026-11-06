@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Effect → Document Raster Effects Settings (`document.rasterEffectsSettings`): the settings, the
 //! raster effect images they make (PDF export, Expand Appearance), the Rasterize defaults, and
 //! Effect › Rasterize's image.
@@ -370,7 +371,7 @@ fn reopen_with_ppi(s: &mut Session, ppi: f64) {
     let mut d = (*s.doc().unwrap().doc).clone();
     d.raster_effects_ppi = ppi;
     let data = vectorcraft_format::base64_encode(&vectorcraft_format::save_file(&d));
-    s.execute("document.open", &json!({"name": "ppi.vectorcraft", "dataBase64": data})).unwrap();
+    s.execute("document.open", &json!({"name": "ppi.mostvector", "dataBase64": data})).unwrap();
 }
 
 #[test]

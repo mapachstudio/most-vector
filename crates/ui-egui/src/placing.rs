@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Placing files off the UI thread (desktop): a file the user places (the Place dialog's OK, a file
 //! dropped on the canvas, the OK of the PDF, DXF and text import options Place asks for) is read and
 //! decoded on a thread that reads one file at a time while the status bar shows it, and is placed in
@@ -7,7 +8,7 @@
 //! places. A Paste the user gives decodes another app's bitmap on the same thread, and runs once it
 //! is decoded ([`adopt_for_paste`]). Files are read and placed in the order they were started.
 //! `file.place`, `file.place.queue` and `edit.paste*` from MCP and scripts run at once, and so does
-//! every place and paste on wasm (no threads), with `VECTORCRAFT_SYNC_OPEN` set, and in unit tests
+//! every place and paste on wasm (no threads), with `MOST_VECTOR_SYNC_OPEN` set, and in unit tests
 //! that do not set `off_the_ui_thread` ([`available`]).
 
 use std::collections::HashMap;

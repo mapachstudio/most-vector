@@ -1,6 +1,7 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! COLR colour glyphs (v0 layers, v1 paint graphs): read into a tree of document nodes in font
 //! units (y down, as outlines are), which the renderer, the exporters and Create Outlines draw and
-//! keep as they do any art. A glyph whose paints VectorCraft has no form for is drawn into an image
+//! keep as they do any art. A glyph whose paints Most Vector has no form for is drawn into an image
 //! instead, as bitmap glyphs are ([`GlyphImage`]); [`Tree::unsupported`] names what made it one.
 
 use std::sync::Arc;
@@ -38,12 +39,12 @@ const NO_ID: NodeId = NodeId(u64::MAX);
 /// Font units y up → y down.
 const FLIP: Affine = Affine::new([1.0, 0.0, 0.0, -1.0, 0.0, 0.0]);
 
-/// A colour glyph as VectorCraft draws it.
+/// A colour glyph as Most Vector draws it.
 #[derive(Clone)]
 pub(crate) enum ColourContent {
     /// Its layers as document nodes in font units (y down): a group.
     Art(Arc<Node>),
-    /// Its picture, for paints VectorCraft has no form for.
+    /// Its picture, for paints Most Vector has no form for.
     Image(Arc<GlyphImage>),
 }
 
@@ -140,7 +141,7 @@ struct Tree<'a> {
     nodes: usize,
     /// The path elements of the clips and fills so far.
     points: usize,
-    /// What VectorCraft has no form for, the first one met: the glyph becomes an image.
+    /// What Most Vector has no form for, the first one met: the glyph becomes an image.
     unsupported: Option<&'static str>,
     /// The graph is past [`MAX_COLR_NODES`] or [`MAX_COLR_DEPTH`].
     too_large: bool,
@@ -249,7 +250,7 @@ impl<'a> Tree<'a> {
         Some(Arc::new(Node::group(NO_ID, root.children)))
     }
 
-    /// `brush` as a VectorCraft paint and opacity, in the tree's space; `None` with
+    /// `brush` as a Most Vector paint and opacity, in the tree's space; `None` with
     /// [`Self::unsupported`] set when it has no form there.
     fn paint(&mut self, brush: &Brush<'_>) -> Option<(Paint, f32)> {
         self.foreground_used |= match brush {
@@ -413,7 +414,7 @@ impl ColorPainter for Tree<'_> {
     }
 }
 
-/// COLRv1's blend composite modes as VectorCraft's (`SrcOver` is Normal); `None` for the
+/// COLRv1's blend composite modes as Most Vector's (`SrcOver` is Normal); `None` for the
 /// Porter-Duff modes, which it has no form for.
 fn blend_mode(mode: CompositeMode) -> Option<BlendMode> {
     Some(match mode {

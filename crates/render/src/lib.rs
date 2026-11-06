@@ -1,4 +1,5 @@
-//! VectorCraft renderer: document → premultiplied RGBA pixels.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector renderer: document → premultiplied RGBA pixels.
 //!
 //! The backend is `vello_cpu` (SIMD, sparse strips). Callers give a *view transform* mapping
 //! document points to output pixels; the renderer culls by bounds, evaluates appearance stacks

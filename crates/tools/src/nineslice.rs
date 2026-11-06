@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The 9-slice guides of a symbol edited in symbol editing mode: two horizontal and two vertical
 //! guides over its art
 //! ([helpx: maintain proportions while scaling symbols](https://helpx.adobe.com/illustrator/desktop/manage-objects/traces-mockups-symbols/maintain-proportions-while-scaling-symbols.html)).
@@ -5,7 +6,7 @@
 //! takes the Move cursor, and dragging the guide moves it (`symbol.options`'s
 //! `nineSliceGuides`), in one undo step.
 //!
-//! VectorCraft's own rules: a guide stays within the art's box and stops short of the opposite
+//! Most Vector's own rules: a guide stays within the art's box and stops short of the opposite
 //! guide; the drag does not snap and its modifiers change nothing; a guide within reach takes the
 //! press before the art and the bounding box, and of two guides within reach the nearer one, else
 //! the first of left, top, right and bottom; Escape during the drag puts the guide back.

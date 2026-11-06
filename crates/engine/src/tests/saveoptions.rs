@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Native and `.ai` save options: each artboard to a separate file (a master file too), Include
 //! Linked Files, Embed ICC Profiles, Create PDF-Compatible File and the `.ai` Use Compression.
 
@@ -36,10 +37,10 @@ fn bytes_of(v: &Value) -> Vec<u8> {
 fn three_artboards_give_four_files() {
     let dir = Folder::new("separate");
     let mut s = three_boards();
-    let path = dir.file("Poster.vectorcraft");
+    let path = dir.file("Poster.mostvector");
     let r = s.execute("document.save", &json!({"path": path, "separateArtboards": true})).unwrap();
     let files: Vec<&str> = r["files"].as_array().unwrap().iter().map(|f| f.as_str().unwrap()).collect();
-    assert_eq!(files, [path.clone(), dir.file("Poster-A.vectorcraft"), dir.file("Poster-B.vectorcraft"), dir.file("Poster-C.vectorcraft")]);
+    assert_eq!(files, [path.clone(), dir.file("Poster-A.mostvector"), dir.file("Poster-B.mostvector"), dir.file("Poster-C.mostvector")]);
     // The master file has everything; each artboard's file that artboard and its art.
     let master = vectorcraft_format::load(&std::fs::read(&path).unwrap()).unwrap();
     assert_eq!((master.artboards.len(), objects(&master)), (3, 3));
@@ -58,7 +59,7 @@ fn three_artboards_give_four_files() {
     // No path: the bytes of every file.
     let r = s.execute("file.saveCopy", &json!({"separateArtboards": true})).unwrap();
     let names: Vec<&str> = r["files"].as_array().unwrap().iter().map(|f| f["name"].as_str().unwrap()).collect();
-    assert_eq!(names, ["Poster copy.vectorcraft", "Poster copy-A.vectorcraft", "Poster copy-B.vectorcraft", "Poster copy-C.vectorcraft"]);
+    assert_eq!(names, ["Poster copy.mostvector", "Poster copy-A.mostvector", "Poster copy-B.mostvector", "Poster copy-C.mostvector"]);
     assert!(vectorcraft_format::sniff(&bytes_of(&r["files"][3]["dataBase64"])));
 }
 
@@ -100,7 +101,7 @@ fn a_linked_pngs_bytes_are_embedded() {
     assert_eq!(vectorcraft_format::base64_decode(image["data"].as_str().unwrap()).unwrap(), bytes);
     // With the file gone the document still shows the full pixels.
     std::fs::remove_file(&pic).unwrap();
-    let r = s.execute("document.open", &json!({"name": "copy.vectorcraft", "dataBase64": r["dataBase64"]})).unwrap();
+    let r = s.execute("document.open", &json!({"name": "copy.mostvector", "dataBase64": r["dataBase64"]})).unwrap();
     assert_eq!(r["missingLinks"].as_array().unwrap().len(), 1);
     let d = &s.doc().unwrap().doc;
     let blob = d.images.values().next().unwrap();
@@ -132,7 +133,7 @@ fn an_embedded_profile_is_restored() {
     let moved = String::from_utf8(file).unwrap().replace(&name, &elsewhere);
     assert!(cms::profile(&elsewhere).is_none());
     let r =
-        s.execute("document.open", &json!({"name": "moved.vectorcraft", "dataBase64": vectorcraft_format::base64_encode(moved.as_bytes())})).unwrap();
+        s.execute("document.open", &json!({"name": "moved.mostvector", "dataBase64": vectorcraft_format::base64_encode(moved.as_bytes())})).unwrap();
     assert!(r["warnings"].as_array().unwrap().is_empty(), "{r}");
     assert_eq!(cms::profile(&elsewhere).map(|p| p.kind), Some(cms::ProfileKind::Rgb));
     assert_eq!(s.doc().unwrap().doc.color_profiles.rgb.as_deref(), Some(elsewhere.as_str()));
@@ -143,7 +144,7 @@ fn an_embedded_profile_is_restored() {
     let r = s
         .execute(
             "document.open",
-            &json!({"name": "b.vectorcraft", "dataBase64": vectorcraft_format::base64_encode(&serde_json::to_vec(&v).unwrap())}),
+            &json!({"name": "b.mostvector", "dataBase64": vectorcraft_format::base64_encode(&serde_json::to_vec(&v).unwrap())}),
         )
         .unwrap();
     assert!(r["warnings"][0].as_str().unwrap().contains(&broken), "{r}");
@@ -178,7 +179,7 @@ fn save_option_errors_name_the_save_command() {
     }
     // A native file written to a path.
     let dir = Folder::new("save-errors");
-    for (cmd, name) in [("document.save", "a.vectorcraft"), ("file.saveAs", "b.vectorcraft"), ("file.saveCopy", "c.vectorcraft")] {
+    for (cmd, name) in [("document.save", "a.mostvector"), ("file.saveAs", "b.mostvector"), ("file.saveCopy", "c.mostvector")] {
         let p = json!({"path": dir.file(name), "compress": "yes"});
         let e = s.execute(cmd, &p).unwrap_err().to_string();
         assert!(e.contains(&format!("`{cmd}`")) && !e.contains("document.export"), "{p}: {e}");
@@ -200,7 +201,7 @@ fn ai_without_pdf_content_and_compression() {
     assert!(says(&warnings, "without PDF content") && says(&warnings, "apps that read its editing data open it"), "{warnings}");
     // Without the editing copy, other apps show empty pages.
     let (_, plain) = ai(&mut s, json!({"pdfCompatible": false, "editingData": false}));
-    assert!(says(&plain, "VectorCraft opens it as before") && !says(&plain, "editing data"), "{plain}");
+    assert!(says(&plain, "Most Vector opens it as before") && !says(&plain, "editing data"), "{plain}");
     // The pages are empty (an import of a page finds no art), the document comes back whole.
     let page = |s: &mut Session, b: &[u8]| {
         s.execute("document.open", &json!({"name": "x.ai", "dataBase64": vectorcraft_format::base64_encode(b), "pages": "1"})).unwrap();
@@ -303,7 +304,7 @@ fn a_remembered_artboard_the_document_no_longer_has_is_dropped() {
     for (name, p) in [
         ("legacy.ai", json!({"aiVersion": "7", "range": "3"})),
         ("separate.ai", json!({"separateArtboards": true, "range": "3"})),
-        ("separate.vectorcraft", json!({"separateArtboards": true, "range": "1, 3"})),
+        ("separate.mostvector", json!({"separateArtboards": true, "range": "1, 3"})),
         ("doc.pdf", json!({"range": "3"})),
         ("doc.svg", json!({"artboard": 2})),
     ] {
@@ -378,7 +379,7 @@ fn a_remembered_artboard_pick_follows_the_artboards_it_named() {
         ("unused.pdf", json!({"artboard": 0, "range": "3"}), 0, json!({"range": "2"})),
         ("doc.svg", json!({"artboard": 2}), 0, json!({"artboard": 1})),
         ("legacy.ai", json!({"aiVersion": "7", "range": "1, 3"}), 2, json!({"range": "1"})),
-        ("doc.vectorcraft", json!({"separateArtboards": true, "range": "1, 3"}), 0, json!({"range": "2"})),
+        ("doc.mostvector", json!({"separateArtboards": true, "range": "1, 3"}), 0, json!({"range": "2"})),
     ] {
         let mut s = three_boards();
         let mut first = p.clone();
@@ -415,7 +416,7 @@ fn a_remembered_artboard_pick_follows_the_artboards_it_named() {
     assert_eq!(s.doc().unwrap().doc.artboards.iter().map(|a| a.id).collect::<Vec<_>>(), [1, 2, 3]);
     assert_eq!(s.execute("file.formatOptions", &json!({})).unwrap()["options"]["range"]["value"], Value::Null);
     let mut s = three_boards();
-    s.execute("file.saveAs", &json!({"path": dir.file("revert.vectorcraft"), "separateArtboards": true, "range": "1, 3"})).unwrap();
+    s.execute("file.saveAs", &json!({"path": dir.file("revert.mostvector"), "separateArtboards": true, "range": "1, 3"})).unwrap();
     s.execute("artboard.delete", &json!({"index": 0})).unwrap();
     s.execute("file.revert", &json!({})).unwrap();
     assert_eq!(s.execute("file.formatOptions", &json!({})).unwrap()["options"]["range"]["value"], json!("1, 3"));
@@ -432,7 +433,7 @@ fn format_options_list_the_save_options() {
     assert_eq!((v["options"]["pdfCompatible"]["value"].as_bool(), v["options"]["range"]["value"].is_null()), (Some(false), true));
     // Saved with them, a document remembers them for Save.
     let dir = Folder::new("remember");
-    let path = dir.file("r.vectorcraft");
+    let path = dir.file("r.mostvector");
     s.execute("document.save", &json!({"path": path, "includeLinked": true})).unwrap();
     let v = s.execute("file.formatOptions", &json!({})).unwrap();
     assert_eq!(v["options"]["includeLinked"]["value"], true);
@@ -458,7 +459,7 @@ fn precision_rounds_the_paths_of_that_save_only() {
     };
     let anchors: Vec<Value> = (0..1000).map(|_| json!({"x": next(), "y": next()})).collect();
     s.execute("path.create", &json!({"anchors": anchors})).unwrap();
-    let (exact, rounded) = (dir.file("exact.vectorcraft"), dir.file("rounded.vectorcraft"));
+    let (exact, rounded) = (dir.file("exact.mostvector"), dir.file("rounded.mostvector"));
     s.execute("document.save", &json!({"path": exact, "compress": false})).unwrap();
     s.execute("document.save", &json!({"path": rounded, "compress": false, "precision": 3})).unwrap();
     let (e, r) = (std::fs::metadata(&exact).unwrap().len(), std::fs::metadata(&rounded).unwrap().len());
@@ -492,7 +493,7 @@ fn precision_is_not_remembered_for_new_documents() {
     let dir = Folder::new("precision-preferences");
     let mut s = Session::new();
     s.execute("file.new", &json!({"width": 100, "height": 100})).unwrap();
-    s.execute("document.save", &json!({"path": dir.file("rounded.vectorcraft"), "precision": 3})).unwrap();
+    s.execute("document.save", &json!({"path": dir.file("rounded.mostvector"), "precision": 3})).unwrap();
     assert!(!s.prefs.native_save_options.contains_key("precision"));
 
     s.execute("file.new", &json!({"width": 100, "height": 100})).unwrap();

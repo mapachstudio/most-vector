@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The metafile reader: the format parsers (`emf`, `wmf`) play their records on a [`Player`], a
 //! small model of the device context they draw into (objects, transforms, the current position,
 //! the path bracket, the clip), which turns what they draw into document objects.
@@ -854,7 +855,7 @@ impl Player {
         if self.skipped > 0 {
             let n = self.skipped;
             self.warnings.push(format!(
-                "{n} record{} of kinds VectorCraft doesn't read {} skipped",
+                "{n} record{} of kinds Most Vector doesn't read {} skipped",
                 if n == 1 { "" } else { "s" },
                 if n == 1 { "was" } else { "were" }
             ));

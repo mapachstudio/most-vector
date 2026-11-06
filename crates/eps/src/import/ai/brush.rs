@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Brush definitions (not publicly documented): plug-in objects in the setup, as written in files
 //! that users own and sent us, brush library files among them (not presets installed with any
 //! other app).
@@ -11,7 +12,7 @@
 //!   codes follow the order of the Brush Options menu: 0 Fixed, 1 Random, 2 Pressure, 3 Stylus
 //!   Wheel, 4 Tilt, 5 Bearing, 6 Rotation. A user's 6D Art Pen brushes (#372) vary the diameter
 //!   with 2, the roundness with 5 and the angle with 6, the angle over a whole turn, as the barrel
-//!   rotation turns the nib. VectorCraft reads no stylus wheel: 3 is read as Random when the value
+//!   rotation turns the nib. Most Vector reads no stylus wheel: 3 is read as Random when the value
 //!   varies, as an unknown code is.
 //! - A path with a Calligraphic brush is a stroke in its art style ([`super::style`]): the filter
 //!   `(Adobe Calligraphic Brush Tool)`, its stroke's paint and weight (the weight scales the brush:
@@ -369,5 +370,5 @@ pub(super) fn finish_brushes_within(
 
 /// The note for brushes [`finish_brushes`] left out.
 pub(super) fn left_out_note(n: usize) -> String {
-    format!("brushes VectorCraft can't read yet were left out of the Brushes panel ({n})")
+    format!("brushes Most Vector can't read yet were left out of the Brushes panel ({n})")
 }

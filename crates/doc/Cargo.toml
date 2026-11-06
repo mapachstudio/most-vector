@@ -1,9 +1,10 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft-doc"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "VectorCraft document model: artboards, layers, objects, appearance (pure data + serde)"
+description = "Most Vector document model: artboards, layers, objects, appearance (pure data + serde)"
 
 [lints]
 workspace = true

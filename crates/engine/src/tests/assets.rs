@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Asset Export: collecting art as assets (single and multiple), assets following their art
 //! (moves, deletions), names, undo, the native round trip, the shared export settings and
 //! exporting assets alone, cropped to their art. Art Optimized PNG exports are supersampled
@@ -220,7 +221,7 @@ fn assets_round_trip_through_the_native_format() {
     run(&mut s, "assets.add", json!({"ids": [a, b], "multiple": false, "name": "Both"}));
     let saved = s.doc().unwrap().doc.assets.clone();
     let b64 = run(&mut s, "document.serialize", json!({"format": "vectorcraft"}))["dataBase64"].as_str().unwrap().to_string();
-    run(&mut s, "document.open", json!({"name": "assets.vectorcraft", "dataBase64": b64}));
+    run(&mut s, "document.open", json!({"name": "assets.mostvector", "dataBase64": b64}));
     assert_eq!(s.doc().unwrap().doc.assets, saved);
     // A new asset never takes an id already used.
     let c = rect(&mut s, 90.0, 10.0, 20.0, 20.0);

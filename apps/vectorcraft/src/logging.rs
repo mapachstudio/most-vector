@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The desktop app's logger: `log::` records go to standard error and to a log file.
 //!
 //! Without a logger every `log::warn!`/`log::error!` in the workspace (the graphics adapter, a
@@ -5,9 +6,9 @@
 //! has no terminal, so the file is what a bug report can attach: `<settings dir>/logs/vectorcraft.log`,
 //! next to the preferences (`prefs_path` in `main.rs`). Each start moves the previous log to
 //! `vectorcraft.1.log` (and that one to `.2`), so the log of a run that crashed survives the next
-//! launch. Runs without preferences (`VECTORCRAFT_NO_PREFS`) log to standard error only.
+//! launch. Runs without preferences (`MOST_VECTOR_NO_PREFS`) log to standard error only.
 //!
-//! Levels: `info` for VectorCraft's own crates, `warn` for everything else (wgpu and naga are
+//! Levels: `info` for Most Vector's own crates, `warn` for everything else (wgpu and naga are
 //! chatty). `RUST_LOG` replaces that with env_logger-style directives: `debug`,
 //! `warn,vectorcraft_render=trace`, `wgpu_core=info`. A directive ending in `*` matches every
 //! target that starts with it (`vectorcraft*=debug`).

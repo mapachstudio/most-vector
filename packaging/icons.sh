@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # Regenerate every app icon from assets/app-icon/vectorcraft.svg (the canonical artwork).
 #
 # Needs: resvg (brew install resvg / cargo install resvg). On macOS, iconutil also writes the
@@ -9,7 +10,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DIR="$ROOT/assets/app-icon"
 SVG="$DIR/vectorcraft.svg"
-ID="ai.storyteller.vectorcraft"
+ID="com.grupomostmexico.mostvector"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 

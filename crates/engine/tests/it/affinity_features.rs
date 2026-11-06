@@ -1,7 +1,8 @@
-//! Affinity → VectorCraft mapping of pages, master pages, tables, paragraph formats, text scale,
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Affinity → Most Vector mapping of pages, master pages, tables, paragraph formats, text scale,
 //! layer effects and embedded documents, on original synthetic documents built with the reader's
 //! `synth` feature (no Affinity software or files were used). The fixtures follow DesignCraft's
-//! Affinity import tests, whose reader VectorCraft shares.
+//! Affinity import tests, whose reader Most Vector shares.
 
 use crate::affinity_docs;
 use crate::text_fixture;
@@ -153,7 +154,7 @@ fn artistic_text_keeps_its_paragraphs_size_and_leading() {
     // Centred on the anchor (x = 1000 + 200), first baseline 80 px below the frame top (y = 500).
     let origin = t.xf * kurbo::Point::ZERO;
     assert!(near(origin.x, 1200.0 * PT) && near(origin.y, 580.0 * PT), "{origin:?}");
-    // Lines are the font size plus the font's line gap apart (VectorCraft's default is 120 %).
+    // Lines are the font size plus the font's line gap apart (Most Vector's default is 120 %).
     let face = vectorcraft_text::FontDb::global().face(&t.runs[0].style.font_family, &t.runs[0].style.font_style).unwrap();
     let expected = 100.0 * (1.0 + face.line_gap() / face.units_per_em());
     assert!(near(t.para.justification.auto_leading, expected), "{} vs {expected}", t.para.justification.auto_leading);
@@ -595,7 +596,7 @@ fn frame_text_hangs_from_cap_height_and_shows_lines_whose_baseline_fits() {
     assert_eq!(t.area.first_baseline, FirstBaseline::CapHeight);
     let lines = vectorcraft_text::layout(db, t).lines;
     assert_eq!(lines.len(), 2);
-    // Higher than VectorCraft's default, the font's ascent.
+    // Higher than Most Vector's default, the font's ascent.
     let ascent = vectorcraft_text::layout(db, &TextObject { area: Default::default(), ..t.clone() }).lines[0].baseline;
     assert!(lines[0].baseline < ascent - 1.0, "first baseline {} vs ascent {ascent}", lines[0].baseline);
     let (baseline, bottom) = (lines[1].baseline, lines[1].baseline + lines[1].descent);

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Linked images (File → Place with Link): finding their files, telling when they changed, and
 //! reading them again.
 //!
@@ -17,7 +18,7 @@
 //! (`links.embed`) and Unembed writes an embedded image to a file it then links to
 //! (`links.unembed`).
 //!
-//! Placed documents ([`PlacedDocument`], VectorCraft documents and PDF or `.ai` pages placed with
+//! Placed documents ([`PlacedDocument`], Most Vector documents and PDF or `.ai` pages placed with
 //! Link) link to their files the same way: checking, updating, relinking and finding them on open
 //! work alike, and they are listed. Embed (Break Link) turns one into an editable copy of its art.
 
@@ -469,7 +470,7 @@ fn read_image(f: &mut Found, base: &LinkInfo) -> Result<FileRead> {
 /// A linked file read for the objects that show it.
 enum Read {
     Image(FileRead),
-    /// A VectorCraft document or a PDF or `.ai` file read for placed documents: the link to it and
+    /// A Most Vector document or a PDF or `.ai` file read for placed documents: the link to it and
     /// what they show.
     Document(LinkInfo, super::place::document::Source),
 }
@@ -1130,12 +1131,12 @@ fn format_label(d: &Document, im: &ImageObject) -> &'static str {
         .map_or("Image", |f| f.label)
 }
 
-/// A placed document's `links.list` fields: `format` (`VectorCraft`, or the PDF or `.ai` file's
+/// A placed document's `links.list` fields: `format` (`Most Vector`, or the PDF or `.ai` file's
 /// format), `document: true` and its artboard's or page's size (`pageWidth`, `pageHeight`, pt)
 /// instead of pixels.
 fn document_row(p: &PlacedDocument) -> Value {
     let pdf = fileio::format_for_name(p.link.name()).filter(|f| matches!(f.id, "pdf" | "ai" | "ait"));
-    json!({ "format": pdf.map_or("VectorCraft", |f| f.label), "document": true, "pageWidth": p.width, "pageHeight": p.height })
+    json!({ "format": pdf.map_or("Most Vector", |f| f.label), "document": true, "pageWidth": p.width, "pageHeight": p.height })
 }
 
 /// Sort rank of a `links.list` status: missing, modified, ok, embedded.

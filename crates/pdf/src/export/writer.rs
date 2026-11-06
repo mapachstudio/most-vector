@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::entry::RgbInCmyk;
 use super::exporter::{constant_mask, cover, to_path, writable, xf};
 use super::{
@@ -91,8 +92,8 @@ impl Writer {
         let info = &doc.metadata;
         let given = |s: &str| Some(s.trim()).filter(|s| !s.is_empty()).map(str::to_string);
         let metadata = Metadata {
-            creator: "VectorCraft".into(),
-            producer: "VectorCraft".into(),
+            creator: "Most Vector".into(),
+            producer: "Most Vector".into(),
             title: Some(title.to_owned()),
             authors: given(&info.author).into_iter().collect(),
             description: given(&info.description),

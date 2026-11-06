@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::build::Frame;
 use super::slots::OUTLINE_REACH;
 use super::{Arc, Document, Node, NodeKind, Rect};
@@ -172,7 +173,7 @@ struct Page {
     /// Where the page's own type is, in its pixels.
     page_type: Vec<Rect>,
     /// Where objects read with their art style lie, in its pixels: the page has Illustrator's
-    /// rendering of the style there, the layers VectorCraft's live effects, and the two aren't
+    /// rendering of the style there, the layers Most Vector's live effects, and the two aren't
     /// held to look alike.
     restyled: Vec<Rect>,
     /// The column and row of its pixels that its move ([`Self::region`]) took partly off its area,

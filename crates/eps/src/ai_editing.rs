@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The editing copy of the art that a PDF-compatible `.ai` file carries in its pages'
 //! `PieceInfo` ([`vectorcraft_pdf::PrivateData`]): the document's layers, sublayers, groups, paths,
 //! colors, swatches and artboards in the form [`crate::import`]'s `.ai` reader reads, so that apps
@@ -139,13 +140,13 @@ const ART_SIZE: u32 = 14400;
 const ART_FLAGS: &str = "0 0 0 1 0 0 1 0 0";
 /// `%AI5_TargetResolution` (§2.1.1).
 const TARGET_RESOLUTION: u32 = 800;
-/// The gridlines' gray: VectorCraft's default grid color (200 of 255).
+/// The gridlines' gray: Most Vector's default grid color (200 of 255).
 const GRID_GRAY: f64 = 200.0 / 255.0;
 
-/// `%%Creator`: the creator line VectorCraft writes in the header of the editing data. It names
-/// VectorCraft and the format's app, and holds no version number; the version is written on its
+/// `%%Creator`: the creator line Most Vector writes in the header of the editing data. It names
+/// Most Vector and the format's app, and holds no version number; the version is written on its
 /// own in `%%AI8_CreatorVersion` ([`CREATOR_VERSION`]).
-const CREATOR_TEXT: &str = "VectorCraft, editing data for Illustrator"; // brand-ok: the creator line VectorCraft writes
+const CREATOR_TEXT: &str = "Most Vector, editing data for Illustrator"; // brand-ok: the creator line Most Vector writes
 
 /// The first line of a PostScript file (the DSC version comment).
 const PS_HEADER: &str = "%!PS-Adobe-3.0"; // brand-ok: the PostScript header comment
@@ -407,7 +408,7 @@ fn header(doc: &Document, o: &AiEditingOptions, w: &Writer, art: Rect, first: Re
     if !views.is_empty() {
         let _ = writeln!(s, "%AI5_OpenViewLayers: {views}");
     }
-    // Gridlines and subdivisions (§2.1.1, Table 6): in back, lines, in VectorCraft's grid gray.
+    // Gridlines and subdivisions (§2.1.1, Table 6): in back, lines, in Most Vector's grid gray.
     let (space, subdiv) = (ps::num(doc.grid.spacing), doc.grid.subdivisions);
     let gray = ps::num(GRID_GRAY);
     let _ = writeln!(s, "%AI7_GridSettings: {space} {subdiv} {space} {subdiv} 1 0 {gray} {gray} {gray} {gray} {gray} {gray}");

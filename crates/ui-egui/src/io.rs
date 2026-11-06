@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File I/O through the injected services (pick, read, write, download, reveal); the engine's
 //! `fileio` decodes, encodes and saves every format.
 
@@ -94,9 +95,9 @@ mod tests {
             (st.is_dirty(), st.path.clone())
         };
         for (command, path, message) in [
-            ("file.save", "/docs/Poster.vectorcraft", "Can't save “Poster.vectorcraft”."),
-            ("file.saveAs", "/docs/Poster.vectorcraft", "Can't save “Poster.vectorcraft”."),
-            ("file.saveCopy", "/docs/Copy.vectorcraft", "Can't save “Copy.vectorcraft”."),
+            ("file.save", "/docs/Poster.mostvector", "Can't save “Poster.mostvector”."),
+            ("file.saveAs", "/docs/Poster.mostvector", "Can't save “Poster.mostvector”."),
+            ("file.saveCopy", "/docs/Copy.mostvector", "Can't save “Copy.mostvector”."),
             ("file.exportAs", "/docs/Poster.png", "Can't export “Poster.png”."),
             ("file.export.pdf", "/docs/Poster.pdf", "Can't save “Poster.pdf”."),
         ] {
@@ -109,14 +110,14 @@ mod tests {
         }
         // An agent waiting on its request gets the error as its reply, and no dialog.
         app.ui.answering_control = true;
-        assert!(app.run("file.save", json!({"path": "/docs/Poster.vectorcraft"})).is_err());
+        assert!(app.run("file.save", json!({"path": "/docs/Poster.mostvector"})).is_err());
         app.ui.answering_control = false;
         assert!(app.ui.dialog.is_none() && app.ui.told.is_empty());
         // Under another dialog (a background save that fails later) the message waits its turn,
         // once, and is drawn when that dialog is closed.
         dialogs::confirm::ask(&mut app, "Delete the swatch?", "", "edit.undo", json!({}));
         for _ in 0..2 {
-            report_write_error(&mut app, false, "/docs/Poster.vectorcraft", "the disk is full");
+            report_write_error(&mut app, false, "/docs/Poster.mostvector", "the disk is full");
         }
         assert_eq!((app.ui.dialog.as_ref().map(|d| d.kind.as_str()), app.ui.told.len()), (Some(dialogs::confirm::KIND), 1));
         app.ui.dialog = None;
@@ -129,7 +130,7 @@ mod tests {
         let d = app.ui.dialog.as_ref().expect("the message is shown, and stays");
         assert_eq!(
             (d.kind.as_str(), d.str("message").as_str(), d.str("detail").as_str()),
-            (dialogs::confirm::MESSAGE, "Can't save “Poster.vectorcraft”.", "the disk is full")
+            (dialogs::confirm::MESSAGE, "Can't save “Poster.mostvector”.", "the disk is full")
         );
         assert!(app.ui.told.is_empty());
     }
@@ -149,13 +150,13 @@ mod tests {
             let st = app.session.doc().unwrap();
             (st.is_dirty(), st.path.clone())
         };
-        let e = save(&mut app, SaveMode::Save, &json!({"path": "Poster.vectorcraft"}), false).unwrap_err();
+        let e = save(&mut app, SaveMode::Save, &json!({"path": "Poster.mostvector"}), false).unwrap_err();
         assert!(e.contains("the browser refused the download"), "{e}");
         assert_eq!(unsaved(&app), (true, None));
         // Save Changes › Save: not saved, so not closed.
         let (i, uid) = (app.session.active_index().unwrap(), app.session.doc().unwrap().uid);
         app.ui.dialog = Some(crate::state::Dialog::new(crate::unsaved::KIND, json!({"index": i, "uid": uid, "name": "Poster", "then": "close"})));
-        app.session.doc_mut().unwrap().path = Some("Poster.vectorcraft".into());
+        app.session.doc_mut().unwrap().path = Some("Poster.mostvector".into());
         assert!(crate::unsaved::confirm(&mut app).is_err());
         assert_eq!((app.session.documents().len(), app.session.doc().unwrap().is_dirty()), (1, true));
         // Once the download starts, the save counts.
@@ -209,13 +210,13 @@ mod tests {
         let (mut app, written) = app();
         app.session.execute("file.new", &json!({"width": 100, "height": 50, "artboards": 2})).unwrap();
         app.session.execute("artboard.setProps", &json!({"index": 1, "width": 40})).unwrap();
-        app.session.doc_mut().unwrap().path = Some("/tmp/doc.vectorcraft".into());
+        app.session.doc_mut().unwrap().path = Some("/tmp/doc.mostvector".into());
         export(&mut app, None, Some("/tmp/b.png".into()), &json!({"artboard": 1, "scale": 2})).unwrap();
-        export(&mut app, None, Some("/tmp/copy.vectorcraft".into()), &Value::Null).unwrap();
+        export(&mut app, None, Some("/tmp/copy.mostvector".into()), &Value::Null).unwrap();
         let w = written.borrow();
         assert_eq!(&w[0].1[16..20], 80u32.to_be_bytes(), "artboard 1 (40 pt) at scale 2");
         assert!(vectorcraft_format::sniff(&w[1].1));
-        assert_eq!(app.session.active().unwrap().path.as_deref(), Some("/tmp/doc.vectorcraft"));
+        assert_eq!(app.session.active().unwrap().path.as_deref(), Some("/tmp/doc.mostvector"));
         drop(w);
         assert!(export(&mut app, None, Some("/tmp/x.dwg".into()), &Value::Null).is_err(), "DWG can't be written");
     }

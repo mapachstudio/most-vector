@@ -1,3 +1,4 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # Windows ARM64 build and smoke test.
 #
 # Release packages on arm64-windows are produced on x64 runners via cross-compilation
@@ -31,6 +32,6 @@ jobs:
     uses: storytold/craft-common-actions/.github/workflows/windows-arm64.yml@main
     with:
       app-name: vectorcraft
-      app-dir: VectorCraft
-      install-relative-path: Programs/ArtCraft/VectorCraft
+      app-dir: Most Vector
+      install-relative-path: Programs/ArtCraft/Most Vector
       install-scope: perUser

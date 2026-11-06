@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::*;
 use crate::Services;
 use vectorcraft_engine::Session;
@@ -88,7 +89,7 @@ fn reapply_restarts_the_renderer_after_a_render_threads_change() {
     apply_runtime(&mut app, &ctx);
     app.canvas.worker_started = true;
     // The automatic count as an explicit value: the process-wide count other tests read stays the same.
-    // `VECTORCRAFT_RENDER_THREADS` can give more than the 64 the preference accepts.
+    // `MOST_VECTOR_RENDER_THREADS` can give more than the 64 the preference accepts.
     let threads = vectorcraft_render::default_threads().min(64);
     app.run("prefs.set", json!({"key": "renderThreads", "value": threads})).unwrap();
     reapply(&mut app, &ctx);
@@ -219,7 +220,7 @@ fn graphics_processor_preference_shows_and_persists() {
     out.shapes.iter().for_each(|c| texts(&c.shape, &mut shown));
     assert!(shown.iter().any(|t| t.starts_with("Graphics Processor")), "{shown:?}");
     assert!(shown.iter().any(|t| t == "Automatic"), "{shown:?}");
-    assert!(shown.iter().any(|t| t == "Applies the next time VectorCraft starts."), "{shown:?}");
+    assert!(shown.iter().any(|t| t == "Applies the next time Most Vector starts."), "{shown:?}");
     a.ui.dialog.as_mut().unwrap().fields.insert("gpuPreference".into(), json!("highPerformance"));
     assert!(!a.take_prefs_changed(), "nothing to write before OK");
     confirm(&mut a).unwrap();
@@ -254,7 +255,7 @@ fn system_title_bar_preference_shows_and_persists() {
     out.shapes.iter().for_each(|c| texts(&c.shape, &mut shown));
     let supported = cfg!(all(not(target_arch = "wasm32"), not(target_os = "macos")));
     assert_eq!(shown.iter().any(|t| t == "System Title Bar"), supported, "{shown:?}");
-    assert_eq!(shown.iter().any(|t| t == "Applies the next time VectorCraft starts."), supported, "{shown:?}");
+    assert_eq!(shown.iter().any(|t| t == "Applies the next time Most Vector starts."), supported, "{shown:?}");
     a.ui.dialog.as_mut().unwrap().fields.insert("systemTitleBar".into(), json!(true));
     confirm(&mut a).unwrap();
     assert!(a.session.prefs.system_title_bar);

@@ -1,5 +1,6 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! One app per user (#4892): a file opened from the file manager (double-click, Open With, a drop
-//! on the executable) while VectorCraft runs opens as a new document tab in the running app, which
+//! on the executable) while Most Vector runs opens as a new document tab in the running app, which
 //! comes to the front, instead of in a second app.
 //!
 //! The running app (the primary) listens on a loopback port and records the port and two random
@@ -11,7 +12,7 @@
 //! launch exits. Anything else (no file, no listener, a wrong greeting, no answer) starts the launch
 //! as its own app, which replaces a stale file. Nothing received is ever run.
 //!
-//! Runs that start many apps side by side (`--control`, `VECTORCRAFT_NO_PREFS`) neither forward
+//! Runs that start many apps side by side (`--control`, `MOST_VECTOR_NO_PREFS`) neither forward
 //! nor listen, and `--new-instance` opens a launch's files in an app of its own. macOS hands files
 //! opened from Finder to the running app itself (`open_documents`), so this is off there.
 
@@ -67,7 +68,7 @@ pub fn start(automation: bool, new_instance: bool, files: &[String]) -> Start {
         Ok(()) if send.is_empty() => Start::Running(None),
         Ok(()) => Start::Forwarded,
         Err(e) => {
-            log::debug!("no running VectorCraft to hand files to ({e})");
+            log::debug!("no running Most Vector to hand files to ({e})");
             Start::Running(listen(&path, queue))
         }
     }
@@ -135,7 +136,7 @@ fn forward(path: &Path, files: &[String]) -> io::Result<()> {
     stream.set_write_timeout(Some(CLIENT_TIMEOUT))?;
     // The token and the paths go only to a listener that knows the greeting.
     if !same(read_message(&stream)?.get("hello"), &endpoint.hello) {
-        return Err(invalid("the listener isn't VectorCraft"));
+        return Err(invalid("the listener isn't Most Vector"));
     }
     write_message(&stream, &json!({ "token": endpoint.token, "files": files }))?;
     match read_message(&stream)?.get("ok") {
@@ -147,7 +148,7 @@ fn forward(path: &Path, files: &[String]) -> io::Result<()> {
 /// Listen for later launches and record this app at `path`; each launch's files go to `deliver`.
 /// `None` when that fails (logged): the app then runs on its own, as before.
 fn listen(path: &Path, deliver: impl Fn(Vec<String>) + Send + 'static) -> Option<Primary> {
-    try_listen(path, deliver).inspect_err(|e| log::warn!("files opened while VectorCraft runs will open in another window: {e}")).ok()
+    try_listen(path, deliver).inspect_err(|e| log::warn!("files opened while Most Vector runs will open in another window: {e}")).ok()
 }
 
 fn try_listen(path: &Path, deliver: impl Fn(Vec<String>) + Send + 'static) -> io::Result<Primary> {

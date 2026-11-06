@@ -1,9 +1,10 @@
-//! The native `.vectorcraft` format.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! The native `.mostvector` format.
 //!
-//! A `.vectorcraft` file is UTF-8 JSON, gzip-compressed when saved with Use Compression (told apart
+//! A `.mostvector` file is UTF-8 JSON, gzip-compressed when saved with Use Compression (told apart
 //! by its magic bytes on open, whatever the version):
 //! ```json
-//! { "format": "vectorcraft", "version": 3, "generator": "VectorCraft 0.1.0",
+//! { "format": "vectorcraft", "version": 3, "generator": "Most Vector 0.1.0",
 //!   "preview": { "mime": "image/png", "data": "<base64>" },
 //!   "profiles": { "<profile name>": { "mime": "application/vnd.iccprofile", "data": "<base64>" } },
 //!   "pdf": { "mime": "application/pdf", "data": "<base64>" },
@@ -33,7 +34,7 @@
 //! The document has a version of its own (`document.version`, [`vectorcraft_doc::FORMAT_VERSION`]),
 //! which readers do not check. A version 2 document's Twist effects turn clockwise for a positive
 //! angle. A version 1 document's Twist angles are negated when it opens, unless the file is of
-//! [`VERSION`] and its `generator` is VectorCraft 0.21.0 or later, which turned them clockwise
+//! [`VERSION`] and its `generator` is Most Vector 0.21.0 or later, which turned them clockwise
 //! already; [`save_with`] writes a version 1 document with them negated back for an older file
 //! version ([`vectorcraft_doc::twist`]).
 #![forbid(unsafe_code)]
@@ -63,7 +64,7 @@ use stream::{Gz, Indent, KeyScan, Out};
 
 /// Most bytes the JSON of a compressed file may unpack to (a guard against decompression bombs,
 /// as are [`MAX_BLOB`] and [`MAX_BLOBS`]). A compressed save refuses a document past any of them,
-/// so every file VectorCraft writes reads back. On wasm32 the cap is a quarter of the native
+/// so every file Most Vector writes reads back. On wasm32 the cap is a quarter of the native
 /// one: the JSON is deserialized into a document several times its size, and the 4 GiB address
 /// space also holds the file, the JSON, the document and the app (#3587).
 pub const MAX_JSON: u64 = if cfg!(target_arch = "wasm32") { 256 << 20 } else { 1 << 30 };
@@ -74,7 +75,7 @@ pub const MAX_BLOB: u64 = craft_vectorcraft_format::MAX_ENTRY;
 /// build, whose 4 GiB address space also holds the JSON, the document and the app, so 4 GiB of
 /// entries failed to allocate rather than being refused.
 pub const MAX_BLOBS: u64 = if cfg!(target_arch = "wasm32") { 1 << 30 } else { 4 << 30 };
-/// Most bytes a compressed file whose JSON isn't followed by the marker where VectorCraft puts it
+/// Most bytes a compressed file whose JSON isn't followed by the marker where Most Vector puts it
 /// (hand-made or damaged files) may unpack to: it is unpacked whole.
 const MAX_UNPACKED: u64 = 512 << 20;
 
@@ -90,17 +91,17 @@ pub fn is_native_name(name: &str) -> bool {
 
 #[derive(Debug, thiserror::Error)]
 pub enum FormatError {
-    #[error("not a VectorCraft file: {0}")]
+    #[error("not a Most Vector file: {0}")]
     NotVectorcraft(String),
-    #[error("file version {0} is newer than this VectorCraft supports ({VERSION})")]
+    #[error("file version {0} is newer than this Most Vector supports ({VERSION})")]
     TooNew(u32),
     #[error("invalid image data for `{0}`")]
     BadImage(String),
-    #[error("can't save version {0}: VectorCraft writes versions {MIN_VERSION} to {VERSION}")]
+    #[error("can't save version {0}: Most Vector writes versions {MIN_VERSION} to {VERSION}")]
     BadVersion(u32),
     #[error("version {0} files can't be compressed: only version {COMPRESSED_SINCE} and later open compressed files")]
     CompressedTooOld(u32),
-    #[error("the compressed file unpacks to more than VectorCraft reads ({} MB of document, {} MB per image)", MAX_JSON >> 20, MAX_BLOB >> 20)]
+    #[error("the compressed file unpacks to more than Most Vector reads ({} MB of document, {} MB per image)", MAX_JSON >> 20, MAX_BLOB >> 20)]
     TooBig,
     #[error("the document is too large to save compressed ({0}): save it with Use Compression off")]
     TooBigToCompress(String),
@@ -326,7 +327,7 @@ pub fn save_to(doc: &Document, o: &SaveOptions, w: impl Write) -> Result<(), For
     // Older apps only know the name from before the rename.
     env.field(&mut out, "format", &if o.version < 3 { LEGACY_EXTENSION } else { EXTENSION })?;
     env.field(&mut out, "version", &o.version)?;
-    env.field(&mut out, "generator", &format!("VectorCraft {}", env!("CARGO_PKG_VERSION")))?;
+    env.field(&mut out, "generator", &format!("Most Vector {}", env!("CARGO_PKG_VERSION")))?;
     if let Some(png) = &o.preview {
         env.field(&mut out, "preview", &Image::inline("image/png", png))?;
     }
@@ -512,7 +513,7 @@ fn load_file_within(bytes: &[u8], max_nodes: usize, max_values: usize) -> Result
         e => FormatError::NotVectorcraft(e.to_string()),
     })?;
     let info = FileInfo { version: f.version, legacy: f.format == LEGACY_EXTENSION };
-    // A version 1 document saved before VectorCraft 0.21.0, or for an app before it (an older file
+    // A version 1 document saved before Most Vector 0.21.0, or for an app before it (an older file
     // version): its Twist angles turned the other way. The app that wrote it is read from the JSON
     // before the data after it is taken; the walk's depth is bounded by the JSON reader's nesting
     // limit.
@@ -667,7 +668,7 @@ mod tests {
         assert!(legacy.contains("\"drawcraft\""));
         assert!(sniff(legacy.as_bytes()));
         assert_eq!(load(legacy.as_bytes()).unwrap().artboards[0].rect, d.artboards[0].rect);
-        assert!(is_native_name("old/Poster.DrawCraft") && is_native_name("new.vectorcraft") && !is_native_name("x.svg"));
+        assert!(is_native_name("old/Poster.DrawCraft") && is_native_name("new.mostvector") && !is_native_name("x.svg"));
         assert!(load(br#"{"format":"other","version":1,"document":{}}"#).is_err());
     }
 
@@ -685,7 +686,7 @@ mod tests {
         assert!(load_info(v1.as_bytes()).unwrap().1.is_old());
     }
 
-    /// A file is native when its top-level `format` member names VectorCraft, read as JSON reads
+    /// A file is native when its top-level `format` member names Most Vector, read as JSON reads
     /// it; the word elsewhere in the head does not count.
     #[test]
     fn sniff_reads_the_format_member() {
@@ -696,7 +697,7 @@ mod tests {
         assert!(!sniff(br#"{"names":["vectorcraft"],"format":"svg"}"#));
     }
 
-    /// Every layout VectorCraft has written puts `format` first: the version 1 and 2 files from
+    /// Every layout Most Vector has written puts `format` first: the version 1 and 2 files from
     /// before the rename (a struct of `format`, `version`, `generator`, `document` and `images`,
     /// compact or pretty), and each version `save_with` writes, compact, pretty and compressed.
     #[test]
@@ -728,7 +729,7 @@ mod tests {
         assert!(matches!(e, FormatError::NotVectorcraft(_)), "{e}");
         assert!(e.to_string().contains(&craft_vectorcraft_format::Error::TooBig.to_string()), "{e}");
         let e = FormatError::from(craft_vectorcraft_format::Error::Format("x".into()));
-        assert_eq!(e.to_string(), "not a VectorCraft file: format is `x`");
+        assert_eq!(e.to_string(), "not a Most Vector file: format is `x`");
         assert!(matches!(FormatError::from(craft_vectorcraft_format::Error::TooNew(9)), FormatError::TooNew(9)));
     }
 
@@ -785,7 +786,7 @@ mod tests {
                     let mut file = craft_vectorcraft_format::File::new(Written(&b));
                     file.format = if version < 3 { LEGACY_EXTENSION } else { EXTENSION }.into();
                     file.version = version;
-                    file.generator = Some(format!("VectorCraft {}", env!("CARGO_PKG_VERSION")));
+                    file.generator = Some(format!("Most Vector {}", env!("CARGO_PKG_VERSION")));
                     file.preview = o.preview.as_deref().map(|p| Image::inline("image/png", p));
                     // The images come first in the data after the JSON, then the profiles and the PDF.
                     let mut tail = file.tail();
@@ -814,7 +815,7 @@ mod tests {
         assert_eq!(checked, 20);
     }
 
-    /// Files are read through the crate's `Contents` with the messages VectorCraft gave before,
+    /// Files are read through the crate's `Contents` with the messages Most Vector gave before,
     /// and a top-level array holds the format, version, document, images and profiles in that
     /// order.
     #[test]
@@ -822,19 +823,19 @@ mod tests {
         let message = |json: &str| load(json.as_bytes()).err().map(|e| e.to_string());
         assert_eq!(
             message(r#""x""#).as_deref(),
-            Some(r#"not a VectorCraft file: invalid type: string "x", expected struct File at line 1 column 3"#)
+            Some(r#"not a Most Vector file: invalid type: string "x", expected struct File at line 1 column 3"#)
         );
         assert!(
-            message(r#"{"format":"vectorcraft","version":4}"#).is_some_and(|m| m.starts_with("not a VectorCraft file: missing field `document`"))
+            message(r#"{"format":"vectorcraft","version":4}"#).is_some_and(|m| m.starts_with("not a Most Vector file: missing field `document`"))
         );
         let v: serde_json::Value = serde_json::from_slice(&save(&Document::new(10.0, 10.0), false)).unwrap();
         let doc = v["document"].to_string();
         let file = |format: &str, version: u32| format!(r#"{{"format":"{format}","version":{version},"document":{doc}}}"#);
-        assert_eq!(message(&file("svg", 4)).as_deref(), Some("not a VectorCraft file: format is `svg`"));
-        assert_eq!(message(&file("vectorcraft", 9)).as_deref(), Some("file version 9 is newer than this VectorCraft supports (4)"));
+        assert_eq!(message(&file("svg", 4)).as_deref(), Some("not a Most Vector file: format is `svg`"));
+        assert_eq!(message(&file("vectorcraft", 9)).as_deref(), Some("file version 9 is newer than this Most Vector supports (4)"));
         // A document that does not read is reported first, as before.
         assert!(
-            message(r#"{"format":"vectorcraft","version":9,"document":7}"#).is_some_and(|m| m.starts_with("not a VectorCraft file: invalid type"))
+            message(r#"{"format":"vectorcraft","version":9,"document":7}"#).is_some_and(|m| m.starts_with("not a Most Vector file: invalid type"))
         );
         for json in [format!(r#"["vectorcraft",3,{doc},{{}},{{}}]"#), format!(r#"["vectorcraft",3,{doc}]"#)] {
             assert_eq!(load(json.as_bytes()).map(|d| d.artboards.len()).ok(), Some(1), "{json}");
@@ -955,7 +956,7 @@ mod tests {
         assert!(why.contains("more than 100 values before its type"), "{why}");
     }
 
-    /// A version 1 document written before VectorCraft 0.21.0 (or by an app the file does not
+    /// A version 1 document written before Most Vector 0.21.0 (or by an app the file does not
     /// name) has its Twist angles negated when it opens; one written by 0.21.0 or later, and a
     /// later document, keep them. Each opens as the current version. A save for an older file
     /// version negates them back.
@@ -989,22 +990,22 @@ mod tests {
             let d = load(&serde_json::to_vec(&v).unwrap()).unwrap();
             (d.version, angle(&d))
         };
-        for g in [Some("VectorCraft 0.20.0"), Some("VectorCraft 0.9.12"), Some("DrawCraft 0.1.0"), Some("VectorCraft"), None] {
+        for g in [Some("Most Vector 0.20.0"), Some("Most Vector 0.9.12"), Some("DrawCraft 0.1.0"), Some("Most Vector"), None] {
             assert_eq!(opened(g), (now, Some(-30.0)), "{g:?}");
         }
-        for g in ["VectorCraft 0.21.0", "VectorCraft 0.21.3", "VectorCraft 1.0.0"] {
+        for g in ["Most Vector 0.21.0", "Most Vector 0.21.3", "Most Vector 1.0.0"] {
             assert_eq!(opened(Some(g)), (now, Some(30.0)), "{g}");
         }
         // A file may repeat `generator`: the first one names the app.
         let mut v: serde_json::Value = serde_json::from_slice(&current).unwrap();
         v["document"]["version"] = 1.into();
-        v["generator"] = "VectorCraft 0.21.0".into();
+        v["generator"] = "Most Vector 0.21.0".into();
         let text = serde_json::to_string(&v).unwrap();
-        let first = r#""generator":"VectorCraft 0.21.0""#;
+        let first = r#""generator":"Most Vector 0.21.0""#;
         let twice = text.replacen(first, &format!(r#"{first},"generator":"DrawCraft 0.1.0""#), 1);
         assert_ne!(twice, text);
         assert_eq!(angle(&load(twice.as_bytes()).unwrap()), Some(30.0));
-        v["generator"] = "VectorCraft 0.20.0".into();
+        v["generator"] = "Most Vector 0.20.0".into();
         let old = load(&serde_json::to_vec(&v).unwrap()).unwrap();
         let again = load(&save(&old, false)).unwrap();
         assert_eq!((again.version, angle(&again)), (now, Some(-30.0)), "saved again, it is the current version");

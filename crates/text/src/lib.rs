@@ -1,4 +1,5 @@
-//! VectorCraft text: font database, shaping, layout, glyph outlines.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector text: font database, shaping, layout, glyph outlines.
 //!
 //! API contract used by `vectorcraft-render`, `vectorcraft-tools` and the UI:
 //! - [`FontDb::global`]: process-wide database preloaded with the bundled OFL fonts (feature

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::catalog::{Catalog, parse_entries, placeholders};
 use super::*;
 
@@ -376,7 +377,7 @@ fn language_command_sets_the_preference() {
     // Every registered language is in the Mac App menu's Language, by its own name (the in-window
     // bar has no Language menu).
     let layout = crate::native_menu::mac_layout(&app, &crate::native_menu::from_tree(&app, &crate::menus::menu_tree()), Lang::EN);
-    let app_menu = layout.bar.menus.into_iter().find(|m| m.title == "VectorCraft").expect("App menu");
+    let app_menu = layout.bar.menus.into_iter().find(|m| m.title == "Most Vector").expect("App menu");
     fn items(nodes: &[crate::native_menu::Node], out: &mut Vec<String>) {
         for n in nodes {
             match n {
@@ -1060,11 +1061,11 @@ fn string_literals(e: &str, keep: impl Fn(&str, &str) -> bool) -> Vec<String> {
 }
 
 /// For translators, `cargo test -p vectorcraft-ui-egui dump_source_strings` writes every English
-/// interface string to `VECTORCRAFT_I18N_DUMP=<file>`, and every status and error message as a
-/// catalog template to `VECTORCRAFT_I18N_DUMP_MESSAGES=<file>`, one per line.
+/// interface string to `MOST_VECTOR_I18N_DUMP=<file>`, and every status and error message as a
+/// catalog template to `MOST_VECTOR_I18N_DUMP_MESSAGES=<file>`, one per line.
 #[test]
 fn dump_source_strings() {
-    if let Ok(path) = std::env::var("VECTORCRAFT_I18N_DUMP") {
+    if let Ok(path) = std::env::var("MOST_VECTOR_I18N_DUMP") {
         let mut all = crate::menus::menu_strings();
         all.extend(tl_literals());
         all.extend(undo_labels());
@@ -1072,7 +1073,7 @@ fn dump_source_strings() {
         let text: String = all.iter().map(|s| format!("{}\n", s.replace('\\', "\\\\").replace('\n', "\\n").replace('\t', "\\t"))).collect();
         std::fs::write(path, text).expect("write dump");
     }
-    if let Ok(path) = std::env::var("VECTORCRAFT_I18N_DUMP_MESSAGES") {
+    if let Ok(path) = std::env::var("MOST_VECTOR_I18N_DUMP_MESSAGES") {
         std::fs::write(path, message_literals().iter().map(|m| format!("{m}\n")).collect::<String>()).expect("write dump");
     }
 }
@@ -1089,7 +1090,7 @@ const KEEPS_MENU_NAMES: [&str; 19] =
 /// names and the perspective grid presets (names, shown untranslated wherever else they appear).
 /// Each language's own name in the Language menu is left alone too.
 const MENU_KEEP_AS_IS: &[&str] = &[
-    "VectorCraft",
+    "Most Vector",
     "OpenType",
     "Essentials",
     "Essentials Classic",
@@ -2198,7 +2199,7 @@ fn render_site_labels_fall_back_to_english() {
     for (_, source) in RENDER_SITE_ROWS.iter().filter(|(ctx, _)| *ctx == "file-filter") {
         assert_eq!(tr_ctx(Lang::EN, "file-filter", source), *source);
     }
-    for source in ["SVG", "PNG", "VectorCraft", "unregistered filter"] {
+    for source in ["SVG", "PNG", "Most Vector", "unregistered filter"] {
         assert_eq!(tr_ctx(cs(), "file-filter", source), tr(cs(), source));
     }
     assert_eq!(fmt(tr(Lang::EN, "Preset {number}"), &[("number", "12")]), "Preset 12");
@@ -2226,7 +2227,7 @@ const RENDER_SITE_ROWS: &[(&str, &str)] = &[
     ("file-filter", "Export presets"),
     ("file-filter", "SVG Compressed"),
     ("file-filter", "PDF-compatible .ai"),
-    ("file-filter", "VectorCraft Template"),
+    ("file-filter", "Most Vector Template"),
     ("file-filter", "Templates"),
     ("anchor", "Points:"),
     ("diagnostics", "render"),

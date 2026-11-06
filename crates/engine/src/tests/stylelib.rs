@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Graphic style libraries: the built-in libraries, adding to the document (deduped, one undo step,
 //! applied, patterns brought along), saving and loading `.vcstyles` and user libraries.
 
@@ -236,7 +237,7 @@ fn user_libraries_and_other_documents_styles() {
     let id = rect(&mut s, 0.0, 0.0, 10.0, 10.0);
     run(&mut s, "graphicStyle.new", json!({"name": "Poster Look", "id": id.0}));
     let b64 = run(&mut s, "document.serialize", json!({}))["dataBase64"].as_str().unwrap().to_string();
-    let r = run(&mut s, "graphicStyle.loadLibrary", json!({"dataBase64": b64, "name": "Poster.vectorcraft"}));
+    let r = run(&mut s, "graphicStyle.loadLibrary", json!({"dataBase64": b64, "name": "Poster.mostvector"}));
     assert_eq!(r["name"], "Poster");
     let (_, lib) = cmd::stylelib::library(&s, r["library"].as_str().unwrap()).unwrap();
     assert!(lib.style("Poster Look").is_some_and(|g: &GraphicStyle| g.id == 0));

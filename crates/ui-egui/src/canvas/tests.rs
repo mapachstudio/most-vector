@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::*;
 use vectorcraft_engine::Session;
 use vectorcraft_geom::Shape as _;
@@ -47,7 +48,7 @@ fn rendered_rasters_become_the_same_egui_images() {
     assert_eq!(color_image_owned(short), egui::ColorImage::new([3, 2], vec![egui::Color32::TRANSPARENT; 6]));
 }
 
-/// With VECTORCRAFT_SYSTEM_CURSORS set the glyphs aren't drawn and the system's cursors stand in: those of
+/// With MOST_VECTOR_SYSTEM_CURSORS set the glyphs aren't drawn and the system's cursors stand in: those of
 /// the Pen and the other drawing tools are the system crosshair already, so Use Precise Cursors makes no
 /// difference to them there.
 #[test]
@@ -1680,7 +1681,7 @@ fn a_ready_placed_document_bitmap_renders_only_its_part_of_the_canvas() {
     src.execute("shape.rectangle", &json!({"x": 0, "y": 0, "width": 60, "height": 30})).unwrap();
     let dir = std::env::temp_dir().join(format!("vectorcraft-placed-redraw-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
-    let path = dir.join("card.vectorcraft");
+    let path = dir.join("card.mostvector");
     std::fs::write(&path, vectorcraft_format::save_file(&src.active().unwrap().doc)).unwrap();
     let path = path.to_string_lossy().into_owned();
     let ids: Vec<u64> = [[60, 50], [140, 50]]
@@ -2719,7 +2720,7 @@ fn without_a_worker_a_heavy_canvas_is_reprojected_until_the_view_is_still() {
     frame(&mut app);
     let k = app.canvas.key.clone().unwrap();
     assert_eq!((k.revision, k.cy), (app.session.active().unwrap().revision, app.view().unwrap().center.y), "rendered after the edit");
-    // With a worker's build settings and no worker (VECTORCRAFT_SYNC_RENDER), a heavy document
+    // With a worker's build settings and no worker (MOST_VECTOR_SYNC_RENDER), a heavy document
     // renders every change of view at once.
     app.canvas.waits_for_still = false;
     app.canvas.last_ms = 50.0;

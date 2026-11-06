@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Graphic style libraries (Window → Graphic Style Libraries, the Graphic Styles panel's library
 //! button): read-only sets of graphic styles the library panel shows. The built-in libraries are
 //! generated in [`vectorcraft_doc::style_libs`]; User Defined ones are the `.vcstyles` files in the
@@ -60,7 +61,7 @@ pub fn specs() -> Vec<CommandSpec> {
             "Other Library…",
             ["Window", "Graphic Style Libraries"],
             None,
-            "{path? | data?: file text | dataBase64?, name?: file name (default: the path's)} load a .vcstyles library, or the graphic styles of any document VectorCraft opens (see document.formats), for the library panel (Window → Graphic Style Libraries lists it until the app quits; a file of the user library folder, or a file with the same extension and bytes as one there, opens as that User Defined library) → {library: id, name, count}",
+            "{path? | data?: file text | dataBase64?, name?: file name (default: the path's)} load a .vcstyles library, or the graphic styles of any document Most Vector opens (see document.formats), for the library panel (Window → Graphic Style Libraries lists it until the app quits; a file of the user library folder, or a file with the same extension and bytes as one there, opens as that User Defined library) → {library: id, name, count}",
             always,
             load
         ),

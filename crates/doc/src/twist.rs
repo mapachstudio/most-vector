@@ -1,5 +1,6 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The Twist effect's angle in saved documents. A positive angle turns clockwise on the page in
-//! VectorCraft 0.21.0 and later; earlier releases turned it counterclockwise. Documents of version
+//! Most Vector 0.21.0 and later; earlier releases turned it counterclockwise. Documents of version
 //! 2 ([`TWIST_CLOCKWISE_SINCE`]) turn clockwise. Version 1 documents written before 0.21.0 have
 //! their Twist angles negated when they open, so they draw as they were saved
 //! ([`Document::migrate_twist_angles`], [`written_clockwise`]), and a save for an earlier app
@@ -23,11 +24,11 @@ pub const TWIST_CLOCKWISE_SINCE: u32 = 2;
 /// The first release (major, minor) whose Twist turned clockwise for a positive angle.
 const CLOCKWISE_RELEASE: (u64, u64) = (0, 21);
 
-/// Did the app named by a native file's `generator` (`"VectorCraft 0.21.0"`) turn Twist effects
+/// Did the app named by a native file's `generator` (`"Most Vector 0.21.0"`) turn Twist effects
 /// clockwise for a positive angle? It did from 0.21.0. Any other value, or none, is an earlier
 /// app (DrawCraft included).
 pub fn written_clockwise(generator: Option<&str>) -> bool {
-    let Some(version) = generator.and_then(|g| g.strip_prefix("VectorCraft ")) else { return false };
+    let Some(version) = generator.and_then(|g| g.strip_prefix("Most Vector ")) else { return false };
     let mut parts = version.split('.').map(|p| p.parse::<u64>().ok());
     match (parts.next().flatten(), parts.next().flatten()) {
         (Some(major), Some(minor)) => (major, minor) >= CLOCKWISE_RELEASE,

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `cargo xtask corpus --affinity`: public Affinity documents saved by Affinity 1.x to 3.x, from
 //! their upstream repositories at pinned commits, each checked against `xtask/affinity-corpus.sha256`.
 //! They land in `corpus/affinity/` (gitignored, never committed). `vectorcraft-affinity`'s
@@ -128,7 +129,7 @@ pub fn fetch() -> Result<(), String> {
             if !verified(&out, sha) {
                 let url = format!("https://raw.githubusercontent.com/{repo}/{commit}/{path}");
                 let mut curl = Command::new("curl");
-                curl.args(["-fsSL", "--retry", "3", "-A", "VectorCraft-dev", "-o"]).arg(&out).arg(&url);
+                curl.args(["-fsSL", "--retry", "3", "-A", "Most Vector-dev", "-o"]).arg(&out).arg(&url);
                 run(curl, &format!("curl {url}"))?;
                 if !verified(&out, sha) {
                     let _ = std::fs::remove_file(&out);

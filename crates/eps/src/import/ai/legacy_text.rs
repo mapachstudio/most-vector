@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Type in the legacy format (version 7 specification §15): text objects `type To` … `TO`, their
 //! text paths (`a b c d tx ty startPt Tp`, an area's frame, one for each linked area, or the path
 //! type runs along, `TP`), the modal character and paragraph attributes
@@ -40,7 +41,7 @@ const MAX_TEXT_PATHS: usize = 4096;
 /// warning.
 const MAX_THREAD_WORK: usize = MAX_CHARS;
 /// The warning when [`MAX_TEXT_PATHS`] or [`MAX_THREAD_WORK`] leaves frames of linked areas out.
-const LINKED_AREAS_LEFT_OUT: &str = "linked type areas past VectorCraft's limits were left out";
+const LINKED_AREAS_LEFT_OUT: &str = "linked type areas past Most Vector's limits were left out";
 /// The warning when type set in a mask rendering mode can't be a clipping path: type in linked
 /// areas (several frames), in wraparound text or in a compound path doesn't clip.
 const MASK_NOT_CLIPPED: &str = "type used as a mask in linked areas, wraparound text or a compound path doesn't clip";

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Colour management: Edit → Color Settings / Assign Profile, document colour mode conversion
 //! through the CMS, gamut checks, View → Proof Setup / Proof Colors / Overprint Preview, the
 //! Separations Preview panel, Overprint Black and spot swatches.
@@ -41,7 +42,7 @@ pub fn specs() -> Vec<CommandSpec> {
             "Load Color Profile…",
             [],
             None,
-            "{path: .icc/.icm file of at most 32 MB} register an ICC profile (native only). The desktop app and vectorcraft-cli keep a copy of the file in the `Color Profiles` folder next to the preferences and register it again at every start (not with VECTORCRAFT_NO_PREFS, or in a confined `mcp --automation-*-root` server: there it lasts until the process ends) → {name, kind, remembered: whether a copy was kept}",
+            "{path: .icc/.icm file of at most 32 MB} register an ICC profile (native only). The desktop app and vectorcraft-cli keep a copy of the file in the `Color Profiles` folder next to the preferences and register it again at every start (not with MOST_VECTOR_NO_PREFS, or in a confined `mcp --automation-*-root` server: there it lasts until the process ends) → {name, kind, remembered: whether a copy was kept}",
             always,
             load_profile
         ),

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Action set files: the Actions panel menu's Save Actions… and Load Actions….
 //!
 //! An action set file (`.vcactions`) is JSON: `{"format": "vcactions", "version": 1 or 2, "name",
@@ -99,7 +100,7 @@ pub fn read_set(text: &str, name: &str) -> Result<ActionSet, String> {
         return Err("not an action set file".into());
     }
     if !matches!(f.version, 1 | 2) {
-        return Err("the action set file needs a later version of VectorCraft".into());
+        return Err("the action set file needs a later version of Most Vector".into());
     }
     if f.actions.len() > MAX_SET_ACTIONS {
         return Err("the action set file holds more than 1,000 actions".into());

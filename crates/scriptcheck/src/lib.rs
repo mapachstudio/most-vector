@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Static checker for scripts written for the reference app's scripting: `.jsx`, `.jsxinc` and
 //! `.js` files, and compiled `.jsxbin` files. [`check`] reads a script's text without running any
 //! of it and reports what kind of file it is ([`Kind`]), its preprocessor directives, the platform
@@ -11,7 +12,7 @@
 //! <https://ecma-international.org/wp-content/uploads/ECMA-357_2nd_edition_december_2005.pdf>), and
 //! it reads later syntax (template literals, `=>`) only to report it. The directive and platform
 //! names come from the public pages `catalog.rs` cites by URL; only the names are used. Nothing
-//! maps the reference app's names to VectorCraft commands.
+//! maps the reference app's names to Most Vector commands.
 //!
 //! The checker never recurses: it reads each file once, and each scan of a file goes through its
 //! tokens front to back, first for the names its functions and its global code declare and then
@@ -33,7 +34,7 @@ mod report;
 pub use includes::{Loaded, Loader};
 pub use report::{Directive, Feature, Include, IncludeStatus, MenuString, Named, Outside, Problem, Report, Target};
 
-/// The limits that keep a check small and quick; [`Limits::default`] holds the ones VectorCraft
+/// The limits that keep a check small and quick; [`Limits::default`] holds the ones Most Vector
 /// uses.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Limits {

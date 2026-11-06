@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 /// With more tabs than fit, the strip starts late enough to show the active one (#746).
 #[test]
 fn the_active_tab_stays_in_view() {
@@ -322,7 +323,7 @@ fn background_activity_keeps_the_status_message_origin() {
     crate::background::run(
         &mut app,
         true,
-        "Saving test.vectorcraft".to_owned(),
+        "Saving test.mostvector".to_owned(),
         None,
         move |_| {
             rx.recv().unwrap();
@@ -335,11 +336,11 @@ fn background_activity_keeps_the_status_message_origin() {
     )
     .unwrap();
     let busy = status_readout_frame(&mut app, &ctx, 1400.0);
-    let message = status_text(&busy, "Saving test.vectorcraft");
+    let message = status_text(&busy, "Saving test.mostvector");
     assert_eq!((before.at, before.clip), (message.at, message.clip));
     crate::background::run(&mut app, true, "Exporting test.svg".to_owned(), None, |_| Ok(json!({})), |_, result| result).unwrap();
     let several = status_readout_frame(&mut app, &ctx, 1400.0);
-    let message = status_text(&several, "Saving test.vectorcraft");
+    let message = status_text(&several, "Saving test.mostvector");
     assert!(message.text.ends_with("(+1)"));
     assert_eq!((before.at, before.clip), (message.at, message.clip));
     let tree = crate::widgets::accessibility_tests::tree(|ui| super::status_bar(&mut app, ui));
@@ -1244,17 +1245,17 @@ fn without_the_preference_the_mark_stays() {
 
 #[test]
 fn window_title_with_no_document_is_the_app_name() {
-    assert_eq!(super::window_title(&title_test_app(true)), "VectorCraft");
+    assert_eq!(super::window_title(&title_test_app(true)), "Most Vector");
 }
 
 #[test]
 fn window_title_follows_the_active_file() {
     let mut app = title_test_app(true);
     app.run("file.new", json!({"width": 100, "height": 100, "name": "foo.svg"})).unwrap();
-    assert_eq!(super::window_title(&app), "foo.svg \u{2014} VectorCraft");
+    assert_eq!(super::window_title(&app), "foo.svg \u{2014} Most Vector");
     // Unsaved changes gain a `*` prefix, like the `*` in the document tabs.
     app.run("shape.rectangle", json!({"x": 0, "y": 0, "width": 10, "height": 10})).unwrap();
-    assert_eq!(super::window_title(&app), "*foo.svg \u{2014} VectorCraft");
+    assert_eq!(super::window_title(&app), "*foo.svg \u{2014} Most Vector");
 }
 
 #[test]
@@ -1288,11 +1289,11 @@ fn sync_window_title_sends_only_on_change() {
     let ctx = egui::Context::default();
     crate::theme::install_fonts(&ctx);
     super::sync_window_title(&mut app, &ctx);
-    assert_eq!(app.last_window_title, "VectorCraft");
+    assert_eq!(app.last_window_title, "Most Vector");
     let mut out = ctx.run_ui(egui::RawInput::default(), |_| {});
     out.textures_delta.clear();
     let cmds = out.viewport_output.remove(&egui::ViewportId::ROOT).map(|v| v.commands).unwrap_or_default();
-    assert!(cmds.iter().any(|c| matches!(c, egui::ViewportCommand::Title(t) if t == "VectorCraft")), "{cmds:?}");
+    assert!(cmds.iter().any(|c| matches!(c, egui::ViewportCommand::Title(t) if t == "Most Vector")), "{cmds:?}");
     // Same document state again: the cached title stops a repeat command.
     super::sync_window_title(&mut app, &ctx);
     let mut out = ctx.run_ui(egui::RawInput::default(), |_| {});
@@ -1301,7 +1302,7 @@ fn sync_window_title_sends_only_on_change() {
     assert!(!cmds.iter().any(|c| matches!(c, egui::ViewportCommand::Title(_))), "repeat Title: {cmds:?}");
     app.run("file.new", json!({"width": 100, "height": 100, "name": "foo.svg"})).unwrap();
     super::sync_window_title(&mut app, &ctx);
-    assert_eq!(app.last_window_title, "foo.svg \u{2014} VectorCraft");
+    assert_eq!(app.last_window_title, "foo.svg \u{2014} Most Vector");
 }
 /// Draw actual tabs, including the same per-frame view synchronization as the app.
 fn artboard_document_tabs_frame(app: &mut crate::VectorcraftApp, ctx: &egui::Context, events: Vec<egui::Event>) -> Vec<egui::Rect> {

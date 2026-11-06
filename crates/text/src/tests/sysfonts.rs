@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Installed system fonts: found by family name by every lookup, whatever ran before it (#130).
 
 use std::path::{Path, PathBuf};
@@ -763,7 +764,7 @@ fn font_files_are_told_by_their_extension() {
     }
 }
 
-/// VectorCraft's own Fonts folder joins the scan once set, even before it exists; only the first
+/// Most Vector's own Fonts folder joins the scan once set, even before it exists; only the first
 /// folder set counts.
 #[test]
 fn the_app_font_folder_is_read_by_the_scan() {

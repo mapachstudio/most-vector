@@ -1,3 +1,4 @@
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # 3D lighting performance
 
 Measured 2026-10-17 for PR #2706 on one macOS machine.
@@ -26,9 +27,9 @@ vectorcraft-cli run \
   --cmd paint.setFill --params '{"color":"#ffffff"}' \
   --cmd paint.setStroke --params '{"none":true}' \
   --cmd effect.apply --params '{"effect":"threeD.inflate","item":null,"params":{"rotationX":-20,"rotationY":25,"rotationZ":0,"ambient":15,"volume":50,"depth":0,"cap":true,"bothSides":false,"lights":[{"color":"#ff8040","intensity":70,"rotation":135,"height":35,"softness":15},{"color":"#4080ff","intensity":65,"rotation":-35,"height":25,"softness":10}]}}' \
-  --cmd document.save --params '{"path":"/tmp/inflate-two-lights.vectorcraft"}'
+  --cmd document.save --params '{"path":"/tmp/inflate-two-lights.mostvector"}'
 
-vectorcraft-cli bench /tmp/inflate-two-lights.vectorcraft --size 1200x1200 --iters 5
+vectorcraft-cli bench /tmp/inflate-two-lights.mostvector --size 1200x1200 --iters 5
 vectorcraft-cli perf
 ```
 
@@ -53,8 +54,8 @@ All six `perf` runs exited successfully, with no busy-machine warning and every 
 | render: background refresh after a pan | 48.18 | 46.71 | 100 |
 | render: 400% zoom, 2880×1800 | 13.45 | 13.68 | 16 |
 | hit test (per click) | 0.43 | 0.42 | 2 |
-| save .vectorcraft | 52.78 | 52.15 | 300 |
-| open .vectorcraft | 143.84 | 142.55 | 300 |
+| save .mostvector | 52.78 | 52.15 | 300 |
+| open .mostvector | 143.84 | 142.55 | 300 |
 | export SVG | 207.37 | 206.25 | 500 |
 | Pathfinder Unite, 1,000 paths | 43.18 | 43.29 | 150 |
 | handle drag, 5,000-anchor path (per move) | 0.94 | 0.84 | 8 |

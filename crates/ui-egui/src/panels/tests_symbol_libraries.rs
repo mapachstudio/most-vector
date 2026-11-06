@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Headless frames of symbol libraries in library panels: clicking a symbol adds it to the
 //! document's Symbols, dragging one carries it to the canvas, the Window menu and the Symbols panel
 //! open libraries, Save Symbols writes User Defined libraries that reopen, and Other Library… turns
@@ -159,8 +160,8 @@ fn save_symbols_writes_a_user_library_that_reopens_and_adds_to_another_document(
     // Reopened in a library panel, its symbol goes into another document.
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
     app.run("window.userSymbolLibrary1", json!({})).unwrap();
-    assert_eq!(last_open(&app.ui).map(|p| p.id.as_str()), Some("user/Masonry.vectorcraft"));
-    let (name, lib) = SymbolLibraries::get(&app, "user/Masonry.vectorcraft").unwrap();
+    assert_eq!(last_open(&app.ui).map(|p| p.id.as_str()), Some("user/Masonry.mostvector"));
+    let (name, lib) = SymbolLibraries::get(&app, "user/Masonry.mostvector").unwrap();
     assert_eq!((name.as_str(), lib.len()), ("Masonry", 1), "only the selected symbol");
     let undo = undo_len(&app);
     click(&mut app, &ctx, "Brick", Modifiers::NONE, 1.0);
@@ -176,7 +177,7 @@ fn other_library_opens_a_documents_symbols_and_reports_unreadable_files() {
     let mut app = app();
     app.run("shape.rectangle", json!({"x": 10, "y": 10, "width": 30, "height": 20})).unwrap();
     app.run("symbol.new", json!({"name": "Tile"})).unwrap();
-    let doc = dir.join("Floor.vectorcraft");
+    let doc = dir.join("Floor.mostvector");
     let b64 = app.run("document.serialize", json!({})).unwrap()["dataBase64"].as_str().unwrap().to_string();
     std::fs::write(&doc, vectorcraft_format::base64_decode(&b64).unwrap()).unwrap();
     app.run("file.new", json!({"width": 100, "height": 100})).unwrap();
@@ -187,7 +188,7 @@ fn other_library_opens_a_documents_symbols_and_reports_unreadable_files() {
     let other = SymbolLibraries::list(&app).into_iter().find(|l| l.id == open.id).unwrap();
     assert_eq!(other.submenu, Some("Other Libraries"));
     // A file that isn't a document is an error, and opens no panel.
-    let bad = dir.join("Broken.vectorcraft");
+    let bad = dir.join("Broken.mostvector");
     std::fs::write(&bad, b"not a document").unwrap();
     app.run("window.symbolLibrary", json!({"library": null})).unwrap();
     assert!(app.run("window.symbolLibrary.other", json!({"path": bad.to_string_lossy()})).is_err());

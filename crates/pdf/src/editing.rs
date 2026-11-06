@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Preserve Editing: the native document travels inside the PDF as an embedded file, with a hash
 //! of the pages it was written with, so a PDF whose pages another app changed is noticed (and
 //! opens as its artwork instead of the stale native document).
@@ -18,12 +19,12 @@ use crate::import_scan::text_string;
 use crate::lab_spot::find;
 
 /// The embedded file holding the native document (its name among the PDF's attachments).
-pub const EDITING_FILE: &str = "vectorcraft-editing.vectorcraft";
+pub const EDITING_FILE: &str = "vectorcraft-editing.mostvector";
 /// The editing file's name from before the project was renamed: still read.
 pub const LEGACY_EDITING_FILE: &str = "drawcraft-editing.drawcraft";
 
 /// The editing file's description: this text, then the hash of the pages.
-const DESCRIPTION: &str = "VectorCraft editing data; page hash ";
+const DESCRIPTION: &str = "Most Vector editing data; page hash ";
 /// Stands for the hash while the PDF is written: as long as a hash, so writing the hash over it
 /// keeps every offset.
 const PLACEHOLDER: &str = "0000000000000000";

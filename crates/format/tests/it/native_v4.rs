@@ -1,4 +1,5 @@
-//! `.vectorcraft` v4: large data after the JSON (images, the PDF, profiles), small files still plain
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! `.mostvector` v4: large data after the JSON (images, the PDF, profiles), small files still plain
 //! JSON, older versions inline, damaged offsets refused.
 
 use std::collections::BTreeMap;

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The EMF writer: an EMR_HEADER whose frame is the region in 0.01 mm, then the drawing in device
 //! units of 0.01 mm (the reference device has 100 pixels a millimetre) and an EMR_EOF.
 //!
@@ -158,7 +159,7 @@ impl Writer {
 
     fn header(&mut self, title: &str) {
         let desc: Vec<u16> =
-            "VectorCraft".encode_utf16().chain([0]).chain(title.chars().take(200).collect::<String>().encode_utf16()).chain([0, 0]).collect();
+            "Most Vector".encode_utf16().chain([0]).chain(title.chars().take(200).collect::<String>().encode_utf16()).chain([0, 0]).collect();
         let f = self.frame;
         // The reference device: 100 pixels a millimetre, as large as the frame.
         let mm = [(f[2] / 100).max(1) + 1, (f[3] / 100).max(1) + 1];

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Panel thumbnails (the Navigator's view of the document, the Layers and Links rows) rendered
 //! off the UI thread on native builds, so a heavy document never stalls a frame. The panels keep
 //! showing their last image until the new one is back, and leave thumbnails alone while the user
@@ -57,9 +58,9 @@ pub struct ThumbWorker<S, K> {
 impl<S: PartialEq + Send + 'static, K: Send + 'static> ThumbWorker<S, K> {
     /// Spawn the worker thread, `None` where rendering stays on the UI thread: on wasm, in unit
     /// tests (they look at the panel right after the frame that asks), with
-    /// `VECTORCRAFT_SYNC_RENDER` set, or if the thread can't start.
+    /// `MOST_VECTOR_SYNC_RENDER` set, or if the thread can't start.
     pub fn spawn(ctx: &egui::Context, name: &str) -> Option<Self> {
-        if cfg!(target_arch = "wasm32") || cfg!(test) || std::env::var_os("VECTORCRAFT_SYNC_RENDER").is_some() {
+        if cfg!(target_arch = "wasm32") || cfg!(test) || std::env::var_os("MOST_VECTOR_SYNC_RENDER").is_some() {
             return None;
         }
         Self::start(ctx, name)

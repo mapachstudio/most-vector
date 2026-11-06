@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Files `<image>` elements link to (`href="photo.png"`, `file:///…`): read before usvg runs,
 //! through [`ImportOptions::read`], relative paths from [`ImportOptions::folder`]. A raster file
 //! stays a linked image ([`LinkInfo`]); an SVG file becomes vector art. One that can't be read
@@ -154,7 +155,7 @@ impl Files {
                 let (path, file) = target(h, opts.folder);
                 let read = file.and_then(|file| opts.read.and_then(|read| read(&file)));
                 let source = match read {
-                    Some((bytes, link)) => files.source(bytes, link).ok_or("is not an image VectorCraft reads"),
+                    Some((bytes, link)) => files.source(bytes, link).ok_or("is not an image Most Vector reads"),
                     None => Err("not found"),
                 };
                 let source = source.or_else(|why| {

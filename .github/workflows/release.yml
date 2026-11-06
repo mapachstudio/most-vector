@@ -1,5 +1,6 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # Release pipeline: every push to `release` builds signed installers for every platform and
-# creates or updates the draft GitHub Release "VectorCraft v<version>". See docs/releasing.md.
+# creates or updates the draft GitHub Release "Most Vector v<version>". See docs/releasing.md.
 name: Release
 
 on:
@@ -68,7 +69,7 @@ jobs:
     uses: storytold/craft-common-actions/.github/workflows/release.yml@main
     with:
       app-name: vectorcraft
-      app-title: VectorCraft
+      app-title: Most Vector
       craft-fonts-ref: b076417b5880bd4154bd22f00695b1d28c6bea83
       web-craft-fonts: true
       version: ${{ inputs.version }}

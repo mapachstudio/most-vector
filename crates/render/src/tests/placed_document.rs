@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Placed documents on screen: drawn from bitmaps made in the background (a placeholder until
 //! then), the same as drawn exactly; exports draw them exactly at once.
 
@@ -53,7 +54,7 @@ fn doc_with(key: &str, bytes: &[u8]) -> Document {
 /// Object `id` showing file `key` in a `width`×`height` box placed by `xf`.
 fn placed_node(id: u64, key: &str, width: f64, height: f64, xf: Affine) -> Node {
     let p = PlacedDocument {
-        link: LinkInfo::new("/art/card.vectorcraft"),
+        link: LinkInfo::new("/art/card.mostvector"),
         key: key.into(),
         bounding: false,
         page_box: Default::default(),

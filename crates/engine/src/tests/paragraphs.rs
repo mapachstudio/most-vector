@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Paragraph attributes per paragraph: ranged Paragraph panel commands, paragraph styles on one
 //! paragraph, splitting and merging paragraphs while editing, undo and threaded text.
 
@@ -85,7 +86,7 @@ fn a_file_with_paragraph_spacing_out_of_range_opens_with_it_in_range() {
     let attrs = json!({"left_indent": 1e9, "space_after": 2000, "tabs": [serde_json::to_value(tab(-5.0)).unwrap()]});
     d.para_styles.push(vectorcraft_doc::TextStyleDef { name: "Wide".into(), attrs: attrs.as_object().unwrap().clone() });
     let data = vectorcraft_format::base64_encode(&vectorcraft_format::save_file(&d));
-    s.execute("document.open", &json!({"name": "spacing.vectorcraft", "dataBase64": data})).unwrap();
+    s.execute("document.open", &json!({"name": "spacing.mostvector", "dataBase64": data})).unwrap();
     let max = vectorcraft_doc::MAX_COORD;
     let t = text(&s, id);
     let (p0, p1) = (t.para_at(0), t.para_at(1));

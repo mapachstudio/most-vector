@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::cid::{CidText, FontInfo, comparable, font_chars, identify_glyph, matching_face, replacement, unify_radical};
 use super::entry::{
     MAX_NESTED, OVERPRINT_UNREAD, OVERPRINT_ZERO_MODE, PATTERN_REUSE, TEXT_OUTLINES, TOO_MANY_OBJECTS, UNMATCHED_GLYPHS_NOTE,
@@ -425,7 +426,7 @@ impl<'p> Builder<'p> {
         true
     }
 
-    /// Convert a hayro paint to a VectorCraft paint and opacity (`stroke`: for a stroke; `walked`:
+    /// Convert a hayro paint to a Most Vector paint and opacity (`stroke`: for a stroke; `walked`:
     /// what it paints in the page's walk, which names its ink).
     pub(super) fn paint(&mut self, p: &craft_pdf::interpret::Paint<'_>, stroke: bool, walked: Option<Walked>) -> (Paint, f32) {
         let pattern = matches!(p, craft_pdf::interpret::Paint::Pattern(_));

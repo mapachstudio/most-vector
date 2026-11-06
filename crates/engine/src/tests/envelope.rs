@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Envelope Distort: Reset with Warp / Mesh, Envelope Options, Release, Expand and Object → Expand,
 //! driven through `Session::execute`.
 
@@ -302,7 +303,7 @@ fn warped_type_in_a_symbol_reopens_unchanged() {
     let before = render(&s);
     let dir = std::env::temp_dir().join(format!("vectorcraft-1738-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
-    let path = dir.join("warped.vectorcraft");
+    let path = dir.join("warped.mostvector");
     s.execute("document.save", &json!({"path": path})).unwrap();
     let mut o = Session::new();
     o.execute("document.open", &json!({"path": path})).unwrap();

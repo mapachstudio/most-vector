@@ -1,6 +1,7 @@
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Contributors in the About window
 
-**About ▸ Contributors** credits everyone who contributed to VectorCraft, and **About ▸ Models** credits
+**About ▸ Contributors** credits everyone who contributed to Most Vector, and **About ▸ Models** credits
 the AI models named in `Co-Authored-By` trailers.
 
 ## Decision
@@ -19,9 +20,9 @@ the AI models named in `Co-Authored-By` trailers.
   first or last commit date. The name toggle cycles **Username → Display name → Real name**; a
   missing name falls back to `@username`. Alphabetical sorting is case-insensitive and ignores the `@`.
 
-## In VectorCraft
+## In Most Vector
 
-- The About window is `crates/ui-egui/src/dialogs/about.rs` (Help ▸ About VectorCraft). The labels are
+- The About window is `crates/ui-egui/src/dialogs/about.rs` (Help ▸ About Most Vector). The labels are
   translated like the rest of the UI (`tl!`, `crates/ui-egui/src/i18n`); names and numbers are data.
 
 ## Credit yourself

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use std::path::{Path, PathBuf};
 use std::time::Instant;
 
@@ -70,7 +71,7 @@ fn kind(app: &VectorcraftApp) -> Option<&str> {
 fn missing_fonts_are_asked_about_after_the_missing_links() {
     let root = folder("after-links");
     let mut app = app_for(&root);
-    let doc = root.join("doc.vectorcraft");
+    let doc = root.join("doc.mostvector");
     save_doc(&mut app, &doc, "No Such Font Family", true);
     open(&mut app, &doc);
     assert_eq!(kind(&app), Some(super::super::missing_links::KIND));
@@ -98,7 +99,7 @@ fn the_documents_fonts_folder_is_offered_and_searched_off_the_ui_thread() {
     std::fs::create_dir_all(font.parent().unwrap()).unwrap();
     std::fs::write(&font, vectorcraft_testkit::fonts::renamed("Findme Sans 3")).unwrap();
     let mut app = app_for(&root);
-    let doc = root.join("pkg/doc.vectorcraft");
+    let doc = root.join("pkg/doc.mostvector");
     save_doc(&mut app, &doc, "Findme Sans 3", false);
     open(&mut app, &doc);
     let next = app.ui.dialog.as_ref().filter(|d| d.kind == KIND).expect("Missing Fonts at once: no links missing").str("fontsNextToDocument");
@@ -120,7 +121,7 @@ fn the_documents_fonts_folder_is_offered_and_searched_off_the_ui_thread() {
     for label in ["Findme.otf", "Copy only fonts you own or are licensed to install.", "Add Fonts"] {
         assert!(text.contains(label), "{label} in {text}");
     }
-    // Adding needs VectorCraft's Fonts folder, which only the apps set.
+    // Adding needs Most Vector's Fonts folder, which only the apps set.
     let e = super::super::confirm(&mut app).unwrap_err();
     assert!(e.contains("isn't set here"), "{e}");
     assert_eq!(kind(&app), Some(KIND));
@@ -135,7 +136,7 @@ fn find_fonts_opens_find_font_on_the_missing_font() {
     app.run("file.new", json!({"width": 400, "height": 300})).unwrap();
     app.run("text.create", json!({"x": 10, "y": 40, "text": "Here", "font": "Source Sans 3"})).unwrap();
     app.run("text.create", json!({"x": 10, "y": 80, "text": "Gone", "font": "Zz Missing Family"})).unwrap();
-    let doc = root.join("doc.vectorcraft");
+    let doc = root.join("doc.mostvector");
     app.run("document.save", json!({"path": doc.to_string_lossy()})).unwrap();
     // Opened afresh: an open file would only come to the front (#5369).
     app.run("file.close", json!({})).unwrap();
@@ -160,7 +161,7 @@ fn find_fonts_opens_find_font_on_the_missing_font() {
 fn find_fonts_works_on_the_dialog_s_own_document() {
     let root = folder("find-fonts-tab");
     let mut app = app_for(&root);
-    let (a, b) = (root.join("a.vectorcraft"), root.join("b.vectorcraft"));
+    let (a, b) = (root.join("a.mostvector"), root.join("b.mostvector"));
     save_doc(&mut app, &a, "Alpha Missing Family", false);
     save_doc(&mut app, &b, "Beta Missing Family", true);
     open(&mut app, &a);
@@ -211,7 +212,7 @@ fn closing_the_dialog_stops_its_search() {
 fn one_dialog_at_a_time_document_by_document() {
     let root = folder("queue");
     let mut app = app_for(&root);
-    let (a, b) = (root.join("a.vectorcraft"), root.join("b.vectorcraft"));
+    let (a, b) = (root.join("a.mostvector"), root.join("b.mostvector"));
     save_doc(&mut app, &a, "Alpha Missing Family", false);
     save_doc(&mut app, &b, "Beta Missing Family", true);
     open(&mut app, &a);
@@ -242,14 +243,14 @@ fn one_dialog_at_a_time_document_by_document() {
 fn the_question_comes_back_after_a_dialog_that_took_its_place() {
     let root = folder("replaced");
     let mut app = app_for(&root);
-    let doc = root.join("a.vectorcraft");
+    let doc = root.join("a.mostvector");
     save_doc(&mut app, &doc, "Alpha Missing Family", false);
     let pdf = || {
         let page = || vectorcraft_testkit::pdf::PdfPage::new(100.0, 100.0, "0 g 0 0 10 10 re f");
         vectorcraft_testkit::pdf::pdf(&[page(), page()], None)
     };
     let opened = |name: &str, path: Option<String>, bytes: Vec<u8>| (crate::place::DropTarget::Open, (name.to_string(), path, bytes));
-    let files = vec![opened("a.vectorcraft", Some(doc.to_string_lossy().into_owned()), std::fs::read(&doc).unwrap()), opened("b.pdf", None, pdf())];
+    let files = vec![opened("a.mostvector", Some(doc.to_string_lossy().into_owned()), std::fs::read(&doc).unwrap()), opened("b.pdf", None, pdf())];
     crate::place::drop_files(&mut app, files);
     assert_eq!(kind(&app), Some(super::super::import_pdf::KIND));
     super::super::cancel(&mut app);
@@ -306,7 +307,7 @@ fn a_search_folder_that_fails_is_not_tried_again() {
 fn reopening_an_open_document_does_not_ask_about_its_fonts_again() {
     let root = folder("reopen");
     let mut app = app_for(&root);
-    let doc = root.join("doc.vectorcraft");
+    let doc = root.join("doc.mostvector");
     save_doc(&mut app, &doc, "No Such Font Family", false);
     open(&mut app, &doc);
     assert_eq!(kind(&app), Some(KIND));
@@ -323,7 +324,7 @@ fn reopening_an_open_document_does_not_ask_about_its_fonts_again() {
 fn edit_original_asks_about_the_placed_documents_fonts() {
     let root = folder("edit-original");
     let mut app = app_for(&root);
-    let badge = root.join("badge.vectorcraft");
+    let badge = root.join("badge.mostvector");
     save_doc(&mut app, &badge, "Badge Missing Family", false);
     app.run("file.new", json!({"width": 400, "height": 300})).unwrap();
     app.run("file.place", json!({"path": badge.to_string_lossy(), "link": true})).unwrap();

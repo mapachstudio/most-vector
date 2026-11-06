@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use std::io::Write;
 use std::process::{Command, Stdio};
 
@@ -32,7 +33,7 @@ fn commands_prints_catalogue() {
 fn run_batch_exports() {
     let svg = tmp("batch.svg");
     let png = tmp("batch.png");
-    let dc = tmp("batch.vectorcraft");
+    let dc = tmp("batch.mostvector");
     let out = Command::new(BIN)
         .args(["run", "--cmd", "file.new", "--params", r#"{"width":200,"height":100}"#])
         .args(["--cmd", "shape.ellipse", "--params", r#"{"x":10,"y":10,"width":80,"height":60}"#])
@@ -396,7 +397,7 @@ fn automation_roots(base: &std::path::Path) {
         call(2, "open_file", json!({"path": file("outside", "b.svg")})),
         call(3, "export", json!({"path": file("out", "a.png")})),
         call(4, "export", json!({"path": file("in", "a.png")})),
-        call(5, "save_file", json!({"path": file("outside", "a.vectorcraft")})),
+        call(5, "save_file", json!({"path": file("outside", "a.mostvector")})),
         call(6, "open_file", json!({"path": file("in", "../outside/b.svg")})),
         call(7, "export", json!({"path": file("out", "../outside/traversal.png")})),
     ];
@@ -412,7 +413,7 @@ fn automation_roots(base: &std::path::Path) {
         expected_errors.extend([true; 4]);
     }
     // An access error is per request: the server continues and can still save inside its root.
-    calls.push(call(12, "save_file", json!({"path": file("out", "allowed.vectorcraft")})));
+    calls.push(call(12, "save_file", json!({"path": file("out", "allowed.mostvector")})));
     expected_errors.push(false);
     {
         let mut stdin = child.stdin.take().unwrap();
@@ -426,8 +427,8 @@ fn automation_roots(base: &std::path::Path) {
     let errors: Vec<bool> = replies.iter().map(|r| r["result"]["isError"] == true).collect();
     assert_eq!(errors, expected_errors, "{replies:?}");
     assert!(replies[1]["result"]["content"][0]["text"].as_str().unwrap().contains("outside the read root"));
-    assert!(base.join("out/a.png").is_file() && !base.join("in/a.png").exists() && !base.join("outside/a.vectorcraft").exists());
-    assert!(base.join("out/allowed.vectorcraft").is_file());
+    assert!(base.join("out/a.png").is_file() && !base.join("in/a.png").exists() && !base.join("outside/a.mostvector").exists());
+    assert!(base.join("out/allowed.mostvector").is_file());
     for denied in ["traversal.png", "escaped.png", "missing.png"] {
         assert!(!base.join("outside").join(denied).exists(), "{denied}");
     }
@@ -651,7 +652,7 @@ fn run_with_a_closed_stdout_ends_quietly_and_finishes_the_batch() {
     assert!(!out.status.success());
 }
 
-/// A fresh settings folder for one test (`VECTORCRAFT_CONFIG_DIR`), so no run reads or writes the
+/// A fresh settings folder for one test (`MOST_VECTOR_CONFIG_DIR`), so no run reads or writes the
 /// developer's real profile.
 fn config_dir(name: &str) -> std::path::PathBuf {
     let dir = tmp(&format!("config-{name}"));
@@ -663,7 +664,7 @@ fn config_dir(name: &str) -> std::path::PathBuf {
 /// the result of each step.
 fn run_in(config: &std::path::Path, steps: &[(&str, Value)]) -> Vec<Value> {
     let mut cmd = Command::new(BIN);
-    cmd.arg("run").env("VECTORCRAFT_CONFIG_DIR", config).env_remove("VECTORCRAFT_NO_PREFS");
+    cmd.arg("run").env("MOST_VECTOR_CONFIG_DIR", config).env_remove("MOST_VECTOR_NO_PREFS");
     for (id, params) in steps {
         cmd.args(["--cmd", id, "--params", &params.to_string()]);
     }
@@ -728,15 +729,15 @@ fn saved_pdf_presets_and_loaded_profiles_survive_a_restart() {
     assert!(!profile_names(&r[1]).contains(&"StudioRGB3"));
 }
 
-/// Runs without preferences (`VECTORCRAFT_NO_PREFS`) keep what they save for the run only, and
+/// Runs without preferences (`MOST_VECTOR_NO_PREFS`) keep what they save for the run only, and
 /// leave nothing in the settings folder.
 #[test]
 fn runs_without_preferences_remember_nothing() {
     let config = config_dir("noprefs");
     let out = Command::new(BIN)
         .args(["run", "--cmd", "pdf.preset.save", "--params", r#"{"name":"Press"}"#])
-        .env("VECTORCRAFT_CONFIG_DIR", &config)
-        .env("VECTORCRAFT_NO_PREFS", "1")
+        .env("MOST_VECTOR_CONFIG_DIR", &config)
+        .env("MOST_VECTOR_NO_PREFS", "1")
         .output()
         .unwrap();
     assert!(out.status.success(), "{}", String::from_utf8_lossy(&out.stderr));

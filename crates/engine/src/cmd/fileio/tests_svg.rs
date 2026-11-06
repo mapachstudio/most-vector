@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! SVG Options through the engine: every option changes the output, artboards write one file
 //! each, junk is rejected, and Save writes SVG with remembered options.
 
@@ -221,7 +222,7 @@ fn save_writes_svg_and_remembers_its_options() {
     assert!(text.contains("<style>") && vectorcraft_testkit::svg_shapes(&text) == 2, "Save reuses the options: {text}");
     assert!(s.execute("document.save", &json!({"path": dir.join("x.png").to_string_lossy()})).is_err(), "PNG is an export");
     // A native save switches back.
-    let native = dir.join("doc.vectorcraft").to_string_lossy().to_string();
+    let native = dir.join("doc.mostvector").to_string_lossy().to_string();
     s.execute("document.save", &json!({"path": native})).unwrap();
     assert!(vectorcraft_format::sniff(&std::fs::read(&native).unwrap()));
     assert!(s.doc().unwrap().save_options.is_empty(), "a native save remembers no options");
@@ -348,7 +349,7 @@ fn svg_darkness_preserves_source_model_and_gradient_appearance() {
 
 #[test]
 fn svg_darkness_uses_rendered_shadow_in_non_srgb_working_space() {
-    const CHILD: &str = "VECTORCRAFT_TEST_SHADOW_RGB_PROFILE";
+    const CHILD: &str = "MOST_VECTOR_TEST_SHADOW_RGB_PROFILE";
     if std::env::var_os(CHILD).is_none() {
         // Color settings are process-wide: exercise this profile in a separate test process.
         let output = std::process::Command::new(std::env::current_exe().unwrap())

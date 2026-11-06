@@ -1,4 +1,5 @@
-//! Desaturate: an example VectorCraft object filter plug-in (plug-in ABI v1, see
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Desaturate: an example Most Vector object filter plug-in (plug-in ABI v1, see
 //! `docs/plugins.md`).
 //!
 //! It reads the selected paths as JSON, moves every colour (solid fills and strokes, gradient
@@ -8,11 +9,11 @@
 use serde_json::{Value, json};
 
 const MANIFEST: &str = r#"{
-  "id": "org.vectorcraft.example.desaturate",
+  "id": "org.mostvector.example.desaturate",
   "name": "Desaturate",
   "version": "1.0.0",
   "kind": "filter",
-  "author": "VectorCraft contributors",
+  "author": "Most Vector contributors",
   "description": "Moves the colours of the selected paths towards grey; an example of the plug-in ABI.",
   "params": {
     "amount": {"type": "number", "min": 0, "max": 100, "default": 100}

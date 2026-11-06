@@ -1,3 +1,4 @@
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Extrude & Bevel, Inflate and Rotate
 
 The other three 3D types of **Effect › 3D and Materials** next to [Revolve](revolve.md). Like Revolve each is a
@@ -110,7 +111,7 @@ remain available; the list shows **Custom** whenever the effective lighting matc
 presets, including when there is more than one light. An equivalent explicit single light is
 recognized too. Reset all returns to Standard. Preview, Cancel and Undo work as for other options.
 
-These are original VectorCraft settings based on the public preset names and directions. Adobe's
+These are original Most Vector settings based on the public preset names and directions. Adobe's
 documentation does not publish numeric rigs; the values are not copied from its software or files
 and are not claimed to reproduce its presets exactly. Standard retains the existing default.
 

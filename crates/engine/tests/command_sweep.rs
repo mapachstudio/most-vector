@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Every-command sweep: each registered command, in three fixture states, with `{}` and with fuzzed
 //! junk params, must return Ok or Err (never panic), never leave an interaction open, and never
 //! corrupt the tree.
@@ -528,7 +529,7 @@ fn structured_junk() {
         ("document.open", json!({"name": "x.svg", "dataBase64": "!!!"})),
         ("document.open", json!({"name": "x.svg", "dataBase64": "PHN2Zz4="})),
         ("document.open", json!({"name": "x.pdf", "dataBase64": "JVBERi0xLjQK"})),
-        ("document.open", json!({"name": "x.vectorcraft", "dataBase64": "e30="})),
+        ("document.open", json!({"name": "x.mostvector", "dataBase64": "e30="})),
         ("document.activate", json!({"index": 99})),
         ("document.move", json!({"from": 99, "to": 0})),
         ("document.move", json!({"from": 0, "to": u64::MAX})),
@@ -933,15 +934,15 @@ fn recovery_commands_with_a_damaged_store_and_junk_params() {
     use vectorcraft_engine::cmd::recovery::{MemoryStore, RecoveryStore};
     let store = Arc::new(MemoryStore::default());
     for (name, bytes) in [
-        ("1-1/bad-1.vectorcraft", &b"{not json"[..]),
+        ("1-1/bad-1.mostvector", &b"{not json"[..]),
         ("1-1/bad-1.json", b"[1, 2"),
-        ("1-1/gz-1.vectorcraft", &[0x1f, 0x8b, 0, 1, 2][..]),
+        ("1-1/gz-1.mostvector", &[0x1f, 0x8b, 0, 1, 2][..]),
         ("1-1/meta-only.json", br#"{"title": 5, "path": [], "saved": "x"}"#),
         ("2-1/heartbeat", b"not a number"),
-        ("2-1/x.vectorcraft", b"{}"),
-        ("../escape.vectorcraft", b"{}"),
-        ("no-area.vectorcraft", b"{}"),
-        ("/.vectorcraft", b"{}"),
+        ("2-1/x.mostvector", b"{}"),
+        ("../escape.mostvector", b"{}"),
+        ("no-area.mostvector", b"{}"),
+        ("/.mostvector", b"{}"),
     ] {
         store.write(name, bytes).unwrap();
     }

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use std::sync::Arc;
 
 use vectorcraft_color::{BlendMode, Color, Gradient, GradientGeom, GradientKind, GradientPaint, Paint};
@@ -111,7 +112,7 @@ fn metadata_creator_and_title() {
     let mut d = doc(100.0, 100.0);
     d.title = "Poster".into();
     let s = uncompressed(&d);
-    assert!(s.contains("VectorCraft"));
+    assert!(s.contains("Most Vector"));
     assert!(s.contains("Poster"));
 }
 

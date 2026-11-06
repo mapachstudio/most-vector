@@ -1,10 +1,11 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Symbol libraries (Window → Symbol Libraries, the Symbols panel's library button): read-only sets
 //! of symbols the library panel shows. A library is a document holding the symbols with the
 //! resources they use (nested symbols, patterns, swatches, brushes, graphic styles, images) and
-//! their Symbol Options; saved, it is a native `.vectorcraft` file, which File › Open also opens.
-//! The built-in library is generated here ([`BUILTIN`]); User Defined ones are the `.vectorcraft`
+//! their Symbol Options; saved, it is a native `.mostvector` file, which File › Open also opens.
+//! The built-in library is generated here ([`BUILTIN`]); User Defined ones are the `.mostvector`
 //! files in the user library folder ([`Libraries`]), and Other Library… loads the symbols of any
-//! document VectorCraft opens. `symbol.addFromLibrary` copies symbols into the document;
+//! document Most Vector opens. `symbol.addFromLibrary` copies symbols into the document;
 //! `symbol.saveLibrary` writes the document's.
 
 use std::collections::{HashMap, HashSet};
@@ -32,7 +33,7 @@ pub fn specs() -> Vec<CommandSpec> {
             "Symbol Libraries",
             [],
             None,
-            "{} → {libraries: [{id, name, category: \"builtIn\"|\"user\" (User Defined: the .vectorcraft files in the user library folder, rescanned now)|\"loaded\" (symbol.loadLibrary), count, path?}], userFolder} every symbol library the library panel opens, in menu order",
+            "{} → {libraries: [{id, name, category: \"builtIn\"|\"user\" (User Defined: the .mostvector files in the user library folder, rescanned now)|\"loaded\" (symbol.loadLibrary), count, path?}], userFolder} every symbol library the library panel opens, in menu order",
             always,
             list
         ),
@@ -59,7 +60,7 @@ pub fn specs() -> Vec<CommandSpec> {
             "Save Symbol Library…",
             ["Window", "Symbols"],
             None,
-            "{path?, names?: [symbol names] (default: all), name?: library name (default: the document's), user?: false (save into the user library folder, listed under User Defined)} save the document's symbols, with their Symbol Options and the resources they use, as a symbol library: a .vectorcraft document holding only them → {path, count, library?: id when saved to the user folder}; without path or user → {dataBase64: the file's bytes, count}",
+            "{path?, names?: [symbol names] (default: all), name?: library name (default: the document's), user?: false (save into the user library folder, listed under User Defined)} save the document's symbols, with their Symbol Options and the resources they use, as a symbol library: a .mostvector document holding only them → {path, count, library?: id when saved to the user folder}; without path or user → {dataBase64: the file's bytes, count}",
             has_doc,
             save
         ),
@@ -68,7 +69,7 @@ pub fn specs() -> Vec<CommandSpec> {
             "Other Library…",
             ["Window", "Symbol Libraries"],
             None,
-            "{path? | data?: file text | dataBase64?, name?: file name (default: the path's)} load the symbols of any document VectorCraft opens (see document.formats), a saved symbol library included, for the library panel (Window → Symbol Libraries lists it until the app quits; a file of the user library folder, or a file with the same bytes as one there, opens as that User Defined library) → {library: id, name, count}",
+            "{path? | data?: file text | dataBase64?, name?: file name (default: the path's)} load the symbols of any document Most Vector opens (see document.formats), a saved symbol library included, for the library panel (Window → Symbol Libraries lists it until the app quits; a file of the user library folder, or a file with the same bytes as one there, opens as that User Defined library) → {library: id, name, count}",
             always,
             load
         ),

@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! #1034: Character sizes and horizontal scales account for the object's affine transform.
 
 use serde_json::{Value, json};
@@ -253,7 +254,7 @@ fn a_file_with_type_sizes_out_of_range_opens_with_them_in_range() {
     let attrs = json!({"size": 40, "leading": null});
     d.char_styles.push(vectorcraft_doc::TextStyleDef { name: "Auto".into(), attrs: attrs.as_object().unwrap().clone() });
     let data = vectorcraft_format::base64_encode(&vectorcraft_format::save_file(&d));
-    s.execute("document.open", &json!({"name": "sizes.vectorcraft", "dataBase64": data})).unwrap();
+    s.execute("document.open", &json!({"name": "sizes.mostvector", "dataBase64": data})).unwrap();
     let dims = |t: &TextObject| {
         t.runs.iter().map(|r| (r.style.size, r.style.h_scale, r.style.v_scale, r.style.baseline_shift, r.style.leading)).collect::<Vec<_>>()
     };
@@ -284,7 +285,7 @@ fn a_file_with_tate_chu_yoko_offsets_out_of_range_in_a_character_style_opens_wit
     let attrs = json!({"tcyUpDown": 5000, "tcyLeftRight": -3.5});
     d.char_styles.push(vectorcraft_doc::TextStyleDef { name: "Near".into(), attrs: attrs.as_object().unwrap().clone() });
     let data = vectorcraft_format::base64_encode(&vectorcraft_format::save_file(&d));
-    s.execute("document.open", &json!({"name": "tcy.vectorcraft", "dataBase64": data})).unwrap();
+    s.execute("document.open", &json!({"name": "tcy.mostvector", "dataBase64": data})).unwrap();
     let max = vectorcraft_doc::MAX_COORD;
     let doc = &s.doc().unwrap().doc;
     let fixed = json!({"tateChuYoko": true, "tcyUpDown": max, "tcyLeftRight": -max});
@@ -321,7 +322,7 @@ fn imported_type_with_sizes_outside_the_panels_range_opens_unchanged() {
     assert!(sizes.iter().any(|v| *v > 1296.0) && sizes.iter().any(|v| *v < 0.1), "{sizes:?}");
     assert!(imported.iter().flat_map(|t| t.para_styles()).any(|p| p.left_indent > 1296.0), "an indent past the panel's");
     let saved = s.execute("document.export", &json!({"format": "vectorcraft"})).unwrap()["dataBase64"].clone();
-    s.execute("document.open", &json!({"name": "sizes.vectorcraft", "dataBase64": saved})).unwrap();
+    s.execute("document.open", &json!({"name": "sizes.mostvector", "dataBase64": saved})).unwrap();
     assert_eq!(texts(&s), imported);
 }
 

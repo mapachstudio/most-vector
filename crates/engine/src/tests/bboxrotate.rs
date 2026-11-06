@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Rotated bounding boxes (#39): a rotation keeps the objects' angle, the bounding box and its
 //! handles turn with them, sizes are measured along their own axes, and Reset Bounding Box squares
 //! the box to the page again.
@@ -195,7 +196,7 @@ fn native_files_keep_the_angle() {
     let text = String::from_utf8(vectorcraft_format::base64_decode(&data).unwrap()).unwrap();
     // Only turned objects write it.
     assert_eq!(text.matches("bbox_angle").count(), 1);
-    s.execute("document.open", &json!({"name": "turned.vectorcraft", "dataBase64": data})).unwrap();
+    s.execute("document.open", &json!({"name": "turned.mostvector", "dataBase64": data})).unwrap();
     assert!(near(angle(&s, a), 45.0));
     assert_eq!(angle(&s, plain), 0.0);
     sel(&mut s, &[a]);

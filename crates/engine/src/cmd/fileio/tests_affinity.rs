@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Affinity documents: native import (layers, artboards, curves, paints) through Open, Place and
 //! templates, and the embedded preview only as an explicitly warned fallback.
 
@@ -53,7 +54,7 @@ fn preview_opens_with_a_warning_and_never_saves_to_the_source() {
         let plan = save_plan(&s, SaveMode::Save, &json!({})).unwrap();
         assert!(plan.path.is_none(), "Save must ask for a new destination");
         assert_eq!(plan.format.id, "vectorcraft");
-        assert!(plan.name.ends_with(".vectorcraft"));
+        assert!(plan.name.ends_with(".mostvector"));
     }
     let f = format("affinity").unwrap();
     assert!(f.read && !f.write);

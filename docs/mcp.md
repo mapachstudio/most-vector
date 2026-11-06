@@ -1,8 +1,9 @@
-# VectorCraft MCP server
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
+# Most Vector MCP server
 
 `vectorcraft-cli mcp` runs a [Model Context Protocol](https://modelcontextprotocol.io) server on stdio
 (newline-delimited JSON-RPC 2.0; see [Protocol](#protocol) for version negotiation). Agents use it to
-draw, inspect and look at VectorCraft documents.
+draw, inspect and look at Most Vector documents.
 
 It has two backends:
 
@@ -58,13 +59,13 @@ The release packages ship `vectorcraft-cli` alongside the desktop app, so no bui
 
 | Install | CLI |
 |---|---|
-| Windows (MSI) | `%LOCALAPPDATA%\Programs\ArtCraft\VectorCraft\vectorcraft-cli.exe` by default (`C:\Program Files\ArtCraft\VectorCraft\vectorcraft-cli.exe` for an all-users install, under `Program Files (x86)` instead for the 32-bit build, or wherever you installed it otherwise), not on `PATH` |
+| Windows (MSI) | `%LOCALAPPDATA%\Programs\ArtCraft\Most Vector\vectorcraft-cli.exe` by default (`C:\Program Files\ArtCraft\Most Vector\vectorcraft-cli.exe` for an all-users install, under `Program Files (x86)` instead for the 32-bit build, or wherever you installed it otherwise), not on `PATH` |
 | Linux (deb, rpm) | `/usr/bin/vectorcraft-cli` |
 | macOS | the separate `vectorcraft-cli-<version>-macos-<arch>.zip` release asset (the `.app` holds only the desktop app) |
 
 ```sh
 # Windows (PowerShell), default install folder
-claude mcp add vectorcraft -- "$env:LOCALAPPDATA\Programs\ArtCraft\VectorCraft\vectorcraft-cli.exe" mcp
+claude mcp add vectorcraft -- "$env:LOCALAPPDATA\Programs\ArtCraft\Most Vector\vectorcraft-cli.exe" mcp
 # Linux, or macOS with the CLI unzipped onto PATH
 claude mcp add vectorcraft -- vectorcraft-cli mcp
 ```
@@ -72,18 +73,18 @@ claude mcp add vectorcraft -- vectorcraft-cli mcp
 For a live session, start the installed app with the control port before the MCP client starts the server:
 
 ```sh
-# macOS: quit VectorCraft first, since `open -a` passes no arguments to an app that is already running
-open -a VectorCraft --args --control 7979
+# macOS: quit Most Vector first, since `open -a` passes no arguments to an app that is already running
+open -a Most Vector --args --control 7979
 # Windows (PowerShell), default install folder
-& "$env:LOCALAPPDATA\Programs\ArtCraft\VectorCraft\vectorcraft.exe" --control 7979
+& "$env:LOCALAPPDATA\Programs\ArtCraft\Most Vector\vectorcraft.exe" --control 7979
 # Linux (deb, rpm)
 vectorcraft --control 7979
 ```
 
 The Dock, Start menu and desktop launchers start the app without `--control`, so the app opens no control
-port unless `VECTORCRAFT_CONTROL_PORT` is set. `vectorcraft-cli mcp` with no flag tries `127.0.0.1:7979`
+port unless `MOST_VECTOR_CONTROL_PORT` is set. `vectorcraft-cli mcp` with no flag tries `127.0.0.1:7979`
 once, when it starts: a server that started before the app stays headless until the MCP client restarts
-it. `open -a` and PowerShell's `&` return before the app opens the port, so wait until the VectorCraft
+it. `open -a` and PowerShell's `&` return before the app opens the port, so wait until the Most Vector
 window is open before you start the MCP client. With `--connect`, a server that finds no app stops and
 prints `vectorcraft-cli: cannot connect to 127.0.0.1:7979: ` followed by the system's connection error, for
 example `connection timed out`.
@@ -138,7 +139,7 @@ the suite) keep the agent to the folders you give it:
   Links in an opened document that point outside the read roots show as missing.
 - The preferences that move folders the app reads or writes on its own (`fontsFolder`,
   `pluginsFolder`, `recoveryFolder`, `templatesFolder`) can only be set inside the roots. The app's own folders
-  (preferences, Data Recovery, the User Defined library folders, VectorCraft's Fonts folder) are not
+  (preferences, Data Recovery, the User Defined library folders, Most Vector's Fonts folder) are not
   confined: no agent names a path there.
 - The roots must be existing folders; a missing one stops the server with an error. Each flag takes one
   folder per use (`--flag <dir>` or `--flag=<dir>`) and may be used again for more.
@@ -387,7 +388,7 @@ Paint values (`fill`, `stroke`) accept `"#rrggbb"`, `"none"`, `[r,g,b]` (0..1), 
 or a full `paint.setFill` params object (`{"gradient": …}`, `{"swatch": "name"}`).
 A color read this way (a fill or stroke color, a swatch's, an artboard's or new type's color, and the other colors
 commands read in these forms) that is given as a hex color with an alpha part (`#rrggbbaa` or `#rgba`, with or without
-the `#`) is an error and changes nothing, as VectorCraft's own rule. The `color` of Drop Shadow, Inner Glow, Outer Glow
+the `#`) is an error and changes nothing, as Most Vector's own rule. The `color` of Drop Shadow, Inner Glow, Outer Glow
 and Shift to Color is read differently and takes `#rrggbbaa`, as described below.
 For `draw_shape` and `draw_path`, omitted paint fields inherit the current [new-art appearance](#new-art). Both
 also style the new object in the same call: `dash` (lengths, or null for solid), `cap`
@@ -437,8 +438,8 @@ opens the picker through `run_command` with the remote backend.
 | `invoke_menu` | `{command, params?}` | Invokes a menu item by command id. Includes UI commands such as `view.*` and `window.*` in remote mode. |
 | `open_panel` | `{panel}` | Remote only. `panel` is a panel id (`layers`, `swatches`, `colorGuide`, …, as `window.panel` takes) or its display label (`"Color Guide"`), in any case. |
 | `screenshot` | `{path?, scale?, artboard?, window?, max_side?, traceViews?}` | Returns MCP image content (`image/png`, base64) plus a text block. Renders the artboard with the pixels of a PNG `export` with `background: "white"` at the same scale; `traceViews:true` draws Image Trace objects in the view set with `imageTrace.setView`, as in the app's window; `window:true` captures the app window (remote only), as `ui_screenshot` does, and `max_side` (1–4096, window captures only) scales the returned image down as described for `ui_screenshot`. With `path` the backend (the headless session or the app) writes the PNG there too; a window capture written there keeps its full size with `max_side`. |
-| `open_file` | `{path}` | Opens any readable file as a new active document: `.vectorcraft`/`.drawcraft`, `.vctemplate`, `.svg`/`.svgz`, `.pdf`/`.ai`, `.ait`, `.eps`/`.epsf`, `.ps`, `.dxf`, `.emf`, `.wmf`, PNG (`.png`/`.pns`), JPEG, GIF, WebP, TIFF, BMP (`.bmp`/`.dib`/`.rle`), Targa (`.tga`/`.vda`/`.icb`/`.vst`), PCX, Pixar (`.pxr`), JPEG 2000 (`.jpf`/`.jpx`/`.jp2`/`.j2k`/`.j2c`/`.jpc`), PSD (`.psd`/`.pdd`)/PSB (an image opens as a document of its pixel size; a Photoshop file as its merged image). Templates (`.vctemplate`, `.ait`) open as a new untitled document. PDF, `.ai` and SVG files saved with Preserve Editing reopen as the document they carry. The reply is `document.open`'s: its `warnings` say what didn't come in as it was (an EPS whose PostScript can't be read opens as its preview, and the warning names the PostScript error, the operator and the procedure). `run_command document.formats` lists the formats. |
-| `save_file` | `{path?, compress?, version?, preview?, precision?, options?}` | Runs `document.save`: the document's own file in its own format (native `.vectorcraft` unless it was opened from or saved as SVG, PDF or a restorable `.ai`; then `warnings` say what that format loses). A path's extension picks the format (`.vectorcraft`, `.vctemplate`, `.pdf`, `.svg`, `.svgz`, `.ai`: a PDF carrying the native document, which reopens editable). For a native file, `compress: true` gzips it (default: the `useCompression` preference, Preferences › File Handling › Use Compression), `version` (1 to 4) writes it for an older VectorCraft (1 and 2 are never compressed, and `version: 2` with `compress: true` is an error), `preview: true` embeds a PNG of the first artboard, and `precision` (0 to 9) rounds path anchors and handles to that many decimal places for that save only (colors, transforms and type stay exact). `options` passes the format's save options as `run_command document.formats` lists them. When `compress`, `version`, `preview` or `precision` is given both at the top level and in `options` with different values, the call is an error (`` `compress: true` and `options.compress: false` disagree: give the option once ``) and nothing is written. The save drops each option the written format doesn't read. The reply's `warnings` then name each such option given (for example `` `compress` was not used: SVG files don't read it `` for an `.svg` path, and `` `options.preview` was not used: … `` for a key in `options`; a `.ai` file reads `compress` but not `version`, `preview` or `precision`). `run_command document.save` and the other save commands refuse any option given beside the path and in `options` with different values, and give the same warning for a top-level `compress`, `version`, `preview` or `precision`. The headless session and the app receive the same `app.save` params, and the app is also sent `wait: true`: the call returns once the file is written, or with the error (such as a path outside the write root), even with Background Save on. When the save asks first (the question before replacing a file that opened with losses, or on macOS and Linux the file dialog for an untitled document without `path`), the reply is `{pending}` or `"cancelled"` as before, and the save that runs after the answer uses the Background Save preference. |
+| `open_file` | `{path}` | Opens any readable file as a new active document: `.mostvector`/`.drawcraft`, `.vctemplate`, `.svg`/`.svgz`, `.pdf`/`.ai`, `.ait`, `.eps`/`.epsf`, `.ps`, `.dxf`, `.emf`, `.wmf`, PNG (`.png`/`.pns`), JPEG, GIF, WebP, TIFF, BMP (`.bmp`/`.dib`/`.rle`), Targa (`.tga`/`.vda`/`.icb`/`.vst`), PCX, Pixar (`.pxr`), JPEG 2000 (`.jpf`/`.jpx`/`.jp2`/`.j2k`/`.j2c`/`.jpc`), PSD (`.psd`/`.pdd`)/PSB (an image opens as a document of its pixel size; a Photoshop file as its merged image). Templates (`.vctemplate`, `.ait`) open as a new untitled document. PDF, `.ai` and SVG files saved with Preserve Editing reopen as the document they carry. The reply is `document.open`'s: its `warnings` say what didn't come in as it was (an EPS whose PostScript can't be read opens as its preview, and the warning names the PostScript error, the operator and the procedure). `run_command document.formats` lists the formats. |
+| `save_file` | `{path?, compress?, version?, preview?, precision?, options?}` | Runs `document.save`: the document's own file in its own format (native `.mostvector` unless it was opened from or saved as SVG, PDF or a restorable `.ai`; then `warnings` say what that format loses). A path's extension picks the format (`.mostvector`, `.vctemplate`, `.pdf`, `.svg`, `.svgz`, `.ai`: a PDF carrying the native document, which reopens editable). For a native file, `compress: true` gzips it (default: the `useCompression` preference, Preferences › File Handling › Use Compression), `version` (1 to 4) writes it for an older Most Vector (1 and 2 are never compressed, and `version: 2` with `compress: true` is an error), `preview: true` embeds a PNG of the first artboard, and `precision` (0 to 9) rounds path anchors and handles to that many decimal places for that save only (colors, transforms and type stay exact). `options` passes the format's save options as `run_command document.formats` lists them. When `compress`, `version`, `preview` or `precision` is given both at the top level and in `options` with different values, the call is an error (`` `compress: true` and `options.compress: false` disagree: give the option once ``) and nothing is written. The save drops each option the written format doesn't read. The reply's `warnings` then name each such option given (for example `` `compress` was not used: SVG files don't read it `` for an `.svg` path, and `` `options.preview` was not used: … `` for a key in `options`; a `.ai` file reads `compress` but not `version`, `preview` or `precision`). `run_command document.save` and the other save commands refuse any option given beside the path and in `options` with different values, and give the same warning for a top-level `compress`, `version`, `preview` or `precision`. The headless session and the app receive the same `app.save` params, and the app is also sent `wait: true`: the call returns once the file is written, or with the error (such as a path outside the write root), even with Background Save on. When the save asks first (the question before replacing a file that opened with losses, or on macOS and Linux the file dialog for an untitled document without `path`), the reply is `{pending}` or `"cancelled"` as before, and the save that runs after the answer uses the Background Save preference. |
 | `export` | `{path?, format?, scale?, artboard?, range?, selection?, outlineText?, options?}` | `svg`, `svgz`, `pdf`, `ai` (the PDF-compatible `.ai` that Save writes, which carries the document when every artboard is written in order), `eps`, `dxf`, `emf`, `wmf`, `png`, `jpg`, `webp`, `gif`, `png8` (an indexed `.png`), `tiff`, `bmp`, `tga`, `psd` (layered), `txt` (the document's text), `vectorcraft` or `template` (a native template). The tool's `format` enum and `document.formats` list them, generated from the engine's format table. When `format` is omitted, it comes from the path's extension. PDF and `.ai` write one page per artboard: all of them, or `artboard` (0-based) / `range` (`"1-3, 5"`, 1-based). SVG and SVGZ write one file per chosen artboard. EPS writes one file of the visible art; with `artboard`, `range`, `options.artboards` or `options: {"useArtboards": true}` it writes one file per chosen artboard, after a central file of the visible art when there are two or more, and `useArtboards: false` keeps the one file. Rasters, DXF, EMF and WMF write one artboard, or one file per chosen artboard with `options: {"useArtboards": true}`. Rasters also take `options: {"rect": [x, y, width, height]}` (page points, y down): that area of the page at the given `ppi`/`scale`, without an artboard and without changing the document; it is refused with `artboard`, `artboards`, `range` or `useArtboards`, with a non-positive or non-finite size, and for non-raster formats. `options` carries more format options (e.g. `{"quality": 80}` for JPEG). `selection: true` exports the selected objects cropped to their bounds (the reply adds their `bounds`, and reports `format` and the encoder's `warnings` as a whole-document export does); `outlineText: true` writes SVG text as paths. Template layers are left out, live effects are kept, and exporting `vectorcraft` never changes the document's path. Without `path` the bytes come back as `dataBase64`. Both backends run the same `document.export` call. |
 | `add_text` | `{text, x?, y?, width?, height?, fit?, fitMinPercent?, path?, mode?, pathEffect?, size?, font?, color?, justify?, vertical?}` | Point type at (x, y) (`justify`: `left`, `center` or `right` starts, centres or ends each line on x); area type with `width`/`height` (`fit`: `none`, `autoHeight`, `shrinkText`, as `text.areaOptions`); or `path` + `mode` (`area`/`onPath`) to flow text in or along a path, with `pathEffect` (`rainbow`, `skew`, `3dRibbon`, `stairStep`, `gravity`); `justify` (also `auto`, `justifyAll`) aligns the paragraphs of every kind, as `text.setStyle` does later. `vertical: true` uses the existing vertical writing mode for every kind (default `false`, horizontal). Returns `{id}`, with `overflow: true` when the text doesn't fit its frame or path. |
 | `apply_effect` | `{effect?, params?, ids?}` | Appends a live effect. Without `effect`, returns the effect catalogue with parameters and defaults. |
@@ -631,7 +632,7 @@ it replaced by the template's extension, and any other path that does not end in
 come back without a path), `file.newFromTemplate {path}`, `file.revert` and `file.formatOptions {format?}` (a format's options
 with the values a save would use). Without a path the save commands return `{dataBase64, name, folder?, warnings}`. A document saved as SVG or PDF
 remembers its options, so the next save reuses them; a document not yet saved as a native file is offered the
-VectorCraft Options the last native Save or Save As used (not its artboards, nor Use Compression). A PDF opened with `pages`, `cropTo` or `password` is only part
+Most Vector Options the last native Save or Save As used (not its artboards, nor Use Compression). A PDF opened with `pages`, `cropTo` or `password` is only part
 of the file, so Save asks for a new name instead of writing it back.
 `file.documentColorMode {mode, convert?, intent?, grays?}` switches the document color mode, converting the colors of
 the art (opacity masks, effect colors and the series paints and label styles that graphs keep included), symbols,
@@ -659,9 +660,9 @@ found in the SVG's folder; only files on this computer or the SVG's network shar
 absolute paths) stay linked images (see Linked images); SVG files and `data:` SVGs become art; a file that
 can't be read becomes a placeholder in its box, named in `warnings` and `missingLinks`.
 
-Native files: `run_command document.save {compress: true}` writes a gzip-compressed `.vectorcraft` (the
+Native files: `run_command document.save {compress: true}` writes a gzip-compressed `.mostvector` (the
 `useCompression` preference makes that the default for saves; compressed files open like any other, told apart by
-their content). `version: 2` or `1` writes a file older VectorCraft versions open (format name `drawcraft`, never
+their content). `version: 2` or `1` writes a file older Most Vector versions open (format name `drawcraft`, never
 compressed), and `preview: true` embeds a PNG of the first artboard, at most 256 px on its longer side.
 `precision: 4` (0 to 9) rounds the anchors and handles of paths to that many decimal places (in the layers, symbols,
 graph designs, patterns, opacity masks and brushes); colors, transforms, opacity and type are written exactly.
@@ -868,8 +869,8 @@ paints under its layers, which isn't art). `layers: false` gives one layer per p
 {"name":"run_command","arguments":{"command":"document.open","params":{"path":"/tmp/map.pdf","textAs":"outlines","layers":false}}}
 ```
 
-Preserve Editing (`preserveEditing`, on in the `VectorCraft Default` preset) embeds the native document in the PDF as
-an embedded file (`vectorcraft-editing.vectorcraft`; files named `drawcraft-editing.drawcraft` are read too) with a
+Preserve Editing (`preserveEditing`, on in the `Most Vector Default` preset) embeds the native document in the PDF as
+an embedded file (`vectorcraft-editing.mostvector`; files named `drawcraft-editing.drawcraft` are read too) with a
 hash of the pages it was written with. `open_file` / `document.open` of such a PDF, `.ai` or `.ait` (no `pages` picked) restores the
 document exactly (`restored: true`); when another app changed the pages, or the data can't be read, the artwork is
 imported instead and the first warning says why. Choosing a standard turns it off (PDF/A refuses it). Save to a `.ai`
@@ -995,7 +996,7 @@ vectorcraft-cli run --in in.svg \
   --export out.svg --export out.png --scale 2
 vectorcraft-cli run --cmd file.new --params '{"width":800,"height":600}' \
   --cmd shape.star --params '{"cx":400,"cy":300,"radius1":200,"radius2":90}' \
-  --export star.vectorcraft
+  --export star.mostvector
 ```
 
 `run` prints one JSON line per step (`open`, `cmd`, `export`) and exits non-zero on the first failure, naming the step
@@ -1010,7 +1011,7 @@ A command line has a length limit (32,767 characters on Windows), which long par
 `--commands -` from standard input:
 
 ```sh
-vectorcraft-cli run --in sheet.vectorcraft --commands steps.json --export out.pdf
+vectorcraft-cli run --in sheet.mostvector --commands steps.json --export out.pdf
 ```
 
 ```json
@@ -1031,7 +1032,7 @@ before anything runs, with the step's number and its entry (`entry 3`) or line (
 ### What a headless session remembers
 
 `vectorcraft-cli run` and the headless `mcp` server keep two things between runs, in folders next to the
-preferences (the folder the desktop app uses, so both see the same ones; `VECTORCRAFT_CONFIG_DIR` moves it):
+preferences (the folder the desktop app uses, so both see the same ones; `MOST_VECTOR_CONFIG_DIR` moves it):
 
 - **Saved PDF presets** (`pdf.preset.save`, `.delete`, `.import`): one `.vcpdfpresets` file per preset in
   `PDF Presets`, written as the command runs. Presets saved earlier are there at the next start and work as
@@ -1043,7 +1044,7 @@ preferences (the folder the desktop app uses, so both see the same ones; `VECTOR
   copy (not while it is a working space).
 
 Not remembered: Color Settings, the document, anything else. Nothing is read or written when
-`VECTORCRAFT_NO_PREFS` is set, and a server confined with `--automation-read-root` or
+`MOST_VECTOR_NO_PREFS` is set, and a server confined with `--automation-read-root` or
 `--automation-write-root` keeps nothing either (the folders are outside its roots). A file that is damaged, too large
 (a profile over 32 MB, a presets file over 1 MB) or not a valid preset or profile is skipped and logged. When the
 desktop app starts, the presets it kept in its preferences file before this folder existed are moved into it; after
@@ -1051,7 +1052,7 @@ that the folder is the one place they live, so a preset deleted by `vectorcraft-
 
 ### Reproducible output
 
-PNG, PDF, EPS, legacy `.ai`, packaged zips and saved `.vectorcraft` files record the time they were
+PNG, PDF, EPS, legacy `.ai`, packaged zips and saved `.mostvector` files record the time they were
 made in (PDF `CreationDate` and `ModDate`, the PNG `Creation Time` entry, a zip entry's date, a
 document's `created` and `modified`), so the same commands run twice gave different bytes though the
 pixels matched (#2880). Setting **`SOURCE_DATE_EPOCH`** to a non-negative whole number of seconds
@@ -1604,7 +1605,7 @@ dropped.
 The Navigator panel menu's Panel Options… opens the `navigatorPanelOptions` dialog (fields `color`, `solidDashes`),
 and `ui.navigatorPanelOptions {color?, solidDashes?}` sets the options without it → `{color, solidDashes}`; with
 neither key it opens the dialog. `color` is the color the panel's view box is drawn in: `#rrggbb` or a preset name.
-The presets are VectorCraft's own list: Light Red (`#ff3030`, the default), then the layer colors ("Light Blue",
+The presets are Most Vector's own list: Light Red (`#ff3030`, the default), then the layer colors ("Light Blue",
 "Red", "Green" and the rest). `solidDashes` (Draw Dashed Lines as Solid Lines, off by default) makes the panel's
 thumbnail draw dashed strokes without their dashes; the canvas, printing and exports keep the dashes. Both are kept
 with the UI state. A `color` that is not a color, or a `solidDashes` that is not true or false, is an error and
@@ -1755,7 +1756,7 @@ already walks Image Trace. Short agent entry points:
   `variable.loadLibrary` that would delete or define a variable (below) fail with "variables are locked";
   `variable.bind`, `variable.unbind` and the `dataset.*` commands still run (except a `dataset.import` whose header
   would define a variable, below), and `variable.list` reports `locked`. A variable that an opened `.ai` declares
-  without a kind VectorCraft reads is listed with `kind: "unknown"`: it takes no values, and `variable.bind`
+  without a kind Most Vector reads is listed with `kind: "unknown"`: it takes no values, and `variable.bind`
   refuses it. When an opened `.ai`'s layers are read, the objects it binds to its text, visibility and image
   variables come in bound when they are of the variable's kind, locked and hidden objects included, and
   `variable.list` counts them in `bindings`.
@@ -1820,7 +1821,7 @@ already walks Image Trace. Short agent entry points:
   Export end the file name of a step with `format` in that `format`, in lower case and without a leading dot, when it
   is one of the format's extensions (`.svg` and `SVG` give `.svg`, `.JPEG` gives `.jpeg`), and otherwise in the
   format's first extension (`png8` gives `.png`, `template` gives `.vctemplate`). A step without `format` keeps the
-  source file's extension (`.vectorcraft` over data sets).
+  source file's extension (`.mostvector` over data sets).
 - Action set files: `ui.actionSet.save {set?: index, id?, path?}` writes the Actions panel's set at `set` (0 is the
   top set; by default the current set) with its actions to an action set file at `path`, else a picked file named
   after the set (the web downloads it), and returns `{path}`. `id` holds the panel's own set id, which the panel menu
@@ -1881,7 +1882,7 @@ already walks Image Trace. Short agent entry points:
 - Actions: `ui.action.playbackOptions {speed?, seconds?}` sets how the Actions panel plays actions and returns
   `{speed, seconds}`. `speed` is `accelerated` (the default: every step at once), `step` (one step at a time, with the
   window drawn after each step before the next runs) or `pause` (a pause of `seconds` between steps). `seconds` is a
-  whole number from 1 to 60, VectorCraft's own range, and stays set while another speed is chosen. A param left out
+  whole number from 1 to 60, Most Vector's own range, and stays set while another speed is chosen. A param left out
   keeps its value. Any other `speed` or `seconds` is an error, and then nothing changes. The setting is kept with the UI
   preferences. The panel menu's Playback Options… opens the `actionPlayback` dialog (`speed`, `seconds`), whose OK runs
   this. Batch… (`action.batch`) plays every step at once whatever the setting.
@@ -2344,7 +2345,7 @@ with the same extension and bytes as one there, loads as that User Defined libra
 
 ## Symbol libraries
 
-Symbol libraries are read-only sets of symbols: one generated in code (Basic Shapes), the `.vectorcraft` files in
+Symbol libraries are read-only sets of symbols: one generated in code (Basic Shapes), the `.mostvector` files in
 the user library folder of the desktop app (User Defined) and the symbols of any document loaded with
 `symbol.loadLibrary`. `symbol.libraries` lists them (`id`, `name`, `category`: `builtIn`, `user` or `loaded`, `count`)
 and `symbol.library {library}` returns one's symbols (`name`, `size`, `registration`, `exportType`; `library` is an
@@ -2359,15 +2360,15 @@ what dragging a symbol out of the library panel onto the canvas does.
 ```json
 {"name":"run_command","arguments":{"command":"symbol.addFromLibrary","params":{"library":"basic-shapes","name":"Star","place":true,"x":120,"y":80}}}
 ```
-`symbol.saveLibrary {path?, names?, name?, user?}` writes the document's symbols as a symbol library: a `.vectorcraft`
+`symbol.saveLibrary {path?, names?, name?, user?}` writes the document's symbols as a symbol library: a `.mostvector`
 document holding only them and what they use; without `path` it returns `{dataBase64}`, and `user: true` saves into
 the user library folder (category `user`, User Defined). `symbol.loadLibrary {path? | data? | dataBase64?, name?}`
-loads the symbols of any document VectorCraft opens as a library to add from; a file it can't read is an error.
+loads the symbols of any document Most Vector opens as a library to add from; a file it can't read is an error.
 
 ## Brush libraries
 
 Brush libraries are read-only sets of brushes: four generated in code (Art Ribbons, Calligraphic Nibs, Pattern
-Borders, Scatter Shapes), the `.vectorcraft` files in the user library folder of the desktop app (User Defined) and
+Borders, Scatter Shapes), the `.mostvector` files in the user library folder of the desktop app (User Defined) and
 the brushes of any document loaded with `brush.loadLibrary` (a document without brushes of its own has the default
 ones). `brush.libraries` lists them (`id`, `name`, `category`: `builtIn`, `user` or `loaded`, `count`) and
 `brush.library {library}` returns one's brushes (`name`, `type`; `library` is an id or a name).
@@ -2383,10 +2384,10 @@ path, does.
 {"name":"run_command","arguments":{"command":"brush.addFromLibrary","params":{"library":"art-ribbons","name":"Striped Ribbon","apply":true}}}
 ```
 
-`brush.saveLibrary {path?, names?, name?, user?}` writes the document's brushes as a brush library: a `.vectorcraft`
+`brush.saveLibrary {path?, names?, name?, user?}` writes the document's brushes as a brush library: a `.mostvector`
 document holding only them and what their art uses; without `path` it returns `{dataBase64}`, and `user: true`
 saves into the user library folder (category `user`, User Defined). `brush.loadLibrary {path? | data? |
-dataBase64?, name?}` loads the brushes of any document VectorCraft opens as a library to add from; a file it can't
+dataBase64?, name?}` loads the brushes of any document Most Vector opens as a library to add from; a file it can't
 read is an error.
 
 ## Library panels
@@ -3188,7 +3189,7 @@ copies would number more than 10,000 or take more than 20,000,000 bytes of docum
 effect is written as outlines.
 
 ```json
-{"name":"run_command","arguments":{"command":"document.exportPdf","params":{"path":"/tmp/press.pdf","output":{"conversion":"preserveNumbers","destination":"VectorCraft Generic CMYK (SWOP-like)","profiles":"destination","outputIntent":"VectorCraft Generic CMYK (SWOP-like)","trapped":true},"advanced":{"outlineText":false}}}}
+{"name":"run_command","arguments":{"command":"document.exportPdf","params":{"path":"/tmp/press.pdf","output":{"conversion":"preserveNumbers","destination":"Most Vector Generic CMYK (SWOP-like)","profiles":"destination","outputIntent":"Most Vector Generic CMYK (SWOP-like)","trapped":true},"advanced":{"outlineText":false}}}}
 ```
 
 ## Scale Strokes & Effects
@@ -3362,11 +3363,11 @@ destination and overridden Save/Export paths use the chosen stem with the output
 set name under Data Set Name falls back to the document stem plus its three-digit ordinal. Batch writes `/`, `\`,
 `:`, `<`, `>`, `"`, `|`, `?`, `*` and control characters in the data set's name as `-`, and adds the next free `-2`,
 `-3` suffix to a stem already used in the batch (compared without case). An output already in a destination folder
-gets the next free suffix only when the batch may read and write that folder before it starts. A save in VectorCraft,
+gets the next free suffix only when the batch may read and write that folder before it starts. A save in Most Vector,
 template, AI or AIT format counts artboard file names when the document has any artboard; a per-artboard export
 counts them when the document has several artboards.
-Under Data Set Name, VectorCraft makes Windows device names safe (`CON` becomes `CON-`). This is
-VectorCraft's naming behavior. Caps: 500
+Under Data Set Name, Most Vector makes Windows device names safe (`CON` becomes `CON-`). This is
+Most Vector's naming behavior. Caps: 500
 files or data sets, 8 folder levels, 256 steps. An action recorded in the Actions panel leaves the artboard out,
 and its steps of these commands get the artboard that is active when the action plays. A press with the Selection,
 Direct Selection or Group Selection tool inside an artboard makes that artboard the active one; with the Selection
@@ -3663,7 +3664,7 @@ Pen's second anchor at (150, 431), in line with the square's centre.
 
 File Handling › `appendConverted` (on by default): an older native file (the former `.drawcraft` extension or an
 older format version) opens titled `<name> [Converted]`, and Save doesn't write over it: `document.save` without a
-`path` answers with a suggested `.vectorcraft` name (the app asks for one). Off, it opens under its own name and Save
+`path` answers with a suggested `.mostvector` name (the app asks for one). Off, it opens under its own name and Save
 writes over it.
 
 ## Width points
@@ -3857,7 +3858,7 @@ reports `windows` (every window as `[document index, view number]`, in tab order
 `file.place` puts another file's art into the active document as one undo step without touching the clipboard:
 a raster image at 100% of its physical size (the resolution its file declares, else 72 ppi; linked to its `path`
 unless `link: false`; a Photoshop document as its merged image), an SVG as one group (fitted by its art's bounds; with `crop: "crop"` given, framed and clipped by its viewBox, #788), a PDF/.ai page as one clipped group, with the images, symbols, patterns
-and swatches it uses. A VectorCraft document read from `path` is a placed document: one locked object showing its
+and swatches it uses. A Most Vector document read from `path` is a placed document: one locked object showing its
 artboard `page` (or, with `crop: "bounding"`, its art's bounds), linked to the file and read again when it changes
 (see Linked images), and vectors in every output; with `link: false` (or from `dataBase64`) it is an editable copy
 of its art, as one clipped group. A PDF, `.ai` or `.ait` page read from `path` (with neither `password` nor
@@ -4148,7 +4149,7 @@ is mixed with middle gray by its alpha.
 ## Linked images
 
 A placed image linked to its file (`file.place {path}`, Link on) records the file's absolute path, its size,
-modification time and hash, and keeps a low-resolution preview (at most 256 px a side): a `.vectorcraft` save writes
+modification time and hash, and keeps a low-resolution preview (at most 256 px a side): a `.mostvector` save writes
 the preview instead of the pixels, plus the path relative to the saved file. `document.open` reads
 the linked files again, looking for each at its path, then at its relative path and by name in the document's folder
 (so a folder moved with its links still opens). Only files on this computer, or on the network share the document is
@@ -4189,11 +4190,11 @@ that includes a placed document fails and relinks nothing; placed documents are 
 files are. Find in Folder… in the Linked File Not Found dialog and in the Links panel menu (`ui.findLinksInFolder`) runs
 both. The web build has no folder search.
 
-Placed documents (a `.vectorcraft` file, or a PDF or `.ai` page, placed linked)
+Placed documents (a `.mostvector` file, or a PDF or `.ai` page, placed linked)
 work the same way: the document keeps the file's bytes and a preview (JPEG or PNG, 1 px per point, at most 1024 px
 a side), and a save writes the preview (Include Linked Files: the file); output reads the file again, or uses the
 preview with a warning when it is gone or changed.
-`links.list` and `links.info` give them `document: true`, the file's `format` (`VectorCraft`, `PDF`,
+`links.list` and `links.info` give them `document: true`, the file's `format` (`Most Vector`, `PDF`,
 `PDF-compatible .ai`) and the artboard's or page's `pageWidth` and `pageHeight` (pt). A relinked PDF shows the same
 page and box of the new file. File › Package copies a placed PDF or `.ai` file as it is. For a `.ai` file read from
 its editing data, Package also copies the files its art places into the same folder. That file finds them by name,
@@ -4258,7 +4259,7 @@ other in a loop.
 
 ## PDF presets
 
-`pdf.preset.list` lists the built-in presets (`VectorCraft Default`, which preserves editing, then High Quality Print,
+`pdf.preset.list` lists the built-in presets (`Most Vector Default`, which preserves editing, then High Quality Print,
 Press Quality, Smallest File Size and the PDF/X presets, `builtIn: true`; `supported` says the writer produces the
 preset's standard) and the saved ones, each with its `description` and `settings`. `pdf.preset.save {name?,
 newName?, description?, preset?, …document.exportPdf options}` creates or changes a saved preset (a change starts from
@@ -4302,7 +4303,7 @@ Cut publish the formats to the system clipboard, and a Paste outside text editin
 copied (SVG, then PDF, then text, then a bitmap; SVG markup in text counts as SVG). A background thread makes the
 formats and they are published when they are ready. While that thread has a save, an export, a print or a recovery
 copy to finish, Copy and Cut make and publish them at once. When another Copy or Cut, or a copy of text in
-VectorCraft, comes first, they are dropped. Pasting what VectorCraft copied keeps the lossless internal clipboard,
+Most Vector, comes first, they are dropped. Pasting what Most Vector copied keeps the lossless internal clipboard,
 also before its formats are published. While a text field or the Type tool has the keyboard, the app waits for
 them. Windows carries every format both ways and pastes a bitmap from PNG, else
 from the device-independent bitmap screenshots copy (`CF_DIBV5`, then `CF_DIB`; alpha kept, opaque when it is zero
@@ -4416,10 +4417,10 @@ that made it, PhotoCraft, where it is installed, and anything else in the system
 ## Package and Document Info
 
 `file.package {folder?, name?, copyLinks?, linksFolder?, relink?, copyFonts?, report?}` copies a saved document (an
-unsaved one is an error) into `folder/name` (default name `<document> Folder`): `<document>.vectorcraft`, its linked
+unsaved one is an error) into `folder/name` (default name `<document> Folder`): `<document>.mostvector`, its linked
 files in `Links/` (relinked: the packaged document points at the copies; the open one doesn't change), the fonts its
 type uses in `Fonts/` (fonts whose licence doesn't allow embedding are listed in `skippedFonts` instead) and
-`<document> Report.txt`. A placed `.vectorcraft` document is packaged with its own linked files and fonts, relinked to
+`<document> Report.txt`. A placed `.mostvector` document is packaged with its own linked files and fonts, relinked to
 the copies (each file copied once); one that can't be read is copied as it is, and a cycle of placed documents or one
 past the nesting limit stops there, each with a line in `warnings` and the report. A `folder/name` where a packaged file
 would replace the document or one of its linked files (the document's own folder, say) is an error, and nothing is
@@ -4632,7 +4633,7 @@ Modified documents get recovery copies (`file.recovery.save`; the app runs it ev
 `autosaveRecovery` is on, skipping documents of more than 20,000 objects while `recoveryOffForComplex` is on). A copy
 goes when its document is saved, reverted or closed, so copies still there after the app quits were left by a crash.
 The copies live in the `recoveryFolder` preference's folder (default: `Data Recovery` beside the app's preferences;
-none when the app runs with `VECTORCRAFT_NO_PREFS`) or, on the web, in browser storage.
+none when the app runs with `MOST_VECTOR_NO_PREFS`) or, on the web, in browser storage.
 
 Each running app (each browser tab) keeps its copies in an area of its own (`<area>/<name>`): a sub-folder whose
 `.lock` file it keeps locked while it runs, or on the web an area with a heartbeat it refreshes every minute and a Web
@@ -4644,7 +4645,7 @@ again. Several apps running at once (agents' instances included) never see each 
 and an area being restored or discarded is held, so two apps launched together never both take it.
 
 `file.recovery.list` → `{copies: [{file, title, path, format, saved, open, running}], location}` (`open`: the copy of a
-document open here; `running`: kept by another VectorCraft that is running). `file.recovery.restore {file?}` opens
+document open here; `running`: kept by another Most Vector that is running). `file.recovery.restore {file?}` opens
 copies left behind (default: all) as `"<name> [Recovered]"`: modified, and Save asks where to save them (suggesting
 their original file); the copy moves into this app's area. `file.recovery.discard {file?}` deletes them. Without a
 folder or browser storage the commands are disabled and say how to set one.
@@ -4657,7 +4658,7 @@ folder or browser storage the commands are disabled and say how to set one.
 
 ## Native save options
 
-`document.save` / `file.saveAs` / `file.saveCopy` to a native (`.vectorcraft`, `.vctemplate`) or `.ai` file take, flat
+`document.save` / `file.saveAs` / `file.saveCopy` to a native (`.mostvector`, `.vctemplate`) or `.ai` file take, flat
 or in `options` (`file.formatOptions {format}` lists them with their values):
 
 - `separateArtboards: true` also writes each artboard of `range` (`"1-3, 5"`, default `"all"`) to
@@ -4670,11 +4671,11 @@ or in `options` (`file.formatOptions {format}` lists them with their values):
   (default true) with false write blank pages around the native document (smaller; other apps show empty pages).
 - `.ai` only: `compress` (default true) is the PDF option `compression.compressText`.
 
-File → Save As asks for these in the save options dialog (VectorCraft Options) after the save panel, and Save a Copy
+File → Save As asks for these in the save options dialog (Most Vector Options) after the save panel, and Save a Copy
 does too for a `.ai` file; Save, Save a Copy to a native file and Save as Template reuse the options as last saved (or Use Compression).
 
 ```json
-{"name":"run_command","arguments":{"command":"file.saveAs","params":{"path":"/tmp/set.vectorcraft","separateArtboards":true,"range":"2-3","includeLinked":true}}}
+{"name":"run_command","arguments":{"command":"file.saveAs","params":{"path":"/tmp/set.mostvector","separateArtboards":true,"range":"2-3","includeLinked":true}}}
 {"name":"run_command","arguments":{"command":"file.saveAs","params":{"path":"/tmp/set.ai","pdfCompatible":false}}}
 ```
 
@@ -4694,7 +4695,7 @@ and is missing from the picture" once for all such images.
 
 `document.open` and `file.place` read `.emf` and `.wmf` (placeable or not) into one artboard, the picture's frame, and
 one layer: paths with their fills and strokes (pens become strokes with caps, joins and dashes), clipping groups,
-images and point type in the font the file names. Records VectorCraft doesn't read (EMF+ drawing among them) are
+images and point type in the font the file names. Records Most Vector doesn't read (EMF+ drawing among them) are
 skipped with one warning. `clipboard.importEmf {dataBase64, center?}` loads an EMF or WMF picture into the clipboard
 for `edit.paste`; the app pastes `image/emf` from the system clipboard ahead of text and bitmaps when the platform's
 clipboard service offers it (the Windows desktop service doesn't read metafiles yet).
@@ -4873,7 +4874,7 @@ refused with the list of presets.
 
 `document.open` and `file.place` read `.eps`, `.epsf` and `.ps` files, and PostScript by any name (an `.ai` saved
 without PDF compatibility opens as artwork; an `.ait` one as a new untitled document). A `.ps` file reports the format
-`ps`, which `document.export` doesn't write (`file.print` writes PostScript). An EPS file VectorCraft wrote restores the
+`ps`, which `document.export` doesn't write (`file.print` writes PostScript). An EPS file Most Vector wrote restores the
 document it carries (`restored: true`, as Preserve Editing does for PDF and SVG); when that document can't be read the
 PostScript is read instead and the first warning says why.
 
@@ -4923,7 +4924,7 @@ its standard: what it still breaks (transparency, RGB in PDF/X-1a, a font not em
 writing a file that only claims the standard.
 
 ```json
-{"name":"run_command","arguments":{"command":"document.exportPdf","params":{"path":"/tmp/press.pdf","preset":"PDF/X-1a:2001","output":{"outputIntent":"VectorCraft Generic CMYK (SWOP-like)","outputCondition":"Coated","trapped":false}}}}
+{"name":"run_command","arguments":{"command":"document.exportPdf","params":{"path":"/tmp/press.pdf","preset":"PDF/X-1a:2001","output":{"outputIntent":"Most Vector Generic CMYK (SWOP-like)","outputCondition":"Coated","trapped":false}}}}
 ```
 
 ## Print tiling
@@ -4964,7 +4965,7 @@ colours keep their numbers with `preserveNumbers`), so a CMYK profile writes dev
 CMYK one. Settings saved before these options load with their defaults.
 
 ```json
-{"name":"run_command","arguments":{"command":"file.print","params":{"path":"/tmp/proof.pdf","settings":{"advanced":{"overprints":"simulate","flattenerPreset":"High Resolution"},"color":{"profile":"VectorCraft Generic CMYK (SWOP-like)","intent":"perceptual"}}}}}
+{"name":"run_command","arguments":{"command":"file.print","params":{"path":"/tmp/proof.pdf","settings":{"advanced":{"overprints":"simulate","flattenerPreset":"High Resolution"},"color":{"profile":"Most Vector Generic CMYK (SWOP-like)","intent":"perceptual"}}}}}
 ```
 
 ### Rotated bounding boxes
@@ -5831,7 +5832,7 @@ runs it where it is called, so the call may take minutes; `notifications/cancell
 
 ```json
 {"name":"run_command","arguments":{"command":"plugin.install","params":{"path":"/plugins/desaturate.wasm"}}}
-{"name":"run_command","arguments":{"command":"plugin.run","params":{"id":"org.vectorcraft.example.desaturate","params":{"amount":60}}}}
+{"name":"run_command","arguments":{"command":"plugin.run","params":{"id":"org.mostvector.example.desaturate","params":{"amount":60}}}}
 {"name":"run_command","arguments":{"command":"effect.apply","params":{"effect":"plugin.org.example.wobble","params":{"size":4}}}}
 ```
 
@@ -5868,10 +5869,10 @@ the fonts CoreText's font manager lists outside them, such as those apps and fon
 folders; Linux and BSD: `/usr/share/fonts`,
 `/usr/local/share/fonts`, `~/.fonts` and the XDG data folders' `fonts`, `~/.local/share/fonts` among them, in a
 Flatpak sandbox the host's fonts, and the folders fontconfig's configuration lists (`<dir>` in `/etc/fonts/fonts.conf`
-and the files it includes: where packages add theirs, such as TeX fonts under `/usr/share/texmf/fonts`)). Faces without outlines VectorCraft draws (no `glyf`, `CFF`, `CFF2` or `VARC` table, such
+and the files it includes: where packages add theirs, such as TeX fonts under `/usr/share/texmf/fonts`)). Faces without outlines Most Vector draws (no `glyf`, `CFF`, `CFF2` or `VARC` table, such
 as bitmap-only fonts) are left out. The scan also reads the folder the `fontsFolder` preference names (Preferences › Type ›
-Additional Fonts Folder) with its subfolders and, in the desktop app and `vectorcraft-cli`, VectorCraft's own `Fonts` folder
-next to the preferences: `~/Library/Application Support/VectorCraft/Fonts` on macOS, `%APPDATA%\VectorCraft\Fonts` on
+Additional Fonts Folder) with its subfolders and, in the desktop app and `vectorcraft-cli`, Most Vector's own `Fonts` folder
+next to the preferences: `~/Library/Application Support/Most Vector/Fonts` on macOS, `%APPDATA%\Most Vector\Fonts` on
 Windows, and `$XDG_CONFIG_HOME/vectorcraft/Fonts` or `~/.config/vectorcraft/Fonts` on Linux and BSD. `text.addFontFiles`
 copies fonts into that folder. The installed fonts are cataloged once per session (in the background when the app starts, else on the first lookup
 by family name), so opening, placing, pasting and importing files find them whatever ran before. `text.fontList`
@@ -5923,7 +5924,7 @@ folders whose contents are in the cloud, and it follows no links; a picked folde
 that goes through a link is searched at its target. Programs installed in other folders, such as a folder on another
 drive, are searched as any other folder is.
 
-`text.addFontFiles {files}` copies files that the session's last search found into VectorCraft's `Fonts` folder, then
+`text.addFontFiles {files}` copies files that the session's last search found into Most Vector's `Fonts` folder, then
 scans the fonts again, and type set in them redraws. It copies only regular `.ttf`, `.otf`, `.ttc`, `.otc`, `.woff`
 and `.woff2` files and suitcase fonts (with their resource fork), at most 256 MB a file and 1 GB in all, and lists any
 other file in `skipped`. It never replaces a file: the names `Name.otf`, `Name 2.otf` up to `Name 99.otf` are tried in
@@ -6414,9 +6415,9 @@ entry, listed with its `name`, its `section` (the names of the blocks around it)
 (`key`, `modifiers`, `context`, `represent`) and its `line`. `codes` counts the entries that use each key and modifier
 code, and `unread` lists the tokens the reader skipped, with their lines. The reader stops at 4 MiB, 16 open blocks,
 20,000 entries and 8 MiB of names over the entries and their sections, cuts names at 1,024 bytes, and sets `truncated` when it reaches one of these limits. An XML shortcut
-file fails with "This shortcut file is in a form VectorCraft can't read."
+file fails with "This shortcut file is in a form Most Vector can't read."
 
-The import matches record what the names and codes in such files stand for in VectorCraft. They are kept with the
+The import matches record what the names and codes in such files stand for in Most Vector. They are kept with the
 preferences, and resetting the preferences keeps them. `importMatches.set {matches: [{kind, name, target, label?}]}`
 records them: kind `name` maps an entry name to a command id, `tool:<id>` or `panel:<id>`, and kinds `key` and
 `modifiers` map a code, written in decimal, to a key or to modifiers as Edit › Keyboard Shortcuts writes them (`K`,
@@ -6427,7 +6428,7 @@ the saved `key` or `mods` to each code.
 
 In the desktop app, Edit › Keyboard Shortcuts › Import… and File › Open show such a file in Import Shortcut Set
 (`ui.shortcutImportDialog {path? | dataBase64?, name?}` over the control channel). The dialog proposes targets from
-the entry names and decodes the codes that VectorCraft's default shortcuts agree on.
+the entry names and decodes the codes that Most Vector's default shortcuts agree on.
 
 ```json
 {"name":"run_command","arguments":{"command":"shortcutSet.read","params":{"path":"/Users/me/Studio.kys"}}}
@@ -7139,7 +7140,7 @@ default values, and the seed starts new whenever the document has changed.
 
 `addon.type.releasePath` splits each type on a path (`text.createInPath` with `mode: "onPath"`) into point type that
 holds the same text and the plain path it was set on (#5532). The reference app has no command for this, so it is a
-VectorCraft addition and changes no parity score.
+Most Vector addition and changes no parity score.
 
 - **The path** keeps its exact shape (open or closed, every anchor and handle, the object's transform) and goes in the
   type's layer at its place in the stacking order. Type paths carry no paint of their own (making type on a path drops

@@ -1,4 +1,5 @@
-//! VectorCraft in the browser.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector in the browser.
 //!
 //! Runs the same [`vectorcraft_ui_egui::VectorcraftApp`] as the desktop app through eframe's web
 //! runner (wgpu: WebGPU where available, WebGL2 otherwise). Build with `trunk build --release`

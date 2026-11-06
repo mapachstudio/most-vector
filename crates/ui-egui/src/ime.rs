@@ -1,4 +1,5 @@
-//! VectorCraft's outgoing IME producer: the Type tool's committed logical text, its stable owner
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector's outgoing IME producer: the Type tool's committed logical text, its stable owner
 //! and context generation, and the explicit `InputMethod`/`Other` cause.
 //!
 //! The shared [`egui::ime_context`] helper does the lifecycle bookkeeping. This module is the thin
@@ -91,7 +92,7 @@ pub(crate) fn install_hooks(ctx: &Context) {
         return;
     }
     ctx.on_begin_pass(
-        "VectorCraft IME pass begin",
+        "Most Vector IME pass begin",
         std::sync::Arc::new(|ui| {
             let ctx = ui.ctx();
             let id = mode_id(ctx.viewport_id());
@@ -99,7 +100,7 @@ pub(crate) fn install_hooks(ctx: &Context) {
         }),
     );
     ctx.on_end_pass(
-        "VectorCraft IME pass end",
+        "Most Vector IME pass end",
         std::sync::Arc::new(|ui| {
             let ctx = ui.ctx();
             let id = mode_id(ctx.viewport_id());

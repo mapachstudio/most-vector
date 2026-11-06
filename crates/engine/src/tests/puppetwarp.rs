@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Puppet Warp: turning the art around a pin (`object.puppetWarp {angles}`) and the tool's pins.
 
 use serde_json::{Value, json};
@@ -228,7 +229,7 @@ fn a_new_selection_during_a_save_leaves_the_document_saved() {
         s.execute("select.set", &json!({"ids": [a.0]})).unwrap();
         click(&mut s, 250.0, 150.0);
         assert!(s.doc().unwrap().doc.puppet.is_some());
-        let plan = save_plan(&s, SaveMode::SaveAs, &json!({"path": "/x/pins.vectorcraft", "modified": 777})).unwrap();
+        let plan = save_plan(&s, SaveMode::SaveAs, &json!({"path": "/x/pins.mostvector", "modified": 777})).unwrap();
         let job = save_job(&mut s, plan).unwrap();
         s.execute("select.set", &json!({"ids": [b.0]})).unwrap();
         if edit {
@@ -289,7 +290,7 @@ fn pins_are_never_saved() {
     assert!(s.doc().unwrap().doc.puppet.is_some());
     let r = s.execute("document.serialize", &json!({"format": "vectorcraft"})).unwrap();
     let data = r["dataBase64"].as_str().unwrap().to_string();
-    s.execute("document.open", &json!({"name": "pins.vectorcraft", "dataBase64": data})).unwrap();
+    s.execute("document.open", &json!({"name": "pins.mostvector", "dataBase64": data})).unwrap();
     let st = s.doc().unwrap();
     assert!(st.doc.puppet.is_none());
     assert_eq!(st.doc.node_count(), 2, "layer + rectangle");

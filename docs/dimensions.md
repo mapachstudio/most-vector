@@ -1,3 +1,4 @@
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Dimensions
 
 The **Dimension Tool** is in the Modify section of the toolbar. Its strip offers **Linear**,
@@ -34,7 +35,7 @@ closed, removes its dimensions in the same undo step rather than attaching them 
 edge. A linked dimension moved on its own stays where it was dropped (its distance from the art
 changes); moved together with its art, it keeps its distance.
 
-Native `.vectorcraft` files keep the recipes and links. SVG, PDF and bitmap output contain
+Native `.mostvector` files keep the recipes and links. SVG, PDF and bitmap output contain
 ordinary paths and text, so exported dimensions look the same. Ungrouping a dimension leaves its
 paths and text as ordinary art. Pasted dimensions keep their geometry and drop their links, so
 they never bind to unrelated art in another document.

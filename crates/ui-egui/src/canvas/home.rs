@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::{CornerRadius, Tokens, Ui, VectorcraftApp, json, theme, vec2, widgets};
 
 /// The Home screen (`app.home`; with no document open, unless its preference is off).
@@ -25,7 +26,7 @@ pub(super) fn home(app: &mut VectorcraftApp, ui: &mut Ui, rect: egui::Rect) {
 /// The Home screen's column: welcome, New / Open, Recent Files, presets and community links.
 fn home_content(app: &mut VectorcraftApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
-    ui.label(egui::RichText::new(tl!("Welcome to VectorCraft")).font(theme::semibold(26.0)).color(t.text));
+    ui.label(egui::RichText::new(tl!("Welcome to Most Vector")).font(theme::semibold(26.0)).color(t.text));
     ui.add_space(4.0);
     ui.label(egui::RichText::new(tl!("Vector illustration — fast, open, scriptable.")).size(14.0).color(t.text_dim));
     ui.add_space(22.0);

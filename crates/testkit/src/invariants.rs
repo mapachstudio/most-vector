@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Structural invariants for documents and sessions, and round-trip checks.
 
 use std::collections::HashSet;
@@ -92,7 +93,7 @@ pub fn check_session(s: &Session) -> Result<(), String> {
     Ok(())
 }
 
-/// `.vectorcraft` save → load → the JSON of the document and of what loaded, without `images`: a
+/// `.mostvector` save → load → the JSON of the document and of what loaded, without `images`: a
 /// save keeps only the images in use, which must come back byte for byte.
 fn native_roundtrip(doc: &Document) -> Result<(Value, Value), String> {
     let bytes = vectorcraft_format::save(doc, false);
@@ -126,7 +127,7 @@ fn native_roundtrip(doc: &Document) -> Result<(Value, Value), String> {
     Ok((strip(doc_json(doc)), strip(doc_json(&back))))
 }
 
-/// `.vectorcraft` save → load must reproduce the document (numbers compared to 1e-12 relative —
+/// `.mostvector` save → load must reproduce the document (numbers compared to 1e-12 relative —
 /// see [`check_native_roundtrip_exact`] for the bit-exact version).
 pub fn check_native_roundtrip(doc: &Document) -> Result<(), String> {
     let (a, b) = native_roundtrip(doc)?;
@@ -136,7 +137,7 @@ pub fn check_native_roundtrip(doc: &Document) -> Result<(), String> {
     Ok(())
 }
 
-/// Bit-exact `.vectorcraft` round trip (every f64 must survive).
+/// Bit-exact `.mostvector` round trip (every f64 must survive).
 pub fn check_native_roundtrip_exact(doc: &Document) -> Result<(), String> {
     let (a, b) = native_roundtrip(doc)?;
     if a != b {

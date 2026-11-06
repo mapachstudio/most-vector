@@ -1,9 +1,10 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft-text"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "VectorCraft text: font database, shaping, layout, glyph outlines"
+description = "Most Vector text: font database, shaping, layout, glyph outlines"
 
 [lints]
 workspace = true

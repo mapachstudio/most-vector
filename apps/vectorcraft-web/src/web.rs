@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The browser shell: web `Services`, drag-and-drop, pasted pictures and files, the eframe web
 //! runner, and starting again with new graphics when the page loses them (#369).
 
@@ -130,11 +131,11 @@ async fn run(host: Host, canvas: web_sys::HtmlCanvasElement, moving: Option<Movi
                         app
                     }
                     None => {
-                        // `window.vectorcraft`: the page's control channel (crate::api).
+                        // `window.mostvector`: the page's control channel (crate::api).
                         let (control_tx, control_rx) = std::sync::mpsc::channel();
                         crate::api::connect(Some(control_tx), host.inbox.clone(), ctx.clone());
                         if let Err(e) = crate::api::install() {
-                            log::error!("vectorcraft-web: couldn't install window.vectorcraft: {}", js_err(e));
+                            log::error!("vectorcraft-web: couldn't install window.mostvector: {}", js_err(e));
                         }
                         VectorcraftApp::new(Session::new(), services).with_control(control_rx)
                     }
@@ -152,7 +153,7 @@ async fn run(host: Host, canvas: web_sys::HtmlCanvasElement, moving: Option<Movi
                 el.remove();
             }
         }
-        (Err(e), None) => notice(&[&format!("VectorCraft failed to start: {}", js_err(e)), "A browser with WebGPU or WebGL2 is required."]),
+        (Err(e), None) => notice(&[&format!("Most Vector failed to start: {}", js_err(e)), "A browser with WebGPU or WebGL2 is required."]),
         (Err(e), Some(kept)) => {
             log::error!("vectorcraft-web: couldn't restart the graphics: {}", js_err(e));
             give_up(slot.borrow_mut().take(), kept);
@@ -171,7 +172,7 @@ fn web_options() -> eframe::WebOptions {
     options
 }
 
-/// Tell the UI the browser's languages (`?lang=es` in the address first, as `VECTORCRAFT_LOCALE`
+/// Tell the UI the browser's languages (`?lang=es` in the address first, as `MOST_VECTOR_LOCALE`
 /// does on the desktop) before the first frame, so the Automatic interface language follows the
 /// browser; and show the loading text in that language.
 fn detect_language() {
@@ -182,7 +183,7 @@ fn detect_language() {
     }
     i18n::set_system_locales(tags.as_slice());
     if let Some(el) = element(LOADING_ID) {
-        el.set_text_content(Some(i18n::message(i18n::system_lang(), "Loading VectorCraft…").as_str()));
+        el.set_text_content(Some(i18n::message(i18n::system_lang(), "Loading Most Vector…").as_str()));
     }
 }
 

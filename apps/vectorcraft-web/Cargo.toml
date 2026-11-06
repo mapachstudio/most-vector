@@ -1,6 +1,7 @@
+# Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 [package]
 name = "vectorcraft-web"
-description = "VectorCraft in the browser (eframe web runner, WebGPU with WebGL2 fallback)"
+description = "Most Vector in the browser (eframe web runner, WebGPU with WebGL2 fallback)"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

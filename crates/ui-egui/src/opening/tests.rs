@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use vectorcraft_engine::Session;
 
 use super::*;
@@ -7,7 +8,7 @@ use crate::Services;
 fn long_operation_busy_while_a_file_opens_or_a_background_save_runs() {
     let mut app = VectorcraftApp::new(Session::new(), Services::default());
     assert!(!long_operation_busy(&app));
-    start(&mut app, "/art/Wait.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(10.0, 10.0), false)).unwrap();
+    start(&mut app, "/art/Wait.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(10.0, 10.0), false)).unwrap();
     assert!(long_operation_busy(&app));
     open_ready(&mut app);
     assert!(!long_operation_busy(&app));
@@ -17,7 +18,7 @@ fn long_operation_busy_while_a_file_opens_or_a_background_save_runs() {
     crate::background::run(
         &mut app,
         true,
-        "Saving test.vectorcraft".into(),
+        "Saving test.mostvector".into(),
         None,
         move |_| {
             let _ = held.recv();
@@ -57,8 +58,8 @@ fn a_file_ready_while_a_dialog_is_open_waits_for_it_to_close() {
     let mut app = VectorcraftApp::new(Session::new(), Services::default());
     app.run("file.new", json!({"width": 100, "height": 80})).unwrap();
     let (first, before) = (app.session.doc().unwrap().uid, app.session.documents().len());
-    app.ui.dialog = Some(crate::state::Dialog::new(crate::dialogs::save_options::KIND, json!({"path": "/art/First.vectorcraft"})));
-    start(&mut app, "/art/Second.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
+    app.ui.dialog = Some(crate::state::Dialog::new(crate::dialogs::save_options::KIND, json!({"path": "/art/First.mostvector"})));
+    start(&mut app, "/art/Second.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
     open_ready(&mut app);
     assert_eq!((app.session.documents().len(), app.session.doc().unwrap().uid), (before, first), "still the dialog's document");
     assert_eq!(app.opening.pending.len(), 1);
@@ -66,7 +67,7 @@ fn a_file_ready_while_a_dialog_is_open_waits_for_it_to_close() {
     poll(&mut app);
     assert!(app.opening.pending.is_empty());
     assert_eq!(app.session.documents().len(), before + 1);
-    assert_eq!(app.session.doc().unwrap().path.as_deref(), Some("/art/Second.vectorcraft"));
+    assert_eq!(app.session.doc().unwrap().path.as_deref(), Some("/art/Second.mostvector"));
 }
 
 /// A file that finishes opening while an object is being dragged waits for the drag to end, so
@@ -82,7 +83,7 @@ fn a_file_ready_during_a_drag_waits_for_it_to_end() {
     for (kind, x) in [(PointerKind::Down, 20.0), (PointerKind::Drag, 40.0), (PointerKind::Drag, 60.0)] {
         app.session.pointer(&PointerEvent::new(kind, x, 20.0), view).unwrap();
     }
-    start(&mut app, "/art/Second.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
+    start(&mut app, "/art/Second.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
     open_ready(&mut app);
     assert!(app.session.documents().len() == 1 && app.session.in_interaction(), "the file waits for the drag");
     app.session.pointer(&PointerEvent::new(PointerKind::Up, 60.0, 20.0), view).unwrap();
@@ -106,7 +107,7 @@ fn a_file_ready_during_a_place_cursor_drag_waits_for_it_to_end() {
     for (kind, x) in [(PointerKind::Down, 20.0), (PointerKind::Drag, 60.0)] {
         crate::canvas::dispatch(&mut app, &PointerEvent::new(kind, x, 20.0), view);
     }
-    start(&mut app, "/art/Second.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
+    start(&mut app, "/art/Second.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
     open_ready(&mut app);
     assert!(app.session.documents().len() == 1 && app.session.tool_busy(), "the file waits for the drag");
     crate::canvas::dispatch(&mut app, &PointerEvent::new(PointerKind::Up, 60.0, 20.0), view);
@@ -144,7 +145,7 @@ fn a_file_ready_during_a_preview_waits_for_it_to_end() {
             app.session.begin_interaction("Preview").unwrap();
         }
         assert_eq!(app.session.tool_busy(), case != "slider", "{case}");
-        start(&mut app, "/art/Second.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
+        start(&mut app, "/art/Second.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
         open_ready(&mut app);
         assert!(app.session.documents().len() == 1 && app.session.in_interaction(), "the file waits for the preview: {case}");
         if case == "line" {
@@ -175,14 +176,14 @@ fn a_file_ready_between_a_tools_clicks_opens() {
     };
     click(&mut app, 20.0);
     assert!(app.session.tool_busy() && !app.session.in_interaction(), "the first point waits for the second");
-    start(&mut app, "/art/Second.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(400.0, 300.0), false)).unwrap();
+    start(&mut app, "/art/Second.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(400.0, 300.0), false)).unwrap();
     open_ready(&mut app);
     assert_eq!(app.session.documents().len(), 2, "the file opens after one click");
     assert!(!app.session.tool_busy(), "the tool starts afresh");
     click(&mut app, 20.0);
     click(&mut app, 80.0);
     assert!(app.session.tool_busy() && !app.session.in_interaction(), "the second point waits for the line's place");
-    start(&mut app, "/art/Third.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
+    start(&mut app, "/art/Third.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
     open_ready(&mut app);
     assert_eq!(app.session.documents().len(), 3, "the file opens after two clicks");
     assert!(!app.session.tool_busy() && !app.session.in_interaction(), "the tool starts afresh");
@@ -197,21 +198,21 @@ fn a_file_read_off_the_ui_thread_opens_as_one_read_at_once() {
     d.title = "Poster".into();
     let bytes = vectorcraft_format::save(&d, false);
     let before = app.session.documents().len();
-    let r = start(&mut app, "/art/Poster.vectorcraft", bytes).unwrap();
+    let r = start(&mut app, "/art/Poster.mostvector", bytes).unwrap();
     assert_eq!(r["background"], true);
-    assert_eq!(app.ui.status, "Opening Poster.vectorcraft…");
+    assert_eq!(app.ui.status, "Opening Poster.mostvector…");
     open_ready(&mut app);
     assert_eq!(app.session.documents().len(), before + 1);
     assert!(!app.ui.status.starts_with("Opening"), "{}", app.ui.status);
     let st = app.session.doc().unwrap();
-    assert_eq!((st.path.as_deref(), st.doc.artboards[0].rect.width()), (Some("/art/Poster.vectorcraft"), 120.0));
-    assert_eq!(app.ui.recent_files.first().map(String::as_str), Some("/art/Poster.vectorcraft"));
+    assert_eq!((st.path.as_deref(), st.doc.artboards[0].rect.width()), (Some("/art/Poster.mostvector"), 120.0));
+    assert_eq!(app.ui.recent_files.first().map(String::as_str), Some("/art/Poster.mostvector"));
     // A file that can't be read: reported, nothing opened, not a recent file.
-    start(&mut app, "/art/Broken.vectorcraft", b"{\"format\":\"vectorcraft\"".to_vec()).unwrap();
+    start(&mut app, "/art/Broken.mostvector", b"{\"format\":\"vectorcraft\"".to_vec()).unwrap();
     open_ready(&mut app);
     assert_eq!(app.session.documents().len(), before + 1);
-    assert!(app.ui.status.starts_with("Couldn't open Broken.vectorcraft"), "{}", app.ui.status);
-    assert_ne!(app.ui.recent_files.first().map(String::as_str), Some("/art/Broken.vectorcraft"));
+    assert!(app.ui.status.starts_with("Couldn't open Broken.mostvector"), "{}", app.ui.status);
+    assert_ne!(app.ui.recent_files.first().map(String::as_str), Some("/art/Broken.mostvector"));
 }
 
 /// A file read off the UI thread opens as the document read at once. Its linked TIFF, BMP and JPEG
@@ -240,7 +241,7 @@ fn a_file_read_off_the_ui_thread_has_its_links_and_type_as_one_read_at_once() {
     let area = json!({"width": 150, "height": 20, "fit": "autoHeight"});
     let t = app.session.execute("text.create", &json!({"x": 20, "y": 40, "text": "Type in two columns. ".repeat(12), "area": area})).unwrap();
     app.session.execute("text.areaOptions", &json!({"ids": [t["id"]], "columns": 2})).unwrap();
-    app.session.execute("document.save", &json!({"path": file(&before, "poster.vectorcraft")})).unwrap();
+    app.session.execute("document.save", &json!({"path": file(&before, "poster.mostvector")})).unwrap();
     std::fs::remove_file(file(&before, "gone.png")).unwrap();
     let changed = file(&before, "changed.png");
     let stamp = std::fs::metadata(&changed).unwrap().modified().unwrap();
@@ -250,7 +251,7 @@ fn a_file_read_off_the_ui_thread_has_its_links_and_type_as_one_read_at_once() {
     std::fs::OpenOptions::new().write(true).open(&changed).unwrap().set_times(later).unwrap();
     // The folder moves: the linked files are found beside the document.
     std::fs::rename(&before, &after).unwrap();
-    let path = file(&after, "poster.vectorcraft");
+    let path = file(&after, "poster.mostvector");
     let bytes = std::fs::read(&path).unwrap();
     let asked = |app: &VectorcraftApp| app.ui.dialog.as_ref().map(|d| (d.kind.clone(), d.fields.clone()));
     for update in ["askWhenModified", "automatically"] {
@@ -280,7 +281,7 @@ fn a_file_opened_under_automation_roots_finishes_under_them() {
     let roots = file_access::AutomationRoots::new(&[dir.as_path()], &[]).unwrap();
     let mut app = VectorcraftApp::new(Session::new(), Services::default());
     file_access::confine(roots.as_ref(), || {
-        start(&mut app, "/art/Scoped.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(10.0, 10.0), false))
+        start(&mut app, "/art/Scoped.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(10.0, 10.0), false))
     })
     .unwrap();
     let scope = app.opening.pending[0].scope.clone();
@@ -298,8 +299,8 @@ fn scope_dir() -> std::path::PathBuf {
 fn a_file_asked_for_again_while_it_is_read_opens_once() {
     let mut app = VectorcraftApp::new(Session::new(), Services::default());
     let bytes = vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false);
-    start(&mut app, "/art/Poster.vectorcraft", bytes).unwrap();
-    assert_eq!(crate::io::open_file(&mut app, "/art/Poster.vectorcraft", true).unwrap(), Value::Null);
+    start(&mut app, "/art/Poster.mostvector", bytes).unwrap();
+    assert_eq!(crate::io::open_file(&mut app, "/art/Poster.mostvector", true).unwrap(), Value::Null);
     assert_eq!(app.opening.pending.len(), 1);
     open_ready(&mut app);
     assert_eq!(app.session.documents().len(), 1);
@@ -315,7 +316,7 @@ fn a_queued_reopen_that_asks_holds_back_files_ready_to_open() {
     std::fs::create_dir_all(&dir).unwrap();
     let mut app = VectorcraftApp::new(Session::new(), Services::default());
     app.services.read = Some(Box::new(|p: &str| std::fs::read(p).map_err(|e| e.to_string())));
-    let (doc, other) = (dir.join("doc.vectorcraft"), dir.join("other.vectorcraft"));
+    let (doc, other) = (dir.join("doc.mostvector"), dir.join("other.mostvector"));
     let (doc, other) = (doc.to_string_lossy().into_owned(), other.to_string_lossy().into_owned());
     app.run("file.new", json!({"width": 400, "height": 300})).unwrap();
     app.run("text.create", json!({"x": 10, "y": 40, "text": "Type", "font": "No Such Font Family"})).unwrap();
@@ -329,7 +330,7 @@ fn a_queued_reopen_that_asks_holds_back_files_ready_to_open() {
     assert_eq!(app.opening.activate.len(), 2);
     app.session.execute("file.close", &json!({"index": 1})).unwrap();
     app.session.execute("file.close", &json!({"index": 0})).unwrap();
-    start(&mut app, "/art/Other.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
+    start(&mut app, "/art/Other.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
     // The other file is read; it waits for the dialog meanwhile.
     open_ready(&mut app);
     assert_eq!(app.opening.pending.len(), 1);
@@ -352,14 +353,14 @@ fn a_file_that_opens_and_asks_holds_back_the_next_one_ready() {
     let asks = vectorcraft_format::save(&app.session.doc().unwrap().doc, false);
     app.session.execute("file.close", &json!({})).unwrap();
     app.ui.dialog = Some(crate::state::Dialog::new(crate::dialogs::save_options::KIND, json!({})));
-    start(&mut app, "/art/Asks.vectorcraft", asks).unwrap();
-    start(&mut app, "/art/Plain.vectorcraft", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
+    start(&mut app, "/art/Asks.mostvector", asks).unwrap();
+    start(&mut app, "/art/Plain.mostvector", vectorcraft_format::save(&vectorcraft_doc::Document::new(120.0, 80.0), false)).unwrap();
     // Both files are read; they wait for the dialog meanwhile.
     open_ready(&mut app);
     assert_eq!(app.opening.pending.len(), 2);
     app.ui.dialog = None;
     poll(&mut app);
     assert_eq!(app.ui.dialog.as_ref().map(|d| d.kind.as_str()), Some(crate::dialogs::missing_fonts::KIND));
-    assert_eq!(app.session.doc().unwrap().path.as_deref(), Some("/art/Asks.vectorcraft"), "the dialog's document stays active");
+    assert_eq!(app.session.doc().unwrap().path.as_deref(), Some("/art/Asks.mostvector"), "the dialog's document stays active");
     assert_eq!(app.opening.pending.len(), 1, "the next file waits");
 }

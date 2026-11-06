@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Opening and placing PDF (and PDF-compatible `.ai`/`.ait`) files: the options `document.open`
 //! and `file.place` read ([`LoadOptions`]), the pages they import and `document.pdfInfo` (pages,
 //! boxes, a thumbnail; one page for a PostScript file) for the Import PDF dialog.
@@ -39,7 +40,7 @@ pub struct LoadOptions {
     /// A `.ai` opens from its editing copy even where that draws differently from its PDF part
     /// (which can be older than it), with a warning, instead of from the PDF part.
     pub trust_editing_data: bool,
-    /// A PDF or `.ai` saved with Preserve Editing opens from the VectorCraft document it carries;
+    /// A PDF or `.ai` saved with Preserve Editing opens from the Most Vector document it carries;
     /// off, it opens as another app would open it, from the editing copy of its art or its pages.
     pub native: bool,
 }
@@ -99,7 +100,7 @@ impl LoadOptions {
     }
 
     /// Does the document read only part of the file, or read it differently (a page range, another
-    /// box, a password, without its hidden layers, without the VectorCraft document it carries)?
+    /// box, a password, without its hidden layers, without the Most Vector document it carries)?
     /// Writing it back would lose the rest, so Save doesn't (it asks for a name).
     pub fn is_partial(&self) -> bool {
         self.pages.is_some() || self.crop != CropTo::default() || self.password.is_some() || !self.layers || !self.native

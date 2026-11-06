@@ -1,7 +1,8 @@
-//! `window.vectorcraft`: the control channel for the page, as promises.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! `window.mostvector`: the control channel for the page, as promises.
 //!
 //! The same JSON methods as the desktop control server (`docs/control-protocol.md`), so an agent
-//! driving VectorCraft in a browser tab (or an `<iframe>` in another app) uses the same commands as
+//! driving Most Vector in a browser tab (or an `<iframe>` in another app) uses the same commands as
 //! the CLI and the MCP server:
 //!
 //! ```js
@@ -106,7 +107,7 @@ fn request(method: &str, params: Value) -> js_sys::Promise {
         if sent {
             WAITING.with(|w| w.borrow_mut().push((rx, resolve, reject)));
         } else {
-            let _ = reject.call1(&JsValue::NULL, &js_sys::Error::new("VectorCraft is not running yet"));
+            let _ = reject.call1(&JsValue::NULL, &js_sys::Error::new("Most Vector is not running yet"));
         }
     });
     repaint();
@@ -117,7 +118,7 @@ fn set_fn(obj: &js_sys::Object, name: &str, f: JsValue) -> Result<(), JsValue> {
     js_sys::Reflect::set(obj, &name.into(), &f).map(|_| ())
 }
 
-/// Install `window.vectorcraft`.
+/// Install `window.mostvector`.
 pub fn install() -> Result<(), JsValue> {
     let obj = js_sys::Object::new();
     set_fn(

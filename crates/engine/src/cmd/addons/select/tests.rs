@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Select by Artboards.
 
 use serde_json::{Value, json};
@@ -154,7 +155,7 @@ mod by_link_status {
     /// removed.
     fn links(name: &str) -> Links {
         let dir = Folder::new(name);
-        let (a, b, c, e, d) = (dir.file("ok.png"), dir.file("changes.png"), dir.file("goes.png"), dir.file("kept.png"), dir.file("page.vectorcraft"));
+        let (a, b, c, e, d) = (dir.file("ok.png"), dir.file("changes.png"), dir.file("goes.png"), dir.file("kept.png"), dir.file("page.mostvector"));
         write(&a, &png(10, 10, RED));
         write(&b, &png(12, 10, RED));
         write(&c, &png(14, 10, BLUE));

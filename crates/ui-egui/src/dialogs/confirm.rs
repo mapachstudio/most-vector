@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! A question answered with OK or Cancel; OK runs a command ([`ask`]). Used for confirmations such
 //! as deleting swatches.
 //!
@@ -55,7 +56,7 @@ pub(crate) fn ask_replace(app: &mut VectorcraftApp, path: &str, typed: &str) {
     let typed = vectorcraft_engine::cmd::fileio::file_name(typed);
     let message = crate::i18n::fmt(tl!("“{name}” already exists. Replace it?"), &[("name", &name)]);
     let detail = crate::i18n::fmt(
-        tl!("The name in the save panel was “{typed}”; VectorCraft added the file type's extension. Replacing the file overwrites its contents."),
+        tl!("The name in the save panel was “{typed}”; Most Vector added the file type's extension. Replacing the file overwrites its contents."),
         &[("typed", &typed)],
     );
     let under = app.ui.dialog.take().and_then(|d| serde_json::to_value(d).ok());

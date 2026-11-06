@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Parse the control port and automation roots before starting any desktop services. A malformed
 //! flag must not silently remove a root and leave the control channel unconfined, or leave the app
 //! running without the control channel that was asked for.
@@ -13,7 +14,7 @@ pub struct AutomationArgs {
 }
 
 impl AutomationArgs {
-    /// The roots the environment gives (`VECTORCRAFT_AUTOMATION_READ_ROOT` / `_WRITE_ROOT`), until
+    /// The roots the environment gives (`MOST_VECTOR_AUTOMATION_READ_ROOT` / `_WRITE_ROOT`), until
     /// the command line gives its own.
     pub fn new(read_root: Option<PathBuf>, write_root: Option<PathBuf>) -> Self {
         Self { read_roots: read_root.into_iter().collect(), write_roots: write_root.into_iter().collect(), read_given: false, write_given: false }
@@ -76,11 +77,11 @@ impl ControlArg {
     }
 }
 
-/// `VECTORCRAFT_CONTROL_PORT`, for when `--control` isn't given: unset or empty is no control
+/// `MOST_VECTOR_CONTROL_PORT`, for when `--control` isn't given: unset or empty is no control
 /// channel, anything else must be a port.
 pub fn env_control_port(value: Option<OsString>) -> Result<Option<u16>, String> {
     match value {
-        Some(v) if !v.is_empty() => port("VECTORCRAFT_CONTROL_PORT", Some(&v.to_string_lossy())).map(Some),
+        Some(v) if !v.is_empty() => port("MOST_VECTOR_CONTROL_PORT", Some(&v.to_string_lossy())).map(Some),
         _ => Ok(None),
     }
 }
@@ -186,7 +187,7 @@ mod tests {
         assert_eq!(env_control_port(None), Ok(None));
         assert_eq!(env_control_port(Some("".into())), Ok(None));
         assert_eq!(env_control_port(Some("7979".into())), Ok(Some(7979)));
-        let need = "VECTORCRAFT_CONTROL_PORT needs a port number from 1 to 65535";
+        let need = "MOST_VECTOR_CONTROL_PORT needs a port number from 1 to 65535";
         assert_eq!(env_control_port(Some("abc".into())), Err(format!("{need}, not `abc`")));
         assert_eq!(env_control_port(Some("0".into())), Err(format!("{need}, not `0`")));
         #[cfg(unix)]

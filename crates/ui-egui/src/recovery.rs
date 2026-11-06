@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Data Recovery in the app: the timer that keeps recovery copies of modified documents every
 //! Preferences → File Handling → Data Recovery interval (written in the background like Background
 //! Save, the status bar showing it), and the dialog the first frame shows when the last session
@@ -59,7 +60,7 @@ pub fn offer(app: &mut VectorcraftApp) -> bool {
         return false;
     }
     let Ok(r) = app.session.execute("file.recovery.list", &json!({})) else { return false };
-    // Neither this app's own nor kept by another VectorCraft that is running.
+    // Neither this app's own nor kept by another Most Vector that is running.
     let left: Vec<Value> = r["copies"].as_array().into_iter().flatten().filter(|c| c["open"] == false && c["running"] == false).cloned().collect();
     if left.is_empty() {
         return false;

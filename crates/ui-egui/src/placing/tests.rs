@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use image::ImageFormat::{Bmp, Png, Tiff};
 use vectorcraft_doc::{Document, NodeId};
 use vectorcraft_engine::Session;
@@ -1173,7 +1174,7 @@ fn a_file_read_while_a_dialog_is_open_waits_for_it_to_close() {
     let path = saved("dialog", "photo.tif", &picture(Tiff, 60, 40));
     let mut app = app(true);
     start(&mut app, &json!({"path": path}), false).unwrap();
-    app.ui.dialog = Some(crate::state::Dialog::new(crate::dialogs::save_options::KIND, json!({"path": "/art/First.vectorcraft"})));
+    app.ui.dialog = Some(crate::state::Dialog::new(crate::dialogs::save_options::KIND, json!({"path": "/art/First.mostvector"})));
     let t0 = std::time::Instant::now();
     while t0.elapsed().as_millis() < 400 {
         poll(&mut app);

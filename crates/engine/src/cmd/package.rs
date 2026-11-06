@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File → Package: a saved document copied into a folder of its own with the files its linked
 //! images show (`Links/`), the fonts its type uses (`Fonts/`, leaving out fonts whose licence
 //! doesn't allow embedding) and a text report (the package's contents, then the Document Info
@@ -23,7 +24,7 @@ pub fn specs() -> Vec<CommandSpec> {
         "Package",
         [],
         None,
-        "{folder?, name?: (default: \"<document> Folder\"), copyLinks?: true, linksFolder?: true (the linked files go in Links/, else next to the document), relink?: true (the packaged document links to the copies), copyFonts?: true (the fonts its type uses go in Fonts/; fonts whose licence doesn't allow embedding are left out), report?: true (<document> Report.txt)} copy the saved document as it is now into folder/name as <document>.vectorcraft with its linked files and fonts; the open document doesn't change → {folder, files: [paths relative to folder/name], links, fonts (counts copied), missingLinks: [file names not found], skippedFonts: [{font, reason}], warnings: [nested files copied unchanged or cycles/depth stopped]}; no folder → the same with {name: \"<name>.zip\", dataBase64} (a zip of the files in <name>/) instead of folder",
+        "{folder?, name?: (default: \"<document> Folder\"), copyLinks?: true, linksFolder?: true (the linked files go in Links/, else next to the document), relink?: true (the packaged document links to the copies), copyFonts?: true (the fonts its type uses go in Fonts/; fonts whose licence doesn't allow embedding are left out), report?: true (<document> Report.txt)} copy the saved document as it is now into folder/name as <document>.mostvector with its linked files and fonts; the open document doesn't change → {folder, files: [paths relative to folder/name], links, fonts (counts copied), missingLinks: [file names not found], skippedFonts: [{font, reason}], warnings: [nested files copied unchanged or cycles/depth stopped]}; no folder → the same with {name: \"<name>.zip\", dataBase64} (a zip of the files in <name>/) instead of folder",
         has_doc,
         package
     )]
@@ -107,7 +108,7 @@ type PlacedPages = Vec<(u32, bool, vectorcraft_doc::PageBox)>;
 thread_local! {
     /// Tests: how many placed PDF or `.ai` pages [`page_fonts`] read on this thread.
     pub(crate) static PAGES_READ: std::cell::Cell<usize> = const { std::cell::Cell::new(0) };
-    /// Tests: how many linked `.vectorcraft` files had their preview and PDF read on this thread,
+    /// Tests: how many linked `.mostvector` files had their preview and PDF read on this thread,
     /// to keep them in the rewritten copy.
     pub(crate) static PARTS_READ: std::cell::Cell<usize> = const { std::cell::Cell::new(0) };
 }
@@ -128,7 +129,7 @@ fn page_fonts(name: &str, bytes: &[u8], path: &str, pages: &PlacedPages) -> BTre
     fonts
 }
 
-/// Collect dependencies depth-first so nested VectorCraft files are rewritten before
+/// Collect dependencies depth-first so nested Most Vector files are rewritten before
 /// their parents: each parent can record the final hash of the rewritten child.
 /// Cycles, excessive nesting, and unreadable children are reported, not fatal.
 struct Collector<'a> {

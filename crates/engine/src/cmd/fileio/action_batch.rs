@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `action.batch`: play an action's commands on every file in a folder, or on every data set
 //! of the open document (the Actions panel menu's Batch…).
 //!
@@ -796,17 +797,17 @@ mod tests {
     #[test]
     fn batch_data_set_naming_choices_and_omitted_default() {
         for (i, (naming, want)) in [
-            (Some("fileNumber"), ["source001.vectorcraft", "source002.vectorcraft"]),
-            (Some("fileDataSetName"), ["source_Alpha.vectorcraft", "source_Beta.vectorcraft"]),
-            (Some("dataSetName"), ["Alpha.vectorcraft", "Beta.vectorcraft"]),
-            (None, ["source_Alpha.vectorcraft", "source_Beta.vectorcraft"]),
+            (Some("fileNumber"), ["source001.mostvector", "source002.mostvector"]),
+            (Some("fileDataSetName"), ["source_Alpha.mostvector", "source_Beta.mostvector"]),
+            (Some("dataSetName"), ["Alpha.mostvector", "Beta.mostvector"]),
+            (None, ["source_Alpha.mostvector", "source_Beta.mostvector"]),
         ]
         .into_iter()
         .enumerate()
         {
             let dest = tmp(&format!("choice-{i}"));
             let mut s = with_data_sets(&["Alpha", "Beta"]);
-            let saved = tmp(&format!("saved-{i}")).join("source.vectorcraft");
+            let saved = tmp(&format!("saved-{i}")).join("source.mostvector");
             s.execute("document.save", &json!({"path": saved.to_string_lossy()})).unwrap();
             let r = named_batch(&mut s, &dest, naming);
             assert_eq!(r["failed"], 0, "{r}");
@@ -838,10 +839,10 @@ mod tests {
         let dest = tmp("unsaved-number");
         let mut s = with_data_sets(&["Alpha"]);
         assert_eq!(named_batch(&mut s, &dest, Some("fileNumber"))["failed"], 0);
-        assert_eq!(file_names(&dest), ["Untitled001.vectorcraft"]);
+        assert_eq!(file_names(&dest), ["Untitled001.mostvector"]);
         let dest = tmp("unsaved-name");
         assert_eq!(named_batch(&mut s, &dest, Some("fileDataSetName"))["failed"], 0);
-        assert_eq!(file_names(&dest), ["Untitled_Alpha.vectorcraft"]);
+        assert_eq!(file_names(&dest), ["Untitled_Alpha.mostvector"]);
         let run = Run {
             label: "Test",
             steps: &[],
@@ -862,14 +863,14 @@ mod tests {
         let mut s = with_data_sets(&["a:b", "a-b"]);
         let r = named_batch(&mut s, &clear, Some("dataSetName"));
         assert_eq!(r["failed"], 0, "{r}");
-        assert_eq!(file_names(&clear), ["a-b-2.vectorcraft", "a-b.vectorcraft"]);
+        assert_eq!(file_names(&clear), ["a-b-2.mostvector", "a-b.mostvector"]);
         let dest = tmp("choice-collision");
-        std::fs::write(dest.join("a-b.vectorcraft"), b"keep").unwrap();
+        std::fs::write(dest.join("a-b.mostvector"), b"keep").unwrap();
         let mut s = with_data_sets(&["a:b", "a-b"]);
         let r = named_batch(&mut s, &dest, Some("dataSetName"));
         assert_eq!(r["failed"], 0, "{r}");
-        assert_eq!(std::fs::read(dest.join("a-b.vectorcraft")).unwrap(), b"keep");
-        assert_eq!(file_names(&dest), ["a-b-2.vectorcraft", "a-b-3.vectorcraft", "a-b.vectorcraft"]);
+        assert_eq!(std::fs::read(dest.join("a-b.mostvector")).unwrap(), b"keep");
+        assert_eq!(file_names(&dest), ["a-b-2.mostvector", "a-b-3.mostvector", "a-b.mostvector"]);
     }
 
     #[test]
@@ -878,7 +879,7 @@ mod tests {
         let mut s = with_data_sets(&["CON"]);
         let r = named_batch(&mut s, &dest, Some("dataSetName"));
         assert_eq!(r["failed"], 0, "{r}");
-        assert_eq!(file_names(&dest), ["CON-.vectorcraft"]);
+        assert_eq!(file_names(&dest), ["CON-.mostvector"]);
     }
 
     #[test]
@@ -930,9 +931,9 @@ mod tests {
         let dest = tmp("choice-remembered-separate-dest");
         let mut s = Session::new();
         s.execute("file.new", &json!({"width": 20, "height": 20, "artboards": 2})).unwrap();
-        s.execute("document.save", &json!({"path": source.join("source.vectorcraft").to_string_lossy(), "separateArtboards": true})).unwrap();
-        assert!(source.join("source-Artboard-1.vectorcraft").exists());
-        let existing = dest.join("Alpha-Artboard-1.vectorcraft");
+        s.execute("document.save", &json!({"path": source.join("source.mostvector").to_string_lossy(), "separateArtboards": true})).unwrap();
+        assert!(source.join("source-Artboard-1.mostvector").exists());
+        let existing = dest.join("Alpha-Artboard-1.mostvector");
         std::fs::write(&existing, b"keep").unwrap();
         s.execute("dataset.new", &json!({"name": "Alpha"})).unwrap();
         let r = s
@@ -949,7 +950,7 @@ mod tests {
         assert_eq!(std::fs::read(existing).unwrap(), b"keep");
         assert_eq!(
             file_names(&dest),
-            ["Alpha-2-Artboard-1.vectorcraft", "Alpha-2-Artboard-2.vectorcraft", "Alpha-2.vectorcraft", "Alpha-Artboard-1.vectorcraft",]
+            ["Alpha-2-Artboard-1.mostvector", "Alpha-2-Artboard-2.mostvector", "Alpha-2.mostvector", "Alpha-Artboard-1.mostvector",]
         );
     }
 
@@ -962,14 +963,14 @@ mod tests {
         s.execute(
             "document.save",
             &json!({
-                "path": source.join("source.vectorcraft").to_string_lossy(),
+                "path": source.join("source.mostvector").to_string_lossy(),
                 "separateArtboards": true
             }),
         )
         .unwrap();
-        assert!(source.join("source-Artboard-1.vectorcraft").exists());
+        assert!(source.join("source-Artboard-1.mostvector").exists());
 
-        let existing = dest.join("Alpha-Artboard-1.vectorcraft");
+        let existing = dest.join("Alpha-Artboard-1.mostvector");
         std::fs::write(&existing, b"keep").unwrap();
         s.execute("dataset.new", &json!({"name": "Alpha"})).unwrap();
         let r = s
@@ -984,7 +985,7 @@ mod tests {
             .unwrap();
         assert_eq!(r["failed"], 0, "{r}");
         assert_eq!(std::fs::read(existing).unwrap(), b"keep");
-        assert_eq!(file_names(&dest), ["Alpha-2-Artboard-1.vectorcraft", "Alpha-2.vectorcraft", "Alpha-Artboard-1.vectorcraft"]);
+        assert_eq!(file_names(&dest), ["Alpha-2-Artboard-1.mostvector", "Alpha-2.mostvector", "Alpha-Artboard-1.mostvector"]);
     }
 
     #[test]
@@ -1030,7 +1031,7 @@ mod tests {
             .unwrap();
         assert_eq!(r["failed"], 0, "{r}");
         assert_eq!(std::fs::read(unrelated).unwrap(), b"keep");
-        assert_eq!(file_names(&dest), ["Alpha-Artboard-1.vectorcraft", "Alpha-Artboard-2.vectorcraft", "Alpha-photo.png", "Alpha.vectorcraft"]);
+        assert_eq!(file_names(&dest), ["Alpha-Artboard-1.mostvector", "Alpha-Artboard-2.mostvector", "Alpha-photo.png", "Alpha.mostvector"]);
     }
 
     #[test]
@@ -1051,8 +1052,8 @@ mod tests {
             )
             .unwrap();
         assert_eq!(r["failed"], 0, "{r}");
-        assert!(dest.join("Alpha-Artboard-1.vectorcraft").exists());
-        assert!(dest.join("Alpha-Artboard-1-2.vectorcraft").exists());
+        assert!(dest.join("Alpha-Artboard-1.mostvector").exists());
+        assert!(dest.join("Alpha-Artboard-1-2.mostvector").exists());
     }
 
     #[test]
@@ -1151,7 +1152,7 @@ mod tests {
         let mut s = with_data_sets(&[".", ".."]);
         let r = named_batch(&mut s, &output, Some("dataSetName"));
         assert_eq!(r["failed"], 0, "{r}");
-        assert_eq!(file_names(&output), ["Untitled001.vectorcraft", "Untitled002.vectorcraft"]);
+        assert_eq!(file_names(&output), ["Untitled001.mostvector", "Untitled002.mostvector"]);
     }
 
     #[test]
@@ -1208,7 +1209,7 @@ mod tests {
             )
             .unwrap();
         assert_eq!(r["failed"], 0, "{r}");
-        assert_eq!(file_names(&dest), ["Untitled_..-y.vectorcraft", "Untitled_a", "Untitled_a-..-..-x.vectorcraft"], "{r}");
+        assert_eq!(file_names(&dest), ["Untitled_..-y.mostvector", "Untitled_a", "Untitled_a-..-..-x.mostvector"], "{r}");
         assert_eq!(file_names(&root), ["out"], "nothing is written outside the destination folder");
     }
 
@@ -1230,7 +1231,7 @@ mod tests {
             )
             .unwrap();
         assert_eq!(r["failed"], 0, "{r}");
-        assert_eq!(file_names(&dest), ["Untitled_a-b.vectorcraft", "Untitled_c-d.vectorcraft", "Untitled_e-f.vectorcraft"], "{r}");
+        assert_eq!(file_names(&dest), ["Untitled_a-b.mostvector", "Untitled_c-d.mostvector", "Untitled_e-f.mostvector"], "{r}");
         // Override Export points each data set's export at the destination folder under the same name.
         let r = s
             .execute(
@@ -1268,7 +1269,7 @@ mod tests {
         assert_eq!(r["failed"], 0, "{r}");
         assert_eq!(
             file_names(&dest),
-            ["Untitled_a-b.vectorcraft", "Untitled_c-d-e-.vectorcraft", "Untitled_f-g-h.vectorcraft", "Untitled_i-j.vectorcraft"],
+            ["Untitled_a-b.mostvector", "Untitled_c-d-e-.mostvector", "Untitled_f-g-h.mostvector", "Untitled_i-j.mostvector"],
             "{r}"
         );
     }
@@ -1289,7 +1290,7 @@ mod tests {
             )
             .unwrap();
         assert_eq!(r["failed"], 0, "{r}");
-        assert_eq!(file_names(&dest), ["Untitled_A-B-3.vectorcraft", "Untitled_a-b-2.vectorcraft", "Untitled_a-b.vectorcraft"], "{r}");
+        assert_eq!(file_names(&dest), ["Untitled_A-B-3.mostvector", "Untitled_a-b-2.mostvector", "Untitled_a-b.mostvector"], "{r}");
     }
 
     #[test]

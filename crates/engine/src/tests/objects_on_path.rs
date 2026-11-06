@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Object › Objects on Path (#2545): objects attached to a path, spread along it and turned to
 //! follow it, kept there while the path is edited. Driven through `Session::execute`.
 
@@ -316,7 +317,7 @@ fn the_group_saves_and_reopens_live_and_exports_as_plain_art() {
     let g = attach(&mut s, path, &[left, middle, right], json!({"rotate": 30, "pivot": 7}));
     let data = s.execute("document.export", &json!({"format": "vectorcraft"})).unwrap()["dataBase64"].clone();
     let mut o = Session::new();
-    o.execute("document.open", &json!({"name": "objects.vectorcraft", "dataBase64": data})).unwrap();
+    o.execute("document.open", &json!({"name": "objects.mostvector", "dataBase64": data})).unwrap();
     let before = s.doc().unwrap().doc.node(g).unwrap().extras().objects_on_path.clone();
     assert_eq!(o.doc().unwrap().doc.node(g).unwrap().extras().objects_on_path, before);
     set_line(&mut o, path, (50.0, 200.0), (350.0, 200.0));
@@ -539,7 +540,7 @@ fn the_space_saves_and_reopens_and_goes_with_a_copy() {
     s.execute("object.objectsOnPath.options", &json!({"spacing": 40, "start": 25})).unwrap();
     let data = s.execute("document.export", &json!({"format": "vectorcraft"})).unwrap()["dataBase64"].clone();
     let mut o = Session::new();
-    o.execute("document.open", &json!({"name": "objects.vectorcraft", "dataBase64": data})).unwrap();
+    o.execute("document.open", &json!({"name": "objects.mostvector", "dataBase64": data})).unwrap();
     assert_eq!(space(&o, g), (Some(40.0), 25.0));
     assert_eq!(center(&o, right), Point::new(155.0, 300.0));
     select(&mut s, &[g]);

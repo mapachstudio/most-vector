@@ -1,10 +1,11 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Object › Path › Smooth's slider, as the Smooth slider help page describes
 //! (https://helpx.adobe.com/illustrator/desktop/draw-shapes-and-paths/modify-paths/refine-path-segments-with-the-smooth-slider.html):
 //! the strip of Simplify's slider (`simplify_slider::Strip`) with Auto-Smooth and a slider from
 //! minimum smoothing (left) to maximum smoothing (right). While it is open the canvas previews
 //! `object.path.smooth {level}`; Enter or a click outside the strip keeps the result as one undo
 //! step, and Escape puts the paths back. It opens at Auto-Smooth's level, as Simplify's slider
-//! opens at Auto-Simplify's (VectorCraft's choice: the page doesn't say where it starts).
+//! opens at Auto-Simplify's (Most Vector's choice: the page doesn't say where it starts).
 //!
 //! Fields: `level` (0..=100, the command's parameter).
 

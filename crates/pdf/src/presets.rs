@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! PDF presets: named [`PdfSettings`]. The built-in ones are generated here (the app default,
 //! which keeps the document editable, plus presets for print, press, small files and the PDF/X
 //! standards); the user's own live in the app's preferences.
@@ -10,7 +11,7 @@ use crate::{
 };
 
 /// The built-in preset every PDF export starts from.
-pub const DEFAULT_PRESET: &str = "VectorCraft Default";
+pub const DEFAULT_PRESET: &str = "Most Vector Default";
 
 /// A named set of PDF settings: a built-in preset or one the user saved.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
@@ -58,7 +59,7 @@ pub fn builtin_presets() -> Vec<PdfPreset> {
     vec![
         preset(
             DEFAULT_PRESET,
-            "Keeps the document editable: VectorCraft reopens the PDF with nothing lost. For files you'll edit again.",
+            "Keeps the document editable: Most Vector reopens the PDF with nothing lost. For files you'll edit again.",
             PdfSettings { preserve_editing: true, ..Default::default() },
         ),
         preset("High Quality Print", "For desktop printers and proofs: images stay at print resolution.", print(ImageCodec::Auto, false)),

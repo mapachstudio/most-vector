@@ -1,4 +1,5 @@
-//! VectorCraft PDF export and import.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector PDF export and import.
 //!
 //! - [`export`] writes one PDF page per artboard with `krilla`: vector paths (fills, strokes with
 //!   caps/joins/miter/dashes, inside/outside alignment as clips, non-zero/even-odd; arrowheads,
@@ -110,7 +111,7 @@ pub struct PdfOptions {
     pub created: Option<i64>,
     /// Modification date as Unix seconds (UTC); `None` = the creation date.
     pub modified: Option<i64>,
-    /// The native document (`.vectorcraft` bytes) Preserve Editing embeds.
+    /// The native document (`.mostvector` bytes) Preserve Editing embeds.
     pub native: Option<Vec<u8>>,
     /// The editing copy of the art for every page's `PieceInfo`, as a `.ai` file carries it.
     pub private_data: Option<PrivateData>,

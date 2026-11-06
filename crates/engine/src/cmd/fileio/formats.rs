@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::super::unique_name;
 use super::{
     Result, Session, TEMPLATE_FORMATS, UNSUPPORTED, Unsupported, Value, bad, dxf, eps, json, metafile, native, pdf, screens, svg, text, unsupported,
@@ -348,11 +349,11 @@ const fn reader(id: &'static str, label: &'static str, extensions: &'static [&'s
     Format { id, label, extensions, mime, read: true, write: false, raster, options: &[] }
 }
 
-/// Every format VectorCraft reads or writes. Append-only: new formats go at the end.
+/// Every format Most Vector reads or writes. Append-only: new formats go at the end.
 pub const FORMATS: &[Format] = &[
     Format {
         id: "vectorcraft",
-        label: "VectorCraft",
+        label: "Most Vector",
         extensions: &[vectorcraft_format::EXTENSION, vectorcraft_format::LEGACY_EXTENSION],
         mime: "application/json",
         read: true,
@@ -456,7 +457,7 @@ pub const FORMATS: &[Format] = &[
     Format { id: "bmp", label: "BMP", extensions: &["bmp"], mime: "image/bmp", read: true, write: true, raster: true, options: BMP_OPTIONS },
     Format {
         id: "template",
-        label: "VectorCraft Template",
+        label: "Most Vector Template",
         extensions: &["vctemplate"],
         mime: "application/json",
         read: true,
@@ -556,7 +557,7 @@ pub const OPEN_EXTS: &[&str] = &[
 /// raster editors, so Finder and file managers don't offer a vector app for them, and there is no
 /// `.epsf`, `.ps`, Targa, PCX, Pixar or JPEG 2000 type, nor one for the `.pns`, `.dib` and `.rle` names of
 /// PNG and BMP files (File › Open and Place still read them all). On Linux the desktop entry's EPS
-/// type (shared-mime-info's) also covers `.epsf`, so file managers offer VectorCraft for it.
+/// type (shared-mime-info's) also covers `.epsf`, so file managers offer Most Vector for it.
 pub const UNASSOCIATED_EXTS: &[&str] =
     &["psd", "pdd", "psb", "epsf", "ps", "pns", "dib", "rle", "tga", "vda", "icb", "vst", "pcx", "pxr", "jpf", "jpx", "jp2", "j2k", "j2c", "jpc"];
 

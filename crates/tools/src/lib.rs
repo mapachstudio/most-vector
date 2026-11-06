@@ -1,4 +1,5 @@
-//! VectorCraft tools: pointer events in → commands and overlays out.
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+//! Most Vector tools: pointer events in → commands and overlays out.
 //!
 //! Tools never mutate the document directly. They emit [`Action`]s that the engine executes:
 //! `Begin` snapshots the document, each `Preview` re-applies one command on top of that snapshot

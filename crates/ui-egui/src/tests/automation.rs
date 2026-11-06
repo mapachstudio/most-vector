@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `vectorcraft --control <port> --automation-read-root <dir> --automation-write-root <dir>` (#832):
 //! control requests read and write only inside the roots; the person at the keyboard is not
 //! confined.
@@ -68,7 +69,7 @@ fn control_requests_stay_inside_the_roots() {
     assert!(base.join("out/a.png").is_file());
     for (method, params) in [
         ("app.export", json!({"path": s(base.join("outside/a.png")), "format": "png"})),
-        ("app.save", json!({"path": s(base.join("outside/a.vectorcraft"))})),
+        ("app.save", json!({"path": s(base.join("outside/a.mostvector"))})),
         ("ui.render", json!({"path": s(base.join("outside/r.png"))})),
         // Refused at once, not when the frame comes.
         ("ui.screenshot", json!({"path": s(base.join("outside/w.png"))})),
@@ -100,10 +101,10 @@ fn control_saves_take_the_native_save_options() {
         assert!(r["result"].get("pending").is_none() && app.ui.dialog.is_none(), "no dialog opens: {r}");
         std::fs::read(path).unwrap()
     };
-    assert_eq!(saved(&mut app, "gz.vectorcraft", json!({"compress": true}))[..2], [0x1f, 0x8b]);
-    let v3: Value = serde_json::from_slice(&saved(&mut app, "v3.vectorcraft", json!({"version": 3}))).unwrap();
+    assert_eq!(saved(&mut app, "gz.mostvector", json!({"compress": true}))[..2], [0x1f, 0x8b]);
+    let v3: Value = serde_json::from_slice(&saved(&mut app, "v3.mostvector", json!({"version": 3}))).unwrap();
     assert_eq!(v3["version"], 3);
-    assert!(vectorcraft_format::preview(&saved(&mut app, "p.vectorcraft", json!({"preview": true}))).is_some());
+    assert!(vectorcraft_format::preview(&saved(&mut app, "p.mostvector", json!({"preview": true}))).is_some());
     let _ = std::fs::remove_dir_all(base);
 }
 
@@ -115,7 +116,7 @@ fn control_saves_with_wait_reply_with_the_write_roots_refusal() {
     let shared: SharedWriteFn = std::sync::Arc::new(|p: &str, b: &[u8]| vectorcraft_format::write_atomic(Path::new(p), b).map_err(|e| e.to_string()));
     let (mut app, tx, base) = confined_with("wait", Some(shared));
     app.run("file.new", json!({"width": 100, "height": 50})).unwrap();
-    for (method, name) in [("app.save", "a.vectorcraft"), ("app.export", "a.svg")] {
+    for (method, name) in [("app.save", "a.mostvector"), ("app.export", "a.svg")] {
         let r = request(&mut app, &tx, method, json!({"path": s(base.join("outside").join(name)), "wait": true}));
         assert!(r["error"].as_str().is_some_and(|e| e.contains("outside the write root")), "{method}: {r}");
         let path = base.join("out").join(name);
@@ -123,7 +124,7 @@ fn control_saves_with_wait_reply_with_the_write_roots_refusal() {
         assert_eq!(r["ok"], true, "{method}: {r}");
         assert!(r["result"].get("background").is_none() && path.is_file(), "{method}: written before the reply: {r}");
     }
-    let r = request(&mut app, &tx, "app.save", json!({"path": s(base.join("outside/b.vectorcraft"))}));
+    let r = request(&mut app, &tx, "app.save", json!({"path": s(base.join("outside/b.mostvector"))}));
     assert_eq!(r["result"]["background"], true, "{r}");
     crate::background::wait_all(&mut app);
     assert!(app.ui.status.contains("outside the write root"), "{}", app.ui.status);

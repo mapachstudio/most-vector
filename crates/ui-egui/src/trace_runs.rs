@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Image Trace off the UI thread (#3098). A photo or a large image takes seconds to trace, and the
 //! window froze while it did. A trace the user asks for (Object › Image Trace › Make and Make and
 //! Expand, the task bar's Image Trace, the Image Trace panel's Trace and presets) is prepared at
@@ -10,7 +11,7 @@
 //! ([`Traced::hand_in`]), so the edit is one undo step like any trace, unless the image or the
 //! settings changed meanwhile: then nothing changes and the status bar says to trace it again. The
 //! control channel, MCP and scripts run the commands at once, and so does every trace on the web,
-//! in unit tests that don't set `off_the_ui_thread`, and with `VECTORCRAFT_SYNC_OPEN` set
+//! in unit tests that don't set `off_the_ui_thread`, and with `MOST_VECTOR_SYNC_OPEN` set
 //! ([`available`]).
 
 use std::sync::Arc;

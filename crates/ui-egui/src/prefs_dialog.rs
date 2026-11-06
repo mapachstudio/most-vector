@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Edit → Preferences (⌘K): Illustrator-style category list + fields, rendered from the engine's
 //! preference table ([`PREF_SPECS`]). The dialog edits a working copy in `Dialog::fields`
 //! (one field per preference key, so agents can `ui.dialog.set` any of them) and OK applies it
@@ -299,7 +300,7 @@ fn category_fields(ui: &mut egui::Ui, app: &mut VectorcraftApp, d: &mut Dialog, 
                 if cfg!(all(not(target_arch = "wasm32"), not(target_os = "macos"))) {
                     bool_row(ui, d, sp.key, sp.label);
                     // The window's decorations are chosen once, when the app starts.
-                    ui.label(egui::RichText::new(tl!("Applies the next time VectorCraft starts.")).color(t.text_dim).size(11.0));
+                    ui.label(egui::RichText::new(tl!("Applies the next time Most Vector starts.")).color(t.text_dim).size(11.0));
                 }
             }
             PrefKind::Bool => bool_row(ui, d, sp.key, sp.label),
@@ -350,7 +351,7 @@ fn category_fields(ui: &mut egui::Ui, app: &mut VectorcraftApp, d: &mut Dialog, 
                 choice_row(ui, d, sp.key, sp.label, opts, &v);
                 if sp.key == "gpuPreference" || sp.key == "linuxDisplayServer" {
                     // The window's graphics device and display server are chosen once, when the app starts.
-                    ui.label(egui::RichText::new(tl!("Applies the next time VectorCraft starts.")).color(t.text_dim).size(11.0));
+                    ui.label(egui::RichText::new(tl!("Applies the next time Most Vector starts.")).color(t.text_dim).size(11.0));
                 }
                 if sp.key == "linuxDisplayServer" {
                     // Many Wayland desktops give a drawing tablet's pen to the window only through XWayland (#2028).
@@ -488,7 +489,7 @@ fn writable_folder(path: &str) -> Result<(), String> {
     let refused = |e: std::io::Error| format!("Data Recovery can't keep copies in {path}: {e}");
     std::fs::read_dir(dir).map_err(refused)?;
     let nanos = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map_or(0, |t| t.as_nanos());
-    let check = dir.join(format!(".vectorcraft-write-check-{}-{nanos}", std::process::id()));
+    let check = dir.join(format!(".mostvector-write-check-{}-{nanos}", std::process::id()));
     std::fs::create_dir(&check).map_err(refused)?;
     std::fs::remove_dir(&check).map_err(refused)
 }

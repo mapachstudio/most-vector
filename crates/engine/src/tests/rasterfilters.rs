@@ -1,3 +1,4 @@
+// Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The Photoshop-style raster effects (Effect › Artistic, Blur › Radial Blur and Smart Blur, Brush Strokes,
 //! Distort › Diffuse Glow, Glass and Ocean Ripple, Pixelate › Color Halftone, Crystallize, Mezzotint and Pointillize, Sharpen › Unsharp Mask, Sketch › Chalk & Charcoal, Chrome, Graphic Pen, Halftone Pattern and Reticulation, Texture ›
 //! Craquelure, Grain, Mosaic Tiles, Patchwork, Stained Glass and Texturizer, Video): applied and
@@ -341,7 +342,7 @@ fn glass_refuses_a_texture_that_is_not_an_image() {
     let junk = vectorcraft_format::base64_encode(b"not an image");
     let not_stored = "textureImage: give {path} or {name, dataBase64}";
     let refused = [
-        (json!({"name": "a.png", "dataBase64": junk}), "not an image VectorCraft reads"),
+        (json!({"name": "a.png", "dataBase64": junk}), "not an image Most Vector reads"),
         (json!("bm90IGEgdGV4dHVyZQ=="), not_stored),
         (json!(5), not_stored),
         (json!({"path": "C:/no/such/texture.png"}), "texture.png"),
