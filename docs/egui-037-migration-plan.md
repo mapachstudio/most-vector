@@ -23,7 +23,7 @@ implementation worktree. The earlier pinned review checkout was `vectorcraft` at
 `70938f132709da9073910631e90364738e8df3dfc0d7b354920ba7910fc01fbe`, reviewed in
 `plan-reviews/vectorcraft-v1.md`. Both reviews are under
 `/home/codex/work/ssd2/task-evidence/egui037-migration-20261022/`.
-**Remote drift snapshot:** `storytold/vectorcraft` main advanced from `8906073…` to
+**Remote drift snapshot:** `mapachstudio/most-vector` main advanced from `8906073…` to
 `4a7cba0dd32e4ac249e4dc50af486b89531481aa` in two commits touching only
 `crates/cad/src/import/curve.rs` (DXF spline); see
 `/home/codex/work/ssd2/task-evidence/egui037-migration-20261022/remote-plan-bases-20261023-0632.json`.
@@ -1248,7 +1248,7 @@ a blanket `with_accessibility_check(false)` as a staging shortcut. V3–V5 may l
 includes V2 and they do not touch the same lifecycle files; prefer sequential for review. V2 waits for the complete
 D1a winit and D1b egui P8 revisions and for L2; no intermediate fork or craft-libs stage is a production pin.
 
-**Rebase gate before V2:** fetch current `storytold/vectorcraft` main, record its full SHA and diff against the
+**Rebase gate before V2:** fetch current `mapachstudio/most-vector` main, record its full SHA and diff against the
 pinned review baseline. The recorded drift is exactly two commits from `8906073…` to `4a7cba0…`, both changing only
 `crates/cad/src/import/curve.rs` (DXF spline). Rebase the migration branch onto that (or a later) main, preserve the
 DXF fix, run the DXF import tests, and use the same `4a7cba0…` source as the performance control in §6.2. If more
@@ -1490,7 +1490,7 @@ These are decisions this plan recommends but does not silently make:
 
 The user clarified that reviewed plans remain local and implementation proceeds before publication. The earlier requirement to publish/land this plan first is superseded; pushes and PR publication still require explicit approval.
 
-Canonical `storytold/vectorcraft` `main` now resolves to `125df6d8ecfae01d01ce369ac02e4aa03e0deed5`. The owned checkout was fast-forwarded to this revision. Earlier baseline SHAs and line anchors above are retained as historical review evidence; use this new revision and its exact lockfile for current-main integration and paired measurements. The original refs remain reachable.
+Canonical `mapachstudio/most-vector` `main` now resolves to `125df6d8ecfae01d01ce369ac02e4aa03e0deed5`. The owned checkout was fast-forwarded to this revision. Earlier baseline SHAs and line anchors above are retained as historical review evidence; use this new revision and its exact lockfile for current-main integration and paired measurements. The original refs remain reachable.
 
 Preserve supplied PDF passwords on confirmation at125df6d8, in addition to the previously recorded DXF fixes. Add dialog regression coverage without recording password contents.
 

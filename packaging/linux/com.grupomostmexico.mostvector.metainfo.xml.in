@@ -20,10 +20,6 @@
   <launchable type="desktop-id">com.grupomostmexico.mostvector.desktop</launchable>
   <icon type="stock">com.grupomostmexico.mostvector</icon>
   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
-  <url type="homepage">https://getartcraft.com/apps/vectorcraft</url>
-  <url type="bugtracker">https://github.com/storytold/vectorcraft/issues</url>
-  <url type="help">https://github.com/storytold/vectorcraft</url>
-  <url type="contact">https://discord.gg/artcraft</url>
   <categories>
     <category>Graphics</category>
     <category>2DGraphics</category>
@@ -40,7 +36,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Editing the Neon Drive poster with a live glow effect in the Appearance panel</caption>
-      <image>https://raw.githubusercontent.com/storytold/vectorcraft/main/docs/images/shot-1-neon.png</image>
+      <image>https://raw.githubusercontent.com/mapachstudio/most-vector/main/docs/images/shot-1-neon.png</image>
     </screenshot>
   </screenshots>
   <branding>

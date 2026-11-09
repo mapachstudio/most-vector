@@ -1,50 +1,31 @@
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-# Most Vector app icon
+# Icono de Most Vector
 
-**Creature:** a regal engraved dragon, Most Vector's mascot.
+Dibujo propio de Grupo MOST. No queda nada del icono de la obra original:
+su licencia de marca obliga a retirarlo en toda versión modificada, y en el
+caso de Most Anything además no era código abierto.
 
-**Style:** an engraving-style portrait in the Crafting Apps owl template (the FilmCraft owl): a tight
-head-and-shoulders portrait on a full-bleed field, no frame or roundel, with the body running off the tile.
+**El dibujo.** Un azulejo de 512 a sangre con esquinas redondeadas (112 de
+radio), degradado de `#F59E0B` a `#EA580C` en diagonal, y encima el motivo en
+blanco: 1 trazo(s) y 2 nodo(s) cuadrados.
+Dice de un vistazo qué hace el programa.
 
-**Palette** (exactly three colours):
+**Cómo se generan.** `tools/iconos.mjs` de la suite, que rasteriza con el
+motor de Most Studio: el mismo barrido de líneas que usa el texto de área,
+así que el icono es literalmente lo que Most Studio dibujaría. De ahí salen:
 
-| Colour | Hex | Used for |
-|---|---|---|
-| Ink | `#0b0b0c` | line work and contour |
-| Paper | `#efe9dc` | the figure |
-| Most Vector colour | `#e8573f` | the full-bleed field |
+| Archivo | Para qué |
+|---|---|
+| `most-vector.svg` | La pieza canónica, 512 a sangre |
+| `most-vector-small.svg` | La misma, para tamaños pequeños |
+| `hicolor/<n>x<n>/apps/com.grupomostmexico.mostvector.png` | Tema de iconos de Linux |
+| `most-vector-1024.png`, `-512`, `-256`, `-64` | Los que el código incrusta por nombre |
+| `most-vector-macos-512.png` | Icono de ventana y Dock en macOS |
+| `most-vector.icns` | Paquete de macOS |
+| `most-vector.ico` | Ejecutable e instalador de Windows |
 
-**Tile:** `viewBox="0 0 512 512"`, a rounded square with `rx=112`, clipped. The macOS files add Apple's
-transparent margin (tile = 824/1024 of the canvas); Windows and Linux use the tile edge to edge.
+Si cambia el dibujo, se regenera todo de una vez. No se editan a mano: el
+código los incrusta por nombre con `include_bytes!` y un archivo que falte
+no es un aviso, es un error de compilación.
 
-**Provenance:** the owner's original ArtCraft drawing, vectorised. `most-vector.svg` is the canonical
-artwork. Licence: see `LICENSE.txt`.
-
-## Files
-
-| File | What | Used by |
-|---|---|---|
-| `most-vector.svg` | master vector (traced at 2048 px, about 700 KB) | source for everything below |
-| `most-vector-small.svg` | lighter vector (traced at 1024 px, about 370 KB) | `hicolor/scalable` |
-| `most-vector-1024.png` | full tile, 1024 px | docs, store listings |
-| `most-vector-macos-512.png` | tile with Apple margin, 512 px | runtime Dock icon (`apps/vectorcraft/src/main.rs`) |
-| `most-vector.icns` | macOS icon set, 16 to 1024 px | `cargo xtask bundle` (`CFBundleIconFile`) |
-| `most-vector.ico` | Windows icon, 16 to 256 px | `apps/vectorcraft/build.rs` (embedded in the `.exe`) |
-| `hicolor/<size>/apps/com.grupomostmexico.mostvector.png` | Linux theme icons, 16 to 512 px; the 256 one is also the runtime icon on Windows and Linux, the 128 one the brand mark in the app bar and About box (`crates/ui-egui/src/brand.rs`) | `packaging/linux/com.grupomostmexico.mostvector.desktop` |
-| `hicolor/scalable/apps/com.grupomostmexico.mostvector.svg` | Linux scalable icon | as above |
-
-## How it reaches each OS
-
-- **macOS:** the app sets the Dock / app-switcher icon at runtime (`ViewportBuilder::with_icon`); the
-  `.app` from `cargo xtask bundle` carries `most-vector.icns`.
-- **Windows:** `build.rs` embeds `most-vector.ico` and VERSIONINFO with `winresource` (taskbar, Start
-  menu, Explorer, Alt-Tab); the runtime icon covers the title bar.
-- **Linux:** install `packaging/linux/com.grupomostmexico.mostvector.desktop` to `share/applications/` and
-  `hicolor/` to `share/icons/`. The app sets its Wayland app ID / X11 class to
-  `com.grupomostmexico.mostvector`, so the dock matches the window to the launcher.
-
-## Regenerate
-
-Edit or replace `most-vector.svg` (and `most-vector-small.svg`), then run `packaging/icons.sh`
-(needs `resvg`; `iconutil` on macOS for the `.icns`). It writes every PNG, the `.ico` (via
-`cargo xtask ico`) and the `.icns`.
+**Licencia.** Los dibujos son propiedad de Grupo MOST. `LICENSE.txt` es el
+de la obra original y se conserva por lo que cubre de ella.

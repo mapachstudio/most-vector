@@ -1,12 +1,12 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-//! Help → community and project links (the ArtCraft Discord, website, this app's page and its
+//! Help → community and project links (el repositorio y
 //! GitHub repository). The commands return the URL; the frontend opens it.
 
 use serde_json::{Value, json};
 
 use super::{CommandSpec, Result, always, cmd};
 
-/// The app's id on getartcraft.com and GitHub.
+/// El identificador de la aplicación.
 pub const APP_ID: &str = "vectorcraft";
 pub const DISCORD_URL: &str = "https://discord.gg/artcraft";
 pub const WEBSITE_URL: &str = "https://getartcraft.com";
