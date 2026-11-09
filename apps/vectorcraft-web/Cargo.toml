@@ -11,7 +11,7 @@ publish = false
 workspace = true
 
 [[bin]]
-name = "vectorcraft-web"
+name = "most-vector-web"
 path = "src/main.rs"
 
 [dependencies]

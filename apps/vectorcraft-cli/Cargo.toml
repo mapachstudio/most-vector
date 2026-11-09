@@ -8,7 +8,7 @@ publish = false
 description = "Most Vector command line: MCP server (stdio) and headless batch runs"
 
 [[bin]]
-name = "vectorcraft-cli"
+name = "most-vector-cli"
 path = "src/main.rs"
 
 [lints]

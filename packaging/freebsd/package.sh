@@ -2,12 +2,12 @@
 # Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # Build and package Most Vector for FreeBSD:
 #
-#   $DIST/vectorcraft-<version>-freebsd-<arch>.tar.gz   a /usr/local-style tree:
-#       vectorcraft-<version>-freebsd-<arch>/{bin, share/applications, share/icons, share/mime,
-#       share/metainfo, share/doc/vectorcraft}
+#   $DIST/most-vector-<version>-freebsd-<arch>.tar.gz   a /usr/local-style tree:
+#       most-vector-<version>-freebsd-<arch>/{bin, share/applications, share/icons, share/mime,
+#       share/metainfo, share/doc/most-vector}
 #
 # Install by copying the tree's contents into /usr/local, e.g.
-#   tar -xzf vectorcraft-*-freebsd-x86_64.tar.gz --strip-components 1 -C /usr/local
+#   tar -xzf most-vector-*-freebsd-x86_64.tar.gz --strip-components 1 -C /usr/local
 #
 # Usage: packaging/freebsd/package.sh [--skip-build]
 #
@@ -57,18 +57,18 @@ rm -rf "$WORK"
 
 # ---- stage a /usr/local-style tree ---------------------------------------------------------------
 mkdir -p "$STAGE/bin" "$STAGE/share/applications" "$STAGE/share/mime/packages" "$STAGE/share/metainfo" \
-  "$STAGE/share/icons" "$STAGE/share/doc/vectorcraft"
-install -m 755 "$BIN/vectorcraft" "$BIN/vectorcraft-cli" "$STAGE/bin/"
-strip "$STAGE/bin/vectorcraft" "$STAGE/bin/vectorcraft-cli" 2>/dev/null || true
+  "$STAGE/share/icons" "$STAGE/share/doc/most-vector"
+install -m 755 "$BIN/most-vector" "$BIN/most-vector-cli" "$STAGE/bin/"
+strip "$STAGE/bin/most-vector" "$STAGE/bin/most-vector-cli" 2>/dev/null || true
 # The desktop entry, MIME type and metainfo are the freedesktop files the Linux packages use.
 install -m 644 "$LINUX/$APP_ID.desktop" "$STAGE/share/applications/$APP_ID.desktop"
 install -m 644 "$LINUX/$APP_ID.mime.xml" "$STAGE/share/mime/packages/$APP_ID.xml"
 sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$MOST_VECTOR_BUILD_DATE/g" \
   "$LINUX/$APP_ID.metainfo.xml.in" >"$STAGE/share/metainfo/$APP_ID.metainfo.xml"
 cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/share/icons/"
-copy_docs "$STAGE/share/doc/vectorcraft"
+copy_docs "$STAGE/share/doc/most-vector"
 for f in NOTICE ASSETS.md; do
-  if [[ -f "$ROOT/$f" ]]; then cp "$ROOT/$f" "$STAGE/share/doc/vectorcraft/"; fi
+  if [[ -f "$ROOT/$f" ]]; then cp "$ROOT/$f" "$STAGE/share/doc/most-vector/"; fi
 done
 
 # ---- .tar.gz -------------------------------------------------------------------------------------
@@ -76,6 +76,6 @@ tar -C "$WORK" -czf "$DIST/$BASENAME.tar.gz" "$BASENAME"
 echo "wrote $DIST/$BASENAME.tar.gz"
 
 # A cross-built binary can't run on this host.
-if [[ "$ARCH" = "$HOST_ARCH" ]]; then "$STAGE/bin/vectorcraft-cli" --version; fi
+if [[ "$ARCH" = "$HOST_ARCH" ]]; then "$STAGE/bin/most-vector-cli" --version; fi
 echo "==> done"
 ls -lh "$DIST"

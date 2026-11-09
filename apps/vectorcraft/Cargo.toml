@@ -125,3 +125,7 @@ tempfile = "3"
 socket2 = { workspace = true }
 # src/portal_save.rs's tests build and read the portal's D-Bus values on every system.
 zbus = "=5.19.0"
+
+[[bin]]
+name = "most-vector"
+path = "src/main.rs"

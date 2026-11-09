@@ -2,7 +2,7 @@
 //! Most Vector desktop app.
 //!
 //! Usage: `vectorcraft [--control <port> [--automation-read-root <dir>]... [--automation-write-root <dir>]...]
-//! [--in-window-menus] [--new-instance] [files…]`, `vectorcraft --version`, `vectorcraft --help` (or `-h`)
+//! [--in-window-menus] [--new-instance] [files…]`, `most-vector --version`, `vectorcraft --help` (or `-h`)
 //!
 //! Files given while Most Vector already runs open in that window, unless `--new-instance` is given
 //! (Windows and Linux; `single_instance`).
@@ -115,7 +115,7 @@ struct App {
 
 /// `vectorcraft --help`. Headless work (convert, run, MCP) is `vectorcraft-cli`'s.
 const USAGE: &str = "\
-Usage: vectorcraft [options] [files…]
+Usage: most-vector [options] [files…]
 
 Opens the Most Vector desktop app with the given files.
 
@@ -133,7 +133,7 @@ Options:
   --version                     Print the version and exit
   -h, --help                     Print this help and exit
 
-Without a window (converting, scripting, the MCP server), use vectorcraft-cli:
+Without a window (converting, scripting, the MCP server), use most-vector-cli:
   vectorcraft-cli --help
 ";
 

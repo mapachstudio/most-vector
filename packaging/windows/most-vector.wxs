@@ -93,7 +93,7 @@
       </Component>
 
       <Component Id="VectorcraftCli">
-        <File Id="VectorcraftCliExe" Source="$(var.BinDir)\vectorcraft-cli.exe" KeyPath="yes" />
+        <File Id="VectorcraftCliExe" Source="$(var.BinDir)\most-vector-cli.exe" KeyPath="yes" />
       </Component>
     </ComponentGroup>
 

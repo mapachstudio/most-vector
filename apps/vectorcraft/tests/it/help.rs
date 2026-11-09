@@ -7,7 +7,7 @@ use std::process::{Command, Output, Stdio};
 use std::sync::mpsc;
 use std::time::{Duration, Instant};
 
-const BIN: &str = env!("CARGO_BIN_EXE_vectorcraft");
+const BIN: &str = env!("CARGO_BIN_EXE_most-vector");
 
 /// Runs the desktop binary without a display and with a control port it cannot parse, so a
 /// regression exits with that error instead of opening a window.
@@ -54,7 +54,7 @@ fn prints_usage(args: &[&str], env: &[(&str, &str)]) {
     let stdout = String::from_utf8(out.stdout).unwrap();
     assert!(out.status.success(), "{args:?}: {}", String::from_utf8_lossy(&out.stderr));
     assert!(out.stderr.is_empty(), "{args:?}: {}", String::from_utf8_lossy(&out.stderr));
-    assert!(stdout.starts_with("Usage: vectorcraft "), "{args:?}: {stdout}");
+    assert!(stdout.starts_with("Usage: most-vector "), "{args:?}: {stdout}");
     for flag in ["--control", "--automation-read-root", "--automation-write-root", "--in-window-menus", "--version", "--help"] {
         assert!(stdout.contains(flag), "{args:?}: usage doesn't mention {flag}: {stdout}");
     }

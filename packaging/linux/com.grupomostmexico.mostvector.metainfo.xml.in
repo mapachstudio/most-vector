@@ -52,7 +52,7 @@
     <control>tablet</control>
   </supports>
   <provides>
-    <binary>vectorcraft</binary>
+    <binary>most-vector</binary>
   </provides>
   <content_rating type="oars-1.1"/>
   <releases>

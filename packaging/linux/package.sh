@@ -2,11 +2,11 @@
 # Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # Build and package Most Vector for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
 #
-#   $DIST/vectorcraft-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
-#   $DIST/vectorcraft-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
-#   $DIST/vectorcraft-<version>-linux-<arch>.deb       Debian, Ubuntu, Mint, Pop!_OS, ...
-#   $DIST/vectorcraft-<version>-linux-<arch>.rpm       Fedora, openSUSE, RHEL, ...
-#   $DIST/vectorcraft-<version>-linux-<arch>.tar.gz    plain FHS-style tree (bin/, share/)
+#   $DIST/most-vector-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
+#   $DIST/most-vector-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
+#   $DIST/most-vector-<version>-linux-<arch>.deb       Debian, Ubuntu, Mint, Pop!_OS, ...
+#   $DIST/most-vector-<version>-linux-<arch>.rpm       Fedora, openSUSE, RHEL, ...
+#   $DIST/most-vector-<version>-linux-<arch>.tar.gz    plain FHS-style tree (bin/, share/)
 #
 # Usage: packaging/linux/package.sh [--skip-build] [--formats "appimage deb rpm tar"]
 #
@@ -60,9 +60,9 @@ STAGE="$WORK/root"
 rm -rf "$WORK"
 
 # ---- stage an FHS tree (shared by every format) -------------------------------------------------
-install -Dm755 "$BIN/vectorcraft" "$STAGE/usr/bin/vectorcraft"
-install -Dm755 "$BIN/vectorcraft-cli" "$STAGE/usr/bin/vectorcraft-cli"
-"${CROSS_COMPILE:-}strip" "$STAGE/usr/bin/vectorcraft" "$STAGE/usr/bin/vectorcraft-cli" 2>/dev/null || true
+install -Dm755 "$BIN/most-vector" "$STAGE/usr/bin/most-vector"
+install -Dm755 "$BIN/most-vector-cli" "$STAGE/usr/bin/most-vector-cli"
+"${CROSS_COMPILE:-}strip" "$STAGE/usr/bin/most-vector" "$STAGE/usr/bin/most-vector-cli" 2>/dev/null || true
 install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
 install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
 mkdir -p "$STAGE/usr/share/metainfo"
@@ -70,8 +70,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$MOST_VECTOR_BUILD_DATE/g" \
   "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
 mkdir -p "$STAGE/usr/share/icons"
 cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
-mkdir -p "$STAGE/usr/share/doc/vectorcraft"
-copy_docs "$STAGE/usr/share/doc/vectorcraft"
+mkdir -p "$STAGE/usr/share/doc/most-vector"
+copy_docs "$STAGE/usr/share/doc/most-vector"
 
 if command -v desktop-file-validate >/dev/null; then
   desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
@@ -124,7 +124,7 @@ if has appimage; then
   fi
   APPDIR="$WORK/Most Vector.AppDir"
   cp -R "$STAGE" "$APPDIR"
-  ln -s usr/bin/vectorcraft "$APPDIR/AppRun"
+  ln -s usr/bin/most-vector "$APPDIR/AppRun"
   cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
   cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
   ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
@@ -168,7 +168,7 @@ if has appimage; then
   # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
   # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
   REPO="${GITHUB_REPOSITORY:-mapachstudio/most-vector}"
-  UPDATE_INFO="gh-releases-zsync|${REPO%%/*}|${REPO#*/}|latest|vectorcraft-*-linux-$ARCH.AppImage.zsync"
+  UPDATE_INFO="gh-releases-zsync|${REPO%%/*}|${REPO#*/}|latest|most-vector-*-linux-$ARCH.AppImage.zsync"
   # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
   # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
   # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
@@ -182,9 +182,9 @@ if has appimage; then
 fi
 
 if [[ -z "${CROSS_TARGET:-}" ]]; then
-  "$STAGE/usr/bin/vectorcraft-cli" --version
+  "$STAGE/usr/bin/most-vector-cli" --version
 elif [[ -n "${EMULATOR:-}" ]]; then
-  "$EMULATOR" "$STAGE/usr/bin/vectorcraft-cli" --version
+  "$EMULATOR" "$STAGE/usr/bin/most-vector-cli" --version
 fi
 echo "==> done"
 ls -lh "$DIST"

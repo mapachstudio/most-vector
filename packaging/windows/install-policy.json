@@ -1,5 +1,5 @@
 {
-  "id": "vectorcraft",
+  "id": "most-vector",
   "name": "Most Vector",
   "upgradeCode": "601C6437-08AE-4645-ADCC-27F036C2EA2F",
   "sources": [
@@ -14,7 +14,7 @@
     "Util"
   ],
   "payloads": [
-    "vectorcraft-cli.exe",
+    "most-vector-cli.exe",
     "most-vector.exe"
   ],
   "registry": [

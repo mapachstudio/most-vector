@@ -56,7 +56,7 @@ if (-not $haveCert -and -not $haveAzure) {
 
 $script:SignTool = Find-SignTool
 $common = @('sign', '/v', '/fd', 'SHA256', '/td', 'SHA256', '/d', 'Most Vector', '/du', 'https://github.com/mapachstudio/most-vector')
-$tmp = Join-Path ([IO.Path]::GetTempPath()) "vectorcraft-sign-$([IO.Path]::GetRandomFileName())"
+$tmp = Join-Path ([IO.Path]::GetTempPath()) "most-vector-sign-$([IO.Path]::GetRandomFileName())"
 New-Item -ItemType Directory -Path $tmp | Out-Null
 
 try {

@@ -7,7 +7,7 @@ use std::process::{Child, ChildStdin, ChildStdout, Command, Stdio};
 use serde_json::{Value, json};
 use vectorcraft_testkit::raster::Image;
 
-const BIN: &str = env!("CARGO_BIN_EXE_vectorcraft-cli");
+const BIN: &str = env!("CARGO_BIN_EXE_most-vector-cli");
 
 struct Mcp {
     child: Child,

@@ -46,7 +46,7 @@ done
 
 # macOS .icns.
 if command -v iconutil >/dev/null; then
-  SET="$TMP/vectorcraft.iconset"
+  SET="$TMP/most-vector.iconset"
   mkdir -p "$SET"
   for s in 16 32 128 256 512; do
     render "$MAC" "$s" "$SET/icon_${s}x${s}.png"

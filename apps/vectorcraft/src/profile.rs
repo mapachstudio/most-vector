@@ -282,7 +282,7 @@ mod tests {
 
     #[test]
     fn on_macos_the_marker_is_looked_for_beside_the_app_bundle() {
-        let bundled = Path::new("/Apps/Most Vector.app/Contents/MacOS/vectorcraft");
+        let bundled = Path::new("/Apps/Most Vector.app/Contents/MacOS/most-vector");
         assert_eq!(install_dir("macos", bundled, &environment), Some("/Apps".into()));
         // A bare executable (the CLI zip) and other platforms: the executable's own folder.
         assert_eq!(install_dir("macos", Path::new("/Apps/vectorcraft-cli"), &environment), Some("/Apps".into()));
@@ -292,7 +292,7 @@ mod tests {
 
     #[test]
     fn an_appimage_looks_for_the_marker_beside_the_appimage_file() {
-        let mounted = Path::new("/tmp/.mount_vc/usr/bin/vectorcraft");
+        let mounted = Path::new("/tmp/.mount_vc/usr/bin/most-vector");
         let appimage = |key: &str| if key == "APPIMAGE" { Some("/home/user/Apps/Most Vector.AppImage".into()) } else { environment(key) };
         assert_eq!(install_dir("linux", mounted, &appimage), Some("/home/user/Apps".into()));
         assert_eq!(install_dir("linux", mounted, &environment), Some("/tmp/.mount_vc/usr/bin".into()));
@@ -323,7 +323,7 @@ mod tests {
     #[test]
     fn a_fake_app_bundle_keeps_the_marker_and_the_data_outside_the_bundle() {
         let folder = temp("bundle");
-        let exe = folder.join("Most Vector.app/Contents/MacOS/vectorcraft");
+        let exe = folder.join("Most Vector.app/Contents/MacOS/most-vector");
         std::fs::create_dir_all(exe.parent().unwrap()).unwrap();
         std::fs::write(folder.join("portable.txt"), b"").unwrap();
         let install = install_dir("macos", &exe, &environment).unwrap();

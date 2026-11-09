@@ -16,7 +16,7 @@ runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.rust-stable
-command: vectorcraft
+command: most-vector
 finish-args:
   - --filesystem=xdg-data/GrupoMOST/versions:ro
   # Keep identical to com.grupomostmexico.mostvector.bundle.yml (the release bundle); comments there.
@@ -90,16 +90,16 @@ modules:
           - '  esac'
           - 'fi'
           - 'exec "/app/libexec/cups/${0##*/}" "$@"'
-  - name: vectorcraft
+  - name: most-vector
     buildsystem: simple
     build-options:
       env:
-        CARGO_HOME: /run/build/vectorcraft/cargo
+        CARGO_HOME: /run/build/most-vector/cargo
         CARGO_NET_OFFLINE: 'true'
     build-commands:
       - cargo --offline build --release --locked -p vectorcraft
-      - install -Dm755 target/release/vectorcraft /app/bin/vectorcraft
-      - install -Dm644 NOTICE /app/share/doc/vectorcraft/NOTICE
+      - install -Dm755 target/release/most-vector /app/bin/most-vector
+      - install -Dm644 NOTICE /app/share/doc/most-vector/NOTICE
       - install -Dm644 packaging/linux/com.grupomostmexico.mostvector.desktop /app/share/applications/com.grupomostmexico.mostvector.desktop
       - install -Dm644 packaging/linux/com.grupomostmexico.mostvector.mime.xml /app/share/mime/packages/com.grupomostmexico.mostvector.xml
       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/

@@ -4,7 +4,7 @@ use std::process::{Command, Stdio};
 
 use serde_json::{Value, json};
 
-const BIN: &str = env!("CARGO_BIN_EXE_vectorcraft-cli");
+const BIN: &str = env!("CARGO_BIN_EXE_most-vector-cli");
 
 /// Returns the path of `name` in `vectorcraft-cli-test-<pid>` in the temp folder. The first call removes
 /// that folder and creates it again empty.
