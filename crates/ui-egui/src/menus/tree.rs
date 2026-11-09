@@ -21,7 +21,7 @@ pub fn menu_tree_named(english_names: bool) -> Vec<(&'static str, Vec<Item>)> {
             // Quit from File, Language and Appearance synthesized). It stays first: `from_tree`
             // gives the first menu the App role.
             "Most Vector",
-            vec![c("About Most Vector", "help.about"), c("Join Our Discord", "help.discord")],
+            vec![c("About Most Vector", "help.about")],
         ),
         (
             "File",
@@ -695,10 +695,6 @@ pub fn menu_tree_named(english_names: bool) -> Vec<(&'static str, Vec<Item>)> {
         (
             "Help",
             vec![
-                c("Join Our Discord", "help.discord"),
-                c("ArtCraft Website", "help.website"),
-                c("Most Vector on getartcraft.com", "help.appPage"),
-                c("Most Vector on GitHub", "help.github"),
                 Sep,
                 c("Search Commands…", "help.commandPalette"),
                 todos("Most Vector Help…", "F1"),

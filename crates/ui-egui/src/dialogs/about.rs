@@ -46,7 +46,7 @@ pub(super) fn show(app: &mut VectorcraftApp, ctx: &egui::Context) {
     app.ui.about = open;
 }
 
-/// The About tab: mark, version, community links, licences and the GPU in use.
+/// The About tab: mark, version, licences and the GPU in use.
 fn about_tab(app: &mut VectorcraftApp, ui: &mut egui::Ui) {
     ui.set_width(380.0);
     ui.horizontal(|ui| {
@@ -61,11 +61,9 @@ fn about_tab(app: &mut VectorcraftApp, ui: &mut egui::Ui) {
         });
     });
     ui.add_space(12.0);
-    crate::community::links(app, ui);
-    ui.add_space(12.0);
     ui.label(
         egui::RichText::new(tl!(
-            "Part of ArtCraft. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + Most Vector."
+            "Most Vector, de Grupo MOST. Basado en VectorCraft, del equipo ArtCraft y su comunidad, bajo Apache-2.0; Grupo MOST no esta asociado con el equipo ArtCraft, que no patrocina ni avala este producto. Fuentes: Source Sans 3, Inter, JetBrains Mono (OFL). Iconos: Lucide (ISC) y propios."
         ))
         .size(11.0),
     );

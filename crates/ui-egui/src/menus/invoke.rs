@@ -154,11 +154,6 @@ pub fn invoke(app: &mut VectorcraftApp, id: &str, p: Value) {
     if open_view_dialog(app, id, &p) || open_object_dialog(app, id, &p) {
         return;
     }
-    // Help links: the command returns the URL; a menu click opens it (agents just get the URL).
-    if matches!(id, "help.discord" | "help.website" | "help.appPage" | "help.github") {
-        app.open_link(id);
-        return;
-    }
     // Object → Align aligns to what the align buttons align to, unless the call names `to`. With
     // anchors selected (Direct Selection) it sends its params unchanged, and the points align to
     // their own bounds.
