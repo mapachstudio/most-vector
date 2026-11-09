@@ -15,12 +15,12 @@
   ],
   "payloads": [
     "vectorcraft-cli.exe",
-    "vectorcraft.exe"
+    "most-vector.exe"
   ],
   "registry": [
     [
       "-1",
-      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\vectorcraft.exe",
+      "Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\most-vector.exe",
       "",
       "[#VectorcraftExe]"
     ],

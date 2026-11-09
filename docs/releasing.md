@@ -112,10 +112,10 @@ so neither the MSI nor the portable zip needs the Visual C++ redistributable. Th
 to the target triple, so host build scripts aren't affected.
 
 - Before packaging, the script checks each binary's PE machine type against `-Arch` (an x64 build
-  can never ship labelled arm64), that `vectorcraft.exe` is a GUI program (no console window) and
+  can never ship labelled arm64), that `most-vector.exe` is a GUI program (no console window) and
   that `vectorcraft-cli.exe` is a console program.
-- **Portable zip:** it ships `packaging/windows/portable.txt` beside `vectorcraft.exe`. That
-  marker (or a `Most Vector.portable` file) switches on portable mode, as in PhotoCraft: `ui.json`
+- **Portable zip:** it ships `packaging/windows/portable.txt` beside `most-vector.exe`. That
+  marker (or a `Most Vector.portable` file) switches on portable mode, as in Most Image: `ui.json`
   and the folders next to it (Swatches, Graphic Styles, Fonts, Data Recovery, logs…) go to
   `Most VectorData\` next to the exe instead of `%APPDATA%\Most Vector`. The first time
   `Most VectorData` is created, the settings already in `%APPDATA%\Most Vector` are copied into it
@@ -130,7 +130,7 @@ to the target triple, so host build scripts aren't affected.
   executable's own folder is read-only). Flatpak isn't supported: `/app` is read-only and the
   sandbox has no folder "beside the app", so a Flatpak install always uses its own config folder.
 - `most-vector.wxs` (WiX) is a dual-scope package (per-user by default into
-  `%LOCALAPPDATA%\Programs\ArtCraft\Most Vector`, per-machine into `Program Files\ArtCraft\Most Vector` (`Program Files (x86)` for the 32-bit build),
+  `%LOCALAPPDATA%\Programs\Grupo MOST\Most Vector`, per-machine into `Program Files\Grupo MOST\Most Vector` (`Program Files (x86)` for the 32-bit build),
   see `packaging/windows/INSTALLATION.md`) with a Start Menu shortcut
   and an App Paths entry (Win+R `vectorcraft`). Same-version upgrades are allowed, so release
   candidates replace each other.

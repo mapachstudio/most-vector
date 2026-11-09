@@ -3,7 +3,7 @@
 //!
 //! In order:
 //! 1. `MOST_VECTOR_CONFIG_DIR`, when set (tests, agents, custom setups).
-//! 2. **Portable mode** (#1366), as in PhotoCraft: a marker file ([`PORTABLE_MARKERS`]) in the
+//! 2. **Portable mode** (#1366), as in Most Image: a marker file ([`PORTABLE_MARKERS`]) in the
 //!    install folder puts the settings in `Most VectorData` beside it, so a portable copy leaves
 //!    nothing in `%APPDATA%`. The install folder is the executable's; on macOS the one holding
 //!    `Most Vector.app` (nothing is written inside a signed bundle), for an AppImage the one holding

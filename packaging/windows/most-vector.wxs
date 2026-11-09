@@ -12,7 +12,7 @@
     <Property Id="ARPPRODUCTICON" Value="VectorcraftIcon.ico" />
 
     <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="CraftSuiteFolder" Name="ArtCraft">
+      <Directory Id="CraftSuiteFolder" Name="Grupo MOST">
         <Directory Id="INSTALLFOLDER" Name="Most Vector" />
       </Directory>
     </StandardDirectory>
@@ -84,11 +84,11 @@
     </ComponentGroup>
     <ComponentGroup Id="VectorcraftFiles" Directory="INSTALLFOLDER">
       <Component Id="VectorcraftApp" Guid="0E8C6C5E-DE4A-4E1D-9DB0-44E8E38C2103">
-        <File Id="VectorcraftExe" Source="$(var.BinDir)\vectorcraft.exe" KeyPath="yes">
+        <File Id="VectorcraftExe" Source="$(var.BinDir)\most-vector.exe" KeyPath="yes">
           <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Most Vector" Description="Most Vector vector illustration app" WorkingDirectory="INSTALLFOLDER" Advertise="yes" Icon="VectorcraftIcon.ico" IconIndex="0" />
         </File>
 
-        <RegistryValue Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\vectorcraft.exe" Value="[#VectorcraftExe]" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\most-vector.exe" Value="[#VectorcraftExe]" Type="string" />
         <RegistryValue Root="HKMU" Key="Software\Most Vector" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
       </Component>
 

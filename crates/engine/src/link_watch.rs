@@ -1,5 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-//! Linked files that change while their document is open (another app saved them: PhotoCraft,
+//! Linked files that change while their document is open (another app saved them: Most Image,
 //! LightCraft, Photoshop, a placed Most Vector document): Preferences › File Handling › Update
 //! Links decides, as it does when a document opens. Automatically reads them again
 //! (`links.update`, an undo step), Ask When Modified offers to, Manually leaves them modified in

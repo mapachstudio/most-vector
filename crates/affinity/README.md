@@ -50,7 +50,7 @@ for swatches and styles. Save never writes back over the Affinity file.
 ## Provenance and clean-room
 
 Affinity has no published file-format specification, so this reader is built only from a public
-description of the format and from public files, never from Affinity itself. This is how the sibling app PhotoCraft already treats formats that
+description of the format and from public files, never from Affinity itself. This is how the sibling app Most Image already treats formats that
 are only partly documented:
 its PSD reader fills the gaps in Adobe's specification from the MIT-licensed psd-tools and
 ag-psd, and its camera raw decoder recovered Nikon's compression tables by black-box analysis
@@ -83,7 +83,7 @@ of CC0 sample files.
 * **Read-only.** Nothing is written in Affinity's format; export waits until someone can check
   written files in Affinity itself.
 
-The reader also has independent copies in PhotoCraft's `photocraft-affinity` and DesignCraft's
+The reader also has independent copies in Most Image's `photocraft-affinity` and DesignCraft's
 `designcraft-affinity`. Tables, paragraph formats, text scale, master pages, layer effects,
 overlays, embedded documents, large pixel layers and HEIC photos were added in DesignCraft
 ([storytold/designcraft#291](https://github.com/storytold/designcraft/pull/291)) and brought back

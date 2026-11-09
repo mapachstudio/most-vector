@@ -31,7 +31,7 @@
   <a href="#quick-start">Quick start</a> ·
   <a href="#status">Status</a> ·
   <a href="#downloads">Downloads</a> ·
-  <a href="#the-crafting-apps">The Crafting Apps</a> ·
+
   <a href="#license-and-credits">License</a>
 </p>
 
@@ -188,7 +188,7 @@ Register the MCP server with Claude Code:
 claude mcp add vectorcraft -- /path/to/vectorcraft-cli mcp
 ```
 
-To keep an agent to one project's files, give it folders to read and write (the same flags as PhotoCraft):
+To keep an agent to one project's files, give it folders to read and write (las mismas opciones que el resto de la suite):
 
 ```sh
 claude mcp add vectorcraft -- /path/to/vectorcraft-cli mcp --automation-read-root /work/project --automation-write-root /work/project

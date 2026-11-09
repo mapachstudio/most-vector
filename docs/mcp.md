@@ -59,13 +59,13 @@ The release packages ship `vectorcraft-cli` alongside the desktop app, so no bui
 
 | Install | CLI |
 |---|---|
-| Windows (MSI) | `%LOCALAPPDATA%\Programs\ArtCraft\Most Vector\vectorcraft-cli.exe` by default (`C:\Program Files\ArtCraft\Most Vector\vectorcraft-cli.exe` for an all-users install, under `Program Files (x86)` instead for the 32-bit build, or wherever you installed it otherwise), not on `PATH` |
+| Windows (MSI) | `%LOCALAPPDATA%\Programs\Grupo MOST\Most Vector\vectorcraft-cli.exe` by default (`C:\Program Files\Grupo MOST\Most Vector\vectorcraft-cli.exe` for an all-users install, under `Program Files (x86)` instead for the 32-bit build, or wherever you installed it otherwise), not on `PATH` |
 | Linux (deb, rpm) | `/usr/bin/vectorcraft-cli` |
 | macOS | the separate `vectorcraft-cli-<version>-macos-<arch>.zip` release asset (the `.app` holds only the desktop app) |
 
 ```sh
 # Windows (PowerShell), default install folder
-claude mcp add vectorcraft -- "$env:LOCALAPPDATA\Programs\ArtCraft\Most Vector\vectorcraft-cli.exe" mcp
+claude mcp add vectorcraft -- "$env:LOCALAPPDATA\Programs\Grupo MOST\Most Vector\vectorcraft-cli.exe" mcp
 # Linux, or macOS with the CLI unzipped onto PATH
 claude mcp add vectorcraft -- vectorcraft-cli mcp
 ```
@@ -76,7 +76,7 @@ For a live session, start the installed app with the control port before the MCP
 # macOS: quit Most Vector first, since `open -a` passes no arguments to an app that is already running
 open -a Most Vector --args --control 7979
 # Windows (PowerShell), default install folder
-& "$env:LOCALAPPDATA\Programs\ArtCraft\Most Vector\vectorcraft.exe" --control 7979
+& "$env:LOCALAPPDATA\Programs\Grupo MOST\Most Vector\most-vector.exe" --control 7979
 # Linux (deb, rpm)
 vectorcraft --control 7979
 ```
@@ -102,7 +102,7 @@ vectorcraft-cli mcp --automation-read-root /work/project --automation-read-root 
   "args": ["mcp", "--automation-read-root", "/work/project", "--automation-write-root", "/work/project/out"]}}}
 ```
 
-The two flags (PhotoCraft and the other Craft apps take the same ones, so one client config works across
+The two flags (Most Image and the other Craft apps take the same ones, so one client config works across
 the suite) keep the agent to the folders you give it:
 
 - Every file a command reads must lie inside a **read root**: `open_file`, `file.place`, relinking and
@@ -4406,7 +4406,7 @@ bounds; `clip` puts it in a clip group of the old bounds when it is larger). The
 `links.reveal` open the linked file in its app or show it in its folder (desktop). Edit Original runs only from the app's window,
 except for a placed document, which opens in a tab. With the preference `editOriginalSystemDefaults` (Preferences ›
 File Handling › Use System Defaults for Edit Original, on by default) off, Edit Original opens a raster image in the app
-that made it, PhotoCraft, where it is installed, and anything else in the system's default app (#5236).
+that made it, Most Image, where it is installed, and anything else in the system's default app (#5236).
 
 ```json
 {"name":"run_command","arguments":{"command":"links.list","params":{"show":"missing"}}}

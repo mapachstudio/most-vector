@@ -412,8 +412,8 @@ fn open_file(path: &str) -> Result<(), String> {
 }
 
 /// Edit Original with Preferences › File Handling › Use System Defaults for Edit Original off
-/// (#5236): open the raster image `path` in PhotoCraft, found only where it installs
-/// ([`find_photocraft`]); `Ok(false)` when it isn't installed. PhotoCraft gets the path as its only
+/// (#5236): open the raster image `path` in Most Image, found only where it installs
+/// ([`find_photocraft`]); `Ok(false)` when it isn't installed. Most Image gets the path as its only
 /// argument and is never started through a shell.
 fn open_in_photocraft(path: &str) -> Result<bool, String> {
     explorer_safe(path)?;
@@ -469,20 +469,20 @@ fn open_in_photocraft(path: &str) -> Result<bool, String> {
     c.spawn().map(|_| true).map_err(|e| format!("can't open {path} in {}: {e}", app.display()))
 }
 
-/// PhotoCraft where it is installed: the first of [`photocraft_candidates`] that is an application.
+/// Most Image where it is installed: the first of [`photocraft_candidates`] that is an application.
 pub(crate) fn find_photocraft(home: Option<&std::path::Path>, path_var: Option<&std::ffi::OsStr>) -> Option<std::path::PathBuf> {
     photocraft_candidates(home, path_var).into_iter().find(|p| check_app(p).is_ok())
 }
 
-/// Where PhotoCraft may be installed: the Applications folders on macOS; on Windows where its
+/// Where Most Image may be installed: the Applications folders on macOS; on Windows where its
 /// installer puts it ([`windows_candidates`]); else a `photocraft` program on the `PATH`.
 pub(crate) fn photocraft_candidates(home: Option<&std::path::Path>, path_var: Option<&std::ffi::OsStr>) -> Vec<std::path::PathBuf> {
     if cfg!(target_os = "macos") {
-        let mut v = vec![std::path::PathBuf::from("/Applications/PhotoCraft.app")];
-        v.extend(home.map(|h| h.join("Applications/PhotoCraft.app")));
+        let mut v = vec![std::path::PathBuf::from("/Applications/Most Image.app")];
+        v.extend(home.map(|h| h.join("Applications/Most Image.app")));
         return v;
     }
-    let name = if cfg!(windows) { "photocraft.exe" } else { "photocraft" };
+    let name = if cfg!(windows) { "most-image.exe" } else { "photocraft" };
     let on_path = path_var.map(|p| std::env::split_paths(p).map(|dir| dir.join(name)).collect()).unwrap_or_default();
     if cfg!(windows) {
         let folders: Vec<std::path::PathBuf> = [
@@ -498,7 +498,7 @@ pub(crate) fn photocraft_candidates(home: Option<&std::path::Path>, path_var: Op
     on_path
 }
 
-/// Windows: PhotoCraft's installer puts it in `ArtCraft\PhotoCraft` under a folder of
+/// Windows: Most Image's installer puts it in `Grupo MOST\Most Image` under a folder of
 /// `program_folders` (for the current user `%LOCALAPPDATA%\Programs`, for everyone Program Files)
 /// and registers its path under App Paths, which also covers a folder chosen in setup. So: the
 /// `registered` paths first, then those folders, then `on_path`.
@@ -509,7 +509,7 @@ pub(crate) fn windows_candidates(
 ) -> Vec<std::path::PathBuf> {
     let mut v = registered;
     for f in program_folders {
-        let p = f.join("ArtCraft").join("PhotoCraft").join("photocraft.exe");
+        let p = f.join("Grupo MOST").join("Most Image").join("most-image.exe");
         if !v.contains(&p) {
             v.push(p);
         }
@@ -518,14 +518,14 @@ pub(crate) fn windows_candidates(
     v
 }
 
-/// The paths PhotoCraft's installer registers under App Paths, for the current user and then for
+/// The paths Most Image's installer registers under App Paths, for the current user and then for
 /// everyone.
 #[cfg(windows)]
 fn registered_photocraft() -> Vec<std::path::PathBuf> {
     use windows::Win32::System::Registry::{HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE};
     [HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE]
         .into_iter()
-        .filter_map(|hive| registry_default_path(hive, r"Software\Microsoft\Windows\CurrentVersion\App Paths\photocraft.exe"))
+        .filter_map(|hive| registry_default_path(hive, r"Software\Microsoft\Windows\CurrentVersion\App Paths\most-image.exe"))
         .collect()
 }
 
@@ -557,7 +557,7 @@ fn registry_default_path(hive: windows::Win32::System::Registry::HKEY, subkey: &
 }
 
 /// The path in a registry string value read as UTF-16, up to its first NUL, without surrounding
-/// spaces or quotes, like `C:\Program Files\ArtCraft\PhotoCraft\photocraft.exe`.
+/// spaces or quotes, like `C:\Program Files\Grupo MOST\Most Image\most-image.exe`.
 #[cfg_attr(not(any(windows, test)), allow(dead_code))]
 pub(crate) fn registered_path(value: &[u16]) -> Option<std::path::PathBuf> {
     let end = value.iter().position(|&c| c == 0).unwrap_or(value.len());
@@ -567,7 +567,7 @@ pub(crate) fn registered_path(value: &[u16]) -> Option<std::path::PathBuf> {
 
 /// Is `app` an application Edit Original may start: an `.app` bundle on macOS, an `.exe` on
 /// Windows, an executable file elsewhere? Anything else (a document, a folder, a script on
-/// Windows) found where PhotoCraft installs is not taken for it.
+/// Windows) found where Most Image installs is not taken for it.
 pub(crate) fn check_app(app: &std::path::Path) -> Result<(), String> {
     let ext = app.extension().map(|e| e.to_string_lossy().to_ascii_lowercase()).unwrap_or_default();
     let ok = if cfg!(target_os = "macos") {
@@ -600,7 +600,7 @@ mod open_with_tests {
         tempfile::Builder::new().prefix(&format!("vc-open-with-{name}-")).tempdir().unwrap()
     }
 
-    /// #5236: only an application counts as PhotoCraft, never a document, a folder or a missing
+    /// #5236: only an application counts as Most Image, never a document, a folder or a missing
     /// path.
     #[test]
     fn only_applications_are_started() {
@@ -627,27 +627,27 @@ mod open_with_tests {
         }
     }
 
-    /// PhotoCraft is looked for only where it installs.
+    /// Most Image is looked for only where it installs.
     #[test]
     fn photocraft_is_found_where_it_installs() {
         let temp = scratch("find");
         let d = temp.path();
         if cfg!(target_os = "macos") {
             let candidates = photocraft_candidates(Some(d), None);
-            assert_eq!(candidates.first().map(|p| p.to_string_lossy().into_owned()).as_deref(), Some("/Applications/PhotoCraft.app"));
-            assert!(candidates.contains(&d.join("Applications/PhotoCraft.app")), "{candidates:?}");
-            std::fs::create_dir_all(d.join("Applications/PhotoCraft.app")).unwrap();
-            assert!(find_photocraft(Some(d), None).unwrap().ends_with("PhotoCraft.app"));
+            assert_eq!(candidates.first().map(|p| p.to_string_lossy().into_owned()).as_deref(), Some("/Applications/Most Image.app"));
+            assert!(candidates.contains(&d.join("Applications/Most Image.app")), "{candidates:?}");
+            std::fs::create_dir_all(d.join("Applications/Most Image.app")).unwrap();
+            assert!(find_photocraft(Some(d), None).unwrap().ends_with("Most Image.app"));
         } else {
             let bin = d.join("bin");
             std::fs::create_dir_all(&bin).unwrap();
             let path_var = std::env::join_paths([&bin]).unwrap();
-            // On Windows an installed PhotoCraft (registered, or in a program folder) comes first, so
+            // On Windows an installed Most Image (registered, or in a program folder) comes first, so
             // there only the `PATH` candidate is checked.
             if !cfg!(windows) {
                 assert!(find_photocraft(None, Some(&path_var)).is_none(), "not installed");
             }
-            let exe = bin.join(if cfg!(windows) { "photocraft.exe" } else { "photocraft" });
+            let exe = bin.join(if cfg!(windows) { "most-image.exe" } else { "photocraft" });
             std::fs::write(&exe, "").unwrap();
             #[cfg(unix)]
             {
@@ -663,23 +663,23 @@ mod open_with_tests {
         }
     }
 
-    /// #5327 review: on Windows PhotoCraft is looked for where its installer puts it: the path it
-    /// registers, then `ArtCraft\PhotoCraft` in the per-user and per-machine program folders, then
+    /// #5327 review: on Windows Most Image is looked for where its installer puts it: the path it
+    /// registers, then `Grupo MOST\Most Image` in the per-user and per-machine program folders, then
     /// the `PATH`.
     #[test]
     fn windows_looks_where_the_photocraft_installer_puts_it() {
         use std::path::PathBuf;
-        let registered = vec![PathBuf::from("D:/Tools/PhotoCraft/photocraft.exe")];
+        let registered = vec![PathBuf::from("D:/Tools/Most Image/most-image.exe")];
         let folders = [PathBuf::from("C:/Users/me/AppData/Local/Programs"), PathBuf::from("C:/Program Files"), PathBuf::from("C:/Program Files")];
-        let on_path = vec![PathBuf::from("C:/bin/photocraft.exe")];
-        let exe = |f: &str| PathBuf::from(f).join("ArtCraft").join("PhotoCraft").join("photocraft.exe");
+        let on_path = vec![PathBuf::from("C:/bin/most-image.exe")];
+        let exe = |f: &str| PathBuf::from(f).join("Grupo MOST").join("Most Image").join("most-image.exe");
         assert_eq!(
             windows_candidates(registered, &folders, on_path),
             [
-                PathBuf::from("D:/Tools/PhotoCraft/photocraft.exe"),
+                PathBuf::from("D:/Tools/Most Image/most-image.exe"),
                 exe("C:/Users/me/AppData/Local/Programs"),
                 exe("C:/Program Files"),
-                PathBuf::from("C:/bin/photocraft.exe"),
+                PathBuf::from("C:/bin/most-image.exe"),
             ]
         );
     }
@@ -690,12 +690,12 @@ mod open_with_tests {
     fn the_registered_path_is_read_from_the_utf16_value() {
         let wide = |s: &str| s.encode_utf16().chain([0, 0]).collect::<Vec<u16>>();
         assert_eq!(
-            registered_path(&wide(r"C:\Program Files\ArtCraft\PhotoCraft\photocraft.exe")),
-            Some(std::path::PathBuf::from(r"C:\Program Files\ArtCraft\PhotoCraft\photocraft.exe"))
+            registered_path(&wide(r"C:\Program Files\Grupo MOST\Most Image\most-image.exe")),
+            Some(std::path::PathBuf::from(r"C:\Program Files\Grupo MOST\Most Image\most-image.exe"))
         );
         assert_eq!(
-            registered_path(&wide(" \"C:\\Prögram Fïles\\Тест\\写真\\photocraft.exe\" ")),
-            Some(std::path::PathBuf::from(r"C:\Prögram Fïles\Тест\写真\photocraft.exe"))
+            registered_path(&wide(" \"C:\\Prögram Fïles\\Тест\\写真\\most-image.exe\" ")),
+            Some(std::path::PathBuf::from(r"C:\Prögram Fïles\Тест\写真\most-image.exe"))
         );
         assert_eq!(registered_path(&wide("")), None);
         assert_eq!(registered_path(&[0xD800, 0]), None);
@@ -707,7 +707,7 @@ mod open_with_tests {
     #[test]
     fn a_registered_path_outside_ascii_is_read_as_stored() {
         let key = format!(r"Software\Most VectorTest-app-paths-{}", std::process::id());
-        let path = r"C:\Prögram Fïles\Тест\写真\photocraft.exe";
+        let path = r"C:\Prögram Fïles\Тест\写真\most-image.exe";
         let reg = std::env::var_os("SystemRoot").map(std::path::PathBuf::from).unwrap_or_else(|| r"C:\Windows".into()).join(r"System32\reg.exe");
         let full = format!(r"HKCU\{key}");
         let added = std::process::Command::new(&reg).args(["add", &full, "/ve", "/t", "REG_SZ", "/d", path, "/f"]).output().unwrap();

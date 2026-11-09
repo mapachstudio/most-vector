@@ -267,7 +267,7 @@ pub struct Prefs {
     pub templates_folder: String,
     /// File Handling → Use System Defaults for Edit Original (#5236): Links panel › Edit Original
     /// opens a linked file in the system's default app for it; off, in the app that made it
-    /// (PhotoCraft for a raster image, where it is installed; the system's app otherwise).
+    /// (Most Image for a raster image, where it is installed; the system's app otherwise).
     pub edit_original_system_defaults: bool,
     /// Open older native files as "<name> [Converted]" so Save asks for a new name.
     pub append_converted: bool,

@@ -42,7 +42,7 @@ case "$ARCH" in
   aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
 esac
-export MOST_VECTOR_MAINTAINER="${MOST_VECTOR_MAINTAINER:-Most Vector maintainers <vectorcraft@storyteller.ai>}"
+export MOST_VECTOR_MAINTAINER="${MOST_VECTOR_MAINTAINER:-Most Vector maintainers <soporte@grupomostmexico.com>}"
 BASENAME="most-vector-$VERSION-linux-$ARCH"
 
 echo "==> Most Vector $VERSION for Linux $ARCH ($FORMATS)"

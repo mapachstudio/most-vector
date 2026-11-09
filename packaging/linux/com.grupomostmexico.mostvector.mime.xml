@@ -3,15 +3,15 @@
      MimeType line. The desktop entry lists these types with the shared ones; a test in
      apps/vectorcraft/src/main.rs checks both files. -->
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-  <mime-type type="application/x-vectorcraft">
+  <mime-type type="application/x-most-vector">
     <comment>Most Vector document</comment>
     <icon name="com.grupomostmexico.mostvector"/>
     <glob pattern="*.mostvector"/>
     <glob pattern="*.drawcraft"/>
   </mime-type>
-  <mime-type type="application/x-vectorcraft-template">
+  <mime-type type="application/x-most-vector-template">
     <comment>Most Vector template</comment>
-    <sub-class-of type="application/x-vectorcraft"/>
+    <sub-class-of type="application/x-most-vector"/>
     <glob pattern="*.vctemplate"/>
   </mime-type>
   <mime-type type="application/x-ai-template">

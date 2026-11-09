@@ -168,7 +168,7 @@
         <key>public.filename-extension</key>
         <array><string>vectorcraft</string><string>drawcraft</string></array>
         <key>public.mime-type</key>
-        <array><string>application/x-vectorcraft</string></array>
+        <array><string>application/x-most-vector</string></array>
       </dict>
     </dict>
   </array>
