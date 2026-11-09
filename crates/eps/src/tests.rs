@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! EPS output read back: the DSC header and bounding box, the page's operators, gradients at both
 //! levels, images, colours, the preview header and TIFF, and the data the file carries.
 

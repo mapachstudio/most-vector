@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `logging/setLevel` and the `notifications/message` it turns on.
 //!
 //! Most Vector's crates log through the `log` facade, and until now nothing installed a logger, so

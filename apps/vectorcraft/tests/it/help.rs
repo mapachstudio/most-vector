@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `vectorcraft --help` prints the usage and exits before the app starts (#2110): run from a
 //! terminal, SSH or an agent's shell it used to open the window (or hang without a display).
 

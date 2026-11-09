@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The native format's options: compression, the version to write (older apps read older
 //! versions), an embedded preview, and the save options native and `.ai` files share: each
 //! artboard to a separate file, Include Linked Files, Embed ICC Profiles and Create

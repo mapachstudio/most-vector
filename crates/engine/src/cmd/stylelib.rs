@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Graphic style libraries (Window → Graphic Style Libraries, the Graphic Styles panel's library
 //! button): read-only sets of graphic styles the library panel shows. The built-in libraries are
 //! generated in [`vectorcraft_doc::style_libs`]; User Defined ones are the `.vcstyles` files in the

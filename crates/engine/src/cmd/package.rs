@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File → Package: a saved document copied into a folder of its own with the files its linked
 //! images show (`Links/`), the fonts its type uses (`Fonts/`, leaving out fonts whose licence
 //! doesn't allow embedding) and a text report (the package's contents, then the Document Info

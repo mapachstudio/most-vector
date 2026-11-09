@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! A save format's options before the file is written; on the web, where there is no save panel,
 //! also the Save As dialog that names the file and picks the format (SVG and PDF then go on to
 //! their own dialogs). The rows come from the format's options in the engine's format table, so a

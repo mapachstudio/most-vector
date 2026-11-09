@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! MCP prompts (`prompts/list`, `prompts/get`) and `completion/complete`.
 //!
 //! A prompt is a reusable Most Vector workflow: `prompts/get` hands the model one templated user

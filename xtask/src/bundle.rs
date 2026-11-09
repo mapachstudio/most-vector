@@ -1,6 +1,7 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `cargo xtask bundle`: build the release app and wrap it as `dist/Most Vector.app` (macOS), with the
-//! committed app icon `assets/app-icon/vectorcraft.icns` (regenerate it with `packaging/icons.sh`).
+//! committed app icon `assets/app-icon/most-vector.icns` (regenerate it with `packaging/icons.sh`).
 
 use std::path::Path;
 use std::process::Command;
@@ -21,7 +22,7 @@ pub fn run(root: &Path) -> Result<(), String> {
     std::fs::create_dir_all(app.join("Resources")).map_err(|e| e.to_string())?;
     std::fs::copy(target.join("release/vectorcraft"), app.join("MacOS/Most Vector")).map_err(|e| format!("copy app: {e}"))?;
     std::fs::copy(target.join("release/vectorcraft-cli"), app.join("MacOS/vectorcraft-cli")).map_err(|e| format!("copy cli: {e}"))?;
-    std::fs::copy(root.join("assets/app-icon/vectorcraft.icns"), app.join("Resources/Most Vector.icns")).map_err(|e| format!("copy icon: {e}"))?;
+    std::fs::copy(root.join("assets/app-icon/most-vector.icns"), app.join("Resources/Most Vector.icns")).map_err(|e| format!("copy icon: {e}"))?;
     let sha = std::env::var("MOST_VECTOR_BUILD_SHA").unwrap_or_else(|_| "unknown".into());
     std::fs::write(app.join("Info.plist"), info_plist(env!("CARGO_PKG_VERSION"), &sha)).map_err(|e| e.to_string())?;
     println!("built {}", root.join("dist/Most Vector.app").display());

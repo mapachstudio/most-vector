@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! One app per user (#4892): a file opened from the file manager (double-click, Open With, a drop
 //! on the executable) while Most Vector runs opens as a new document tab in the running app, which
 //! comes to the front, instead of in a second app.

@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Placing a Word 97-2003 document (`.doc`): its main text set as area type with the character and
 //! paragraph formatting Most Vector has, read as \[MS-DOC\] describes the Word Binary File Format
 //! (<https://learn.microsoft.com/en-us/openspecs/office_file_formats/ms-doc/262caa01-60a5-479e-b710-1e966936a524>)

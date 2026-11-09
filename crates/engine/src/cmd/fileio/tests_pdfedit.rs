@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! PDF and .ai files that reopen as they were: Preserve Editing embeds the native document, which
 //! `document.open` restores unless the pages changed elsewhere; `.ai` saves always carry it and
 //! `.ait` templates open from it untitled.

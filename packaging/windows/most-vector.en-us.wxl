@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
-  ([VectorcraftVersion] is the full version, pre-release tag included, set in vectorcraft.wxs).
+  ([VectorcraftVersion] is the full version, pre-release tag included, set in most-vector.wxs).
 -->
 <WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
   <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [VectorcraftVersion] Setup Wizard" />

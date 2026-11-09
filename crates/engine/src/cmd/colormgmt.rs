@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Colour management: Edit → Color Settings / Assign Profile, document colour mode conversion
 //! through the CMS, gamut checks, View → Proof Setup / Proof Colors / Overprint Preview, the
 //! Separations Preview panel, Overprint Black and spot swatches.

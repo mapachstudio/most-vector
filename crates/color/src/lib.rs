@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Colour, paint and blend-mode types for Most Vector.
 //!
 //! Colours keep the model the user picked them in (RGB, CMYK, Gray, Lab; HSB is a UI view of RGB),

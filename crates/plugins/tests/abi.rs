@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The plug-in ABI end to end: the example Desaturate plug-in, and hostile modules (infinite
 //! loops, memory bombs, out-of-bounds access, bad manifests and outputs…), which must all fail
 //! with an error, quickly.

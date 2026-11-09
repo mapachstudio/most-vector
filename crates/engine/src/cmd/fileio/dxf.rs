@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! DXF export for every DXF path (`document.export {format: dxf}`, `document.exportDxf`, Export As
 //! → DXF Options): the options parsed from the params, one drawing per artboard with Use
 //! Artboards, and the formats that can't be written (DWG, PICT) with what to use instead.

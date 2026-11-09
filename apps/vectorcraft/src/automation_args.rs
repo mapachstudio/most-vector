@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Parse the control port and automation roots before starting any desktop services. A malformed
 //! flag must not silently remove a root and leave the control channel unconfined, or leave the app
 //! running without the control channel that was asked for.

@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Parametric Shape Tool (Path Precision Tools): shapes that stay editable as numbers. A drag from
 //! the centre draws one (`addon.pathtools.shape.create`): the drag's length is its size and its
 //! direction its rotation (Shift: 45° steps); ↑/↓ change the kind's count or first value while

@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! #3575: a native file holding an object, artboard, guide or ruler origin beyond the canvas
 //! (`MAX_COORD`) opened, but every move then failed with "result would exceed the canvas": edits
 //! check those. Opening it now removes them (or resets the ruler origin) and says so.

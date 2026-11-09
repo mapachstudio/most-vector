@@ -1,4 +1,5 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Plug-ins: the WebAssembly plug-in API (ABI v1)
 
 Most Vector does not host native plug-ins built for other illustration apps: that needs unsafe FFI into

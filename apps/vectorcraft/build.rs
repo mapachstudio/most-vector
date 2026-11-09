@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Windows only: embed the app icon and version info (VERSIONINFO) into `vectorcraft.exe`.
 //!
 //! On every other target this does nothing. A missing resource compiler is a warning, so a
@@ -7,13 +8,13 @@
 
 fn main() -> Result<(), String> {
     println!("cargo:rerun-if-changed=build.rs");
-    println!("cargo:rerun-if-changed=../../assets/app-icon/vectorcraft.ico");
+    println!("cargo:rerun-if-changed=../../assets/app-icon/most-vector.ico");
     println!("cargo:rerun-if-env-changed=MOST_VECTOR_REQUIRE_WINRES");
     if std::env::var("CARGO_CFG_TARGET_OS").as_deref() != Ok("windows") {
         return Ok(());
     }
     let mut res = winresource::WindowsResource::new();
-    res.set_icon("../../assets/app-icon/vectorcraft.ico")
+    res.set_icon("../../assets/app-icon/most-vector.ico")
         .set("ProductName", "Most Vector")
         .set("FileDescription", "Most Vector vector illustration editor")
         .set("CompanyName", "Grupo MOST")

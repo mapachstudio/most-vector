@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Envelopes from the editing data (`(Adobe Deform Plugin) 1 0 0 XP`), read as live envelopes.
 //!
 //! What an envelope is and does is Illustrator's public documentation: Make with Warp, Make with

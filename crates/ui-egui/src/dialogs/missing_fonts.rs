@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The fonts a document opened without (`text.missingFonts`), listed once the missing linked file
 //! questions (dialog `missingLinks`) are answered, one document at a time ([`super::settle`]), with
 //! Find Fonts (Type › Find Font on the first of them, to replace it) and Close. Neither brings the

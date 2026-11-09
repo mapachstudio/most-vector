@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! macOS: the font files CoreText's font manager lists, scanned with the font folders
 //! (`vectorcraft_text::set_platform_font_files`). The desktop app and `vectorcraft-cli` (exports,
 //! MCP) both install it; the CLI shares this file.

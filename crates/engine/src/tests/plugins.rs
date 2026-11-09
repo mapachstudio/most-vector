@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! WebAssembly plug-ins (#121): object filters through `plugin.run` (one undo step,
 //! transactional), live-effect plug-ins in appearance stacks, and the `plugin.*` management
 //! commands.

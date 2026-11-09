@@ -1,4 +1,5 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Type parity
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-11-05 · **Change:** minor (Show Snap to Glyph Options scrolls to the options, with a Snap to Glyph checkbox, #5273; scores and estimates unchanged) · **Target:** Adobe Illustrator 2026 (30.x)

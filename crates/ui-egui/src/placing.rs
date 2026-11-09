@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Placing files off the UI thread (desktop): a file the user places (the Place dialog's OK, a file
 //! dropped on the canvas, the OK of the PDF, DXF and text import options Place asks for) is read and
 //! decoded on a thread that reads one file at a time while the status bar shows it, and is placed in

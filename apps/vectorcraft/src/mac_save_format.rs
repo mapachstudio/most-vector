@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! macOS: the Format menu on save sheets (#866). A save panel with two or more file types (Save As,
 //! Save a Copy, Save as Template and the first Save of a new document) is an `NSSavePanel` made here
 //! instead of by rfd, whose Cocoa backend lists the extensions of every filter but not their names.

@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Blends from the editing data (`(Adobe Path Blends) 1 0 n XP`), read as live blends.
 //!
 //! What a blend is and does is Illustrator's public documentation: key objects, the spine the

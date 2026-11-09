@@ -1,4 +1,5 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Releasing Most Vector
 
 > **Last updated:** 2026-10-12 · **Change:** minor (RPM runtime capabilities and metadata checks, #1275)
@@ -76,7 +77,7 @@ The build option is in
 
 - `Info.plist` is generated from `Info.plist.in` (bundle id `com.grupomostmexico.mostvector`,
   `LSMinimumSystemVersion` 11.0, the version and the build commit). The icon is
-  `assets/app-icon/vectorcraft.icns`. `cargo xtask bundle` fills in the same template for its
+  `assets/app-icon/most-vector.icns`. `cargo xtask bundle` fills in the same template for its
   development app.
 - **Document types:** `Info.plist.in` declares every format File › Open reads, so Finder opens
   them with Most Vector (double-click, Open With, a drop on the Dock icon). Most Vector owns its own
@@ -129,7 +130,7 @@ to the target triple, so host build scripts aren't affected.
   inside the signed bundle), for an AppImage next to the `.AppImage` file (`$APPIMAGE`; the mounted
   executable's own folder is read-only). Flatpak isn't supported: `/app` is read-only and the
   sandbox has no folder "beside the app", so a Flatpak install always uses its own config folder.
-- `vectorcraft.wxs` (WiX) is a dual-scope package (per-user by default into
+- `most-vector.wxs` (WiX) is a dual-scope package (per-user by default into
   `%LOCALAPPDATA%\Programs\ArtCraft\Most Vector`, per-machine into `Program Files\ArtCraft\Most Vector` (`Program Files (x86)` for the 32-bit build),
   see `packaging/windows/INSTALLATION.md`) with a Start Menu shortcut
   and an App Paths entry (Win+R `vectorcraft`). Same-version upgrades are allowed, so release
@@ -140,7 +141,7 @@ to the target triple, so host build scripts aren't affected.
   upgrades in `HKLM` or `HKCU\Software\Most Vector\InstallDir` according to scope),
   Shortcuts (a ticked "Create a desktop shortcut" box), Ready, a progress page, and a Finish page
   that says where to find the app, with a ticked "Launch Most Vector" box. The pages name the full
-  version (`vectorcraft.en-us.wxl`). `package.ps1` draws the wizard's banner and side bitmaps from
+  version (`most-vector.en-us.wxl`). `package.ps1` draws the wizard's banner and side bitmaps from
   the app icon, so no WiX stock art ships. `msiexec /qn` still installs silently, with the desktop
   shortcut unless `INSTALLDESKTOPSHORTCUT=""` is passed. Building needs the WiX UI and Util
   extensions: `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`.

@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Generated icon table (`assets/icons`). Lucide icons are ISC-licensed; `dc-*` icons are Most Vector's own.
 //! Regenerate when icons are added: see crates/ui-egui/README.md.
 

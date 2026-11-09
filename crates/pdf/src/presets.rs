@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! PDF presets: named [`PdfSettings`]. The built-in ones are generated here (the app default,
 //! which keeps the document editable, plus presets for print, press, small files and the PDF/X
 //! standards); the user's own live in the app's preferences.

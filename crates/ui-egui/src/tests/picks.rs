@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File dialogs shown off the UI thread (Linux, #592) or as sheets on the window (macOS, #867):
 //! what asked runs again with the answer, on the document it asked for; while a sheet is open
 //! nothing closes or quits; and nothing outside `picks` shows a dialog in line.

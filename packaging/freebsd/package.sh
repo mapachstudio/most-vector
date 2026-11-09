@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+# Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # Build and package Most Vector for FreeBSD:
 #
 #   $DIST/vectorcraft-<version>-freebsd-<arch>.tar.gz   a /usr/local-style tree:
@@ -44,7 +45,7 @@ if [[ -n "${CARGO_BUILD_TARGET:-}" ]]; then
   esac
   BIN="$CARGO_TARGET_DIR/$CARGO_BUILD_TARGET/release"
 fi
-BASENAME="vectorcraft-$VERSION-freebsd-$ARCH"
+BASENAME="most-vector-$VERSION-freebsd-$ARCH"
 
 echo "==> Most Vector $VERSION for FreeBSD $ARCH"
 

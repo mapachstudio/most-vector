@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Paragraph attributes per paragraph: ranged Paragraph panel commands, paragraph styles on one
 //! paragraph, splitting and merging paragraphs while editing, undo and threaded text.
 

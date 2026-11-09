@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! TIFF, BMP and Targa export through `document.export`: the options reach the files, impossible
 //! ones are refused, and the files open again; Targa files, and BMP and PNG files by their other
 //! extensions, open and place.

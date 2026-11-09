@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! TIFF export (baseline TIFF 6.0): little-endian (`II`) or big-endian (`MM`), strips of about
 //! 8 KiB stored as they are, LZW-compressed (weezl, with TIFF's early code-size switch) or
 //! PackBits; black and white, grey, RGB or CMYK (separated, ink amounts) samples with an optional

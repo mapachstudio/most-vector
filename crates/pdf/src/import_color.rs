@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! PDF colours in their own models: DeviceCMYK and CMYK ICC colours stay CMYK, DeviceGray is
 //! Gray, and Separation and DeviceN inks become spot swatches at a tint (for solid paints and
 //! shading stops alike). Everything else is RGB, as the interpreter converts it.

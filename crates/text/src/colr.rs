@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! COLR colour glyphs (v0 layers, v1 paint graphs): read into a tree of document nodes in font
 //! units (y down, as outlines are), which the renderer, the exporters and Create Outlines draw and
 //! keep as they do any art. A glyph whose paints Most Vector has no form for is drawn into an image

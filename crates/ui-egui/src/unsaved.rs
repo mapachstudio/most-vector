@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Closing documents with unsaved changes. File → Close / Close All, a tab's ×, Quit and the
 //! window's close button first ask Save / Don't Save / Cancel for each modified document (one
 //! dialog per document); Cancel stops the whole operation and a cancelled Save As keeps the

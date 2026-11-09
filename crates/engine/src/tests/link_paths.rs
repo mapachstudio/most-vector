@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Paths stored with linked files and SVG images are followed only on this computer or on the
 //! document's own share (`fileio::document_path`): opening a document, Link Info, watching linked
 //! files, and the images an SVG file links to.

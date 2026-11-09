@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Image Trace in the app ([`crate::trace_runs`], #3098): a trace the user asks for runs off the UI
 //! thread and is applied as one undo step once it is done, unless its image changed meanwhile. A
 //! newer trace of the same object replaces it; Cancel stops it; its progress window shows it.

@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Export for Screens: sizes (factor, width, height, resolution), presets and sub-folders, Full
 //! Document, Include Bleed, per-format settings, ZIP downloads and the settings the document keeps.
 

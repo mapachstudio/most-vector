@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Asset Export: collecting art as assets (single and multiple), assets following their art
 //! (moves, deletions), names, undo, the native round trip, the shared export settings and
 //! exporting assets alone, cropped to their art. Art Optimized PNG exports are supersampled

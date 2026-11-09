@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The document walk: each visible object becomes DXF entities on its layer's DXF layer, in paint
 //! order. Fills are their outlines then solid hatches (the outlines alone in R12), strokes
 //! polylines (with bulges for circular arcs) and cubic splines with a lineweight and dashes, or

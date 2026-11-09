@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::{Pos2, Rect, Response, Sense, Stroke, Tokens, Ui, icons, pos2, scrub, theme, vec2};
 
 /// The width `text` takes on one line, as a label or link in `ui` draws it: its galley, which has

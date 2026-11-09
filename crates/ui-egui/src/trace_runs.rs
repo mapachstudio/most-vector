@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Image Trace off the UI thread (#3098). A photo or a large image takes seconds to trace, and the
 //! window froze while it did. A trace the user asks for (Object › Image Trace › Make and Make and
 //! Expand, the task bar's Image Trace, the Image Trace panel's Trace and presets) is prepared at

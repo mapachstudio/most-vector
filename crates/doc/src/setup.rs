@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Document Setup (File → Document Setup): the bleed around the artboards, view options
 //! (transparency grid, simulated paper, images in outline mode, substitution highlights), output
 //! options and the document's typographic defaults. Every field is defaulted, so documents saved

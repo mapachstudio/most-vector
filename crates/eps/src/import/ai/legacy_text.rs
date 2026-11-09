@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Type in the legacy format (version 7 specification §15): text objects `type To` … `TO`, their
 //! text paths (`a b c d tx ty startPt Tp`, an area's frame, one for each linked area, or the path
 //! type runs along, `TP`), the modal character and paragraph attributes

@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Save As › `.ai` with `aiVersion: "7"`: legacy `.ai` files of version 7 (the PostScript-form `.ai`
 //! that `vectorcraft_eps::export_legacy_ai` writes), which keep the layers, groups, compound
 //! paths and clipping groups that a PDF-compatible `.ai` loses in apps reading only its PDF part

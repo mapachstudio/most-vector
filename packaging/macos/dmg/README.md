@@ -1,4 +1,5 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # macOS DMG window
 
 What Finder shows when the DMG opens: a 660 × 400 pt background with the app icon and the
@@ -8,7 +9,7 @@ scripting on CI, nothing extra installed in the signing job).
 
 | File | What |
 |---|---|
-| `background.svg` | Source of the background: the app icon (`assets/app-icon/vectorcraft-small.svg`, linked, not copied) cropped as a cover on the Most Vector colour field (`#e8573f`), Ink and Paper, Inter and JetBrains Mono (from `assets/fonts`, not embedded). |
+| `background.svg` | Source of the background: the app icon (`assets/app-icon/most-vector-small.svg`, linked, not copied) cropped as a cover on the Most Vector colour field (`#e8573f`), Ink and Paper, Inter and JetBrains Mono (from `assets/fonts`, not embedded). |
 | `background.tiff` | The background at 1x (660 × 400 px, 72 dpi) and 2x (1320 × 800 px, 144 dpi) in one HiDPI TIFF (Deflate, sRGB). Goes to `.background/background.tiff`. |
 | `DS_Store` | Finder's view settings for the volume: window size, icon size 128, Most Vector.app at (326, 205), `Applications` at (574, 205), and the background. Goes to `.DS_Store`. |
 | `generate.py` | Writes `background.tiff` and `DS_Store` from the SVG and the layout above. |

@@ -1,8 +1,9 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
+<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Hosting Most Vector for the web
 
-`vectorcraft-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
-static site in `vectorcraft-web-<version>/`:
+`most-vector-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
+static site in `most-vector-web-<version>/`:
 
 | File | What it is |
 |---|---|

@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File › Scripts › Check Script…: the report `script.check` gives on a script written for the
 //! reference app, read without running it: what kind of file it is and what it needs, what it does
 //! outside the document, the menu commands it runs, the document-model members it uses, its

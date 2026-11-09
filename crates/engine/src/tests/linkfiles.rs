@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Missing linked files looked for in a folder on threads of their own (`links.findFiles`), the
 //! files found ranked by the size and hash saved with each link, and `links.relink {copy}`, which
 //! puts the file in the document's folder without replacing a file there.

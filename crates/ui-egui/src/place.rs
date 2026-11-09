@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File → Place in the app: picking the files, the Place dialog's options, files dropped on the
 //! window, the loaded place cursor and the Control bar's image details. The engine places
 //! (`file.place`, `file.place.queue`); this gathers the files and options.

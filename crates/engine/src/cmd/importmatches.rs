@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! What names and codes in other apps' files stand for in Most Vector, as the user confirmed them on
 //! import: a shortcut set's entry names, and its key and modifier codes. They are kept with the
 //! preferences on the user's machine, so a later import proposes them and asks only about the rest

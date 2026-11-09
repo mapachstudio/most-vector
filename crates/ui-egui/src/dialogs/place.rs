@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File → Place: the files picked, one line each about what they are, and the Place options row
 //! (Link, Template, Replace). OK places one file centred in the view (or in place of the selected
 //! object) or loads the place cursor with several ([`crate::place::confirm`]).

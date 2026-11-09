@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Brush libraries (Window → Brush Libraries, the Brushes panel's library button): read-only sets
 //! of brushes the library panel shows. A library is a document holding the brushes with the
 //! resources their art uses (patterns, symbols, swatches, graphic styles, images); saved, it is a

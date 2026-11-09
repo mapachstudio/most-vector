@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Linked images: what a link records, the preview saved in place of the pixels, finding files
 //! that moved, missing and modified files (`document.open`, `links.check`, `links.update`,
 //! `links.relink`).

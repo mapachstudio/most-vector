@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! "Most Vector Generic CMYK (SWOP-like)": our own parametric press model.
 //!
 //! We can't redistribute Adobe's or ECI's characterisation profiles, so the built-in CMYK space is

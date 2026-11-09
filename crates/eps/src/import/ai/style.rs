@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Art styles (`%AI9_BeginArtStyles`; not publicly documented): the appearance an object's
 //! `1 (style) XW` names, a tree of filters. A compound filter (`/CompoundFilter :`) holds the
 //! filters after it until the `;` that closes it; a basic one (`/BasicFilter :`) ends at its

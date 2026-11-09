@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Data Recovery in the app: the timer that keeps recovery copies of modified documents every
 //! Preferences → File Handling → Data Recovery interval (written in the background like Background
 //! Save, the status bar showing it), and the dialog the first frame shows when the last session

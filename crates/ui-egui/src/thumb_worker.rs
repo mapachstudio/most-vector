@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Panel thumbnails (the Navigator's view of the document, the Layers and Links rows) rendered
 //! off the UI thread on native builds, so a heavy document never stalls a frame. The panels keep
 //! showing their last image until the new one is back, and leave thumbnails alone while the user

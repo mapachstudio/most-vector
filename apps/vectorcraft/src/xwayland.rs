@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Linux: Preferences › Performance › Linux Display Server › X11 opens the window through XWayland
 //! on a Wayland session, where dropped files arrive (winit 0.30 has no Wayland drag and drop,
 //! #1151). Automatic and X11 (XWayland) When a Pen Is Attached do so only when a pen is attached

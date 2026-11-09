@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Symbol Options › Enable Guides for 9-Slice Scaling: two horizontal and two vertical guides cut
 //! a symbol into nine sections, and when an instance is scaled the parts of the symbol outside the
 //! guides are not scaled

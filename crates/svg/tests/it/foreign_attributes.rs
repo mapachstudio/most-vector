@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Attributes in other applications' XML namespaces (https://www.w3.org/TR/xml-names/) survive a
 //! round trip through Most Vector: kept on import, written back on export with their namespaces
 //! declared on the root.

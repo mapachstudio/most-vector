@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+# Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # Build, sign and (optionally) notarize the macOS release artifacts:
 #
 #   $DIST/vectorcraft-<version>-macos-<arch>.dmg          Most Vector.app on a drag-to-Applications DMG
@@ -41,8 +42,8 @@ IDENTITY="${MACOS_SIGN_IDENTITY:--}"
 SHORT_VERSION="${VERSION%%-*}"
 WORK="$CARGO_TARGET_DIR/macos-package"
 APP="$WORK/Most Vector.app"
-DMG="$DIST/vectorcraft-$VERSION-macos-$ARCH.dmg"
-CLI_ZIP="$DIST/vectorcraft-cli-$VERSION-macos-$ARCH.zip"
+DMG="$DIST/most-vector-$VERSION-macos-$ARCH.dmg"
+CLI_ZIP="$DIST/most-vector-cli-$VERSION-macos-$ARCH.zip"
 
 NOTARIZE=0
 if [[ "$IDENTITY" = "-" ]]; then
@@ -118,7 +119,7 @@ echo "==> assembling $APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
 cp "$WORK/bin/vectorcraft" "$APP/Contents/MacOS/Most Vector"
-cp "$ROOT/assets/app-icon/vectorcraft.icns" "$APP/Contents/Resources/Most Vector.icns"
+cp "$ROOT/assets/app-icon/most-vector.icns" "$APP/Contents/Resources/Most Vector.icns"
 sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
   -e "s/@BUILD_SHA@/${MOST_VECTOR_BUILD_SHA:-unknown}/g" \
   "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
@@ -193,7 +194,7 @@ fi
 
 # ---- CLI ---------------------------------------------------------------------------------------
 echo "==> building $CLI_ZIP"
-CLI_DIR="$WORK/vectorcraft-cli-$VERSION-macos-$ARCH"
+CLI_DIR="$WORK/most-vector-cli-$VERSION-macos-$ARCH"
 mkdir -p "$CLI_DIR"
 cp "$WORK/bin/vectorcraft-cli" "$CLI_DIR/"
 copy_docs "$CLI_DIR"

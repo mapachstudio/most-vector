@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! EPS as other apps write it: for each common generator, a short hand-written program with the
 //! constructs its files typically use (its prolog's kind of procedures, how it sets colour, fills
 //! with gradients and patterns, places images and sets type), each read as vectors without a

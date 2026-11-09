@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Sandboxed WebAssembly plug-ins for Most Vector.
 //!
 //! A plug-in is a WebAssembly module that implements the Most Vector plug-in ABI (v1, documented

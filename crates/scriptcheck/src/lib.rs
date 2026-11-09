@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Static checker for scripts written for the reference app's scripting: `.jsx`, `.jsxinc` and
 //! `.js` files, and compiled `.jsxbin` files. [`check`] reads a script's text without running any
 //! of it and reports what kind of file it is ([`Kind`]), its preprocessor directives, the platform

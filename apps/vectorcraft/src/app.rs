@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 #[cfg(all(target_os = "macos", feature = "accessibility", feature = "wgpu"))]
 use super::gpu;
 use super::prefs::{save_prefs, save_prefs_soon};

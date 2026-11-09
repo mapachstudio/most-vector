@@ -1,4 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
+// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Placing an RTF file: its text set as area type with the character and paragraph formatting
 //! Most Vector has, read as the Rich Text Format (RTF) Specification 1.9.1 describes the format
 //! (<https://www.microsoft.com/en-us/download/details.aspx?id=10725>).
