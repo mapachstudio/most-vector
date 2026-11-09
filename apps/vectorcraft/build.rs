@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Windows only: embed the app icon and version info (VERSIONINFO) into `vectorcraft.exe`.
 //!
 //! On every other target this does nothing. A missing resource compiler is a warning, so a

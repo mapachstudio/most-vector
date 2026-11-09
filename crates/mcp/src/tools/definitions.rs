@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::dispatch::{BRIEF, MAX_SIDE_WINDOW, MENU_FILTER, TRACE_VIEWS};
 use super::handlers::MAX_DIALOG_FIELDS;
 use super::{FORMATS, OPEN_EXTS, SAVE_FORMATS, Value, format, json};

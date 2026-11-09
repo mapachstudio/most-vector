@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Convert to Shape, Round Corners and Scribble.
 
 use serde_json::{Value, json};

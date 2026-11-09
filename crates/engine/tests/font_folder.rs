@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Most Vector's own Fonts folder: a missing font's file, found in a folder, is copied into it
 //! without replacing a file there, and type set in the font redraws in it. One test in its own
 //! process, so the process-wide font database and Fonts folder start fresh, as when the app starts.

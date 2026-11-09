@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Files `<image>` elements link to (`href="photo.png"`, `file:///…`): read before usvg runs,
 //! through [`ImportOptions::read`], relative paths from [`ImportOptions::folder`]. A raster file
 //! stays a linked image ([`LinkInfo`]); an SVG file becomes vector art. One that can't be read

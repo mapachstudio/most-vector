@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The journal replays to the same document whenever it runs: values a command takes from the
 //! clock (File ▸ New's created date, a save's modified date) are recorded in its entry, and left out
 //! of recorded actions.

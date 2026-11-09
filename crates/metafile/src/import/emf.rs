@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! EMF records (MS-EMF) played on a [`Player`]: the header gives the frame (the artboard) and the
 //! reference device (device pixels → millimetres), then every record in turn until EMR_EOF.
 

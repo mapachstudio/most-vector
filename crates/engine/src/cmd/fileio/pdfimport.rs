@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Opening and placing PDF (and PDF-compatible `.ai`/`.ait`) files: the options `document.open`
 //! and `file.place` read ([`LoadOptions`]), the pages they import and `document.pdfInfo` (pages,
 //! boxes, a thumbnail; one page for a PostScript file) for the Import PDF dialog.

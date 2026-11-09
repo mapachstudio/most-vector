@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! File → Export → Export for Screens, laid out as Illustrator's: on the left the Artboards and
 //! Assets tabs (thumbnails with checkboxes, in a grid or a list), Clear Selection and the prefix;
 //! on the right Select (All, a range or Full Document, Include Bleed, Include Artboard Fill), the destination (folder

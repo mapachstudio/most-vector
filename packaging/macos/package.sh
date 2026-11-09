@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-# Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # Build, sign and (optionally) notarize the macOS release artifacts:
 #
 #   $DIST/vectorcraft-<version>-macos-<arch>.dmg          Most Vector.app on a drag-to-Applications DMG

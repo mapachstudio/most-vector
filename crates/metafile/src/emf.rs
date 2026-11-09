@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The EMF writer: an EMR_HEADER whose frame is the region in 0.01 mm, then the drawing in device
 //! units of 0.01 mm (the reference device has 100 pixels a millimetre) and an EMR_EOF.
 //!

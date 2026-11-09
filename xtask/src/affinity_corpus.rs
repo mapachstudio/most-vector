@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `cargo xtask corpus --affinity`: public Affinity documents saved by Affinity 1.x to 3.x, from
 //! their upstream repositories at pinned commits, each checked against `xtask/affinity-corpus.sha256`.
 //! They land in `corpus/affinity/` (gitignored, never committed). `vectorcraft-affinity`'s

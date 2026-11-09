@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Data Recovery: `file.recovery.save/list/restore/discard`, copies removed on save, revert and
 //! close, complex documents skipped, each app's own area (another running app's copies are never
 //! offered: locks, heartbeats, announcements; a paused app repairs its copies), and the folder

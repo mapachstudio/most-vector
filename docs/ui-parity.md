@@ -1,5 +1,4 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # UI and interaction parity
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-11-06 · **Change:** minor (Direct Selection: Cmd/Ctrl held lends the Selection tool and shows its bounding box, #3901; Join tool trims two crossing open paths and joins them at the crossing, #5844; Control bar: Paragraph: link and Align left/center/right while type is selected, #5372; scores and estimates unchanged) · **Target:** Adobe Illustrator 2026 (30.x; Units › East Asian Type acts, with Q and Ha units; scores unchanged)

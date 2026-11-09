@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! PDF export settings for every PDF path (`document.export {format: pdf}`, Export for Screens,
 //! `document.exportPdf` and the Save PDF dialog): presets (built-in and saved), the options parsed
 //! over them, the warnings that come back, and `document.pdfSettings` (the dialog's Summary).

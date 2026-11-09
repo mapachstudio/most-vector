@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Every-command sweep: each registered command, in three fixture states, with `{}` and with fuzzed
 //! junk params, must return Ok or Err (never panic), never leave an interaction open, and never
 //! corrupt the tree.

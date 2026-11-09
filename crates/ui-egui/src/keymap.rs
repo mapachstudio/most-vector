@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Most Vector's keymap on [`craft_keymap`]: the catalogue of everything a shortcut can run, the
 //! bridge between Most Vector's chord spellings and the crate's, and the stored form of the
 //! user's overrides.

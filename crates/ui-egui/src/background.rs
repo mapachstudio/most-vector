@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Background Save and Background Export (Preferences → File Handling): a save or an export encodes
 //! and writes a snapshot of the document on a worker thread while editing goes on. The status bar
 //! shows what is in progress; the result is applied on the UI thread when it arrives (a save marks

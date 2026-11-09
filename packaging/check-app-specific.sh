@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-# Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # App-specific package assertions retained alongside shared packaging lint.
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."

@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Safe saving: a file is written to a temporary file beside it, then renamed over it, so a failed
 //! or interrupted write never leaves a damaged file behind (the old one stays as it was).
 //! [`write_new_with`] creates a file the same way without ever replacing one.

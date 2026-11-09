@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Community and project links: the Discord button (header, About, Home) and the link list.
 //! Icons are Lucide's (ISC); Discord's own logo is a trademark, so the button uses a chat icon
 //! on Discord's colour with the word "Discord".

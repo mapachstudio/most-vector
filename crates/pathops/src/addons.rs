@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Geometry for Most Vector's built-in add-ons, one module per add-on, with the kernels they share.
 //!
 //! - [`keep_shape`]: remove anchors while refitting their neighbours' handles, so the outline keeps

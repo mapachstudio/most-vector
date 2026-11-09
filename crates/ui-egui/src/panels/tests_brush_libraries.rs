@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Headless frames of brush libraries in library panels: clicking a brush adds it to the
 //! document's Brushes (and applies it to the selected paths), dragging one carries it out, the
 //! Window menu and the Brushes panel open libraries, Save Brushes writes User Defined libraries

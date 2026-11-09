@@ -1,5 +1,4 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # vectorcraft-pathops
 
 Path operations for Most Vector: booleans, the Pathfinder panel, Shape Builder regions, Live Paint planar maps, offset path, outline stroke, simplify and the other Object → Path commands. Everything takes and returns `vectorcraft_geom::PathData`.

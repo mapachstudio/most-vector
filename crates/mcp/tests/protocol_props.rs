@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! MCP server properties (in-process, headless backend): tool schemas are valid, every tool
 //! survives junk arguments, JSON-RPC framing always answers correctly, and random editing through
 //! MCP keeps the document valid.

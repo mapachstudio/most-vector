@@ -1,5 +1,4 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Releasing Most Vector
 
 > **Last updated:** 2026-10-12 · **Change:** minor (RPM runtime capabilities and metadata checks, #1275)

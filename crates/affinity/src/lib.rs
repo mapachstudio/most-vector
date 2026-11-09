@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Reader for native Affinity documents (`.af`, and `.afdesign`/`.afphoto`/`.afpub` from
 //! Affinity 1 and 2): the archive container, the tagged object stream in `doc.dat`, and the
 //! subset of the document model Most Vector imports.

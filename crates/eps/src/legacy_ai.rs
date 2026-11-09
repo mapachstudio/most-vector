@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Legacy `.ai`, version 7: the PostScript-form Illustrator format, written so that apps that read
 //! it get the document's layers, groups, compound paths and clipping groups as editable objects (a
 //! PDF-compatible `.ai` without Illustrator's undocumented editing data opens in them as one

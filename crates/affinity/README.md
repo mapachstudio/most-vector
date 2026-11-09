@@ -1,5 +1,4 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # vectorcraft-affinity
 
 An independent, bounded Rust reader for native Affinity documents: `.af` from Affinity 3 and

@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Shortcut sets another app saves as text (`.kys` files that start `/Menus {`), read into their
 //! entries without changing anything (`shortcutSet.read`). Names and codes the user matched on an
 //! earlier import ([`super::importmatches`]) come back with what they stand for.

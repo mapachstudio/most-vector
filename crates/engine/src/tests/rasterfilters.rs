@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The Photoshop-style raster effects (Effect › Artistic, Blur › Radial Blur and Smart Blur, Brush Strokes,
 //! Distort › Diffuse Glow, Glass and Ocean Ripple, Pixelate › Color Halftone, Crystallize, Mezzotint and Pointillize, Sharpen › Unsharp Mask, Sketch › Chalk & Charcoal, Chrome, Graphic Pen, Halftone Pattern and Reticulation, Texture ›
 //! Craquelure, Grain, Mosaic Tiles, Patchwork, Stained Glass and Texturizer, Video): applied and

@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Placing a Word document (`.docx`): its text set as area type with the character and paragraph
 //! formatting Most Vector has, read as ECMA-376 Part 1 describes WordprocessingML
 //! (<https://ecma-international.org/publications-and-standards/standards/ecma-376/>), in its

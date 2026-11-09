@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Recover Documents (shown at launch when the last session left recovery copies behind):
 //! Restore / Discard / Cancel (ask again next launch). The flow lives in [`crate::recovery`]; this
 //! is its face in the shared dialog frame.

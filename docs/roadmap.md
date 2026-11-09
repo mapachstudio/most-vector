@@ -1,5 +1,4 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Roadmap: milestones and what's next
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-11-05 · **Change:** minor (Effect dialogs: a colour swatch beside a hex colour opens the Color Picker, #5365; scores and estimates unchanged) · **Target:** Adobe Illustrator 2026 (30.x)

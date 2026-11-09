@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Swatch libraries (Window → Swatch Libraries, the Swatches panel's library button): read-only
 //! sets of swatches the library panel shows. The built-in libraries are computed in
 //! [`vectorcraft_color::libraries`] and the pattern libraries in [`super::patternlib`]; User

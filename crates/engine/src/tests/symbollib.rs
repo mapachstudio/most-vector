@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Symbol libraries: the built-in library, saving a document's symbols as a library (User
 //! Defined, or a file), reopening it and adding its symbols to another document (nested symbols,
 //! patterns and Symbol Options along, one undo step, deduped, renamed on a clash, placed), other

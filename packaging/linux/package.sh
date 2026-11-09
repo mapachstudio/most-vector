@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-# Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 # Build and package Most Vector for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
 #
 #   $DIST/vectorcraft-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's

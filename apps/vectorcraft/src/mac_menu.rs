@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The macOS menu bar, through muda (Tauri's menu crate: AppKit menus behind a safe API, no GTK
 //! with default features off). The menus, their Mac layout and how their keys reach Most Vector
 //! are in `vectorcraft_ui_egui::native_menu`; this file only builds and updates the `NSMenu`s.

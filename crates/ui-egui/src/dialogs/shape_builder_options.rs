@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Shape Builder Tool Options (double-click the Shape Builder tool): the options the tool keeps,
 //! which last across tool switches and are saved with the preferences. OK sets them with
 //! `tool.setOption {tool: "shapeBuilder", values}`.

@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! UI localisation. Strings in code stay English and are the default lookup keys; a per-language
 //! catalog (`*.tsv`, see `zh-hant.tsv` for the format) maps them to display text at render time.
 //! Command ids, menu paths used for logic, the control channel, the CLI and MCP never see

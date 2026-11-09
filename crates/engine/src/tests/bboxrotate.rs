@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Rotated bounding boxes (#39): a rotation keeps the objects' angle, the bounding box and its
 //! handles turn with them, sizes are measured along their own axes, and Reset Bounding Box squares
 //! the box to the page again.

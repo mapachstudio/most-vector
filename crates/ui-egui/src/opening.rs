@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Opening documents off the UI thread (desktop): a file the user asks to open (File › Open, Open
 //! Recent, the Home screen, files handed to the app) is decoded on a thread of its own, which also
 //! reads its linked files and lays out its type, while the status bar shows it, and opens in a new tab

@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The tools of Most Vector's built-in add-ons. They aren't in the toolbars as they ship: the All
 //! Tools drawer lists them (under their add-on's heading) so they can be added, and each add-on's
 //! submenu selects them. Tool gestures emit engine commands.

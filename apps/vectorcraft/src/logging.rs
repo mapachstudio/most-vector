@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The desktop app's logger: `log::` records go to standard error and to a log file.
 //!
 //! Without a logger every `log::warn!`/`log::error!` in the workspace (the graphics adapter, a

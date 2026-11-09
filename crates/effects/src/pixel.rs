@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Photoshop-style raster effects (Effect › Artistic › Colored Pencil, Cutout, Dry Brush, Film Grain, Fresco, Neon Glow, Paint Daubs, Plastic Wrap and
 //! Poster Edges, Rough Pastels, Smudge Stick, Sponge and Watercolor, Blur › Radial Blur and Smart Blur, Brush Strokes › Accented Edges, Angled Strokes,
 //! Crosshatch, Dark Strokes, Ink Outlines, Spatter, Sprayed Strokes and Sumi-e, Distort › Diffuse

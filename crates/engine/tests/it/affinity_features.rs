@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Affinity → Most Vector mapping of pages, master pages, tables, paragraph formats, text scale,
 //! layer effects and embedded documents, on original synthetic documents built with the reader's
 //! `synth` feature (no Affinity software or files were used). The fixtures follow DesignCraft's

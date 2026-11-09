@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Save As .ai in the app: the options dialog, then a PDF-compatible file, which reopens as the
 //! document and saves as .ai again (without asking); Save a Copy as .ai leaves the document's path
 //! alone.

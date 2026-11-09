@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Most Vector's egui frontend: an Illustrator-style UI over `vectorcraft-engine`.
 //!
 //! The UI is thin: every action goes through [`VectorcraftApp::run`], which dispatches UI commands

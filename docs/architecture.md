@@ -1,5 +1,4 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Architecture
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-13 · **Change:** minor (shared PDF reader and writer; app output policy and editable-import adapter retained; verified PngSuite downloads, #1729; synthetic control-input budgets, #1709; desktop printing uses craft-print) · **Target:** Adobe Illustrator 2026 (30.x)

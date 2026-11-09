@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Object › Intertwine (#1763), as a tutorial does it: two thick rings that overlap twice are
 //! made into an Intertwine group, then one overlap is clicked so the rings pass over and under
 //! each other. Driven through `Session::execute`; the art is checked on screen, in the saved file

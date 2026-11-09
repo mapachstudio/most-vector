@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Links panel: every image in the document, linked files with their status (missing, modified)
 //! and embedded images, as rows with a thumbnail, name, page and status. Clicking a row selects
 //! its image, Ctrl/Cmd-click adds or removes it, and Shift-click selects the images of the rows

@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Type menu long tail (Change Case, Smart Punctuation, Convert To Area/Point Type, Type on a Path
 //! Options, Fill with Placeholder Text, Insert Special/Whitespace/Break characters) and the text
 //! commands of the Edit menu (Find and Replace, Find Next, Paste without Formatting).

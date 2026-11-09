@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::region::Region;
 use super::{
     Affine, BezPath, Breakpoint, Burasagari, EPS, FirstBaseline, FontDb, HyphenationOptions, Kinsoku, LeadingModel, SGlyph, hyphen_glyph,

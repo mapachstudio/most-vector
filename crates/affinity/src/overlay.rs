@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Colour and gradient overlays. Most Vector has no such effect, so an overlay is baked into what
 //! its node paints: fill, stroke and text colours, and pixels. The overlay lies over the node's
 //! own paint in its blend mode at its opacity, inside the node's alpha (which it keeps).

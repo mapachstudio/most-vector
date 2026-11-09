@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The Most Vector brand mark: the app icon (the engraved dragon, `assets/app-icon/`, see its
 //! README). The PNG carries the icon's rounded corners; it is decoded once per context into a
 //! mipmapped texture, so it stays crisp from the 18 pt app-bar mark to the About box.

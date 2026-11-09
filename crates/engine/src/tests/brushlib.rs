@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Brush libraries: the built-in libraries, saving a document's brushes as a library (User
 //! Defined, or a file), reopening it and adding its brushes to another document (the patterns and
 //! symbols their art uses along, one undo step, deduped, renamed on a clash, applied), other

@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::{CornerRadius, Tokens, Ui, VectorcraftApp, json, theme, vec2, widgets};
 
 /// The Home screen (`app.home`; with no document open, unless its preference is off).

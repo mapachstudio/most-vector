@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Import Shortcut Set: a shortcut set another app saved as text (`.kys`, read by `shortcutSet.read`),
 //! reviewed before it fills Edit › Keyboard Shortcuts' working set.
 //!

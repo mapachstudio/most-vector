@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! SVG Options: the SVG settings of `document.export`, `serialize` and `save`, read from the
 //! params' top level or from an `svg` object (which wins), and the files an SVG export writes
 //! (one per artboard, plus the images it links to).

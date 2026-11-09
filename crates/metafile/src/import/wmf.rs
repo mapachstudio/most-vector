@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! WMF records (MS-WMF) played on a [`Player`]. A placeable header gives the picture's box in
 //! logical units and the units an inch; without one, the first window origin and extent are the
 //! box, at 1440 units an inch.

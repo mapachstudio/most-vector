@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The macOS menu bar's model ([`crate::native_menu`]), tested on every platform with a fake
 //! backend: the Mac layout of the in-window menus, the keys it hands back to egui, the clicks it
 //! runs and when it reads the menus again.

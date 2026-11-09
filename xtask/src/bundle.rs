@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `cargo xtask bundle`: build the release app and wrap it as `dist/Most Vector.app` (macOS), with the
 //! committed app icon `assets/app-icon/most-vector.icns` (regenerate it with `packaging/icons.sh`).
 

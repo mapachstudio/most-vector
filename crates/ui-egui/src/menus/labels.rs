@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 use super::slots::{perspective_grid, recent_slot, saved_selection_name, saved_selection_slot, saved_view, saved_view_slot};
 use super::state::{hidden_when_disabled, shortcut_of};
 use super::tree::menu_tree;

@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The Actions panel: record commands from the engine journal, play them back as one undo step.
 //! Every recorded step is an ordinary command invocation, so actions are also plain JSON that
 //! agents can author and replay (`command.batch`).

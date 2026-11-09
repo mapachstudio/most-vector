@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Illustrator EPS, `.ai` and PDF files open from the editing data they carry: layers, groups,
 //! names, hidden objects, artboards, colours and images as they were; what the reader doesn't read
 //! yet opens as before, with a warning saying why.

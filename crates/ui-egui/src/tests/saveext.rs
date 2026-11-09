@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! A name typed in a save panel without an extension gets the chosen format's: Save, Save As,
 //! Save a Copy, Export, Export Selection and other writes through a save panel. When the name
 //! then names a file that is there, which the panel did not ask about, the app asks first.

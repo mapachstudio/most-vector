@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! `vectorcraft-cli mcp --automation-read-root <dir> --automation-write-root <dir>` (#832): through
 //! the MCP protocol, files open only from inside the read root and are saved, exported and
 //! captured only inside the write root; paths that leave a root (`..`, another folder, a sibling

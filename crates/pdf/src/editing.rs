@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Preserve Editing: the native document travels inside the PDF as an embedded file, with a hash
 //! of the pages it was written with, so a PDF whose pages another app changed is noticed (and
 //! opens as its artwork instead of the stale native document).

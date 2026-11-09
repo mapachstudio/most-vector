@@ -1,5 +1,4 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Localization parity
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-31 · **Change:** minor (Brazilian Portuguese: 154 rows for the strings the sibling catalogs translate — smart-filter and print presets, dimension lines, swatches, canvas messages; previously minor: Bosnian (`bs`): complete catalog; previously minor: Vietnamese text: stacked diacritics tested and attach in every form, #4491; previously: Catalan (`ca`) catalog added, complete under the tests)

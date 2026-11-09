@@ -1,5 +1,4 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Most Vector — egui 0.37 migration plan
 
 **Status (2026-10-25, shared-docking reconciliation):** the published qualification remains checkpoint `83d6dd2d6603845978f949523e6da2b4945dcffb`, tested with post-PR-4113 `main` `6e7854967d6b8a094bfed809643bd957aa3ba66f` and the two `Id::unique` edits at `crates/ui-egui/src/dialogs/recolor.rs:384,725`; managed job `egui037-vector-postmerge-ci-20261025-1381` passed all 12 mandatory CI stages for that working tree, and publication commit `1072d0e263623882da68d8115934630abbef33ae` records it in PR #4173. The reviewed recolor code is already in `main`: `HEAD` and `origin/main` resolve the same blob `6050af15a3bf7b9a056df6dff347bda7690ad251` for that file.

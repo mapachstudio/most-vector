@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Batch exports through Export for Screens (#1935): a file name pattern (the document's and the
 //! item's names, a counter, the date), folders by format, by item or both, layers and the selection
 //! as what is exported, and document formats (Most Vector, Illustrator, EPS) as rows.

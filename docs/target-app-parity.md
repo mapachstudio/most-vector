@@ -1,5 +1,4 @@
 <!-- Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
-<!-- Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0. -->
 # Parity with Adobe Illustrator
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-11-06 · **Change:** minor (a document's first frame renders on the render worker, so opening a heavy file no longer freezes the window, #4155; Control bar Paragraph section with type selected, #5372; scores and estimates unchanged) · **Target:** Adobe Illustrator 2026 (30.x; public release notes through 30.7, August 2026)

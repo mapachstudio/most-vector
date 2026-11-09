@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Edit → PDF Presets: `pdf.preset.list`, `save`, `delete`, `export` and `import`. The built-in
 //! presets are generated in code ([`vectorcraft_pdf::builtin_presets`]) and read-only; the user's
 //! live in [`crate::Prefs::pdf_presets`]. Any of their names works as `preset` wherever PDF

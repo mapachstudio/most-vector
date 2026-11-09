@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Opening a PDF whose pages share one large content stream, with an editing file naming a page
 //! hash, keeps a working set that doesn't grow with the page count. One test in its own process,
 //! so the allocator's peak is this test's.

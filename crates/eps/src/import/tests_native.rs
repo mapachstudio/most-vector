@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The layers of an Illustrator EPS and `.ai`: read from the editing copy of the art the file
 //! carries (see `native`). The files here are small ones written by hand for the tests, with the
 //! operators seen in files their users own.

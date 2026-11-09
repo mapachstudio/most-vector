@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Missing fonts: listed (`text.missingFonts`), their files found in a folder on threads of their
 //! own (`text.findFontFiles`), and copied into a folder without replacing a file there. These tests
 //! never set Most Vector's Fonts folder and never add a font to the process's font database:

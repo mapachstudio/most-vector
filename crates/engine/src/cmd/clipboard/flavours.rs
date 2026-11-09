@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Clipboard flavours: what Copy offers other apps besides SVG (PNG, PDF and plain text) and what
 //! Paste takes from them (bitmaps, plain text, PDF, EPS and Windows metafiles).
 //!

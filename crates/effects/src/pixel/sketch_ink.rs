@@ -1,5 +1,4 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-// Modificado por Grupo MOST para Most Vector. Obra original: Most Vector del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Effect › Sketch › Bas Relief, Charcoal, Photocopy and Stamp. Original filters built from public
 //! behaviour documentation: <https://helpx.adobe.com/illustrator/using/summary-effects.html> and
 //! <https://helpx.adobe.com/photoshop-elements/using/sketch-filters.html> (the Sketch effects
