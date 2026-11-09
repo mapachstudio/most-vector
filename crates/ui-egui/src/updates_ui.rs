@@ -168,7 +168,7 @@ mod tests {
             tag: "v99.0.0".into(),
             version: craft_update::parse_version("99.0.0"),
             name: "Most Vector 99.0.0".into(),
-            html_url: "https://github.com/storytold/vectorcraft/releases/tag/v99.0.0".into(),
+            html_url: "https://github.com/mapachstudio/most-vector/releases/tag/v99.0.0".into(),
             ..Default::default()
         };
         app.updates_rt.updater.offer(release);

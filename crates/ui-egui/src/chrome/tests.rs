@@ -498,7 +498,7 @@ fn the_artboard_navigator_goes_to_artboards_and_fitting_shows_the_current_one() 
     assert!(app.run("view.goToArtboard", json!({"index": "sideways"})).is_err());
 }
 
-/// storytold/vectorcraft#2719: status-bar 100% matches Actual Size when Display Print Size is on.
+/// mapachstudio/most-vector#2719: status-bar 100% matches Actual Size when Display Print Size is on.
 #[test]
 fn set_zoom_100_matches_actual_size_with_display_print_size() {
     let mut app = crate::VectorcraftApp::new(Session::new(), Default::default());

@@ -94,7 +94,7 @@ mod tests {
                 "https://discord.gg/artcraft",
                 "https://getartcraft.com",
                 "https://getartcraft.com/apps/vectorcraft",
-                "https://github.com/storytold/vectorcraft"
+                "https://github.com/mapachstudio/most-vector"
             ]
         );
         // The control channel / MCP path returns the URL without opening a browser.

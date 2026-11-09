@@ -47,7 +47,7 @@ mod tests {
         let mut s = Session::new();
         assert_eq!(s.execute("help.discord", &json!({})).unwrap()["url"], "https://discord.gg/artcraft");
         assert_eq!(s.execute("help.appPage", &json!({})).unwrap()["url"], "https://getartcraft.com/apps/vectorcraft");
-        assert_eq!(s.execute("help.github", &json!({})).unwrap()["url"], "https://github.com/storytold/vectorcraft");
+        assert_eq!(s.execute("help.github", &json!({})).unwrap()["url"], "https://github.com/mapachstudio/most-vector");
         assert_eq!(s.execute("help.links", &json!({})).unwrap()["website"], "https://getartcraft.com");
     }
 }
