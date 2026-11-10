@@ -901,19 +901,23 @@ fn type_in_a_font_that_is_not_installed_warns_on_open() {
     );
 }
 
-/// And a file whose fonts are all available opens with no such warning: the check must not cry
-/// wolf, or it stops being read.
+/// And a file with no type at all opens with no such warning: the check must not cry wolf, or it
+/// stops being read.
+///
+/// Deliberately NOT "a file in a font that IS available": which fonts exist depends on the machine
+/// —CI builds without `CRAFT_FONTS`— so that test would fail for a reason that has nothing to do
+/// with what it claims to check.
 #[test]
-fn type_in_an_available_font_does_not_warn() {
-    let svg = format!(
-        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"40\">\
-         <text x=\"4\" y=\"26\" font-family=\"{}\" font-size=\"18\">woo</text></svg>",
-        vectorcraft_text::FALLBACK_FAMILY
+fn a_file_without_type_does_not_warn_about_fonts() {
+    let svg = concat!(
+        r#"<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">"#,
+        r#"<rect x="4" y="4" width="32" height="32" fill="#e8573f"/>"#,
+        "</svg>",
     );
-    let loaded = load("logo.svg", svg.as_bytes()).unwrap();
+    let loaded = load("plain.svg", svg.as_bytes()).unwrap();
     assert!(
         !loaded.warnings.iter().any(|w| w.contains("fallback font")),
-        "an available font must not warn: {:?}",
+        "art without type must not warn about fonts: {:?}",
         loaded.warnings
     );
 }
