@@ -65,7 +65,7 @@ fn stdout_failed(e: std::io::Error) -> ! {
     if e.kind() == std::io::ErrorKind::BrokenPipe {
         std::process::exit(0);
     }
-    eprintln!("vectorcraft-cli: can't write to stdout: {e}");
+    eprintln!("most-vector-cli: can't write to stdout: {e}");
     std::process::exit(1);
 }
 
@@ -198,7 +198,7 @@ fn main() -> ExitCode {
     match r {
         Ok(()) => ExitCode::SUCCESS,
         Err(e) => {
-            eprintln!("vectorcraft-cli: {e}");
+            eprintln!("most-vector-cli: {e}");
             ExitCode::FAILURE
         }
     }
@@ -251,7 +251,7 @@ fn mcp(args: &[String]) -> Result<(), String> {
     let backend: Box<dyn Backend> = if let Some(roots) = roots {
         // Every thread of this process, not only the server's: nothing reaches past the roots.
         file_access::confine_process(roots.clone());
-        eprintln!("vectorcraft-cli: files confined: {}", roots.describe());
+        eprintln!("most-vector-cli: files confined: {}", roots.describe());
         Box::new(Headless::with_document().with_automation_roots(Some(roots)))
     } else if headless {
         Box::new(with_stores(Headless::with_document()))
@@ -264,7 +264,7 @@ fn mcp(args: &[String]) -> Result<(), String> {
             Err(_) => Box::new(with_stores(Headless::with_document())),
         }
     };
-    eprintln!("vectorcraft-cli: MCP server on stdio ({})", backend.describe());
+    eprintln!("most-vector-cli: MCP server on stdio ({})", backend.describe());
     // The binary owns the logger, not the library: installing one here keeps an embedder that
     // uses `vectorcraft_mcp` free to bring its own. Silent until a client sends logging/setLevel.
     vectorcraft_mcp::logging::install();

@@ -168,7 +168,7 @@ pub(crate) fn bring_window_forward(ctx: &egui::Context) {
 pub(crate) fn open_files(app: &mut VectorcraftApp, files: Vec<String>) {
     for f in files {
         if let Err(e) = vectorcraft_ui_egui::io::open_reporting(app, &f) {
-            eprintln!("vectorcraft: {f}: {e}");
+            eprintln!("most-vector: {f}: {e}");
         }
     }
 }

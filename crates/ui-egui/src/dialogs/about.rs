@@ -63,7 +63,7 @@ fn about_tab(app: &mut VectorcraftApp, ui: &mut egui::Ui) {
     ui.add_space(12.0);
     ui.label(
         egui::RichText::new(tl!(
-            "Most Vector, de Grupo MOST. Basado en VectorCraft, del equipo ArtCraft y su comunidad, bajo Apache-2.0; Grupo MOST no esta asociado con el equipo ArtCraft, que no patrocina ni avala este producto. Fuentes: Source Sans 3, Inter, JetBrains Mono (OFL). Iconos: Lucide (ISC) y propios."
+            "Most Vector, de Grupo MOST. Basado en VectorCraft, del equipo ArtCraft y su comunidad, bajo Apache-2.0; Grupo MOST no está asociado con el equipo ArtCraft, que no patrocina ni avala este producto. Fuentes: Source Sans 3, Inter, JetBrains Mono (OFL). Iconos: Lucide (ISC) y propios."
         ))
         .size(11.0),
     );

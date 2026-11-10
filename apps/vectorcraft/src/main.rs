@@ -161,7 +161,7 @@ fn main() -> std::process::ExitCode {
             Ok(true) => continue,
             Ok(false) => {}
             Err(e) => {
-                eprintln!("vectorcraft: {e}");
+                eprintln!("most-vector: {e}");
                 return std::process::ExitCode::FAILURE;
             }
         }
@@ -169,7 +169,7 @@ fn main() -> std::process::ExitCode {
             "--in-window-menus" => in_window_menus = true,
             "--new-instance" => new_instance = true,
             "--version" => {
-                println!("vectorcraft {}", env!("CARGO_PKG_VERSION"));
+                println!("most-vector {}", env!("CARGO_PKG_VERSION"));
                 return std::process::ExitCode::SUCCESS;
             }
             // Before anything starts, like `--version`: from a terminal or an agent's shell the app
@@ -190,7 +190,7 @@ fn main() -> std::process::ExitCode {
         None => match automation_args::env_control_port(std::env::var_os("MOST_VECTOR_CONTROL_PORT")) {
             Ok(port) => port,
             Err(e) => {
-                eprintln!("vectorcraft: {e}");
+                eprintln!("most-vector: {e}");
                 return std::process::ExitCode::FAILURE;
             }
         },
@@ -245,7 +245,7 @@ fn main() -> std::process::ExitCode {
             Ok(roots) => roots,
             Err(e) => {
                 log::error!("{e}");
-                eprintln!("vectorcraft: {e}");
+                eprintln!("most-vector: {e}");
                 return std::process::ExitCode::FAILURE;
             }
         }
