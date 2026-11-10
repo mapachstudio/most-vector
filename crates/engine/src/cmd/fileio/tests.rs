@@ -911,7 +911,7 @@ fn type_in_a_font_that_is_not_installed_warns_on_open() {
 fn a_file_without_type_does_not_warn_about_fonts() {
     let svg = concat!(
         r#"<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">"#,
-        r#"<rect x="4" y="4" width="32" height="32" fill="#e8573f"/>"#,
+        r#"<rect x="4" y="4" width="32" height="32" fill="rgb(232,87,63)"/>"#,
         "</svg>",
     );
     let loaded = load("plain.svg", svg.as_bytes()).unwrap();
