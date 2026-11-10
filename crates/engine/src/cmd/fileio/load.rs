@@ -487,6 +487,19 @@ pub fn load_with(name: &str, bytes: &[u8], opts: &LoadOptions) -> Result<Loaded>
         doc.title = title;
     }
     warnings.extend(doc.images.values().filter_map(|b| size_note(&b.bytes)));
+    // Fonts the file names that aren't installed. The type is then drawn in the fallback face,
+    // which changes the art: a logo whose font is missing opens in another typeface.
+    //
+    // The PDF reader says so (`vectorcraft_pdf`'s import), but the `.ai` editing-data reader and
+    // the others did not, so the BETTER import path — the one that keeps layers and objects — was
+    // the silent one. Found on a real file: `Good Dog Cool` was replaced by the fallback and
+    // nothing was said, while the same file read through its PDF part did warn.
+    //
+    // Checked here, on the finished document, so it holds for every format this loader returns
+    // instead of once per reader. Skipped when a reader already said it, in whatever words.
+    if !warnings.iter().any(|w| w.contains("fallback font")) {
+        warnings.extend(crate::cmd::fonts::set_font_warning(crate::cmd::fonts::used_fonts(&doc)));
+    }
     Ok(Loaded { doc, format, warnings, restored, converted, preview_only, editing_data })
 }
 

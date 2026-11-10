@@ -879,3 +879,41 @@ fn a_photo_places_the_way_its_exif_orientation_says() {
     let red = |p: &image::Rgb<u8>| p[0] > 150 && p[1] < 80;
     assert!(red(px.get_pixel(4, 3)) && !red(px.get_pixel(4, 12)), "the left half is on top");
 }
+
+/// A file whose type is set in a font that isn't installed opens with a warning.
+///
+/// The type is drawn in the fallback face, which changes the art: a logo opens in another
+/// typeface. The PDF reader said so; the `.ai` editing-data reader and the others did not, so the
+/// better import path — the one that keeps layers and objects — was the silent one. Found on a
+/// real file whose `Good Dog Cool` came in as the fallback with nothing said.
+#[test]
+fn type_in_a_font_that_is_not_installed_warns_on_open() {
+    let svg = concat!(
+        r#"<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40">"#,
+        r#"<text x="4" y="26" font-family="No Such Face 94117" font-size="18">woo</text>"#,
+        "</svg>",
+    );
+    let loaded = load("logo.svg", svg.as_bytes()).unwrap();
+    assert!(
+        loaded.warnings.iter().any(|w| w.contains("fallback font") && w.contains("No Such Face 94117")),
+        "a missing font must be reported on open: {:?}",
+        loaded.warnings
+    );
+}
+
+/// And a file whose fonts are all available opens with no such warning: the check must not cry
+/// wolf, or it stops being read.
+#[test]
+fn type_in_an_available_font_does_not_warn() {
+    let svg = format!(
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"40\">\
+         <text x=\"4\" y=\"26\" font-family=\"{}\" font-size=\"18\">woo</text></svg>",
+        vectorcraft_text::FALLBACK_FAMILY
+    );
+    let loaded = load("logo.svg", svg.as_bytes()).unwrap();
+    assert!(
+        !loaded.warnings.iter().any(|w| w.contains("fallback font")),
+        "an available font must not warn: {:?}",
+        loaded.warnings
+    );
+}
