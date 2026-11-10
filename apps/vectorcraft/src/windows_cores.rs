@@ -1,7 +1,7 @@
 //! Windows: the cores the process may run on, from its affinity mask, for the renderer's worker
 //! count (`vectorcraft_render::set_usable_cores`). `available_parallelism` counts every processor
 //! in the machine, also when the process may run on fewer (started with `start /affinity`, or
-//! pinned by a launcher). The desktop app and `vectorcraft-cli` (exports, MCP) both install it; the
+//! pinned by a launcher). The desktop app and `most-vector-cli` (exports, MCP) both install it; the
 //! CLI shares this file.
 //!
 //! `GetProcessAffinityMask` is a C API with no safe binding, hence the scoped `unsafe_code`

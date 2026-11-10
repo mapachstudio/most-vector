@@ -113,7 +113,7 @@ struct App {
     maximize_tries: u8,
 }
 
-/// `vectorcraft --help`. Headless work (convert, run, MCP) is `vectorcraft-cli`'s.
+/// `vectorcraft --help`. Headless work (convert, run, MCP) is `most-vector-cli`'s.
 const USAGE: &str = "\
 Usage: most-vector [options] [files…]
 

@@ -1,5 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-//! `vectorcraft-cli perf`: the performance budgets (plan §4) measured on a synthetic document.
+//! `most-vector-cli perf`: the performance budgets (plan §4) measured on a synthetic document.
 //!
 //! Each row is the median of several runs. Timings are wall-clock: on a busy machine (a load
 //! average above three quarters of the cores, or on Windows more than three quarters of the

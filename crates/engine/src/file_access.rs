@@ -1,7 +1,7 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! The folders automation may read and write (#832).
 //!
-//! `vectorcraft-cli mcp --automation-read-root <dir> --automation-write-root <dir>`, and
+//! `most-vector-cli mcp --automation-read-root <dir> --automation-write-root <dir>`, and
 //! `vectorcraft --control <port>` with the same flags, confine the files an agent's commands
 //! reach; each flag may be given more than once (#3546). [`AutomationRoots`] holds the folders of
 //! each kind. While they are in force, every path a command reads goes through [`check_read`] and
@@ -16,7 +16,7 @@
 //! - Read and write access are separate: a root given alone grants only its own kind of access.
 //!
 //! Roots are in force on a thread inside [`confine`], and in the whole process after
-//! [`confine_process`] (`vectorcraft-cli mcp`, the desktop app with a control port), except inside
+//! [`confine_process`] (`most-vector-cli mcp`, the desktop app with a control port), except inside
 //! [`unconfined`]: what the person at the keyboard does, and the app's own folders (preferences,
 //! Data Recovery, the library folders, Most Vector's Fonts folder), which no agent names. Without
 //! roots nothing is checked.

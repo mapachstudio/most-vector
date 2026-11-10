@@ -1,6 +1,6 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! macOS: the font files CoreText's font manager lists, scanned with the font folders
-//! (`vectorcraft_text::set_platform_font_files`). The desktop app and `vectorcraft-cli` (exports,
+//! (`vectorcraft_text::set_platform_font_files`). The desktop app and `most-vector-cli` (exports,
 //! MCP) both install it; the CLI shares this file.
 //!
 //! Apps and font managers can register fonts with the font manager from files in any folder,

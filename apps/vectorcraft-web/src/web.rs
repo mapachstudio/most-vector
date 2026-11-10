@@ -115,7 +115,7 @@ async fn run(host: Host, canvas: web_sys::HtmlCanvasElement, moving: Option<Movi
                 let loss = GraphicsLoss::default();
                 watch_canvas(&page, &loss, ctx);
                 if let Some(rs) = &cc.wgpu_render_state {
-                    log::info!("vectorcraft-web: wgpu backend {:?}", rs.adapter.get_info().backend);
+                    log::info!("most-vector-web: wgpu backend {:?}", rs.adapter.get_info().backend);
                     let (loss, ctx) = (loss.clone(), ctx.clone());
                     rs.device.set_device_lost_callback(move |reason, msg| loss.report(&ctx, format!("{reason:?}: {msg}")));
                 }
@@ -135,7 +135,7 @@ async fn run(host: Host, canvas: web_sys::HtmlCanvasElement, moving: Option<Movi
                         let (control_tx, control_rx) = std::sync::mpsc::channel();
                         crate::api::connect(Some(control_tx), host.inbox.clone(), ctx.clone());
                         if let Err(e) = crate::api::install() {
-                            log::error!("vectorcraft-web: couldn't install window.mostvector: {}", js_err(e));
+                            log::error!("most-vector-web: couldn't install window.mostvector: {}", js_err(e));
                         }
                         VectorcraftApp::new(Session::new(), services).with_control(control_rx)
                     }
@@ -147,7 +147,7 @@ async fn run(host: Host, canvas: web_sys::HtmlCanvasElement, moving: Option<Movi
     match (result, kept) {
         (Ok(()), _) => {
             if let Err(e) = crate::pencil::install(&runner, &pen_canvas, &pointers) {
-                log::error!("vectorcraft-web: no pen input: {}", js_err(e));
+                log::error!("most-vector-web: no pen input: {}", js_err(e));
             }
             if let Some(el) = element(LOADING_ID) {
                 el.remove();
@@ -155,7 +155,7 @@ async fn run(host: Host, canvas: web_sys::HtmlCanvasElement, moving: Option<Movi
         }
         (Err(e), None) => notice(&[&format!("Most Vector failed to start: {}", js_err(e)), "A browser with WebGPU or WebGL2 is required."]),
         (Err(e), Some(kept)) => {
-            log::error!("vectorcraft-web: couldn't restart the graphics: {}", js_err(e));
+            log::error!("most-vector-web: couldn't restart the graphics: {}", js_err(e));
             give_up(slot.borrow_mut().take(), kept);
         }
     }
@@ -355,7 +355,7 @@ impl WebShell {
         match canvas {
             Ok(canvas) => wasm_bindgen_futures::spawn_local(run(host, canvas, Some(Moving { app, kept }))),
             Err(e) => {
-                log::error!("vectorcraft-web: giving up on the graphics: {e}");
+                log::error!("most-vector-web: giving up on the graphics: {e}");
                 let runner = host.runner;
                 wasm_bindgen_futures::spawn_local(async move { runner.destroy() });
                 give_up(Some(app), kept);

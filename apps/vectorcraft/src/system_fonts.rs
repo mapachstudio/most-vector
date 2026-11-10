@@ -1,7 +1,7 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
 //! Windows: the font files in DirectWrite's system font collection and those of the fonts GDI has
 //! loaded, scanned with the font folders (`vectorcraft_text::set_platform_font_files`). The desktop
-//! app and `vectorcraft-cli` (exports, MCP) both install it; the CLI shares this file.
+//! app and `most-vector-cli` (exports, MCP) both install it; the CLI shares this file.
 //!
 //! Font services such as Adobe Fonts load their fonts with GDI at run time, from files in their
 //! own folders, without installing them: the font folders and the registry don't list them. Since

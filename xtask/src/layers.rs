@@ -271,7 +271,7 @@ mod tests {
             c("vectorcraft-doc", &[("vectorcraft-geom", Normal, true)]),
             c("vectorcraft-engine", &[("vectorcraft-doc", Normal, true), ("vectorcraft-testkit", Dev, true)]),
             c("vectorcraft-ui-egui", &[("vectorcraft-engine", Normal, true), ("egui", Normal, false)]),
-            c("vectorcraft-cli", &[("vectorcraft-ui-egui", Normal, true)]),
+            c("most-vector-cli", &[("vectorcraft-ui-egui", Normal, true)]),
         ];
         assert!(check(&g).is_empty(), "{:?}", check(&g));
     }
@@ -336,7 +336,7 @@ mod tests {
 
     #[test]
     fn apps_and_xtask_exempt() {
-        for app in ["vectorcraft", "vectorcraft-cli", "vectorcraft-web", "xtask"] {
+        for app in ["vectorcraft", "most-vector-cli", "most-vector-web", "xtask"] {
             assert!(check(&[c(app, &[("egui", Normal, false), ("vectorcraft-ui-egui", Normal, true)])]).is_empty());
         }
     }

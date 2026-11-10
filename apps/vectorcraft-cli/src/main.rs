@@ -1,5 +1,5 @@
 // Modificado por Grupo MOST para Most Vector. Obra original: VectorCraft del equipo ArtCraft (https://github.com/storytold/vectorcraft), Apache-2.0.
-//! `vectorcraft-cli`: Most Vector from the command line.
+//! `most-vector-cli`: Most Vector from the command line.
 //!
 //! ```text
 //! vectorcraft-cli mcp [--connect 127.0.0.1:7979 | --headless] [--automation-read-root DIR]... [--automation-write-root DIR]...
@@ -19,7 +19,7 @@ use std::path::Path;
 use std::process::ExitCode;
 
 /// `println!` / `print!` that end the program quietly when stdout is closed
-/// (`vectorcraft-cli commands | head`) instead of panicking with "failed printing to stdout:
+/// (`most-vector-cli commands | head`) instead of panicking with "failed printing to stdout:
 /// Broken pipe (os error 32)".
 macro_rules! outln {
     ($($arg:tt)*) => {{
@@ -190,7 +190,7 @@ fn main() -> ExitCode {
         Some("perf") => perf::run(&args[1..]),
         Some("-h" | "--help" | "help") | None => help(),
         Some("-V" | "--version") => {
-            outln!("vectorcraft-cli {}", env!("CARGO_PKG_VERSION"));
+            outln!("most-vector-cli {}", env!("CARGO_PKG_VERSION"));
             Ok(())
         }
         Some(other) => Err(format!("unknown subcommand `{other}`\n\n{}", usage())),
