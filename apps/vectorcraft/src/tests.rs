@@ -199,8 +199,9 @@ fn the_macos_bundle_opens_every_readable_format() {
 /// (one row per type): shared-mime-info's, or one that `com.grupomostmexico.mostvector.mime.xml`
 /// declares.
 const LINUX_TYPES: &[(&str, &str)] = &[
-    ("vectorcraft", "application/x-vectorcraft"),
-    ("drawcraft", "application/x-vectorcraft"),
+    ("mostvector", "application/x-most-vector"),
+    ("vectorcraft", "application/x-most-vector"),
+    ("drawcraft", "application/x-most-vector"),
     ("svg", "image/svg+xml"),
     ("svgz", "image/svg+xml-compressed"),
     ("pdf", "application/pdf"),
@@ -214,7 +215,7 @@ const LINUX_TYPES: &[(&str, &str)] = &[
     ("tif", "image/tiff"),
     ("tiff", "image/tiff"),
     ("bmp", "image/bmp"),
-    ("vctemplate", "application/x-vectorcraft-template"),
+    ("vctemplate", "application/x-most-vector-template"),
     ("dxf", "image/vnd.dxf"),
     ("emf", "image/emf"),
     ("wmf", "image/wmf"),

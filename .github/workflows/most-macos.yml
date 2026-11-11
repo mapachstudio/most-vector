@@ -73,6 +73,15 @@ jobs:
         # son tuyos se acaba ignorando. Se amplia cuando se sepa que esta verde.
         run: cargo test --release -p vectorcraft-engine --lib -- cmd::fileio::tests
 
+      # Estas comprueban que el Info.plist de macOS y la entrada de escritorio
+      # de Linux declaran un tipo para CADA extensión que el programa abre.
+      # Viven en el crate de la aplicación, no en el del motor, así que el paso
+      # anterior no las ejecutaba — y llevaban roto desde el remarcado: el UTI
+      # declaraba la extensión como `most-vector`, con guion, que no existe. En
+      # macOS eso es un .mostvector que al doble clic no abre nada.
+      - name: El empaquetado abre todo lo que el programa lee
+        run: cargo test --release -p vectorcraft --bin most-vector -- tests::the_macos_bundle_opens_every_readable_format tests::the_linux_desktop_entry_opens_every_readable_format
+
       - name: Empaquetar
         run: packaging/macos/package.sh --arch "${{ inputs.arch || 'universal' }}"
 

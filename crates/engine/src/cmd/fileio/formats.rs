@@ -514,6 +514,9 @@ pub const FORMATS: &[Format] = &[
 
 /// Every extension `document.open` reads (the "All readable files" filter of open dialogs).
 pub const OPEN_EXTS: &[&str] = &[
+    // Ours first: this list is the "All readable files" filter and the CLI's usage text, in order.
+    // The other two are read so the files already on a customer's disk keep opening.
+    "mostvector",
     "vectorcraft",
     "drawcraft",
     "svg",

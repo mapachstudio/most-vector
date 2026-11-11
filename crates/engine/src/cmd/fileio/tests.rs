@@ -402,7 +402,7 @@ fn export_extensions_name_every_writable_format() {
     assert_eq!(
         exts,
         [
-            "vectorcraft",
+            "mostvector",
             "svg",
             "svgz",
             "pdf",

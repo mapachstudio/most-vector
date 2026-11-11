@@ -7,6 +7,7 @@
     <comment>Most Vector document</comment>
     <icon name="com.grupomostmexico.mostvector"/>
     <glob pattern="*.mostvector"/>
+    <glob pattern="*.vectorcraft"/>
     <glob pattern="*.drawcraft"/>
   </mime-type>
   <mime-type type="application/x-most-vector-template">
