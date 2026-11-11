@@ -1350,7 +1350,7 @@ fn half_outlined_ai_on(story: Option<&str>, more: usize, type_content: &str, hea
     let page = PdfPage {
         resources: format!(
             "/Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >> \
-             /F2 << /Type /Font /Subtype /Type1 /BaseFont /Most VectorTestUnnamed /ToUnicode {} 0 R >> >>",
+             /F2 << /Type /Font /Subtype /Type1 /BaseFont /MostVectorTestUnnamed /ToUnicode {} 0 R >> >>",
             first_extra(1) + 1
         ),
         entries: format!("/PieceInfo << /Illustrator << /Private << /AIPrivateData1 {} 0 R /NumBlock 1 >> >> >>", first_extra(1)),
@@ -1371,7 +1371,7 @@ fn outlines_notes(r: &Value) -> Vec<String> {
 
 /// The notes the PDF part of [`half_outlined_ai`] reads with: its glyph of U+FFFD, kept as outlines.
 fn pdf_part_outlines_notes() -> [String; 2] {
-    [format!("text in Vector Craft Test Unnamed {}", vectorcraft_pdf::UNNAMED_CHARACTERS_NOTE), vectorcraft_pdf::OUTLINED_TEXT_NOTE.into()]
+    [format!("text in Most Vector Test Unnamed {}", vectorcraft_pdf::UNNAMED_CHARACTERS_NOTE), vectorcraft_pdf::OUTLINED_TEXT_NOTE.into()]
 }
 
 /// The note on text objects that hold the page's type without some of its characters, for `n` of

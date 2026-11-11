@@ -25,8 +25,17 @@ use super::swatch::str_list;
 use super::swatchlib::{FileData, LibraryFile, LibraryInfo, stem};
 use super::{CommandSpec, Result, Session, always, bad, bool_or, cmd, has_doc, str_param};
 
-/// The extension of saved brush libraries: native documents.
-pub const BRUSHES_EXT: &str = vectorcraft_format::EXTENSION;
+/// What a saved brush library is WRITTEN as: a native document, our extension.
+///
+/// It used to be `vectorcraft_format::EXTENSION`, which is the original brand's. The remarking
+/// changed the command's own documentation —it promises "the .mostvector files in the user
+/// library folder"— but not this constant, so the panel scanned for one extension while the docs
+/// named another, and every library the user saved came out branded as theirs.
+pub const BRUSHES_EXT: &str = vectorcraft_format::EXTENSION_MOST;
+
+/// What the user library folder is SCANNED for: ours, plus the original brand's, so the
+/// libraries an earlier build saved keep appearing in the panel.
+pub const BRUSHES_EXTS: &[&str] = &[BRUSHES_EXT, vectorcraft_format::EXTENSION];
 
 pub fn specs() -> Vec<CommandSpec> {
     vec![
@@ -134,7 +143,7 @@ impl BrushLibrary {
 }
 
 impl LibraryFile for BrushLibrary {
-    const EXTS: &'static [&'static str] = &[BRUSHES_EXT];
+    const EXTS: &'static [&'static str] = BRUSHES_EXTS;
     fn read(bytes: &[u8], stem: &str) -> std::result::Result<Self, String> {
         let doc = vectorcraft_format::load(bytes).map_err(|e| e.to_string())?;
         BrushLibrary::from_document(&doc, &[], stem.to_string())

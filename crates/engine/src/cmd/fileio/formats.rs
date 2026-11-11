@@ -354,7 +354,13 @@ pub const FORMATS: &[Format] = &[
     Format {
         id: "vectorcraft",
         label: "Most Vector",
-        extensions: &[vectorcraft_format::EXTENSION, vectorcraft_format::LEGACY_EXTENSION],
+        // Ours first: it is what Save and Export write. The other two are read
+        // so the files already on a customer's disk keep opening.
+        extensions: &[
+            vectorcraft_format::EXTENSION_MOST,
+            vectorcraft_format::EXTENSION,
+            vectorcraft_format::LEGACY_EXTENSION,
+        ],
         mime: "application/json",
         read: true,
         write: true,

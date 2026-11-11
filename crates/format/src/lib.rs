@@ -79,9 +79,23 @@ pub const MAX_BLOBS: u64 = if cfg!(target_arch = "wasm32") { 1 << 30 } else { 4 
 /// (hand-made or damaged files) may unpack to: it is unpacked whole.
 const MAX_UNPACKED: u64 = 512 << 20;
 
+/// The extension Most Vector writes: `logo.mostvector`.
+///
+/// `EXTENSION` and `LEGACY_EXTENSION` come from `craft-vectorcraft-format`, a dependency we don't
+/// own, and still carry the original names. They are kept for READING: the files already on a
+/// customer's disk end in them. What we write carries our own name.
+///
+/// Without this the remarking left the two ends apart: the mime type, the desktop entry and the
+/// Save dialog all said `.mostvector`, while the format registry only knew the other two — so
+/// `document.export` to `logo.mostvector` failed with "unknown extension" and the only extension
+/// that worked was the original brand's. Caught by the engine's own tests.
+pub const EXTENSION_MOST: &str = "mostvector";
+
 /// Is `ext` (without the dot, any case) a native document extension?
 pub fn is_native_ext(ext: &str) -> bool {
-    ext.eq_ignore_ascii_case(EXTENSION) || ext.eq_ignore_ascii_case(LEGACY_EXTENSION)
+    ext.eq_ignore_ascii_case(EXTENSION_MOST)
+        || ext.eq_ignore_ascii_case(EXTENSION)
+        || ext.eq_ignore_ascii_case(LEGACY_EXTENSION)
 }
 
 /// Does the file name or path end in a native document extension?

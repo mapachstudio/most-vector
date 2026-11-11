@@ -24,7 +24,12 @@ use super::swatchlib::{FileData, LibraryFile, LibraryInfo, stem};
 use super::{CommandSpec, Result, Session, always, bad, bool_or, cmd, has_doc, number_or, str_param};
 
 /// The extension of saved symbol libraries: native documents.
-pub const SYMBOLS_EXT: &str = vectorcraft_format::EXTENSION;
+/// What a saved symbol library is WRITTEN as: a native document, our extension.
+/// See `brushlib::BRUSHES_EXT` for why this is not `EXTENSION`.
+pub const SYMBOLS_EXT: &str = vectorcraft_format::EXTENSION_MOST;
+
+/// What the user library folder is SCANNED for: ours, plus the original brand's.
+pub const SYMBOLS_EXTS: &[&str] = &[SYMBOLS_EXT, vectorcraft_format::EXTENSION];
 
 pub fn specs() -> Vec<CommandSpec> {
     vec![
@@ -134,7 +139,7 @@ impl SymbolLibrary {
 }
 
 impl LibraryFile for SymbolLibrary {
-    const EXTS: &[&str] = &[SYMBOLS_EXT];
+    const EXTS: &[&str] = SYMBOLS_EXTS;
     fn read(bytes: &[u8], stem: &str) -> std::result::Result<Self, String> {
         let doc = vectorcraft_format::load(bytes).map_err(|e| e.to_string())?;
         SymbolLibrary::from_document(&doc, &[], stem.to_string())
